@@ -33,6 +33,8 @@ $(document).ready(function(){
 			var i = pendantSprites.length-1;
 			if(i>=0)
 				removePendant(i);
+			else
+				lastPosition = 143;
 		});
 		$('#clear-pendants').click(function(){
 			if(pendantSprites.length)
