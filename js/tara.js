@@ -4,9 +4,9 @@ $(document).ready(function(){
 	const WIDTH  = 796;
 	const HEIGHT = 702/VIEW_HEIGHT;
 	const PENDANTS = [
-				{'path':'pendant-a.png','width':65,'height':396},
-				{'path':'pendant-b.png','width':65,'height':396},
-				{'path':'pendant-c.png','width':151,'height':442}
+				{'path':'pendant-a.png','width':65,'height':396,type:'A'},
+				{'path':'pendant-b.png','width':65,'height':396,type:'A'},
+				{'path':'pendant-c.png','width':151,'height':442,type:'B'}
 			];
 	const app = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	var lastPosition=143;
@@ -54,7 +54,8 @@ $(document).ready(function(){
 		var sprite = addSprite(pendant.path,0,lastPosition,pendant.width,pendant.height,scale);
 		var pendant_height = (pendant.height*scale);
 		pendantSprites.push({height:pendant_height,sprite:sprite});
-		lastPosition = lastPosition+pendant_height;
+		if(pendant.type=='A')
+			lastPosition = lastPosition+pendant_height;
 		
 	}
 	function removePendant(index){
