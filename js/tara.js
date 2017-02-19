@@ -4,9 +4,9 @@ $(document).ready(function(){
 	const WIDTH  = 796;
 	const HEIGHT = 702/VIEW_HEIGHT;
 	const PENDANTS = [
-				{'path':'pendant-A.png','width':65,'height':396},
-				{'path':'pendant-B.png','width':65,'height':396},
-				{'path':'pendant-C.png','width':151,'height':442}
+				{'path':'pendant-a.png','width':65,'height':396},
+				{'path':'pendant-b.png','width':65,'height':396},
+				{'path':'pendant-c.png','width':151,'height':442}
 			];
 	const app = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	var lastPosition=143;
@@ -20,7 +20,7 @@ $(document).ready(function(){
 		addSprite('Base-A.png',x,y,2700,1018,0.45);
 	}
 	function addUIControl(){
-		var pendants = ['A','B','C'];
+		var pendants = ['a','b','c'];
 		$('#add-random-pendant').click(function(){
 			addPendant();
 		});
@@ -44,7 +44,7 @@ $(document).ready(function(){
 		});
 	}
 	function addPendant(index){
-		if(!index){
+		if(index==undefined){
 			var min = 0 ;
 			var max = PENDANTS.length-1;
 			index = Math.round(Math.random()* (max - min) + min);
