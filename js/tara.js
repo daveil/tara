@@ -51,6 +51,7 @@ $(document).ready(function(){
 			var max = PENDANTS.length-1;
 			index = Math.round(Math.random()* (max - min) + min);
 		}
+		if(lastPosition<143) lastPosition = 143;
 		var pendant = PENDANTS[index];
 		var scale = 0.3;
 		var sprite = addSprite(pendant.path,0,lastPosition,pendant.width,pendant.height,scale);
