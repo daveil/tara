@@ -6,7 +6,7 @@ $(document).ready(function(){
 	const PENDANTS = [
 				{'path':'pendant-a.png','width':65,'height':396,type:'A'},
 				{'path':'pendant-b.png','width':65,'height':396,type:'A'},
-				{'path':'pendant-c.png','width':151,'height':442,type:'B'}
+				{'path':'pendant-c.png','width':249,'height':442,type:'B'}
 			];
 	const app = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	var lastPosition=143;
