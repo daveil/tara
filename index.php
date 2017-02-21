@@ -18,14 +18,21 @@
 			<div class="col-md-10 col-md-offset-1">
 				<center>
 				<h2>Welcome to Tara!</h2>
-				<button class="btn btn-default add-pendant" data-pendant="a">+ A</button>
-				<button class="btn btn-default add-pendant" data-pendant="b">+ B</button>
-				<button class="btn btn-default add-pendant" data-pendant="c">+ C</button>
-				<button class="btn btn-default" id="add-random-pendant">Random</button>
-				<button class="btn btn-warning" id="undo-pendant">Undo</button>
-				<button class="btn btn-danger" id="clear-pendants">Clear</button>
+				<div class="row">
+					<div class="col-md-6 controls">
+						<button class="btn btn-default add-pendant" data-pendant="a">+ A</button>
+						<button class="btn btn-default add-pendant" data-pendant="b">+ B</button>
+						<button class="btn btn-default add-pendant" data-pendant="c">+ C</button>
+					</div>
+					<div class="col-md-6 controls">
+						<button class="btn btn-default" id="add-random-pendant">Random</button>
+						<button class="btn btn-warning" id="undo-pendant">Undo</button>
+						<button class="btn btn-danger" id="clear-pendants">Clear</button>
+					</div>
+				</div>
 				</center>
 			</div>
+			<div class="col-md-8 col-md-offset-2"></div>
 		</div>
 	</div>
     <script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
