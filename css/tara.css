@@ -1,7 +1,11 @@
+.controls{
+	margin-top:1.3rem;
+}
 canvas{
 	margin:0 auto;
 	margin-top:10px;
 	display:block;
+	width:100% !important;
 }
 body>div.container{
 	margin-top:30px;
@@ -89,4 +93,4 @@ body>div.container{
 	bottom: 2px;
 	width: 75px;
 	left: 12px;
-	}
+}
