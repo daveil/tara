@@ -3,3 +3,90 @@ canvas{
 	margin-top:10px;
 	display:block;
 }
+body>div.container{
+	margin-top:30px;
+}
+.jde-horizontal-wrapper{
+	width:450px;
+	height:120px;
+	border:1px solid #e00;
+	margin:0 auto;
+	white-space: nowrap;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+.jde-horizontal-wrapper>.jde-ui-list{
+	display:table;
+	list-style-type:none;
+	text-align: center;
+	padding: 0;
+	margin:0;
+	height:100%;
+}
+.jde-horizontal-wrapper>.jde-ui-list>.jde-ui-item{
+	display: table-cell;
+	vertical-align: middle;
+	min-width: 50px;
+	width:auto;
+
+}
+.jde-horizontal-wrapper>.jde-ui-list>.jde-ui-item>div{
+	border: 1px solid #0e0;
+	width:50px;	
+	height:50px;
+	transition: 0.1s all ease-in-out;	
+}
+.jde-horizontal-wrapper>.jde-ui-list>.jde-ui-item:not(.active)>div:hover{
+	height:70px;
+}
+.jde-horizontal-wrapper>.jde-ui-list>.jde-ui-item.active>div{
+	width:100px;
+	height:100px;	
+}
+.jde-jewel{
+	padding:4px;
+}
+.jde-jewel>.jde-title,.jde-jewel>.jde-btn{
+	display: none;
+}
+.jde-jewel>.jde-img{
+	margin:0 auto;
+	width:40px;
+	height:40px;
+	background-color:#00e;
+	transition: 0.1s all ease-in-out;
+}
+.jde-jewel:hover{
+	padding: 0;
+}
+.jde-jewel:hover>.jde-img{
+	margin:0;
+	width:48px;
+	height:68px;
+}
+.active .jde-jewel{
+	padding: 0;
+	position: relative;
+}
+.active .jde-jewel>.jde-img{
+	margin:0;
+	width:99px;
+	height:99px;
+}
+.active .jde-jewel>.jde-title,.active .jde-jewel>.jde-btn{
+	position: absolute;
+	display: block;
+}
+.active .jde-jewel>.jde-title{
+	color:#fff;
+	text-align: center;
+	bottom: 22px;
+	width: 100%;
+	padding-bottom: 3px;
+}
+.active .jde-jewel>.jde-btn{
+	bottom: 2px;
+	width: 75px;
+	left: 12px;
+	}
