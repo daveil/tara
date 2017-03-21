@@ -110,7 +110,7 @@
 							</button>
 						</div>
 						<div class="col-md-4">
-							<button class="btn btn-primary btn-block" id="jde-place-order">
+							<button class="btn btn-primary btn-block" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal">
 							PLACE ORDER
 							</button>
 						</div>
@@ -137,6 +137,32 @@
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="JDEWarnModal">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-body text-center">				
+				Oops! You can only add <span></span> item(s).
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
+			<div class="clear-fix"></div>
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="JDEPlaceOrderModal">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-body text-center">				
+				Oops! You can only add <span></span> item(s).
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
+			<div class="clear-fix"></div>
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
     <script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="libs/bower_components/pixi.js/dist/pixi.min.js"></script>
@@ -151,6 +177,7 @@
 				3:{name:'Square Object', path:'img/square.png', price:15,width:200,height:220,type:'A'}
 			};
 			const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
+			const MAX_ATTCH = 3;
 			const BASE_Y = 123;
 			var pendantSprites = [];
 			var lastPosition=BASE_Y;
@@ -203,7 +230,15 @@
 					total += pendant.price;
 				}
 				$('#jde-total span').text(total);
+				console.log(pendantSprites.length,MAX_ATTCH);
+				
+				if(pendantSprites.length>=MAX_ATTCH){
+					$('.jde-btn').attr('data-target','#JDEWarnModal');
+				}else{
+					$('.jde-btn').attr('data-target','#JDEItemModal');
+				}
 			}
+			$('#JDEWarnModal .modal-body span').text(MAX_ATTCH);
     		$('.jde-ui-item').click(function(){
     			if(!$(this).hasClass('active'))
     				$('.jde-ui-item.active').removeClass('active');
@@ -238,9 +273,10 @@
 					}
 				pendantSprites=[];
 				lastPosition = BASE_Y;
+				computeTotal();
 			});
 			$('#jde-place-order').click(function(){
-				
+				$('#JDEPlaceOrderModal')
 			});
     	});
     </script>
