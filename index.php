@@ -235,10 +235,11 @@
 				$('#jde-total span').text(total);
 				if(pendantSprites.length==0){
 					$('#jde-place-order').attr('data-target','#JDEWarnModal');
-					$('#JDEWarnModal .modal-body p').text('Add item first!');
+					if(!orderPlaced)
+						$('#JDEWarnModal .modal-body p').text('Add item first!');
 				}else{
 					$('#jde-place-order').attr('data-target','#JDEPlaceOrderModal');
-					if(pendantSprites.length>=MAX_ATTCH){
+					if(pendantSprites.length>=MAX_ATTCH&&!orderPlaced){
 						$('.jde-btn').attr('data-target','#JDEWarnModal');
 						$('#JDEWarnModal .modal-body p').text('Oops! You can only add up to '+MAX_ATTCH+' item(s).');
 					}else{
@@ -254,8 +255,7 @@
 					}
 				pendantSprites=[];
 				lastPosition = BASE_Y;
-				orderPlaced =false;
-				$('#jde-total span').text(0);
+				computeTotal();
 			}
 			$('#JDEWarnModal .modal-body span').text(MAX_ATTCH);
     		$('.jde-ui-item').click(function(){
@@ -276,6 +276,11 @@
 			$('#JDEWarnModal').on('show.bs.modal', function (event) {
 				if(orderPlaced){
 					resetBuilder();
+				}
+			}).on('hidden.bs.modal', function (event) {
+				if(orderPlaced){
+					orderPlaced =false;
+					$('#JDEWarnModal .modal-body p').text('Add item first!');
 				}
 			});
 			$('.jde-btn-confirm').click(function(){
