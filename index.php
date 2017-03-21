@@ -98,17 +98,17 @@
 				<div class="col-md-8 col-md-offset-2">
 					<div class="row">
 						<div class="col-md-4">
-							<button class="btn btn-default btn-block">
+							<button class="btn btn-default btn-block" id="jde-undo">
 							UNDO
 							</button>
 						</div>
 						<div class="col-md-4">
-							<button class="btn btn-default btn-block">
+							<button class="btn btn-default btn-block" id="jde-reset">
 							RESET
 							</button>
 						</div>
 						<div class="col-md-4">
-							<button class="btn btn-primary btn-block">
+							<button class="btn btn-primary btn-block" id="jde-place-order">
 							PLACE ORDER
 							</button>
 						</div>
@@ -188,7 +188,7 @@
 			}
 			function removePendant(index){
 				var pendant = pendantSprites[index];
-				app.stage.removeChild(pendant.sprite);
+				APP.stage.removeChild(pendant.sprite);
 				lastPosition = lastPosition-pendant.height;
 				pendantSprites.pop();
 				
@@ -212,6 +212,24 @@
 				var itemCode =  $(this).data('item-code');
 				addPendant(itemCode);
 				$('#JDEItemModal').modal('hide');
+			});
+			$('#jde-undo').click(function(){
+				var i = pendantSprites.length-1;
+				if(i>=0)
+					removePendant(i);
+				else
+					lastPosition = BASE_Y;
+			});
+			$('#jde-reset').click(function(){
+				if(pendantSprites.length)
+					for(var i in pendantSprites){
+						APP.stage.removeChild(pendantSprites[i].sprite);
+					}
+				pendantSprites=[];
+				lastPosition = BASE_Y;
+			});
+			$('#jde-place-order').click(function(){
+				
 			});
     	});
     </script>
