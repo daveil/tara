@@ -235,6 +235,7 @@
 				$('#jde-total span').text(total);
 				if(pendantSprites.length==0){
 					$('#jde-place-order').attr('data-target','#JDEWarnModal');
+					$('.jde-btn').attr('data-target','#JDEItemModal');
 					if(!orderPlaced)
 						$('#JDEWarnModal .modal-body p').text('Add item first!');
 				}else{
