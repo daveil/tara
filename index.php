@@ -91,11 +91,13 @@
 			</ul>
 		</div>
 		<div id="jde-canvas">
-		
+			
 		</div>
+		
 		<div id="jde-actions">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
+					<h3 id="jde-total" class="text-center">Total $<span></span></h3>
 					<div class="row">
 						<div class="col-md-4">
 							<button class="btn btn-default btn-block" id="jde-undo">
@@ -154,9 +156,10 @@
 			var lastPosition=BASE_Y;
 			buildBase(0,-144);
 			function buildBase(x,y){
-				$('#jde-canvas').append(APP.view);
+				$('#jde-canvas').prepend(APP.view);
 				addSprite('img/body.jpg',0,0);
 				addSprite('img/Base-A.png',x,y,2700,1018,0.45);
+				computeTotal();
 			}
 			function addSprite(img,x,y,width,height,scale){
 				var path = img;
@@ -181,17 +184,25 @@
 				var scale = 0.3;
 				var sprite = addSprite(pendant.path,0,lastPosition,pendant.width,pendant.height,scale);
 				var pendant_height = (pendant.height*scale);
-				pendantSprites.push({height:pendant_height,sprite:sprite});
+				pendantSprites.push({height:pendant_height,sprite:sprite,price:pendant.price});
 				if(pendant.type=='A')
 					lastPosition = lastPosition+pendant_height;
-				
+				computeTotal();
 			}
 			function removePendant(index){
 				var pendant = pendantSprites[index];
 				APP.stage.removeChild(pendant.sprite);
 				lastPosition = lastPosition-pendant.height;
 				pendantSprites.pop();
-				
+				computeTotal();
+			}
+			function computeTotal(){
+				var total = 0;
+				for(var i in pendantSprites){
+					var pendant = pendantSprites[i];
+					total += pendant.price;
+				}
+				$('#jde-total span').text(total);
 			}
     		$('.jde-ui-item').click(function(){
     			if(!$(this).hasClass('active'))
