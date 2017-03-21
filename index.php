@@ -114,6 +114,7 @@
 		</div>
 	</div>
     <script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>
     	$(document).ready(function(){
     		$('.jde-ui-item').click(function(){
