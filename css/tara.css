@@ -139,10 +139,15 @@ body>div.container{
 @media (max-width:535px){
 	#jde-canvas{
 		height:auto;
-		min-height:250px;
+		min-height:200px;
 		padding-bottom:5px;
 	}
 	#jde-canvas,.jde-horizontal-wrapper{
 		width:100%;
+	}
+	#jde-total{
+		padding-top: 10px;
+		margin-top: 0;
+		padding-bottom: 10px;
 	}
 }
