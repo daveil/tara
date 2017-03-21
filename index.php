@@ -14,63 +14,103 @@
   </head>
   <body>
     <div class="container">
-		<div id="jde-canvas"></div>
-		<div id="jde-actions"></div>
 		<div class="jde-horizontal-wrapper">
 			<ul class="jde-ui-list">
 				<li class="jde-ui-item">
 					<div class="jde-jewel">
 						<div class="jde-img"></div>
-						<div class="jde-title">ITEM 1</div>
-						<button class="jde-btn btn btn-xs">ADD</button>
+						<button class="jde-btn btn btn-xs">+</button>
 					</div>
 				</li>
 				<li class="jde-ui-item">
-					<div></div>
-				</li>
-				<li class="jde-ui-item">
-					<div></div>
-				</li>
-				<li class="jde-ui-item">
-					<div></div>
-				</li>
-				<li class="jde-ui-item">
-					<div></div>
-				</li>
-				<li class="jde-ui-item">
-					<div></div>
-				</li>
-				<li class="jde-ui-item">
-					<div></div>
-				</li>
-				<li class="jde-ui-item">
-					<div></div>
-				</li>
-				<li class="jde-ui-item">
-					<div></div>
-				</li>
-				<li class="jde-ui-item">
-					<div>
-						
+					<div class="jde-jewel">
+						<div class="jde-img"></div>
+						<button class="jde-btn btn btn-xs">+</button>
 					</div>
 				</li>
 				<li class="jde-ui-item">
-					<div>
-						
+					<div class="jde-jewel">
+						<div class="jde-img"></div>
+						<button class="jde-btn btn btn-xs">+</button>
 					</div>
 				</li>
 				<li class="jde-ui-item">
-					<div>
-						
+					<div class="jde-jewel">
+						<div class="jde-img"></div>
+						<button class="jde-btn btn btn-xs">+</button>
 					</div>
 				</li>
 				<li class="jde-ui-item">
-					<div>
-						
+					<div class="jde-jewel">
+						<div class="jde-img"></div>
+						<button class="jde-btn btn btn-xs">+</button>
 					</div>
 				</li>
-				
+				<li class="jde-ui-item">
+					<div class="jde-jewel">
+						<div class="jde-img"></div>
+						<button class="jde-btn btn btn-xs">+</button>
+					</div>
+				</li>
+				<li class="jde-ui-item">
+					<div class="jde-jewel">
+						<div class="jde-img"></div>
+						<button class="jde-btn btn btn-xs">+</button>
+					</div>
+				</li>
+				<li class="jde-ui-item">
+					<div class="jde-jewel">
+						<div class="jde-img"></div>
+						<button class="jde-btn btn btn-xs">+</button>
+					</div>
+				</li>
+				<li class="jde-ui-item">
+					<div class="jde-jewel">
+						<div class="jde-img"></div>
+						<button class="jde-btn btn btn-xs">+</button>
+					</div>
+				</li>
+				<li class="jde-ui-item">
+					<div class="jde-jewel">
+						<div class="jde-img"></div>
+						<button class="jde-btn btn btn-xs">+</button>
+					</div>
+				</li>
+				<li class="jde-ui-item">
+					<div class="jde-jewel">
+						<div class="jde-img"></div>
+						<button class="jde-btn btn btn-xs">+</button>
+					</div>
+				</li>
+				<li class="jde-ui-item">
+					<div class="jde-jewel">
+						<div class="jde-img"></div>
+						<button class="jde-btn btn btn-xs">+</button>
+					</div>
+				</li>
 			</ul>
+		</div>
+		<div id="jde-canvas">
+		
+		</div>
+		<div id="jde-actions">
+			<div class="row">
+				<div class="col-md-4">
+					<button class="btn btn-default btn-block">
+					A
+					</button>
+				</div>
+				<div class="col-md-4">
+					<button class="btn btn-default btn-block">
+					A
+					</button>
+				</div>
+				<div class="col-md-4">
+					<button class="btn btn-default btn-block">
+					A
+					</button>
+				</div>
+			</div>
 		</div>
 	</div>
     <script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
