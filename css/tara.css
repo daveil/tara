@@ -121,3 +121,7 @@ body>div.container{
 .jde-square{
 	background-image: url("../img/square.png");
 }
+.jde-price{
+	padding:3px;
+	font-size:3rem;
+}
