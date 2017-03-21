@@ -95,20 +95,24 @@
 		</div>
 		<div id="jde-actions">
 			<div class="row">
-				<div class="col-md-4">
-					<button class="btn btn-default btn-block">
-					A
-					</button>
-				</div>
-				<div class="col-md-4">
-					<button class="btn btn-default btn-block">
-					A
-					</button>
-				</div>
-				<div class="col-md-4">
-					<button class="btn btn-default btn-block">
-					A
-					</button>
+				<div class="col-md-8 col-md-offset-2">
+					<div class="row">
+						<div class="col-md-4">
+							<button class="btn btn-default btn-block">
+							UNDO
+							</button>
+						</div>
+						<div class="col-md-4">
+							<button class="btn btn-default btn-block">
+							RESET
+							</button>
+						</div>
+						<div class="col-md-4">
+							<button class="btn btn-primary btn-block">
+							PLACE ORDER
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -180,6 +184,13 @@
 				pendantSprites.push({height:pendant_height,sprite:sprite});
 				if(pendant.type=='A')
 					lastPosition = lastPosition+pendant_height;
+				
+			}
+			function removePendant(index){
+				var pendant = pendantSprites[index];
+				app.stage.removeChild(pendant.sprite);
+				lastPosition = lastPosition-pendant.height;
+				pendantSprites.pop();
 				
 			}
     		$('.jde-ui-item').click(function(){
