@@ -141,7 +141,7 @@
 	  <div class="modal-dialog" role="document">
 		<div class="modal-content">
 		  <div class="modal-body text-center">				
-				Oops! You can only add <span></span> item(s).
+				<p></p>
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
@@ -154,10 +154,12 @@
 	  <div class="modal-dialog" role="document">
 		<div class="modal-content">
 		  <div class="modal-body text-center">				
-				Oops! You can only add <span></span> item(s).
+				To place your order please enter your email. <br />
+				<div class="form-group"><input type="email" class="form-control" placeholder="Your email." /></div>
 		  </div>
 		  <div class="modal-footer">
-			<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary" id="jde-submit-order" data-dismiss="modal" data-toggle="modal" data-target="#JDEWarnModal">Submit</button>
 			<div class="clear-fix"></div>
 		  </div>
 		</div><!-- /.modal-content -->
@@ -181,6 +183,7 @@
 			const BASE_Y = 123;
 			var pendantSprites = [];
 			var lastPosition=BASE_Y;
+			var orderPlaced = false;
 			buildBase(0,-144);
 			function buildBase(x,y){
 				$('#jde-canvas').prepend(APP.view);
@@ -230,13 +233,29 @@
 					total += pendant.price;
 				}
 				$('#jde-total span').text(total);
-				console.log(pendantSprites.length,MAX_ATTCH);
-				
-				if(pendantSprites.length>=MAX_ATTCH){
-					$('.jde-btn').attr('data-target','#JDEWarnModal');
+				if(pendantSprites.length==0){
+					$('#jde-place-order').attr('data-target','#JDEWarnModal');
+					$('#JDEWarnModal .modal-body p').text('Add item first!');
 				}else{
-					$('.jde-btn').attr('data-target','#JDEItemModal');
+					$('#jde-place-order').attr('data-target','#JDEPlaceOrderModal');
+					if(pendantSprites.length>=MAX_ATTCH){
+						$('.jde-btn').attr('data-target','#JDEWarnModal');
+						$('#JDEWarnModal .modal-body p').text('Oops! You can only add up to '+MAX_ATTCH+' item(s).');
+					}else{
+						$('.jde-btn').attr('data-target','#JDEItemModal');
+						$('#JDEWarnModal .modal-body p').text('Order placement successful. Thank you!');
+					}
 				}
+			}
+			function resetBuilder(){
+				if(pendantSprites.length)
+					for(var i in pendantSprites){
+						APP.stage.removeChild(pendantSprites[i].sprite);
+					}
+				pendantSprites=[];
+				lastPosition = BASE_Y;
+				orderPlaced =false;
+				$('#jde-total span').text(0);
 			}
 			$('#JDEWarnModal .modal-body span').text(MAX_ATTCH);
     		$('.jde-ui-item').click(function(){
@@ -254,6 +273,11 @@
 				 modal.find('.jde-price span').text(item.price);
 				 modal.find('.jde-btn-confirm').data('item-code',itemCode);
 			});
+			$('#JDEWarnModal').on('show.bs.modal', function (event) {
+				if(orderPlaced){
+					resetBuilder();
+				}
+			});
 			$('.jde-btn-confirm').click(function(){
 				var itemCode =  $(this).data('item-code');
 				addPendant(itemCode);
@@ -267,17 +291,12 @@
 					lastPosition = BASE_Y;
 			});
 			$('#jde-reset').click(function(){
-				if(pendantSprites.length)
-					for(var i in pendantSprites){
-						APP.stage.removeChild(pendantSprites[i].sprite);
-					}
-				pendantSprites=[];
-				lastPosition = BASE_Y;
-				computeTotal();
+				resetBuilder();
 			});
-			$('#jde-place-order').click(function(){
-				$('#JDEPlaceOrderModal')
+			$('#jde-submit-order').click(function(){
+				orderPlaced = true;
 			});
+			
     	});
     </script>
   </body>

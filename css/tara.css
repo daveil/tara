@@ -125,3 +125,16 @@ body>div.container{
 	padding:3px;
 	font-size:3rem;
 }
+#jde-undo,#jde-reset,#jde-place-order{
+	margin-bottom:10px;
+}
+@media (max-width:535px){
+	#jde-canvas{
+		height:auto;
+		min-height:250px;
+		padding-bottom:5px;
+	}
+	#jde-canvas,.jde-horizontal-wrapper{
+		width:100%;
+	}
+}
