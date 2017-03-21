@@ -53,12 +53,23 @@ body>div.container{
 }
 .jde-jewel>.jde-title,.jde-jewel>.jde-btn{
 	display: none;
+	background: none;
+	font-size:2rem;
+	outline:none !important;
+	box-shadow:none !important;
+	transition: 0.1s all ease-in-out;
+}
+.jde-jewel>.jde-title,.jde-jewel>.jde-btn:active{
+	font-size:2.5rem;
 }
 .jde-jewel>.jde-img{
 	margin:0 auto;
 	width:40px;
 	height:40px;
-	background-color:#00e;
+	background-color:#eee;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position:center;
 	transition: 0.1s all ease-in-out;
 }
 .jde-jewel:hover{
@@ -100,4 +111,13 @@ body>div.container{
 	height:500px;
 	border:1px solid #e0e;
 	margin:5px auto;
+}
+.jde-triangle{
+	background-image: url("../img/triangle.png");
+}
+.jde-circle{
+	background-image: url("../img/circle.png");
+}
+.jde-square{
+	background-image: url("../img/square.png");
 }
