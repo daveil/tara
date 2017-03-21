@@ -13,12 +13,14 @@ body>div.container{
 .jde-horizontal-wrapper{
 	width:450px;
 	height:120px;
-	border:1px solid #e00;
 	margin:0 auto;
 	white-space: nowrap;
 	overflow-y: hidden;
 	overflow-x: scroll;
 	-webkit-overflow-scrolling: touch;
+}
+.dev .jde-horizontal-wrapper{
+	border:1px solid #e00;
 }
 .jde-horizontal-wrapper>.jde-ui-list{
 	display:table;
@@ -36,10 +38,14 @@ body>div.container{
 
 }
 .jde-horizontal-wrapper>.jde-ui-list>.jde-ui-item>div{
-	border: 1px solid #0e0;
 	width:50px;	
 	height:50px;
-	transition: 0.1s all ease-in-out;	
+	transition: 0.1s all ease-in-out;
+	background: #eee;
+    border-right: 1px solid #ddd;
+}
+.dev .jde-horizontal-wrapper>.jde-ui-list>.jde-ui-item>div{
+	border: 1px solid #0e0;
 }
 .jde-horizontal-wrapper>.jde-ui-list>.jde-ui-item:not(.active)>div:hover{
 	height:70px;
@@ -109,8 +115,10 @@ body>div.container{
 #jde-canvas{
 	width:500px;
 	height:370px;
-	border:1px solid #e0e;
 	margin:5px auto;
+}
+.dev #jde-canvas{
+	border:1px solid #e0e;
 }
 .jde-triangle{
 	background-image: url("../img/triangle.png");
