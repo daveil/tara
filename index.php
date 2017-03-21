@@ -125,7 +125,7 @@
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary">Confirm</button>
+			<button type="button" class="btn btn-primary jde-btn-confirm" data-item-code="">Confirm</button>
 			<div class="clear-fix"></div>
 		  </div>
 		</div><!-- /.modal-content -->
@@ -153,8 +153,11 @@
 				 modal.find('.jde-name').text(item.name);
 				 modal.find('.jde-image').attr('src',item.img);
 				 modal.find('.jde-price span').text(item.price);
-				 
-				 
+				 modal.find('.jde-btn-confirm').data('item-code',itemCode);
+			});
+			$('.jde-btn-confirm').click(function(){
+				var itemCode =  $(this).data('item-code');
+				$('#JDEItemModal').modal('hide');
 			});
     	});
     </script>
