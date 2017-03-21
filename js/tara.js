@@ -15,7 +15,7 @@ $(document).ready(function(){
 	addUIControl();
 	
 	function buildBase(x,y){
-		$('body>div.container>div.row>div.col-md-8').append(app.view);
+		$('body>div.container>div.row>div.col-md-10').append(app.view);
 		addSprite('body.jpg',0,0);
 		addSprite('Base-A.png',x,y,2700,1018,0.45);
 	}

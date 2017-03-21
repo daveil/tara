@@ -133,13 +133,55 @@
 	</div><!-- /.modal -->
     <script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="libs/bower_components/pixi.js/dist/pixi.min.js"></script>
     <script>
     	$(document).ready(function(){
-			var items = {
-				1:{name:'Triangle Object', img:'img/triangle.png',price:25},
-				2:{name:'Circle Object', img:'img/circle.png', price:20},
-				3:{name:'Square Object', img:'img/square.png', price:15},
+			const VIEW_HEIGHT = 1.25;
+			const WIDTH  = 796;
+			const HEIGHT = 702/VIEW_HEIGHT;
+			const PENDANTS = {
+				1:{name:'Triangle Object', path:'img/triangle.png',price:25,width:200,height:220,type:'A'},
+				2:{name:'Circle Object', path:'img/circle.png', price:20,width:200,height:220,type:'A'},
+				3:{name:'Square Object', path:'img/square.png', price:15,width:200,height:220,type:'A'}
 			};
+			const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
+			const BASE_Y = 123;
+			var pendantSprites = [];
+			var lastPosition=BASE_Y;
+			buildBase(0,-144);
+			function buildBase(x,y){
+				$('#jde-canvas').append(APP.view);
+				addSprite('img/body.jpg',0,0);
+				addSprite('img/Base-A.png',x,y,2700,1018,0.45);
+			}
+			function addSprite(img,x,y,width,height,scale){
+				var path = img;
+				var scale =  scale||1;
+				var sprite =  PIXI.Sprite.fromImage(path);
+					sprite.anchor.set(0.5);
+					sprite.x=x+(WIDTH/2);
+					sprite.y=y+(HEIGHT/2);
+					sprite.width=width*scale||WIDTH;
+					sprite.height=height*scale||HEIGHT*VIEW_HEIGHT;
+				APP.stage.addChild(sprite);
+				return sprite;
+			}
+			function addPendant(itemCode){
+				if(itemCode==undefined){
+					var min = 0 ;
+					var max = PENDANTS.length-1;
+					itemCode = Math.round(Math.random()* (max - min) + min)+1;
+				}
+				if(lastPosition<BASE_Y) lastPosition = BASE_Y;
+				var pendant = PENDANTS[itemCode];
+				var scale = 0.3;
+				var sprite = addSprite(pendant.path,0,lastPosition,pendant.width,pendant.height,scale);
+				var pendant_height = (pendant.height*scale);
+				pendantSprites.push({height:pendant_height,sprite:sprite});
+				if(pendant.type=='A')
+					lastPosition = lastPosition+pendant_height;
+				
+			}
     		$('.jde-ui-item').click(function(){
     			if(!$(this).hasClass('active'))
     				$('.jde-ui-item.active').removeClass('active');
@@ -148,15 +190,16 @@
 			$('#JDEItemModal').on('show.bs.modal', function (event) {
 				 var button = $(event.relatedTarget)
 				 var itemCode =  button.data('item-code');
-				 var item = items[itemCode];
+				 var item = PENDANTS[itemCode];
 				 var modal = $(this);
 				 modal.find('.jde-name').text(item.name);
-				 modal.find('.jde-image').attr('src',item.img);
+				 modal.find('.jde-image').attr('src',item.path);
 				 modal.find('.jde-price span').text(item.price);
 				 modal.find('.jde-btn-confirm').data('item-code',itemCode);
 			});
 			$('.jde-btn-confirm').click(function(){
 				var itemCode =  $(this).data('item-code');
+				addPendant(itemCode);
 				$('#JDEItemModal').modal('hide');
 			});
     	});
