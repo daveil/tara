@@ -12,7 +12,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="dev">
+  <body>
     <div class="jde-ui-panel jde-ui-table jde-full-h" id="jde-intro">
     	<div class="container  jde-va-middle">
     		<div class="row">
@@ -310,9 +310,12 @@
     <script src="libs/bower_components/pixi.js/dist/pixi.min.js"></script>
     <script>
     	$(document).ready(function(){
-			const VIEW_HEIGHT = 1.25;
-			const WIDTH  = 796;
-			const HEIGHT = 702/VIEW_HEIGHT;
+    		const BG_SQ = 1650;
+    		const JEWEL_SCALE = 0.3;
+    		const BASE_SCALE = 0.65;
+			const VIEW_HEIGHT = 1;
+			const WIDTH  = BG_SQ;
+			const HEIGHT = BG_SQ/VIEW_HEIGHT;
 			const PENDANTS = {
 				1:{name:'Triangle Object', path:'img/triangle.png',price:25,width:200,height:220,type:'A'},
 				2:{name:'Circle Object', path:'img/circle.png', price:20,width:200,height:220,type:'A'},
@@ -320,26 +323,28 @@
 			};
 			const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 			const MAX_ATTCH = 3;
-			const BASE_Y = 123;
+			const BASE_Y = 55;
 			var pendantSprites = [];
 			var lastPosition=BASE_Y;
 			var orderPlaced = false;
-			buildBase(0,-144);
+			buildBase(0,-300);
 			function buildBase(x,y){
 				$('#jde-canvas').prepend(APP.view);
-				addSprite('img/body.jpg',0,0);
-				addSprite('img/Base-A.png',x,y,2700,1018,0.45);
+				addSprite('img/bgtara-2.jpg',0,0,WIDTH,HEIGHT,1,0.2);
+				addSprite('img/Base-A.png',x,y,2700,1018,BASE_SCALE);
 				computeTotal();
 			}
-			function addSprite(img,x,y,width,height,scale){
+			function addSprite(img,x,y,width,height,scale,opacity){
 				var path = img;
 				var scale =  scale||1;
+				var opacity =  opacity || 1;
 				var sprite =  PIXI.Sprite.fromImage(path);
 					sprite.anchor.set(0.5);
 					sprite.x=x+(WIDTH/2);
 					sprite.y=y+(HEIGHT/2);
 					sprite.width=width*scale||WIDTH;
 					sprite.height=height*scale||HEIGHT*VIEW_HEIGHT;
+					sprite.alpha=opacity;
 				APP.stage.addChild(sprite);
 				return sprite;
 			}
@@ -351,7 +356,7 @@
 				}
 				if(lastPosition<BASE_Y) lastPosition = BASE_Y;
 				var pendant = PENDANTS[itemCode];
-				var scale = 0.3;
+				var scale = JEWEL_SCALE;
 				var sprite = addSprite(pendant.path,0,lastPosition,pendant.width,pendant.height,scale);
 				var pendant_height = (pendant.height*scale);
 				pendantSprites.push({height:pendant_height,sprite:sprite,price:pendant.price});
