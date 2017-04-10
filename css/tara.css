@@ -70,8 +70,8 @@ body>div.container{
 	display: table;
 }
 .dev .jde-ui-panel{
-	border-top: 1px solid #bbb;
-	border-bottom: 1px solid #bbb;
+	border-top: 1px solid #f00;
+	border-bottom: 1px solid #0f0;
 }
 .jde-ui-table>.container{
 	display:table-cell;
@@ -141,11 +141,11 @@ body>div.container{
 	vertical-align: middle;
 	min-width: 50px;
 	width:auto;
-
 }
 .jde-horizontal-wrapper>.jde-ui-list>.jde-ui-item>div{
-	width:50px;	
-	height:50px;
+	width:60px;	
+	height:60px;
+	margin: 0 3px;
 	transition: 0.1s all ease-in-out;
 	background: #eee;
     border-right: 1px solid #ddd;
@@ -176,20 +176,21 @@ body>div.container{
 }
 .jde-ui-list .jde-jewel>.jde-img{
 	margin:0 auto;
-	width:40px;
-	height:40px;
+	width:50px;
+	height:50px;
 	background-color:#eee;
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position:center;
 	transition: 0.1s all ease-in-out;
+
 }
 .jde-ui-list .jde-jewel:hover{
 	padding: 0;
 }
 .jde-ui-list .jde-jewel:hover>.jde-img{
 	margin:0;
-	width:48px;
+	width:58px;
 	height:68px;
 }
 .jde-ui-list .active .jde-jewel{

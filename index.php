@@ -12,7 +12,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body class="dev">
     <div class="jde-ui-panel jde-ui-table jde-full-h" id="jde-intro">
     	<div class="container  jde-va-middle">
     		<div class="row">
@@ -202,8 +202,11 @@
 	<div class="jde-ui-panel" id="jde-summary">
 	    <div class="container">
 	    		<div class="row">
-	    			<div class="col-md-12">
+	    			<div class="col-md-6">
 	    				<h2>Summary of your custom jewelry</h2>
+	    				<p>Got it! Please review your order above and fulfill the order request form.</p>
+	    				<p>We'll email your billing invoice within 24-28 hours after confrimation and provide further instructions.</p>
+	    				
 	    				<table class="table">
 	    					<thead>
 	    						<tr>
@@ -222,13 +225,6 @@
 	    						</tr>
 	    					</tbody>
 	    				</table>
-	    			</div>
-	    		</div>
-	    		<div class="row">
-	    			<div class="col-md-6">
-	    				
-	    				<p>Got it! Please review your order above and fulfill the order request form.</p>
-	    				<p>We'll email your billing invoice within 24-28 hours after confrimation and provide further instructions.</p>
 	    			</div>
 	    			<div class="col-md-6">
 	    				
