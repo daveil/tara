@@ -10,26 +10,90 @@ canvas{
 body>div.container{
 	margin-top:10px;
 }
+#jde-intro h2{
+	margin: 0;
+    color: #15294f;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 15px;
+    text-indent: 15px;
+    line-height: 50px;
+    font-size: 30px;
+}
+#jde-intro h2 span{
+	font-size:20px;
+	line-height: 0;
+}
+#jde-intro .jde-btn-main{
+	margin-top: 15px;
+	text-indent: 5px;
+	letter-spacing: 5px;
+	text-transform: uppercase;
+}
+.jde-header,.jde-footer{
+	text-align: center;
+	margin-top:20px;
+}
+.jde-header h2,.jde-footer h2{
+	padding: 15px 15px;
+	margin: 0;
+	margin-bottom: 10px;
+    color: #15294f;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 15px;
+    border-bottom: 1px solid #15294f;
+    display: inline-block;
+}
+.jde-footer h2{
+	letter-spacing: 0px;
+	font-size:12px;
+	padding-bottom: 5px;
+}
+.jde-header p,.jde-footer p{
+	font-size: 12px;
+	text-transform: uppercase;
+}
+#jde-select .jde-ui-item{
+	background-color: #15294f;
+}
 .jde-ui-panel{
 	padding:0 15px;
-	height: 100vh;
 	width:100%;
-	display: table;
-	border-top: 1px solid #bbb;
-	border-bottom: 1px solid #bbb;
 	margin-top: 10px;
 	margin-bottom: -30px;
+	padding-bottom:30px;
+}.jde-full-h{
+	height: 100vh;
 }
-.jde-ui-panel>.container{
+.jde-ui-table{
+	display: table;
+}
+.dev .jde-ui-panel{
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+}
+.jde-ui-table>.container{
 	display:table-cell;
-	vertical-align: middle;
 	min-height: 150px;
 	height:150px;
 
 }
+.jde-va-middle{
+	vertical-align: middle !important;
+}
+.jde-va-top{
+	vertical-align: top !important;
+}
+.jde-btn-main,.jde-btn-main:hover,.jde-btn-main:active,.jde-btn-main:focus{
+	border-radius: 0;
+	background-color:#15294f !important;
+	color:#fff !important; 
+	outline: none;
+}
 .jde-horizontal-wrapper{
 	width:450px;
-	height:120px;
+	height:110px;
 	margin:0 auto;
 	white-space: nowrap;
 	overflow-y: hidden;
@@ -51,6 +115,9 @@ body>div.container{
 	height:150px;
 	width:150px;
 	background: #eee;
+}
+.jde-ui-tray .jde-jewel{
+	padding: 0px;
 }
 .jde-ui-tray .jde-jewel>.jde-img{
 	margin:0;
@@ -152,8 +219,8 @@ body>div.container{
 }
 
 #jde-canvas{
-	width:500px;
-	height:370px;
+	width:720px;
+	height:auto;
 	margin:5px auto;
 }
 .dev #jde-canvas{
@@ -168,14 +235,89 @@ body>div.container{
 .jde-square{
 	background-image: url("../img/square.png");
 }
+.jde-name,.jde-price{
+	color:#15294f;
+}
 .jde-price{
 	padding:3px;
-	font-size:3rem;
+	font-size:2rem;
 }
-#jde-undo,#jde-reset,#jde-place-order{
+#JDEItemModal .jde-btn-main {
+    padding: 10px;
+    width: 180px;
+    display: block;
+    font-size: 12px;
+    margin: 10px 0;
+}
+#jde-actions{
+	margin-top: 10px;
+}
+#jde-undo,#jde-reset,#jde-place-order,#jde-place-order-link{
 	margin-bottom:10px;
+	font-size:10px;
+	letter-spacing: 2px;
+	padding:10px;
+	margin-top:0;
+}
+
+#jde-summary h2{
+	padding-top:20px;
+}
+#jde-summary h2,#jde-summary  th{
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #15294f;
+}
+#jde-summary table{
+	border-top:1px solid #15294f;
+	border-bottom:1px solid #15294f;
+}
+#jde-summary  th,#jde-summary  td{
+	border: none !important;
+}
+#jde-summary p{
+	color: #15294f;
+}
+#jde-summary h3{
+	text-transform: uppercase;
+	color: #15294f;
+	font-size: 18px;
+	border-bottom: 1px solid #15294f;
+	padding-bottom: 15px;
+}
+#JDEOrderRequest input{
+	border-radius: 0;
+	background-color: #15294f;
+	color:#fff;
+}
+#JDEOrderRequest label,#JDEOrderRequest button{
+	text-transform: uppercase;
+	font-weight: initial;
+}
+#JDEOrderRequest button{
+	font-size:12px;
+	padding: 15px 30px;
+}
+@media (max-width:750
+	#jde-canvas{
+		width:100%;
+	}
 }
 @media (max-width:535px){
+	#jde-select, #jde-select>.container{
+		padding: 0;
+	}
+	.jde-ui-tray  .jde-ui-item{
+		width:130px;
+		height:130px;
+	}
+	.jde-ui-tray .jde-jewel>.jde-img{
+		width:120px;
+		height:120px;
+	}
+	.jde-ui-tray{
+		width: 100%;
+	}
 	#jde-canvas{
 		height:auto;
 		min-height:200px;
