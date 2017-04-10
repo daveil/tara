@@ -10,6 +10,23 @@ canvas{
 body>div.container{
 	margin-top:10px;
 }
+.jde-ui-panel{
+	padding:0 15px;
+	height: 100vh;
+	width:100%;
+	display: table;
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+	margin-top: 10px;
+	margin-bottom: -30px;
+}
+.jde-ui-panel>.container{
+	display:table-cell;
+	vertical-align: middle;
+	min-height: 150px;
+	height:150px;
+
+}
 .jde-horizontal-wrapper{
 	width:450px;
 	height:120px;
@@ -21,6 +38,28 @@ body>div.container{
 }
 .dev .jde-horizontal-wrapper{
 	border:1px solid #e00;
+}
+.jde-ui-tray{
+	list-style-type:none;
+	text-align: center;
+	padding: 0;
+	margin:0 auto;
+	width:500px;
+}
+.jde-ui-tray .jde-ui-item{
+	display: inline-block;
+	height:150px;
+	width:150px;
+	background: #eee;
+}
+.jde-ui-tray .jde-jewel>.jde-img{
+	margin:0;
+	height:140px;
+	width:140px;
+	background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+
 }
 .jde-horizontal-wrapper>.jde-ui-list{
 	display:table;
@@ -57,7 +96,7 @@ body>div.container{
 .jde-jewel{
 	padding:4px;
 }
-.jde-jewel>.jde-title,.jde-jewel>.jde-btn{
+.jde-ui-list .jde-jewel>.jde-title,.jde-jewel>.jde-btn{
 	display: none;
 	background: none;
 	font-size:2rem;
@@ -65,10 +104,10 @@ body>div.container{
 	box-shadow:none !important;
 	transition: 0.1s all ease-in-out;
 }
-.jde-jewel>.jde-title,.jde-jewel>.jde-btn:active{
+.jde-ui-list .jde-jewel>.jde-title,.jde-jewel>.jde-btn:active{
 	font-size:2.5rem;
 }
-.jde-jewel>.jde-img{
+.jde-ui-list .jde-jewel>.jde-img{
 	margin:0 auto;
 	width:40px;
 	height:40px;
@@ -78,35 +117,35 @@ body>div.container{
 	background-position:center;
 	transition: 0.1s all ease-in-out;
 }
-.jde-jewel:hover{
+.jde-ui-list .jde-jewel:hover{
 	padding: 0;
 }
-.jde-jewel:hover>.jde-img{
+.jde-ui-list .jde-jewel:hover>.jde-img{
 	margin:0;
 	width:48px;
 	height:68px;
 }
-.active .jde-jewel{
+.jde-ui-list .active .jde-jewel{
 	padding: 0;
 	position: relative;
 }
-.active .jde-jewel>.jde-img{
+.jde-ui-list .active .jde-jewel>.jde-img{
 	margin:0;
 	width:99px;
 	height:99px;
 }
-.active .jde-jewel>.jde-title,.active .jde-jewel>.jde-btn{
+.jde-ui-list .active .jde-jewel>.jde-ui-list .jde-title,.active .jde-jewel>.jde-btn{
 	position: absolute;
 	display: block;
 }
-.active .jde-jewel>.jde-title{
+.jde-ui-list .active .jde-jewel>.jde-title{
 	color:#fff;
 	text-align: center;
 	bottom: 22px;
 	width: 100%;
 	padding-bottom: 3px;
 }
-.active .jde-jewel>.jde-btn{
+.jde-ui-list .active .jde-jewel>.jde-btn{
 	bottom: 2px;
 	width: 75px;
 	left: 12px;

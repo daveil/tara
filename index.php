@@ -13,158 +13,223 @@
     <![endif]-->
   </head>
   <body>
-    <div class="container">
-		<div class="jde-horizontal-wrapper">
-			<ul class="jde-ui-list">
-				<li class="jde-ui-item">
-					<div class="jde-jewel">
-						<div class="jde-img jde-triangle"></div>
-						<button class="jde-btn btn btn-xs" data-toggle="modal" data-target="#JDEItemModal" data-item-code="1">+</button>
-					</div>
-				</li>
-				<li class="jde-ui-item">
-					<div class="jde-jewel">
-						<div class="jde-img jde-circle"></div>
-						<button class="jde-btn btn btn-xs" data-toggle="modal" data-target="#JDEItemModal" data-item-code="2">+</button>
-					</div>
-				</li>
-				<li class="jde-ui-item">
-					<div class="jde-jewel">
-						<div class="jde-img jde-square"></div>
-						<button class="jde-btn btn btn-xs" data-toggle="modal" data-target="#JDEItemModal" data-item-code="3">+</button>
-					</div>
-				</li>
-				<li class="jde-ui-item">
-					<div class="jde-jewel">
-						<div class="jde-img"></div>
-						<button class="jde-btn btn btn-xs">+</button>
-					</div>
-				</li>
-				<li class="jde-ui-item">
-					<div class="jde-jewel">
-						<div class="jde-img"></div>
-						<button class="jde-btn btn btn-xs">+</button>
-					</div>
-				</li>
-				<li class="jde-ui-item">
-					<div class="jde-jewel">
-						<div class="jde-img"></div>
-						<button class="jde-btn btn btn-xs">+</button>
-					</div>
-				</li>
-				<li class="jde-ui-item">
-					<div class="jde-jewel">
-						<div class="jde-img"></div>
-						<button class="jde-btn btn btn-xs">+</button>
-					</div>
-				</li>
-				<li class="jde-ui-item">
-					<div class="jde-jewel">
-						<div class="jde-img"></div>
-						<button class="jde-btn btn btn-xs">+</button>
-					</div>
-				</li>
-				<li class="jde-ui-item">
-					<div class="jde-jewel">
-						<div class="jde-img"></div>
-						<button class="jde-btn btn btn-xs">+</button>
-					</div>
-				</li>
-				<li class="jde-ui-item">
-					<div class="jde-jewel">
-						<div class="jde-img"></div>
-						<button class="jde-btn btn btn-xs">+</button>
-					</div>
-				</li>
-				<li class="jde-ui-item">
-					<div class="jde-jewel">
-						<div class="jde-img"></div>
-						<button class="jde-btn btn btn-xs">+</button>
-					</div>
-				</li>
-				<li class="jde-ui-item">
-					<div class="jde-jewel">
-						<div class="jde-img"></div>
-						<button class="jde-btn btn btn-xs">+</button>
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div id="jde-canvas">
+    <div class="jde-ui-panel" id="jde-intro">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-6 col-md-offset-3 text-center">
+			    	<p>Lorem ipsum fedur ilum sur nomeni.</p>
+			    	<button class="btn btn-default btn-lg">Start</button>	
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <div class="jde-ui-panel" id="jde-select">
+    	<div class="container text-center">
+		    	<h2>Select base jewelry</h2>
+		    	<ul class="jde-ui-tray">
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img jde-triangle"></div>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img jde-triangle"></div>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img jde-triangle"></div>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img jde-triangle"></div>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img jde-triangle"></div>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img jde-triangle"></div>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img jde-triangle"></div>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img jde-triangle"></div>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img jde-triangle"></div>
+						</div>
+					</li>
+				</ul>
+		    	
+    	</div>
+    </div>
+    <div class="jde-ui-panel" id="jde-build">
+	    <div class="container">
+			<div class="jde-horizontal-wrapper">
+				<ul class="jde-ui-list">
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img jde-triangle"></div>
+							<button class="jde-btn btn btn-xs" data-toggle="modal" data-target="#JDEItemModal" data-item-code="1">+</button>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img jde-circle"></div>
+							<button class="jde-btn btn btn-xs" data-toggle="modal" data-target="#JDEItemModal" data-item-code="2">+</button>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img jde-square"></div>
+							<button class="jde-btn btn btn-xs" data-toggle="modal" data-target="#JDEItemModal" data-item-code="3">+</button>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img"></div>
+							<button class="jde-btn btn btn-xs">+</button>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img"></div>
+							<button class="jde-btn btn btn-xs">+</button>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img"></div>
+							<button class="jde-btn btn btn-xs">+</button>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img"></div>
+							<button class="jde-btn btn btn-xs">+</button>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img"></div>
+							<button class="jde-btn btn btn-xs">+</button>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img"></div>
+							<button class="jde-btn btn btn-xs">+</button>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img"></div>
+							<button class="jde-btn btn btn-xs">+</button>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img"></div>
+							<button class="jde-btn btn btn-xs">+</button>
+						</div>
+					</li>
+					<li class="jde-ui-item">
+						<div class="jde-jewel">
+							<div class="jde-img"></div>
+							<button class="jde-btn btn btn-xs">+</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div id="jde-canvas">
+				
+			</div>
 			
-		</div>
-		
-		<div id="jde-actions">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					<h3 id="jde-total" class="text-center">Total $<span></span></h3>
-					<div class="row">
-						<div class="col-md-4">
-							<button class="btn btn-default btn-block" id="jde-undo">
-							UNDO
-							</button>
-						</div>
-						<div class="col-md-4">
-							<button class="btn btn-default btn-block" id="jde-reset">
-							RESET
-							</button>
-						</div>
-						<div class="col-md-4">
-							<button class="btn btn-primary btn-block" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal">
-							PLACE ORDER
-							</button>
+			<div id="jde-actions">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<h3 id="jde-total" class="text-center">Total $<span></span></h3>
+						<div class="row">
+							<div class="col-md-4">
+								<button class="btn btn-default btn-block" id="jde-undo">
+								UNDO
+								</button>
+							</div>
+							<div class="col-md-4">
+								<button class="btn btn-default btn-block" id="jde-reset">
+								RESET
+								</button>
+							</div>
+							<div class="col-md-4">
+								<button class="btn btn-primary btn-block" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal">
+								PLACE ORDER
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<div class="modal fade" tabindex="-1" role="dialog" id="JDEItemModal">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-body text-center">				
+					<h4 class="jde-name"></h4>
+					<img class="jde-image" src=""  />
+					<div class="jde-price">
+						<i>$<span></span></i>
+					</div>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary jde-btn-confirm" data-item-code="">Confirm</button>
+				<div class="clear-fix"></div>
+			  </div>
+			</div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="JDEWarnModal">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-body text-center">				
+					<p></p>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
+				<div class="clear-fix"></div>
+			  </div>
+			</div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="JDEPlaceOrderModal">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-body text-center">				
+					To place your order please enter your email. <br />
+					<div class="form-group"><input type="email" class="form-control" placeholder="Your email." /></div>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" id="jde-submit-order" data-dismiss="modal" data-toggle="modal" data-target="#JDEWarnModal">Submit</button>
+				<div class="clear-fix"></div>
+			  </div>
+			</div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 	</div>
-	<div class="modal fade" tabindex="-1" role="dialog" id="JDEItemModal">
-	  <div class="modal-dialog" role="document">
-		<div class="modal-content">
-		  <div class="modal-body text-center">				
-				<h4 class="jde-name"></h4>
-				<img class="jde-image" src=""  />
-				<div class="jde-price">
-					<i>$<span></span></i>
-				</div>
-		  </div>
-		  <div class="modal-footer">
-			<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary jde-btn-confirm" data-item-code="">Confirm</button>
-			<div class="clear-fix"></div>
-		  </div>
-		</div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="JDEWarnModal">
-	  <div class="modal-dialog" role="document">
-		<div class="modal-content">
-		  <div class="modal-body text-center">				
-				<p></p>
-		  </div>
-		  <div class="modal-footer">
-			<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
-			<div class="clear-fix"></div>
-		  </div>
-		</div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	<div class="modal fade" tabindex="-1" role="dialog" id="JDEPlaceOrderModal">
-	  <div class="modal-dialog" role="document">
-		<div class="modal-content">
-		  <div class="modal-body text-center">				
-				To place your order please enter your email. <br />
-				<div class="form-group"><input type="email" class="form-control" placeholder="Your email." /></div>
-		  </div>
-		  <div class="modal-footer">
-			<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary" id="jde-submit-order" data-dismiss="modal" data-toggle="modal" data-target="#JDEWarnModal">Submit</button>
-			<div class="clear-fix"></div>
-		  </div>
-		</div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
     <script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="libs/bower_components/pixi.js/dist/pixi.min.js"></script>
