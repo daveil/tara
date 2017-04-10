@@ -12,7 +12,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="dev">
+  <body>
     <div class="jde-ui-panel jde-ui-table jde-full-h" id="jde-intro">
     	<div class="container  jde-va-middle">
     		<div class="row">
@@ -207,8 +207,48 @@
 	    							<th>Amount</th>
 	    						</tr>
 	    					</thead>
-
+	    					<tbody>
+	    						<tr>
+	    							<td>-</td>
+	    							<td>-</td>
+	    							<td>-</td>
+	    							<td>-</td>
+	    						</tr>
+	    					</tbody>
 	    				</table>
+	    			</div>
+	    		</div>
+	    		<div class="row">
+	    			<div class="col-md-6">
+	    				
+	    				<p>Got it! Please review your order above and fulfill the order request form.</p>
+	    				<p>We'll email your billing invoice within 24-28 hours after confrimation and provide further instructions.</p>
+	    			</div>
+	    			<div class="col-md-6">
+	    				
+	    				<h3>Order request</h3>
+	    				<form id="JDEOrderRequest">
+	    					<div class="form-group">
+	    						<label >Full name</label>
+	    						<input type="text" class="form-control">
+	    					</div>
+	    					<div class="form-group">
+	    						<label >Email</label>
+	    						<input type="text" class="form-control">
+	    					</div>
+	    					<div class="form-group">
+	    						<label >Shipping Address</label>
+	    						<input type="text" class="form-control">
+	    						<input type="text" class="form-control">
+	    						<input type="text" class="form-control">
+	    					</div>
+	    					<div class="row">
+	    						<div class="col-md-6">
+	    							<button class="btn btn-default btn-block jde-btn-main">ORDER NOW</button>
+	    						</div>
+	    					</div>
+	    					
+	    				</form>
 	    			</div>
 	    		</div>
 	    </div>

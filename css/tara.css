@@ -255,7 +255,45 @@ body>div.container{
 	letter-spacing: 2px;
 	padding:10px;
 }
-@media (max-width:750px){
+#jde-summary h2{
+	padding-top:20px;
+}
+#jde-summary h2,#jde-summary  th{
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #15294f;
+}
+#jde-summary table{
+	border-top:1px solid #15294f;
+	border-bottom:1px solid #15294f;
+}
+#jde-summary  th,#jde-summary  td{
+	border: none !important;
+}
+#jde-summary p{
+	color: #15294f;
+}
+#jde-summary h3{
+	text-transform: uppercase;
+	color: #15294f;
+	font-size: 18px;
+	border-bottom: 1px solid #15294f;
+	padding-bottom: 15px;
+}
+#JDEOrderRequest input{
+	border-radius: 0;
+	background-color: #15294f;
+	color:#fff;
+}
+#JDEOrderRequest label,#JDEOrderRequest button{
+	text-transform: uppercase;
+	font-weight: initial;
+}
+#JDEOrderRequest button{
+	font-size:12px;
+	padding: 15px 30px;
+}
+@media (max-width:750
 	#jde-canvas{
 		width:100%;
 	}
