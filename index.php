@@ -18,7 +18,7 @@
     		<div class="row">
     			<div class="col-md-6 col-md-offset-3 text-center">
 			    	<h2><span>Buildable</span><br>Fine Jewelry</h2>
-			    	<button class="btn btn-default btn-lg jde-btn jde-btn-main">Assemble</button>	
+			    	<a href="#jde-select" class="btn btn-default btn-lg jde-btn jde-btn-main">Assemble</a>	
     			</div>
     		</div>
     	</div>
@@ -31,49 +31,49 @@
 		    	</div>
 		    	<ul class="jde-ui-tray">
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 				</ul>
 		    	
@@ -186,6 +186,9 @@
 								<button class="btn btn-primary btn-block jde-btn-main" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal">
 								PLACE  MY ORDER
 								</button>
+								<a class="btn btn-primary btn-block jde-btn-main" id="jde-place-order-link" href="#jde-summary">
+								PLACE  MY ORDER
+								</a>
 							</div>
 						</div>
 					</div>
@@ -371,18 +374,22 @@
 					total += pendant.price;
 				}
 				$('#jde-total span').text(total);
+				$('#jde-place-order').show();
+				$('#jde-place-order-link').hide();
 				if(pendantSprites.length==0){
 					$('#jde-place-order').attr('data-target','#JDEWarnModal');
-					$('.jde-btn').attr('data-target','#JDEItemModal');
+					$('#jde-build .jde-btn').attr('data-target','#JDEItemModal');
 					if(!orderPlaced)
 						$('#JDEWarnModal .modal-body p').text('Add item first!');
 				}else{
 					$('#jde-place-order').attr('data-target','#JDEPlaceOrderModal');
 					if(pendantSprites.length>=MAX_ATTCH&&!orderPlaced){
-						$('.jde-btn').attr('data-target','#JDEWarnModal');
+						$('#jde-build .jde-btn').attr('data-target','#JDEWarnModal');
 						$('#JDEWarnModal .modal-body p').text('Oops! You can only add up to '+MAX_ATTCH+' item(s).');
 					}else{
-						$('.jde-btn').attr('data-target','#JDEItemModal');
+						$('#jde-place-order').hide();
+						$('#jde-place-order-link').show();
+						$('#jde-build .jde-btn').attr('data-target','#JDEItemModal');
 						$('#JDEWarnModal .modal-body p').text('Order placement successful. Thank you!');
 					}
 				}
@@ -395,11 +402,13 @@
 				pendantSprites=[];
 				lastPosition = BASE_Y;
 				computeTotal();
+				$('#jde-undo,#jde-reset,#jde-place-order').show();
+				window.location.href='#jde-select';
 			}
 			$('#JDEWarnModal .modal-body span').text(MAX_ATTCH);
-    		$('.jde-ui-item').click(function(){
+    		$('#jde-build .jde-ui-item').click(function(){
     			if(!$(this).hasClass('active'))
-    				$('.jde-ui-item.active').removeClass('active');
+    				$('#jde-build .jde-ui-item.active').removeClass('active');
     			$(this).toggleClass('active');
     		});
 			$('#JDEItemModal').on('show.bs.modal', function (event) {
@@ -440,7 +449,9 @@
 			$('#jde-submit-order').click(function(){
 				orderPlaced = true;
 			});
-			
+			$('#jde-place-order-link').click(function(){
+				$('#jde-undo,#jde-reset,#jde-place-order,#jde-place-order-link').hide();
+			});
     	});
     </script>
   </body>

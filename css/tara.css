@@ -116,6 +116,9 @@ body>div.container{
 	width:150px;
 	background: #eee;
 }
+.jde-ui-tray .jde-jewel{
+	padding: 0px;
+}
 .jde-ui-tray .jde-jewel>.jde-img{
 	margin:0;
 	height:140px;
@@ -249,12 +252,14 @@ body>div.container{
 #jde-actions{
 	margin-top: 10px;
 }
-#jde-undo,#jde-reset,#jde-place-order{
+#jde-undo,#jde-reset,#jde-place-order,#jde-place-order-link{
 	margin-bottom:10px;
 	font-size:10px;
 	letter-spacing: 2px;
 	padding:10px;
+	margin-top:0;
 }
+
 #jde-summary h2{
 	padding-top:20px;
 }
