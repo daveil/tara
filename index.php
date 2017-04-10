@@ -13,7 +13,7 @@
     <![endif]-->
   </head>
   <body class="dev">
-    <div class="jde-ui-panel jde-ui-table" id="jde-intro">
+    <div class="jde-ui-panel jde-ui-table jde-full-h" id="jde-intro">
     	<div class="container  jde-va-middle">
     		<div class="row">
     			<div class="col-md-6 col-md-offset-3 text-center">
@@ -23,7 +23,7 @@
     		</div>
     	</div>
     </div>
-    <div class="jde-ui-panel" id="jde-select">
+    <div class="jde-ui-panel jde-full-h" id="jde-select">
     	<div class="container">
 		    	<div class="jde-header">
 			    	<h2>Base jewelry</h2>
@@ -192,6 +192,26 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="jde-ui-panel" id="jde-summary">
+	    <div class="container">
+	    		<div class="row">
+	    			<div class="col-md-12">
+	    				<h2>Summary of your custom jewelry</h2>
+	    				<table class="table">
+	    					<thead>
+	    						<tr>
+	    							<th>Item</th>
+	    							<th>Price</th>
+	    							<th>Quantity</th>
+	    							<th>Amount</th>
+	    						</tr>
+	    					</thead>
+
+	    				</table>
+	    			</div>
+	    		</div>
+	    </div>
 	</div>
 	<div class="modal fade" tabindex="-1" role="dialog" id="JDEItemModal">
 	  <div class="modal-dialog" role="document">

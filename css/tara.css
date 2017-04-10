@@ -59,10 +59,12 @@ body>div.container{
 }
 .jde-ui-panel{
 	padding:0 15px;
-	height: 100vh;
 	width:100%;
 	margin-top: 10px;
 	margin-bottom: -30px;
+	padding-bottom:30px;
+}.jde-full-h{
+	height: 100vh;
 }
 .jde-ui-table{
 	display: table;
