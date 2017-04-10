@@ -161,9 +161,12 @@
 					</li>
 				</ul>
 			</div>
-			<div id="jde-canvas">
-				
-			</div>
+		</div>
+
+		<div id="jde-canvas">
+			
+		</div>
+		<div class="container">
 			<div class="jde-footer">
 				<h2>Your current total</h2>
 				<p id="jde-total">$ <span></span></p>
@@ -401,6 +404,7 @@
 					}
 				pendantSprites=[];
 				lastPosition = BASE_Y;
+				orderPlaced=false;
 				computeTotal();
 				window.location.href='#jde-select';
 			}

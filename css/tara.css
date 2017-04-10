@@ -298,27 +298,31 @@ body>div.container{
 	font-size:12px;
 	padding: 15px 30px;
 }
-@media (max-width:750
+@media (min-width:536px)  and (max-width:750px){
 	#jde-canvas{
 		width:100%;
 	}
 }
-@media (max-width:535px){
+@media (min-width:320px) and (max-width:535px){
 	#jde-select, #jde-select>.container{
 		padding: 0;
 	}
 	.jde-ui-tray  .jde-ui-item{
-		width:130px;
-		height:130px;
+		width:110px;
+		height:110px;
 	}
 	.jde-ui-tray .jde-jewel>.jde-img{
-		width:120px;
-		height:120px;
+		width:100px;
+		height:100px;
 	}
 	.jde-ui-tray{
 		width: 100%;
 	}
+	#jde-build{
+		padding:0;
+	}
 	#jde-canvas{
+		width:100%;
 		height:auto;
 		min-height:200px;
 		padding-bottom:5px;
