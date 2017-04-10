@@ -13,7 +13,7 @@
     <![endif]-->
   </head>
   <body class="dev">
-    <div class="jde-ui-panel" id="jde-intro">
+    <div class="jde-ui-panel jde-ui-table" id="jde-intro">
     	<div class="container  jde-va-middle">
     		<div class="row">
     			<div class="col-md-6 col-md-offset-3 text-center">
@@ -24,7 +24,7 @@
     	</div>
     </div>
     <div class="jde-ui-panel" id="jde-select">
-    	<div class="container jde-va-top">
+    	<div class="container">
 		    	<div class="jde-header">
 			    	<h2>Base jewelry</h2>
 			    	<p>Select you base jewelry</p>
@@ -164,25 +164,27 @@
 			<div id="jde-canvas">
 				
 			</div>
-			
+			<div class="jde-footer">
+				<h2>Your current total</h2>
+				<p id="jde-total">$ <span></span></p>
+			</div>
 			<div id="jde-actions">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
-						<h3 id="jde-total" class="text-center">Total $<span></span></h3>
 						<div class="row">
 							<div class="col-md-4">
-								<button class="btn btn-default btn-block" id="jde-undo">
-								UNDO
+								<button class="btn btn-default btn-block jde-btn-main" id="jde-undo">
+								UNDO ATTACHMENT CHOSEN
 								</button>
 							</div>
 							<div class="col-md-4">
-								<button class="btn btn-default btn-block" id="jde-reset">
-								RESET
+								<button class="btn btn-default btn-block jde-btn-main" id="jde-reset">
+								BEGIN AGAIN
 								</button>
 							</div>
 							<div class="col-md-4">
-								<button class="btn btn-primary btn-block" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal">
-								PLACE ORDER
+								<button class="btn btn-primary btn-block jde-btn-main" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal">
+								PLACE  MY ORDER
 								</button>
 							</div>
 						</div>
