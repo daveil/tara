@@ -170,7 +170,7 @@
 			</div>
 			<div id="jde-actions">
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
+					<div class="col-md-10 col-md-offset-1">
 						<div class="row">
 							<div class="col-md-4">
 								<button class="btn btn-default btn-block jde-btn-main" id="jde-undo">
@@ -196,17 +196,21 @@
 	<div class="modal fade" tabindex="-1" role="dialog" id="JDEItemModal">
 	  <div class="modal-dialog" role="document">
 		<div class="modal-content">
-		  <div class="modal-body text-center">				
-				<h4 class="jde-name"></h4>
-				<img class="jde-image" src=""  />
-				<div class="jde-price">
-					<i>$<span></span></i>
-				</div>
-		  </div>
-		  <div class="modal-footer">
-			<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary jde-btn-confirm" data-item-code="">Confirm</button>
-			<div class="clear-fix"></div>
+		  <div class="modal-body">
+		  		<div class="row">
+		  			<div class="col-md-6">
+		  				<img class="jde-image" src=""  />	
+
+		  			</div>
+		  			<div class="col-md-6">
+		  				<h4 class="jde-name"></h4>
+		  				<div class="jde-price">
+							<i>$<span></span></i>
+						</div>	
+						<button type="button" class="btn btn-primary jde-btn-confirm jde-btn-main" data-item-code="">ADD</button>
+						<button type="button" class="btn btn-default jde-btn-main" data-dismiss="modal">CANCEL</button>
+		  			</div>
+		  		</div>
 		  </div>
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
