@@ -10,26 +10,81 @@ canvas{
 body>div.container{
 	margin-top:10px;
 }
+#jde-intro h2{
+	margin: 0;
+    color: #15294f;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 15px;
+    text-indent: 15px;
+    line-height: 50px;
+    font-size: 30px;
+}
+#jde-intro h2 span{
+	font-size:20px;
+	line-height: 0;
+}
+#jde-intro .jde-btn-main{
+	margin-top: 15px;
+	text-indent: 5px;
+	letter-spacing: 5px;
+	text-transform: uppercase;
+}
+.jde-header{
+	text-align: center;
+	margin-top:20px;
+}
+.jde-header h2{
+	padding: 15px 15px;
+	margin: 0;
+	margin-bottom: 10px;
+    color: #15294f;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 15px;
+    border-bottom: 1px solid #15294f;
+    display: inline-block;
+}
+.jde-header p{
+	font-size: 12px;
+	text-transform: uppercase;
+}
+#jde-select .jde-jewel{
+	background-color: #15294f;
+}
 .jde-ui-panel{
 	padding:0 15px;
 	height: 100vh;
 	width:100%;
 	display: table;
-	border-top: 1px solid #bbb;
-	border-bottom: 1px solid #bbb;
 	margin-top: 10px;
 	margin-bottom: -30px;
 }
+.dev .jde-ui-panel{
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+}
 .jde-ui-panel>.container{
 	display:table-cell;
-	vertical-align: middle;
 	min-height: 150px;
 	height:150px;
 
 }
+.jde-va-middle{
+	vertical-align: middle !important;
+}
+.jde-va-top{
+	vertical-align: top !important;
+}
+.jde-btn-main,.jde-btn-main:hover,.jde-btn-main:active,.jde-btn-main:focus{
+	border-radius: 0;
+	background-color:#15294f !important;
+	color:#fff !important; 
+	outline: none;
+}
 .jde-horizontal-wrapper{
 	width:450px;
-	height:120px;
+	height:110px;
 	margin:0 auto;
 	white-space: nowrap;
 	overflow-y: hidden;

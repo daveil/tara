@@ -12,20 +12,23 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body class="dev">
     <div class="jde-ui-panel" id="jde-intro">
-    	<div class="container">
+    	<div class="container  jde-va-middle">
     		<div class="row">
     			<div class="col-md-6 col-md-offset-3 text-center">
-			    	<p>Lorem ipsum fedur ilum sur nomeni.</p>
-			    	<button class="btn btn-default btn-lg">Start</button>	
+			    	<h2><span>Buildable</span><br>Fine Jewelry</h2>
+			    	<button class="btn btn-default btn-lg jde-btn jde-btn-main">Assemble</button>	
     			</div>
     		</div>
     	</div>
     </div>
     <div class="jde-ui-panel" id="jde-select">
-    	<div class="container text-center">
-		    	<h2>Select base jewelry</h2>
+    	<div class="container jde-va-top">
+		    	<div class="jde-header">
+			    	<h2>Base jewelry</h2>
+			    	<p>Select you base jewelry</p>
+		    	</div>
 		    	<ul class="jde-ui-tray">
 					<li class="jde-ui-item">
 						<div class="jde-jewel">
@@ -78,6 +81,10 @@
     </div>
     <div class="jde-ui-panel" id="jde-build">
 	    <div class="container">
+	    	<div class="jde-header">
+		    	<h2>Attachment jewelry</h2>
+			    <p>Select up to two layer to your base jewelry</p>
+		    </div>
 			<div class="jde-horizontal-wrapper">
 				<ul class="jde-ui-list">
 					<li class="jde-ui-item">
