@@ -13,64 +13,67 @@
     <![endif]-->
   </head>
   <body>
-    <div class="jde-ui-panel" id="jde-intro">
-    	<div class="container">
+    <div class="jde-ui-panel jde-ui-table jde-full-h" id="jde-intro">
+    	<div class="container  jde-va-middle">
     		<div class="row">
     			<div class="col-md-6 col-md-offset-3 text-center">
-			    	<p>Lorem ipsum fedur ilum sur nomeni.</p>
-			    	<button class="btn btn-default btn-lg">Start</button>	
+			    	<h2><span>Buildable</span><br>Fine Jewelry</h2>
+			    	<a href="#jde-select" class="btn btn-default btn-lg jde-btn jde-btn-main">Assemble</a>	
     			</div>
     		</div>
     	</div>
     </div>
-    <div class="jde-ui-panel" id="jde-select">
-    	<div class="container text-center">
-		    	<h2>Select base jewelry</h2>
+    <div class="jde-ui-panel jde-full-h" id="jde-select">
+    	<div class="container">
+		    	<div class="jde-header">
+			    	<h2>Base jewelry</h2>
+			    	<p>Select you base jewelry</p>
+		    	</div>
 		    	<ul class="jde-ui-tray">
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-						</div>
+						<a class="jde-jewel" href="#jde-build">
+							<div class="jde-img"></div>
+						</a>
 					</li>
 				</ul>
 		    	
@@ -78,6 +81,10 @@
     </div>
     <div class="jde-ui-panel" id="jde-build">
 	    <div class="container">
+	    	<div class="jde-header">
+		    	<h2>Attachment jewelry</h2>
+			    <p>Select up to two layer to your base jewelry</p>
+		    </div>
 			<div class="jde-horizontal-wrapper">
 				<ul class="jde-ui-list">
 					<li class="jde-ui-item">
@@ -154,82 +161,154 @@
 					</li>
 				</ul>
 			</div>
-			<div id="jde-canvas">
-				
-			</div>
+		</div>
+
+		<div id="jde-canvas">
 			
+		</div>
+		<div class="container">
+			<div class="jde-footer">
+				<h2>Your current total</h2>
+				<p id="jde-total">$ <span></span></p>
+			</div>
 			<div id="jde-actions">
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<h3 id="jde-total" class="text-center">Total $<span></span></h3>
+					<div class="col-md-10 col-md-offset-1">
 						<div class="row">
 							<div class="col-md-4">
-								<button class="btn btn-default btn-block" id="jde-undo">
-								UNDO
+								<button class="btn btn-default btn-block jde-btn-main" id="jde-undo">
+								UNDO ATTACHMENT CHOSEN
 								</button>
 							</div>
 							<div class="col-md-4">
-								<button class="btn btn-default btn-block" id="jde-reset">
-								RESET
+								<button class="btn btn-default btn-block jde-btn-main" id="jde-reset">
+								BEGIN AGAIN
 								</button>
 							</div>
 							<div class="col-md-4">
-								<button class="btn btn-primary btn-block" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal">
-								PLACE ORDER
+								<button class="btn btn-primary btn-block jde-btn-main" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal">
+								PLACE  MY ORDER
 								</button>
+								<a class="btn btn-primary btn-block jde-btn-main" id="jde-place-order-link" href="#jde-summary">
+								PLACE  MY ORDER
+								</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="modal fade" tabindex="-1" role="dialog" id="JDEItemModal">
-		  <div class="modal-dialog" role="document">
-			<div class="modal-content">
-			  <div class="modal-body text-center">				
-					<h4 class="jde-name"></h4>
-					<img class="jde-image" src=""  />
-					<div class="jde-price">
-						<i>$<span></span></i>
-					</div>
-			  </div>
-			  <div class="modal-footer">
-				<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary jde-btn-confirm" data-item-code="">Confirm</button>
-				<div class="clear-fix"></div>
-			  </div>
-			</div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-		<div class="modal fade" tabindex="-1" role="dialog" id="JDEWarnModal">
-		  <div class="modal-dialog" role="document">
-			<div class="modal-content">
-			  <div class="modal-body text-center">				
-					<p></p>
-			  </div>
-			  <div class="modal-footer">
-				<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
-				<div class="clear-fix"></div>
-			  </div>
-			</div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-		<div class="modal fade" tabindex="-1" role="dialog" id="JDEPlaceOrderModal">
-		  <div class="modal-dialog" role="document">
-			<div class="modal-content">
-			  <div class="modal-body text-center">				
-					To place your order please enter your email. <br />
-					<div class="form-group"><input type="email" class="form-control" placeholder="Your email." /></div>
-			  </div>
-			  <div class="modal-footer">
-				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary" id="jde-submit-order" data-dismiss="modal" data-toggle="modal" data-target="#JDEWarnModal">Submit</button>
-				<div class="clear-fix"></div>
-			  </div>
-			</div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
 	</div>
+	<div class="jde-ui-panel" id="jde-summary">
+	    <div class="container">
+	    		<div class="row">
+	    			<div class="col-md-12">
+	    				<h2>Summary of your custom jewelry</h2>
+	    				<table class="table">
+	    					<thead>
+	    						<tr>
+	    							<th>Item</th>
+	    							<th>Price</th>
+	    							<th>Quantity</th>
+	    							<th>Amount</th>
+	    						</tr>
+	    					</thead>
+	    					<tbody>
+	    						<tr>
+	    							<td>-</td>
+	    							<td>-</td>
+	    							<td>-</td>
+	    							<td>-</td>
+	    						</tr>
+	    					</tbody>
+	    				</table>
+	    			</div>
+	    		</div>
+	    		<div class="row">
+	    			<div class="col-md-6">
+	    				
+	    				<p>Got it! Please review your order above and fulfill the order request form.</p>
+	    				<p>We'll email your billing invoice within 24-28 hours after confrimation and provide further instructions.</p>
+	    			</div>
+	    			<div class="col-md-6">
+	    				
+	    				<h3>Order request</h3>
+	    				<form id="JDEOrderRequest">
+	    					<div class="form-group">
+	    						<label >Full name</label>
+	    						<input type="text" class="form-control">
+	    					</div>
+	    					<div class="form-group">
+	    						<label >Email</label>
+	    						<input type="text" class="form-control">
+	    					</div>
+	    					<div class="form-group">
+	    						<label >Shipping Address</label>
+	    						<input type="text" class="form-control">
+	    						<input type="text" class="form-control">
+	    						<input type="text" class="form-control">
+	    					</div>
+	    					<div class="row">
+	    						<div class="col-md-6">
+	    							<button class="btn btn-default btn-block jde-btn-main">ORDER NOW</button>
+	    						</div>
+	    					</div>
+	    					
+	    				</form>
+	    			</div>
+	    		</div>
+	    </div>
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" id="JDEItemModal">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-body">
+		  		<div class="row">
+		  			<div class="col-md-6">
+		  				<img class="jde-image" src=""  />	
+
+		  			</div>
+		  			<div class="col-md-6">
+		  				<h4 class="jde-name"></h4>
+		  				<div class="jde-price">
+							<i>$<span></span></i>
+						</div>	
+						<button type="button" class="btn btn-primary jde-btn-confirm jde-btn-main" data-item-code="">ADD</button>
+						<button type="button" class="btn btn-default jde-btn-main" data-dismiss="modal">CANCEL</button>
+		  			</div>
+		  		</div>
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="JDEWarnModal">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-body text-center">				
+				<p></p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
+			<div class="clear-fix"></div>
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="JDEPlaceOrderModal">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-body text-center">				
+				To place your order please enter your email. <br />
+				<div class="form-group"><input type="email" class="form-control" placeholder="Your email." /></div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary" id="jde-submit-order" data-dismiss="modal" data-toggle="modal" data-target="#JDEWarnModal">Submit</button>
+			<div class="clear-fix"></div>
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
     <script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="libs/bower_components/pixi.js/dist/pixi.min.js"></script>
@@ -298,18 +377,22 @@
 					total += pendant.price;
 				}
 				$('#jde-total span').text(total);
+				$('#jde-undo,#jde-reset,#jde-place-order').show();
+				$('#jde-place-order-link').hide();
 				if(pendantSprites.length==0){
 					$('#jde-place-order').attr('data-target','#JDEWarnModal');
-					$('.jde-btn').attr('data-target','#JDEItemModal');
+					$('#jde-build .jde-btn').attr('data-target','#JDEItemModal');
 					if(!orderPlaced)
 						$('#JDEWarnModal .modal-body p').text('Add item first!');
 				}else{
 					$('#jde-place-order').attr('data-target','#JDEPlaceOrderModal');
 					if(pendantSprites.length>=MAX_ATTCH&&!orderPlaced){
-						$('.jde-btn').attr('data-target','#JDEWarnModal');
+						$('#jde-build .jde-btn').attr('data-target','#JDEWarnModal');
 						$('#JDEWarnModal .modal-body p').text('Oops! You can only add up to '+MAX_ATTCH+' item(s).');
 					}else{
-						$('.jde-btn').attr('data-target','#JDEItemModal');
+						$('#jde-place-order').hide();
+						$('#jde-place-order-link').show();
+						$('#jde-build .jde-btn').attr('data-target','#JDEItemModal');
 						$('#JDEWarnModal .modal-body p').text('Order placement successful. Thank you!');
 					}
 				}
@@ -321,13 +404,17 @@
 					}
 				pendantSprites=[];
 				lastPosition = BASE_Y;
+				orderPlaced=false;
 				computeTotal();
+				window.location.href='#jde-select';
 			}
 			$('#JDEWarnModal .modal-body span').text(MAX_ATTCH);
-    		$('.jde-ui-item').click(function(){
-    			if(!$(this).hasClass('active'))
-    				$('.jde-ui-item.active').removeClass('active');
-    			$(this).toggleClass('active');
+    		$('#jde-build .jde-ui-item').click(function(){
+    			if(!orderPlaced){
+	    			if(!$(this).hasClass('active'))
+	    				$('#jde-build .jde-ui-item.active').removeClass('active');
+	    			$(this).toggleClass('active');
+    			}
     		});
 			$('#JDEItemModal').on('show.bs.modal', function (event) {
 				 var button = $(event.relatedTarget)
@@ -367,7 +454,10 @@
 			$('#jde-submit-order').click(function(){
 				orderPlaced = true;
 			});
-			
+			$('#jde-place-order-link').click(function(){
+				orderPlaced = true;
+				$('#jde-undo,#jde-place-order,#jde-place-order-link').hide();
+			});
     	});
     </script>
   </body>
