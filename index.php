@@ -190,53 +190,53 @@
 				</div>
 			</div>
 		</div>
-		<div class="modal fade" tabindex="-1" role="dialog" id="JDEItemModal">
-		  <div class="modal-dialog" role="document">
-			<div class="modal-content">
-			  <div class="modal-body text-center">				
-					<h4 class="jde-name"></h4>
-					<img class="jde-image" src=""  />
-					<div class="jde-price">
-						<i>$<span></span></i>
-					</div>
-			  </div>
-			  <div class="modal-footer">
-				<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary jde-btn-confirm" data-item-code="">Confirm</button>
-				<div class="clear-fix"></div>
-			  </div>
-			</div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-		<div class="modal fade" tabindex="-1" role="dialog" id="JDEWarnModal">
-		  <div class="modal-dialog" role="document">
-			<div class="modal-content">
-			  <div class="modal-body text-center">				
-					<p></p>
-			  </div>
-			  <div class="modal-footer">
-				<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
-				<div class="clear-fix"></div>
-			  </div>
-			</div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
-		<div class="modal fade" tabindex="-1" role="dialog" id="JDEPlaceOrderModal">
-		  <div class="modal-dialog" role="document">
-			<div class="modal-content">
-			  <div class="modal-body text-center">				
-					To place your order please enter your email. <br />
-					<div class="form-group"><input type="email" class="form-control" placeholder="Your email." /></div>
-			  </div>
-			  <div class="modal-footer">
-				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary" id="jde-submit-order" data-dismiss="modal" data-toggle="modal" data-target="#JDEWarnModal">Submit</button>
-				<div class="clear-fix"></div>
-			  </div>
-			</div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
 	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" id="JDEItemModal">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-body text-center">				
+				<h4 class="jde-name"></h4>
+				<img class="jde-image" src=""  />
+				<div class="jde-price">
+					<i>$<span></span></i>
+				</div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary jde-btn-confirm" data-item-code="">Confirm</button>
+			<div class="clear-fix"></div>
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="JDEWarnModal">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-body text-center">				
+				<p></p>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
+			<div class="clear-fix"></div>
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="JDEPlaceOrderModal">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-body text-center">				
+				To place your order please enter your email. <br />
+				<div class="form-group"><input type="email" class="form-control" placeholder="Your email." /></div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-primary" id="jde-submit-order" data-dismiss="modal" data-toggle="modal" data-target="#JDEWarnModal">Submit</button>
+			<div class="clear-fix"></div>
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
     <script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="libs/bower_components/pixi.js/dist/pixi.min.js"></script>

@@ -207,8 +207,8 @@ body>div.container{
 }
 
 #jde-canvas{
-	width:500px;
-	height:370px;
+	width:60%;
+	height:auto;
 	margin:5px auto;
 }
 .dev #jde-canvas{
