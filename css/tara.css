@@ -243,6 +243,10 @@ body>div.container{
 	padding:3px;
 	font-size:2rem;
 }
+#JDEItemModal  .modal-content{
+	box-shadow: none;
+	border-radius: 0px;
+}
 #JDEItemModal .jde-btn-main {
     padding: 10px;
     width: 180px;
