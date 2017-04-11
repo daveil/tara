@@ -205,18 +205,27 @@
 		<div class="modal-content">
 		  <div class="modal-body">
 		  		<div class="row">
-		  			<div class="col-md-6">
-		  				<img class="jde-image" src=""  />	
-
+		  			<div class="col-md-6 col-sm-6">
+						<div class="jde-preview">
+							<div class="jde-image-wrapper">
+								<img class="jde-image img-responsive" src=""  />	
+							</div>
+						</div>
 		  			</div>
-		  			<div class="col-md-6">
-		  				<h4 class="jde-name"></h4>
-		  				<div class="jde-price">
-							<i>$<span></span></i>
-						</div>	
-						<button type="button" class="btn btn-primary jde-btn-confirm jde-btn-main" data-item-code="">ADD</button>
-						<button type="button" class="btn btn-default jde-btn-main" data-dismiss="modal">CANCEL</button>
-		  			</div>
+		  			<div class="col-md-6 col-sm-6">
+						<div class="jde-ui-product">
+							<div class="jde-product">
+								<h4 class="jde-name"></h4>
+								<div class="jde-price">
+									<i>$<span></span></i>
+								</div>	
+							</div>
+							<div class="jde-btn-group">
+								<button type="button" class="btn btn-primary jde-btn-confirm jde-btn-main" data-item-code="">ADD</button>
+								<button type="button" class="btn btn-default jde-btn-main" data-dismiss="modal">CANCEL</button>
+							</div>
+						</div>
+					</div>
 		  		</div>
 		  </div>
 		</div><!-- /.modal-content -->
