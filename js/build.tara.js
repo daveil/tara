@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	const SCROLL_SPEED = 600;
 	const BG_SQ = 1650;
 	const JEWEL_SCALE = 0.3;
 	const BASE_SCALE = 0.65;
@@ -97,7 +98,16 @@ $(document).ready(function(){
 		lastPosition = BASE_Y;
 		orderPlaced=false;
 		computeTotal();
-		window.location.href=href||'#jde-select';
+		href=href||'#jde-select';
+		scrollTo(href);
+	}
+	function scrollTo(target){
+		var $target = $(target);		
+	    $('html, body').stop().animate({
+	        'scrollTop': $target.offset().top
+	    }, SCROLL_SPEED, 'swing', function () {
+	        window.location.hash = target;
+	    });
 	}
 	$('#JDEWarnModal .modal-body span').text(MAX_ATTCH);
 	$('#jde-build .jde-ui-item').click(function(){
@@ -149,5 +159,10 @@ $(document).ready(function(){
 	$('#jde-place-order-link').click(function(){
 		orderPlaced = true;
 		$('#jde-undo,#jde-place-order,#jde-place-order-link,#jde-reset').hide();
+	});
+	$('a[href^="#"]').on('click',function (e) {
+	    e.preventDefault();
+	    var target = this.hash;
+		scrollTo(target);
 	});
 });

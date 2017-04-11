@@ -232,7 +232,7 @@
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	<div class="modal fade" tabindex="-1" role="dialog" id="JDEWarnModal">
-	  <div class="modal-dialog" role="document">
+	  <div class="modal-dialog " role="document">
 		<div class="modal-content">
 		  <div class="modal-body text-center">				
 				<p></p>
