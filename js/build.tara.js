@@ -74,14 +74,15 @@ $(document).ready(function(){
 			$('#jde-build .jde-btn').attr('data-target','#JDEItemModal');
 			if(!orderPlaced)
 				$('#JDEWarnModal .modal-body p').text('Add item first!');
+			
 		}else{
 			$('#jde-place-order').attr('data-target','#JDEPlaceOrderModal');
+			$('#jde-place-order').hide();
+			$('#jde-place-order-link').show();
 			if(pendantSprites.length>=MAX_ATTCH&&!orderPlaced){
 				$('#jde-build .jde-btn').attr('data-target','#JDEWarnModal');
 				$('#JDEWarnModal .modal-body p').text('Oops! You can only add up to '+MAX_ATTCH+' item(s).');
 			}else{
-				$('#jde-place-order').hide();
-				$('#jde-place-order-link').show();
 				$('#jde-build .jde-btn').attr('data-target','#JDEItemModal');
 				$('#JDEWarnModal .modal-body p').text('Order placement successful. Thank you!');
 			}

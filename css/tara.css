@@ -320,6 +320,7 @@ canvas{
     display: block;
     font-size: 12px;
     margin: 10px 0;
+	letter-spacing:3px;
 }
 #JDEItemModal .jde-preview{
 	display:table;
@@ -342,13 +343,38 @@ canvas{
 	bottom:0;
 	
 }
+
+.modal-lg .modal-content{
+	height: 80vh;
+    display: table;
+    width: 100%;
+}
+
+.modal-lg .modal-body{
+	display: table-cell;
+    vertical-align: middle;
+}
+.modal-lg .modal-footer{
+	display:table-row;
+}
+#JDEItemModal .modal-lg .modal-body .jde-image{
+	width:80%;
+	margin: 0 auto;
+	
+}
+#JDEItemModal .modal-lg .modal-body .jde-preview,#JDEItemModal .modal-lg .modal-body .jde-ui-product{
+	height:60vh;
+}
+#JDEItemModal .modal-lg .modal-body  .jde-name,#JDEItemModal .modal-lg .modal-body  .jde-price{
+	font-size:2.5rem;
+}
 #jde-actions{
 	margin-top: 10px;
 }
 #jde-undo,#jde-reset,#jde-place-order,#jde-place-order-link{
 	margin-bottom:10px;
-	font-size:10px;
-	letter-spacing: 2px;
+	font-size:12px;
+	letter-spacing: 3px;
 	padding:10px;
 	margin-top:0;
 }

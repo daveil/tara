@@ -28,7 +28,7 @@
     	<div class="container">
 		    	<div class="jde-header">
 			    	<h2>Base jewelry</h2>
-			    	<p>Select you base jewelry</p>
+			    	<p>Select your base jewelry</p>
 		    	</div>
 		    	<ul class="jde-ui-tray">
 					<li class="jde-ui-item">
@@ -178,15 +178,15 @@
 						<div class="row">
 							<div class="col-md-4">
 								<button class="btn btn-default btn-block jde-btn-main" id="jde-undo">
-								UNDO ATTACHMENT CHOSEN
+								UNDO LAST
 								</button>
 							</div>
 							<div class="col-md-4">
 								<button class="btn btn-primary btn-block jde-btn-main" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal">
-								PLACE  MY ORDER
+								PLACE  ORDER
 								</button>
 								<a class="btn btn-primary btn-block jde-btn-main" id="jde-place-order-link" data-toggle="modal" data-target="#JDEOrderSummary">
-								PLACE  MY ORDER
+								PLACE  ORDER
 								</a>
 							</div>
 							<div class="col-md-4">
@@ -201,7 +201,7 @@
 		</div>
 	</div>
 	<div class="modal fade" tabindex="-1" role="dialog" id="JDEItemModal">
-	  <div class="modal-dialog" role="document">
+	  <div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 		  <div class="modal-body">
 		  		<div class="row">
@@ -244,7 +244,7 @@
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	<div class="modal fade" tabindex="-1" role="dialog" id="JDEPlaceOrderModal">
-	  <div class="modal-dialog" role="document">
+	  <div class="modal-dialog  modal-lg" role="document">
 		<div class="modal-content">
 		  <div class="modal-body">
 				<h3>Order request</h3>
@@ -276,7 +276,7 @@
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	<div class="modal fade" tabindex="-1" role="dialog" id="JDEOrderSummary">
-	  <div class="modal-dialog" role="document">
+	  <div class="modal-dialog  modal-lg" role="document">
 		<div class="modal-content">
 		  <div class="modal-body" id="jde-summary">
 		  	<div class="row">
