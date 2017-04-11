@@ -205,14 +205,14 @@
 		<div class="modal-content">
 		  <div class="modal-body">
 		  		<div class="row">
-		  			<div class="col-md-6 col-sm-6">
+		  			<div class="col-md-6">
 						<div class="jde-preview">
 							<div class="jde-image-wrapper">
 								<img class="jde-image img-responsive" src=""  />	
 							</div>
 						</div>
 		  			</div>
-		  			<div class="col-md-6 col-sm-6">
+		  			<div class="col-md-6">
 						<div class="jde-ui-product">
 							<div class="jde-product">
 								<h4 class="jde-name"></h4>

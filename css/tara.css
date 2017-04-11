@@ -430,12 +430,16 @@ canvas{
 	}
 	#JDEItemModal .jde-ui-product{
 		min-height:auto;
+		height: auto !important;
 	}
 	#JDEItemModal .jde-ui-product .jde-btn-group{
 		position:initial;
 	}
 	#JDEItemModal .jde-btn-main{
 		margin: 10px auto;
+	}
+	.jde-header{
+		margin-top:80px;
 	}
 }
 @media (min-width:536px)  and (max-width:750px){
