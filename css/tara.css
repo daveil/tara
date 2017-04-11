@@ -307,9 +307,13 @@ canvas{
 	padding:3px;
 	font-size:2rem;
 }
-#JDEItemModal  .modal-content{
+.modal .modal-content{
 	box-shadow: none;
 	border-radius: 0px;
+}
+.modal .modal-footer{
+	border:none;
+	text-align:center;
 }
 #JDEItemModal .jde-btn-main {
     padding: 10px;
@@ -330,7 +334,8 @@ canvas{
 }
 
 #jde-summary h2{
-	padding-top:20px;
+	margin-bottom: 50px;
+    margin-top: 20px;
 }
 #jde-summary h2,#jde-summary  th{
 	font-size: 14px;
@@ -344,10 +349,10 @@ canvas{
 #jde-summary  th,#jde-summary  td{
 	border: none !important;
 }
-#jde-summary p{
+#JDEPlaceOrderModal p{
 	color: #15294f;
 }
-#jde-summary h3{
+#JDEPlaceOrderModal h3{
 	text-transform: uppercase;
 	color: #15294f;
 	font-size: 18px;
@@ -363,9 +368,10 @@ canvas{
 	text-transform: uppercase;
 	font-weight: initial;
 }
-#JDEOrderRequest button{
+#JDEOrderRequest button,#JDEOrderSummary button, #JDEPlaceOrderModal button{
 	font-size:12px;
-	padding: 15px 30px;
+	padding: 15px 20px;
+	letter-spacing:2px;
 }
 @media (max-width:768px){
 	#top-nav .navbar-brand-wrapper{

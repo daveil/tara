@@ -87,7 +87,7 @@ $(document).ready(function(){
 			}
 		}
 	}
-	function resetBuilder(){
+	function resetBuilder(href){
 		if(pendantSprites.length)
 			for(var i in pendantSprites){
 				APP.stage.removeChild(pendantSprites[i].sprite);
@@ -96,7 +96,7 @@ $(document).ready(function(){
 		lastPosition = BASE_Y;
 		orderPlaced=false;
 		computeTotal();
-		window.location.href='#jde-select';
+		window.location.href=href||'#jde-select';
 	}
 	$('#JDEWarnModal .modal-body span').text(MAX_ATTCH);
 	$('#jde-build .jde-ui-item').click(function(){
@@ -143,9 +143,10 @@ $(document).ready(function(){
 	});
 	$('#jde-submit-order').click(function(){
 		orderPlaced = true;
+		resetBuilder('#jde-intro');
 	});
 	$('#jde-place-order-link').click(function(){
 		orderPlaced = true;
-		$('#jde-undo,#jde-place-order,#jde-place-order-link').hide();
+		$('#jde-undo,#jde-place-order,#jde-place-order-link,#jde-reset').hide();
 	});
 });

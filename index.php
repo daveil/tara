@@ -182,79 +182,23 @@
 								</button>
 							</div>
 							<div class="col-md-4">
-								<button class="btn btn-default btn-block jde-btn-main" id="jde-reset">
-								BEGIN AGAIN
-								</button>
-							</div>
-							<div class="col-md-4">
 								<button class="btn btn-primary btn-block jde-btn-main" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal">
 								PLACE  MY ORDER
 								</button>
-								<a class="btn btn-primary btn-block jde-btn-main" id="jde-place-order-link" href="#jde-summary">
+								<a class="btn btn-primary btn-block jde-btn-main" id="jde-place-order-link" data-toggle="modal" data-target="#JDEOrderSummary">
 								PLACE  MY ORDER
 								</a>
+							</div>
+							<div class="col-md-4">
+								<button class="btn btn-default btn-block jde-btn-main" id="jde-reset">
+								BEGIN AGAIN
+								</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="jde-ui-panel" id="jde-summary">
-	    <div class="container">
-	    		<div class="row">
-	    			<div class="col-md-6">
-	    				<h2>Summary of your custom jewelry</h2>
-	    				<p>Got it! Please review your order above and fulfill the order request form.</p>
-	    				<p>We'll email your billing invoice within 24-28 hours after confrimation and provide further instructions.</p>
-	    				
-	    				<table class="table">
-	    					<thead>
-	    						<tr>
-	    							<th>Item</th>
-	    							<th>Price</th>
-	    							<th>Quantity</th>
-	    							<th>Amount</th>
-	    						</tr>
-	    					</thead>
-	    					<tbody>
-	    						<tr>
-	    							<td>-</td>
-	    							<td>-</td>
-	    							<td>-</td>
-	    							<td>-</td>
-	    						</tr>
-	    					</tbody>
-	    				</table>
-	    			</div>
-	    			<div class="col-md-6">
-	    				
-	    				<h3>Order request</h3>
-	    				<form id="JDEOrderRequest">
-	    					<div class="form-group">
-	    						<label >Full name</label>
-	    						<input type="text" class="form-control">
-	    					</div>
-	    					<div class="form-group">
-	    						<label >Email</label>
-	    						<input type="text" class="form-control">
-	    					</div>
-	    					<div class="form-group">
-	    						<label >Shipping Address</label>
-	    						<input type="text" class="form-control">
-	    						<input type="text" class="form-control">
-	    						<input type="text" class="form-control">
-	    					</div>
-	    					<div class="row">
-	    						<div class="col-md-6">
-	    							<button class="btn btn-default btn-block jde-btn-main">ORDER NOW</button>
-	    						</div>
-	    					</div>
-	    					
-	    				</form>
-	    			</div>
-	    		</div>
-	    </div>
 	</div>
 	<div class="modal fade" tabindex="-1" role="dialog" id="JDEItemModal">
 	  <div class="modal-dialog" role="document">
@@ -285,8 +229,7 @@
 				<p></p>
 		  </div>
 		  <div class="modal-footer">
-			<button type="button" class="btn btn- pull-left" data-dismiss="modal">Close</button>
-			<div class="clear-fix"></div>
+				<button type="button" class="btn btn-default jde-btn-main" data-dismiss="modal">Close</button>
 		  </div>
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
@@ -294,15 +237,67 @@
 	<div class="modal fade" tabindex="-1" role="dialog" id="JDEPlaceOrderModal">
 	  <div class="modal-dialog" role="document">
 		<div class="modal-content">
-		  <div class="modal-body text-center">				
-				To place your order please enter your email. <br />
-				<div class="form-group"><input type="email" class="form-control" placeholder="Your email." /></div>
+		  <div class="modal-body">
+				<h3>Order request</h3>
+				<p>Got it! Please review your order above and fulfill the order request form.</p>
+	    		<p>We'll email your billing invoice within 24-28 hours after confrimation and provide further instructions.</p>
+				<form id="JDEOrderRequest">
+					<div class="form-group">
+						<label >Full name</label>
+						<input type="text" class="form-control">
+					</div>
+					<div class="form-group">
+						<label >Email</label>
+						<input type="text" class="form-control">
+					</div>
+					<div class="form-group">
+						<label >Shipping Address</label>
+						<input type="text" class="form-control">
+						<input type="text" class="form-control">
+						<input type="text" class="form-control">
+					</div>
+				</form>
 		  </div>
 		  <div class="modal-footer">
-			<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary" id="jde-submit-order" data-dismiss="modal" data-toggle="modal" data-target="#JDEWarnModal">Submit</button>
-			<div class="clear-fix"></div>
+				<button class="btn btn-default  jde-btn-main" data-dismiss="modal" id="jde-submit-order">ORDER NOW</button>
+			</div>
+			
 		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="JDEOrderSummary">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-body" id="jde-summary">
+		  	<div class="row">
+				<div class="col-md-12">
+				<h2 class="text-center">Summary of your custom jewelry</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+			</div>				
+		  </div>
+		  <div class="modal-footer">
+			
+				<button type="button" class="btn btn-default jde-btn-main" data-dismiss="modal" data-toggle="modal" data-target="#JDEPlaceOrderModal">PROCEED</button>
+			</div>
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
