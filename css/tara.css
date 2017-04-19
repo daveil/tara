@@ -490,3 +490,36 @@ canvas{
 		padding:20px;
 	}
 }
+@media (min-width:750px){
+	.jde-horizontal-wrapper{
+		width: 660px;
+		height:170px;
+	}
+	.jde-horizontal-wrapper>.jde-ui-list>.jde-ui-item>div{
+		width:100px;
+		height:100px;
+	}
+	.jde-ui-list .jde-jewel>.jde-img{
+		width:95px;
+		height:95px;
+	}
+	.jde-horizontal-wrapper>.jde-ui-list>.jde-ui-item:not(.active)>div:hover{
+		height:150px;
+	}
+	.jde-ui-list .jde-jewel:hover>.jde-img{
+		width: 98px;
+		height: 140px;
+	}
+	.jde-horizontal-wrapper>.jde-ui-list>.jde-ui-item.active>div{
+		width: 150px;
+		height: 150px;
+	}
+	.jde-ui-list .active .jde-jewel>.jde-img{
+		margin: 0 auto;
+		width: 145px;
+		height: 145px;
+	}
+	.jde-ui-list .active .jde-jewel>.jde-btn{
+		width:125px;
+	}
+}
