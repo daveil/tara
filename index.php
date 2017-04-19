@@ -14,7 +14,7 @@
   </head>
   <body>
 	<?php include('top-nav.php');?>
-    <div class="jde-ui-panel jde-ui-table jde-full-h" id="jde-intro">
+	<div class="jde-ui-panel jde-ui-table jde-full-h parallax" id="jde-intro">
     	<div class="container  jde-va-middle">
     		<div class="row">
     			<div class="col-md-6 col-md-offset-3 text-center">
@@ -161,6 +161,7 @@
 						</div>
 					</li>
 				</ul>
+				
 			</div>
 		</div>
 

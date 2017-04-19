@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	const SCROLL_SPEED = 600;
+	const THRESHOLD2FADE =  $(window).height() * 0.45;
+	const SCROLL_SPEED = 800;
 	const BG_SQ = 1650;
 	const JEWEL_SCALE = 0.3;
 	const BASE_SCALE = 0.65;
@@ -164,5 +165,12 @@ $(document).ready(function(){
 	    e.preventDefault();
 	    var target = this.hash;
 		scrollTo(target);
+	});
+	$(window).scroll(function() {
+		var position = $(window).scrollTop();
+		var opacity = 1 - position/THRESHOLD2FADE;
+		
+		$('#jde-intro .container').css({'opacity':opacity});
+		
 	});
 });

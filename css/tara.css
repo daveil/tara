@@ -75,7 +75,7 @@ canvas{
 
 #jde-intro h2{
 	margin: 0;
-    color: #15294f;
+    color: #fff;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 15px;
@@ -92,6 +92,7 @@ canvas{
 	text-indent: 5px;
 	letter-spacing: 5px;
 	text-transform: uppercase;
+	border:none;
 }
 .jde-header,.jde-footer{
 	text-align: center;
@@ -419,6 +420,22 @@ canvas{
 	padding: 15px 20px;
 	letter-spacing:2px;
 }
+
+
+.parallax {
+    /* The background used */
+    background-image: url('../img/bgtara.jpg');
+
+    /* Set a specific height */
+    min-height:  100vh;
+	
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 @media (max-width:768px){
 	#top-nav .navbar-brand-wrapper{
 		position: relative;
