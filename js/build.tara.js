@@ -20,6 +20,7 @@ $(document).ready(function(){
 	var orderPlaced = false;
 	buildBase(0,-300);
 	function buildBase(x,y){
+		APP.renderer.plugins.interaction.destroy();
 		$('#jde-canvas').prepend(APP.view);
 		addSprite('img/bgtara-2.jpg',0,0,WIDTH,HEIGHT,1,0.2);
 		addSprite('img/Base-A.png',x,y,2700,1018,BASE_SCALE);
