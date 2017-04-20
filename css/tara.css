@@ -82,6 +82,7 @@ canvas{
     text-indent: 15px;
     line-height: 50px;
     font-size: 30px;
+	text-shadow: 0px 1px 2px #000;
 }
 #jde-intro h2 span{
 	font-size:20px;
@@ -108,7 +109,6 @@ canvas{
     font-size: 15px;
     border-bottom: 1px solid #15294f;
     display: inline-block;
-	text-shadow: 0px 1px 2px #000;
 }
 .jde-footer h2{
 	letter-spacing: 0px;

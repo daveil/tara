@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	const THRESHOLD2FADE =  $(window).height() * 0.45;
+	const THRESHOLD2FADE =  $(window).height() * 0.35;
 	const SCROLL_SPEED = 800;
 	const BG_SQ = 1650;
 	const JEWEL_SCALE = 0.3;
