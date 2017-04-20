@@ -314,6 +314,6 @@
     <script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="libs/bower_components/pixi.js/dist/pixi.min.js"></script>
-    <script src="js/build.tara.jss<?php echo '?a='.rand();?>"></script>
+    <script src="js/build.tara.js?<?php echo '?a='.rand();?>"></script>
      </body>
 </html>
