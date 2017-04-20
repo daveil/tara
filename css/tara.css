@@ -108,6 +108,7 @@ canvas{
     font-size: 15px;
     border-bottom: 1px solid #15294f;
     display: inline-block;
+	text-shadow: 0px 1px 2px #000;
 }
 .jde-footer h2{
 	letter-spacing: 0px;
