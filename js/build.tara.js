@@ -172,6 +172,7 @@ $(document).ready(function(){
 		var opacity = 1 - position/THRESHOLD2FADE;
 		
 		$('#jde-intro .container').css({'opacity':opacity});
+		$('#top-nav').css({'opacity':1-opacity});
 		
 	});
 });

@@ -103,15 +103,15 @@ canvas{
 	margin-top:20px;
 }
 .jde-header h2,.jde-footer h2{
-	padding: 15px 15px;
+	padding: 15px 45px;
 	margin: 0;
 	margin-bottom: 10px;
-    color: #15294f;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 15px;
-    border-bottom: 1px solid #15294f;
-    display: inline-block;
+	color: #15294f;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	font-size: 26pt;
+	border-bottom: 1px solid #15294f;
+	display: inline-block;
 }
 .jde-footer h2{
 	letter-spacing: 0px;
@@ -119,8 +119,9 @@ canvas{
 	padding-bottom: 5px;
 }
 .jde-header p,.jde-footer p{
-	font-size: 12px;
+	font-size: 15pt;
 	text-transform: uppercase;
+	margin-bottom: 20px;
 }
 #jde-select .jde-ui-item{
 	background-color: #15294f;
