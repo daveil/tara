@@ -22,7 +22,7 @@
     				<img class="img-responsive" src="img/logo white.png" alt="TARA" />
     			</div>
     			<div class="col-md-6  text-center">
-			    	<h2>Assemble<br/><span>Your own fine jewelery</span></h2>
+			    	<h2>Assemble<br/><span>Your own fine jewelry</span></h2>
 			    	<a id="begin-now" href="#jde-select" class="btn btn-default jde-btn jde-btn-main">Begin now</a>	
     			</div>
     		</div>
