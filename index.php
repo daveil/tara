@@ -13,17 +13,21 @@
     <![endif]-->
   </head>
   <body>
-	<?php include('top-nav.php');?>
+	
 	<div class="jde-ui-panel jde-ui-table jde-full-h parallax" id="jde-intro">
-    	<div class="container  jde-va-middle">
+    	<div class="container ">
     		<div class="row">
-    			<div class="col-md-6 col-md-offset-3 text-center">
-			    	<h2><span>Buildable</span><br>Fine Jewelry</h2>
-			    	<a href="#jde-select" class="btn btn-default btn-lg jde-btn jde-btn-main">Assemble</a>	
+    			<div class="col-md-6">
+    				<img class="img-responsive" src="img/logo white.png" alt="TARA" />
+    			</div>
+    			<div class="col-md-6  text-center">
+			    	<h2>Assemble<br/><span>Your own fine jewelery</span></h2>
+			    	<a href="#jde-select" class="btn btn-default btn-lg jde-btn jde-btn-main">Begin now</a>	
     			</div>
     		</div>
     	</div>
     </div>
+    <?php include('top-nav.php');?>
     <div class="jde-ui-panel jde-full-h" id="jde-select">
     	<div class="container">
 		    	<div class="jde-header">

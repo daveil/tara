@@ -72,13 +72,16 @@ canvas{
 	display:block;
 	width:100% !important;
 }
-
+#jde-intro img{
+	width:150px;
+	margin-left:50px;
+}
 #jde-intro h2{
 	margin: 0;
     color: #fff;
     text-transform: uppercase;
     font-weight: bold;
-    letter-spacing: 15px;
+    letter-spacing: 5px;
     text-indent: 15px;
     line-height: 50px;
     font-size: 30px;
@@ -425,14 +428,14 @@ canvas{
 
 .parallax {
     /* The background used */
-    background-image: url('../img/bgtara.jpg');
+    background-image: url('../img/hero-bg.jpg');
 
     /* Set a specific height */
     min-height:  100vh;
 	
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
-    background-position: bottom center;
+    background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
 }
