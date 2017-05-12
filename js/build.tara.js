@@ -5,8 +5,8 @@ $(document).ready(function(){
 	const JEWEL_SCALE = 0.3;
 	const BASE_SCALE = 0.65;
 	const VIEW_HEIGHT = 1;
-	const WIDTH  = BG_SQ;
-	const HEIGHT = BG_SQ/VIEW_HEIGHT;
+	const WIDTH  = 1082;
+	const HEIGHT = 702;
 	const PENDANTS = {
 		1:{name:'Triangle Object', path:'img/triangle.png',price:25,width:200,height:220,type:'A'},
 		2:{name:'Circle Object', path:'img/circle.png', price:20,width:200,height:220,type:'A'},
@@ -22,7 +22,7 @@ $(document).ready(function(){
 	function buildBase(x,y){
 		APP.renderer.plugins.interaction.destroy();
 		$('#jde-canvas').prepend(APP.view);
-		addSprite('img/bgtara-2.jpg',0,0,WIDTH,HEIGHT,1,0.2);
+		addSprite('img/backgroundearring_02.jpg',0,0,WIDTH,HEIGHT,1,1);
 		addSprite('img/Base-A.png',x,y,2700,1018,BASE_SCALE);
 		computeTotal();
 	}
@@ -172,6 +172,7 @@ $(document).ready(function(){
 		var opacity = 1 - position/THRESHOLD2FADE;
 		
 		$('#jde-intro .container').css({'opacity':opacity});
+		$('#top-nav').css({'opacity':1-opacity});
 		
 	});
 });
