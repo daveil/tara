@@ -98,6 +98,10 @@ canvas{
 	text-transform: uppercase;
 	border:none;
 }
+#begin-now{
+	background: none !important;
+	border: 1px solid #fff !important;
+}
 .jde-header,.jde-footer{
 	text-align: center;
 	margin-top:20px;
@@ -158,10 +162,9 @@ canvas{
 }
 .jde-btn-main,.jde-btn-main:hover,.jde-btn-main:active,.jde-btn-main:focus{
 	border-radius: 0;
-	background: none !important;
-	color:#fff !important;
+	background: #15294f;
+	color:#fff;
 	outline: none;
-	border: 1px solid #fff !important;
 }
 .jde-horizontal-wrapper{
 	width:450px;
@@ -386,8 +389,6 @@ canvas{
 	letter-spacing: 3px;
 	padding:10px;
 	margin-top:0;
-	background: #15294f !important;
-	color:#fff !important;
 }
 
 #jde-summary h2{

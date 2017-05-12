@@ -23,7 +23,7 @@
     			</div>
     			<div class="col-md-6  text-center">
 			    	<h2>Assemble<br/><span>Your own fine jewelery</span></h2>
-			    	<a href="#jde-select" class="btn btn-default btn-lg jde-btn jde-btn-main">Begin now</a>	
+			    	<a id="begin-now" href="#jde-select" class="btn btn-default jde-btn jde-btn-main">Begin now</a>	
     			</div>
     		</div>
     	</div>
@@ -64,7 +64,7 @@
 					<div class="col-md-10 col-md-offset-1">
 						<div class="row">
 							<div class="col-md-4">
-								<button class="btn btn-default btn-block jde-btn-action" id="jde-undo">
+								<button class="btn btn-default btn-block jde-btn-main" id="jde-undo">
 								UNDO LAST
 								</button>
 							</div>
