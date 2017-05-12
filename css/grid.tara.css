@@ -1,15 +1,15 @@
 * { box-sizing: border-box; }
+
 .grid-canvas{
-	width:600px;
+	width:950px;
 	margin:10px auto;
-	border:1px solid #ccc;
+	
 }
 .grid-canvas.horizontal{
-	height:230px;
+	height:390px;
 	overflow: auto;
 }
 .grid-container{
-	border: 1px solid #eee;
 	margin:0 auto;
 }
 .grid-canvas.horizontal>.grid-container{
@@ -24,17 +24,23 @@
   display: block;
   clear: both;
 }
+.dev .grid-canvas, .dev .grid-container {border:1px solid #ccc;}
 .grid-item{
 	position: relative;
 	float:left;
 	background: #15294f;
-	width:100px;
-	height:100px;
+	width:180px;
+	height:180px;
 	display:table;
 	margin-bottom: 10px;
 }
+.grid-item .item:hover{
+	text-decoration: none !important;
+	color:#fff !important;
+
+}
 .grid-item.tall{
-	height:210px;
+	height:370px;
 }
 .item{
 	color:white;

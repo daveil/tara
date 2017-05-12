@@ -8,8 +8,8 @@ $(document).ready(function(){
 		itemSelector: '.grid-item',
 		layoutMode:'cellsByColumn',
 		cellsByColumn:{
-			columnWidth:110,
-			rowHeight:110
+			columnWidth:190,
+			rowHeight:190
 		}
 	}); 
 	

@@ -1,4 +1,4 @@
-<nav id="top-nav" class="navbar navbar-default">
+<nav id="top-nav" class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
 	<div class="navbar-header">
 	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -20,7 +20,6 @@
 	  <ul class="nav navbar-nav navbar-right">
 		<li><a href="#">SHOP</a></li>
 		<li><a href="#">ABOUT</a></li>
-		<li><a href="#">BLOG</a></li>
 		<li><a href="#">CONTACT</a></li>
 	  </ul>
 	</div><!--/.nav-collapse -->

@@ -7,6 +7,7 @@
     <title>Tara Jewelry Builder</title>
 	<link href="libs/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/tara.css<?php echo '?a='.rand();?>" />
+	<link rel="stylesheet" href="css/grid.tara.css" />
 	<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -22,7 +23,7 @@
     			</div>
     			<div class="col-md-6  text-center">
 			    	<h2>Assemble<br/><span>Your own fine jewelery</span></h2>
-			    	<a href="#jde-select" class="btn btn-default btn-lg jde-btn jde-btn-main">Begin now</a>	
+			    	<a id="begin-now" href="#jde-select" class="btn btn-default jde-btn jde-btn-main">Begin now</a>	
     			</div>
     		</div>
     	</div>
@@ -34,53 +35,8 @@
 			    	<h2>Base jewelry</h2>
 			    	<p>Select your base jewelry</p>
 		    	</div>
-		    	<ul class="jde-ui-tray">
-					<li class="jde-ui-item">
-						<a class="jde-jewel" href="#jde-build">
-							<div class="jde-img"></div>
-						</a>
-					</li>
-					<li class="jde-ui-item">
-						<a class="jde-jewel" href="#jde-build">
-							<div class="jde-img"></div>
-						</a>
-					</li>
-					<li class="jde-ui-item">
-						<a class="jde-jewel" href="#jde-build">
-							<div class="jde-img"></div>
-						</a>
-					</li>
-					<li class="jde-ui-item">
-						<a class="jde-jewel" href="#jde-build">
-							<div class="jde-img"></div>
-						</a>
-					</li>
-					<li class="jde-ui-item">
-						<a class="jde-jewel" href="#jde-build">
-							<div class="jde-img"></div>
-						</a>
-					</li>
-					<li class="jde-ui-item">
-						<a class="jde-jewel" href="#jde-build">
-							<div class="jde-img"></div>
-						</a>
-					</li>
-					<li class="jde-ui-item">
-						<a class="jde-jewel" href="#jde-build">
-							<div class="jde-img"></div>
-						</a>
-					</li>
-					<li class="jde-ui-item">
-						<a class="jde-jewel" href="#jde-build">
-							<div class="jde-img"></div>
-						</a>
-					</li>
-					<li class="jde-ui-item">
-						<a class="jde-jewel" href="#jde-build">
-							<div class="jde-img"></div>
-						</a>
-					</li>
-				</ul>
+		    	<?php include('grid-vertical.php');?>
+		    	<?php include('tray-vertical.php');?>
 		    	
     	</div>
     </div>
@@ -90,83 +46,9 @@
 		    	<h2>Attachment jewelry</h2>
 			    <p>Select up to two layer to your base jewelry</p>
 		    </div>
-			<div class="jde-horizontal-wrapper">
-				<ul class="jde-ui-list">
-					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-triangle"></div>
-							<button class="jde-btn btn btn-xs" data-toggle="modal" data-target="#JDEItemModal" data-item-code="1">+</button>
-						</div>
-					</li>
-					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-circle"></div>
-							<button class="jde-btn btn btn-xs" data-toggle="modal" data-target="#JDEItemModal" data-item-code="2">+</button>
-						</div>
-					</li>
-					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img jde-square"></div>
-							<button class="jde-btn btn btn-xs" data-toggle="modal" data-target="#JDEItemModal" data-item-code="3">+</button>
-						</div>
-					</li>
-					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img"></div>
-							<button class="jde-btn btn btn-xs">+</button>
-						</div>
-					</li>
-					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img"></div>
-							<button class="jde-btn btn btn-xs">+</button>
-						</div>
-					</li>
-					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img"></div>
-							<button class="jde-btn btn btn-xs">+</button>
-						</div>
-					</li>
-					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img"></div>
-							<button class="jde-btn btn btn-xs">+</button>
-						</div>
-					</li>
-					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img"></div>
-							<button class="jde-btn btn btn-xs">+</button>
-						</div>
-					</li>
-					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img"></div>
-							<button class="jde-btn btn btn-xs">+</button>
-						</div>
-					</li>
-					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img"></div>
-							<button class="jde-btn btn btn-xs">+</button>
-						</div>
-					</li>
-					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img"></div>
-							<button class="jde-btn btn btn-xs">+</button>
-						</div>
-					</li>
-					<li class="jde-ui-item">
-						<div class="jde-jewel">
-							<div class="jde-img"></div>
-							<button class="jde-btn btn btn-xs">+</button>
-						</div>
-					</li>
-				</ul>
-				
-			</div>
+		    <?php include('grid-horizontal.php');?>
+		    <?php include('list-horizontal.php');?>
+			
 		</div>
 
 		<div id="jde-canvas">
@@ -315,9 +197,6 @@
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
-    <script src="libs/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="libs/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="libs/bower_components/pixi.js/dist/pixi.min.js"></script>
-    <script src="js/build.tara.js?<?php echo '?a='.rand();?>"></script>
+ 	<?php include('scripts.php');?>
      </body>
 </html>
