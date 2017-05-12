@@ -20,7 +20,6 @@
 	  <ul class="nav navbar-nav navbar-right">
 		<li><a href="#">SHOP</a></li>
 		<li><a href="#">ABOUT</a></li>
-		<li><a href="#">BLOG</a></li>
 		<li><a href="#">CONTACT</a></li>
 	  </ul>
 	</div><!--/.nav-collapse -->

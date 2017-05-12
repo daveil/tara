@@ -1,43 +1,43 @@
  <div class="grid-canvas vertical hidden-sm hidden-xs">
         <div class="grid-container">
             <div class="grid-item">
-              <div class="item">1</div>
+              <a href="#jde-build" class="item">1</a>
             </div>
             <div class="grid-item tall">
-              <div class="item">2</div>
+              <a href="#jde-build" class="item">2</a>
             </div>
             <div class="grid-item">
-              <div class="item">3</div>
+             <a href="#jde-build" class="item">3</a>
             </div>
             <div class="grid-item tall">
-              <div class="item">4</div>
+              <a href="#jde-build" class="item">4</a>
             </div>
             <div class="grid-item">
-              <div class="item">5</div>
+              <a href="#jde-build" class="item">5</a>
             </div>
             <div class="grid-item">
-              <div class="item">6</div>
+              <a href="#jde-build" class="item">6</a>
             </div>
             <div class="grid-item">
-              <div class="item">7</div>
+              <a href="#jde-build" class="item">7</a>
             </div>
             <div class="grid-item">
-              <div class="item">8</div>
+              <a href="#jde-build" class="item">8</a>
             </div>
             <div class="grid-item">
-              <div class="item">9</div>
+              <a href="#jde-build" class="item">9</a>
             </div>
             <div class="grid-item">
-              <div class="item">10</div>
+              <a href="#jde-build" class="item">10</a>
             </div>
             <div class="grid-item">
-              <div class="item">11</div>
+              <a href="#jde-build" class="item">11</a>
             </div>
             <div class="grid-item">
-              <div class="item">12</div>
+              <a href="#jde-build" class="item">12</a>
             </div>
             <div class="grid-item">
-              <div class="item">13</div>
+              <a href="#jde-build" class="item">13</a>
             </div>
         </div>
       </div>
