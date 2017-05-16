@@ -48,3 +48,36 @@
 	vertical-align: middle;
 	text-align: center;
 }
+.main-carousel{
+	width:940px;
+	margin:0 auto;
+}
+
+.main-carousel .carousel-cell{
+	height:370px;
+	width:180px;
+	margin-right:10px;
+}
+.flickity-prev-next-button.next{
+	right: -40px;
+    background: none;
+}
+.flickity-prev-next-button.previous{
+	left:-40px;
+	background: none;
+}
+
+.mini-carousel{
+	width:75%;
+	margin:0 auto;
+}
+.mini-carousel .carousel-cell{
+	width:60px;
+	height:60px;
+	margin-right:10px;
+}
+.mini-carousel .grid-item{
+	width:60px;
+	height:60px;
+}
+
