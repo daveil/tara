@@ -449,6 +449,11 @@ canvas{
 }
 
 @media (max-width:768px){
+	.parallax {
+	    background-position: bottom;
+	    background-size: 100%;
+	    background-color: #0b1230;
+	}
 	#jde-intro img{
 		margin: 30px auto;
     	width: 80px;
@@ -462,7 +467,7 @@ canvas{
     	line-height: 18pt;
 	}
 	#jde-intro .jde-btn-main{
-		margin-top:12vh;
+		margin-top:10vh;
 	}
 	.jde-header h2, .jde-footer h2{
 		padding: 5px 10px;
