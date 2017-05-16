@@ -444,7 +444,7 @@ canvas{
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
     margin-top: 0px;
 }
 
@@ -467,7 +467,7 @@ canvas{
 	.jde-header h2, .jde-footer h2{
 		padding: 5px 10px;
 		letter-spacing: 1px;
-    	font-size: 10pt;
+    	font-size: 14pt;
 	}
 	.jde-header p, .jde-footer p{
 		font-size: 8pt;
