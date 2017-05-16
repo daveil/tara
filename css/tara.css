@@ -449,6 +449,37 @@ canvas{
 }
 
 @media (max-width:768px){
+	#jde-intro img{
+		margin: 30px auto;
+    	width: 80px;
+	}
+	#jde-intro h2 {
+		line-height: 25pt;
+    	font-size: 30pt;
+	}
+	#jde-intro h2 span{
+		font-size: 12pt;
+    	line-height: 18pt;
+	}
+	#jde-intro .jde-btn-main{
+		margin-top:15vh;
+	}
+	.jde-header h2, .jde-footer h2{
+		padding: 5px 10px;
+		letter-spacing: 1px;
+    	font-size: 10pt;
+	}
+	.jde-header p, .jde-footer p{
+		font-size: 8pt;
+	}
+	#top-nav a.navbar-brand img{
+		height: 35px;
+    	margin-top: 5px;
+	}
+	#top-nav ul.nav li a{
+		text-align: center;
+		margin:0px;
+	}
 	#top-nav .navbar-brand-wrapper{
 		position: relative;
 		padding-top: 5px;
