@@ -5,6 +5,7 @@
 	margin:10px auto;
 	
 }
+
 .grid-canvas.horizontal{
 	height:390px;
 	overflow: auto;
@@ -40,7 +41,10 @@
 
 }
 .grid-item.tall{
-	height:370px;
+	height:560px;
+}
+.grid-item.wide{
+	width:370px;	
 }
 .item{
 	color:white;
@@ -59,11 +63,11 @@
 	margin-right:10px;
 }
 .flickity-prev-next-button.next{
-	right: -40px;
+	right: -60px;
     background: none;
 }
 .flickity-prev-next-button.previous{
-	left:-40px;
+	left:-60px;
 	background: none;
 }
 
@@ -80,4 +84,16 @@
 	width:60px;
 	height:60px;
 }
+.mini-carousel .flickity-prev-next-button.next{
+	right:-45px;
+}
 
+.mini-carousel .flickity-prev-next-button.previous{
+	left:-45px;
+}
+
+@media (min-width: 992px){
+	.main-carousel{
+		width:850px;
+	}
+}
