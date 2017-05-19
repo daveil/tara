@@ -464,7 +464,15 @@ canvas{
     background-size: 100%;
     margin-top: 0px;
 }
-
+@media (max-width: 992px){
+	#jde-intro img{
+		margin:0 auto;
+		margin-bottom:10px;
+	}
+	#return-to-main{
+		width:100%;
+	}
+}
 @media (max-width:768px){
 	.parallax {
 	    background-position: bottom;
@@ -485,6 +493,11 @@ canvas{
 	}
 	#jde-intro .jde-btn-main{
 		margin-top:10vh;
+	}
+	#return-to-main{
+		width:100%;
+		text-indent: 12px;
+		font-size:10pt;
 	}
 	.jde-header h2, .jde-footer h2{
 		padding: 5px 10px;
@@ -521,16 +534,27 @@ canvas{
 		margin: 10px auto;
 	}
 	.jde-header{
-		margin-top:80px;
+		margin-top:40px;
+		margin-bottom:25px;
+	}
+	#jde-undo, #jde-reset, #jde-place-order, #jde-place-order-link{
+		padding:15px;
 	}
 }
 @media (min-width:536px)  and (max-width:750px){
-	
+	.jde-header{
+		margin-top:50px;
+		margin-bottom:25px;
+	}
 	#jde-canvas{
 		width:100%;
 	}
 }
 @media (min-width:250px) and (max-width:535px){
+	.jde-header{
+		margin-top:50px;
+		margin-bottom:25px;
+	}
 	#top-nav .container-fluid{
 		padding:5px 20px;
 	}

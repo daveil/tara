@@ -66,12 +66,12 @@
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1">
 						<div class="row">
-							<div class="col-md-4">
+							<div class="col-md-4 col-sm-4">
 								<button class="btn btn-default btn-block jde-btn-main" id="jde-undo">
 								UNDO LAST
 								</button>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-4 col-sm-4">
 								<button class="btn btn-primary btn-block jde-btn-main" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal">
 								PLACE  ORDER
 								</button>
@@ -79,7 +79,7 @@
 								PLACE  ORDER
 								</a>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-4 col-sm-4">
 								<button class="btn btn-default btn-block jde-btn-main" id="jde-reset">
 								BEGIN AGAIN
 								</button>
