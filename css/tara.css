@@ -543,7 +543,7 @@ canvas{
 }
 @media (min-width:536px)  and (max-width:750px){
 	.jde-header{
-		margin-top:50px;
+		margin-top:60px;
 		margin-bottom:25px;
 	}
 	#jde-canvas{
@@ -552,7 +552,7 @@ canvas{
 }
 @media (min-width:250px) and (max-width:535px){
 	.jde-header{
-		margin-top:50px;
+		margin-top:60px;
 		margin-bottom:25px;
 	}
 	#top-nav .container-fluid{
