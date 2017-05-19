@@ -101,6 +101,22 @@ canvas{
 #begin-now{
 	background: none !important;
 	border: 1px solid #fff !important;
+	padding: 5px;
+}
+#begin-now:active,#begin-now:focus{
+	color:#fff;
+}
+#return-to-main{
+	position: absolute;
+    bottom: 0;
+    margin-bottom: 50px;
+    right: 0;
+    font-size: 12pt;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 2px;
+    width: 40%;
+    text-align: center;
 }
 .jde-header,.jde-footer{
 	text-align: center;
@@ -436,7 +452,7 @@ canvas{
 
 .parallax {
     /* The background used */
-    background-image: url('../img/hero-bg.jpg');
+    background-image: url('../img/LOOK_15_056.jpg');
 
     /* Set a specific height */
     min-height:  100vh;

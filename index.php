@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tara Jewelry Builder</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>TARA  Jewelry Builder | The Artisan Row Accessories</title>
 	<link href="libs/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="libs/bower_components/flickity/dist/flickity.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/tara.css<?php echo '?a='.rand();?>" />
@@ -24,9 +25,10 @@
     			</div>
     			<div class="col-md-6  text-center">
 			    	<h2>Assemble<br/><span>Your own fine jewelry</span></h2>
-			    	<a id="begin-now" href="#jde-select" class="btn btn-default jde-btn jde-btn-main">Begin now</a>	
+			    	<a id="begin-now" href="#jde-select" class="btn btn-xs btn-default jde-btn jde-btn-main">Begin now</a>	
     			</div>
     		</div>
+    		<a href="http://ishoptara.com/" id="return-to-main">Return to main store</a>
     	</div>
     </div>
     <?php include('top-nav.php');?>
