@@ -485,6 +485,7 @@ canvas{
 	    background-position: bottom;
 	    background-size: 100%;
 	    background-color: #0b1230;
+	    background-attachment: initial;
 	}
 	#jde-intro img{
 		margin: 30px auto;
@@ -549,6 +550,7 @@ canvas{
 	}
 }
 @media (min-width:536px)  and (max-width:750px){
+	
 	.jde-header{
 		margin-top:60px;
 		margin-bottom:25px;
