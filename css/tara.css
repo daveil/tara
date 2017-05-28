@@ -452,7 +452,7 @@ canvas{
 
 .parallax {
     /* The background used */
-    background-attachment: initial;
+   
     background-image: url('../img/hero-bg-web-3.jpg');
 
     /* Set a specific height */
@@ -465,7 +465,13 @@ canvas{
     background-size: 100%;
     margin-top: 0px;
 }
+
+
+
 @media (max-width: 992px){
+	.parallax{
+		background-attachment: initial;
+	}
 	#jde-intro img{
 		margin:0 auto;
 		margin-bottom:10px;
