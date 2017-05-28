@@ -16,7 +16,6 @@
     <![endif]-->
   </head>
   <body>
-	<img src="img/hero-bg-web-3.jpg" alt="">
 	<div class="jde-ui-panel jde-ui-table jde-full-h parallax" id="jde-intro">
     	<div class="container ">
     		<div class="row">
