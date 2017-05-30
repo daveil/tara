@@ -23,7 +23,7 @@ $(document).ready(function(){
 		APP.renderer.plugins.interaction.destroy();
 		$('#jde-canvas').prepend(APP.view);
 		addSprite('img/bg-base-earring-web.jpg',0,0,WIDTH,HEIGHT,1,1);
-		addSprite('img/Base-A.png',x,y,2700,1018,BASE_SCALE);
+		//addSprite('img/Base-A.png',x,y,2700,1018,BASE_SCALE);
 		computeTotal();
 	}
 	function addSprite(img,x,y,width,height,scale,opacity){
