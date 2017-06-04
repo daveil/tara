@@ -106,7 +106,7 @@ $(document).ready(function(){
 		path += pendant.slug+JEWEL_SUFFIX;
 		var sprite = addSprite(path,0,lastPosition,pendant.width,pendant.height,scale);
 		var pendant_height = (pendant.height*scale);
-		pendantSprites.push({height:pendant_height,sprite:sprite,price:pendant.price});
+		pendantSprites.push({height:pendant_height,sprite:sprite,price:pendant.price,name:pendant.name,itemCode:itemCode});
 		if(pendant.type=='A')
 			lastPosition = lastPosition+pendant_height;
 		computeTotal();
@@ -198,6 +198,56 @@ $(document).ready(function(){
 			$('#JDEWarnModal .modal-body p').text('Add item first!');
 		}
 	});
+	$('#JDEOrderSummary').on('show.bs.modal', function (event,arguments) {
+		var $table = $('#JDEOrderSummary table tbody');
+		var $footer = $('#JDEOrderSummary table tfoot');
+			$table.html('');
+		//Build summary table
+		var summary = {};
+		for(var i in pendantSprites){
+			var pendant =  pendantSprites[i];
+			var itemCode = pendant.itemCode;
+			var item;
+			if(!summary[itemCode]){
+				item = {
+					name:pendant.name,
+					price:pendant.price,
+					quantity:1,
+					amount:pendant.price
+				}
+			}else{
+				item = summary[itemCode];
+				var price =item.price;
+				var qty = item.quantity+1;
+				item.quantity=qty;
+				item.amount=qty*price;
+			}
+			summary[itemCode] = item;
+		}
+		for(var code in summary){
+			var item =  summary[code];
+			var row  = '<tr>';
+				row += '<td>'+item.name+'</td>';
+				row += '<td>'+item.price+'</td>';
+				row += '<td>'+item.quantity+'</td>';
+				row += '<td>'+item.amount+'</td>';
+				row += '</tr>';
+			$table.append(row);
+		}
+		var computedTotal = $('#jde-total span').text();
+		var total  ='<tr>';
+			total +='<td class="text-right" colspan="3">Total</td>';
+			total +='<td>'+computedTotal+'</td>';
+			total +='</tr>';
+		$footer.html(total);
+	}).on('hidden.bs.modal', function (event) {
+		var $table = $('#JDEOrderSummary table tbody');
+		var $footer = $('#JDEOrderSummary table tfoot');
+		var empty = '<tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>';
+		$table.html(empty);
+		$footer.html('');
+	});
+	
 	$('.jde-btn-confirm').click(function(){
 		var itemCode =  $(this).data('item-code');
 		addPendant(itemCode);
@@ -234,4 +284,5 @@ $(document).ready(function(){
 		$('#top-nav').css({'opacity':1-opacity});
 		
 	});
+	
 });
