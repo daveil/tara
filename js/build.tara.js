@@ -7,10 +7,11 @@ $(document).ready(function(){
 	const VIEW_HEIGHT = 1;
 	const WIDTH  = 1082;
 	const HEIGHT = 702;
+	const MAX_THUMBS = 12;
 	const PENDANTS = {
-		1:{name:'Triangle Object', path:'img/triangle.png',price:25,width:200,height:220,type:'A'},
-		2:{name:'Circle Object', path:'img/circle.png', price:20,width:200,height:220,type:'A'},
-		3:{name:'Square Object', path:'img/square.png', price:15,width:200,height:220,type:'A'}
+		1:{name:'Celine', slug:'celine', path:'img/jewel/celine.png',price:25,width:200,height:220,type:'A'},
+		2:{name:'Ciara', slug:'ciara',  path:'img/jewel/ciara.png', price:20,width:200,height:220,type:'A'},
+		3:{name:'Rachel', slug:'rachel',  path:'img/jewel/rachel.png', price:15,width:200,height:220,type:'A'}
 	};
 	const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	const MAX_ATTCH = 3;
@@ -18,6 +19,7 @@ $(document).ready(function(){
 	var pendantSprites = [];
 	var lastPosition=BASE_Y;
 	var orderPlaced = false;
+	initAttachmentGrid();
 	buildBase(0,-300);
 	function buildBase(x,y){
 		APP.renderer.plugins.interaction.destroy();
@@ -25,6 +27,50 @@ $(document).ready(function(){
 		addSprite('img/bg-base-earring-web.jpg',0,0,WIDTH,HEIGHT,1,1);
 		//addSprite('img/Base-A.png',x,y,2700,1018,BASE_SCALE);
 		computeTotal();
+		
+	}
+	function initAttachmentGrid(){
+		var $carousel = $('.main-carousel').flickity(
+							{ "cellAlign": "left", "contain": true , "pageDots": false }
+						);
+		var $cell = $("<div class='carousel-cell'/>");
+		var $item = $("<div class='grid-item'  ><div class='item'/></div>");         
+		var $c = null;
+		var ctr = 0;
+		for(var id in PENDANTS){
+			var p_obj = PENDANTS[id];
+			var $i = $item.clone();
+				$i.attr('id',id);
+				$i.attr('data-toggle','modal');
+				$i.attr('data-target','#JDEItemModal');
+				$i.attr('data-item-code',id);
+				$i.addClass('white');
+				$i.find('.item').addClass(p_obj.slug);
+				
+			if(!$c) $c =  $cell.clone();
+			
+			$c.append($i);
+			if(id%2==0){
+				$carousel.flickity( 'append', $c );
+				$c = null;
+			}	
+			ctr++;
+		}
+		
+		//Fill buffer with MAX_THUMBS
+		if(ctr<MAX_THUMBS)
+			for(var i = ctr;i<=MAX_THUMBS;i){
+				i++;
+				var $i = $item.clone();
+					$i.find('.item').text(i);
+				if(!$c) $c =  $cell.clone();
+				$c.append($i);
+				if(i%2==0){
+					$carousel.flickity( 'append', $c );
+					$c = null;
+				}
+			}
+	
 	}
 	function addSprite(img,x,y,width,height,scale,opacity){
 		var path = img;
@@ -111,6 +157,12 @@ $(document).ready(function(){
 	        window.location.hash = target;
 	    });
 	}
+	function populateModal(modal,item,itemCode){
+		 modal.find('.jde-name').text(item.name);
+		 modal.find('.jde-image').attr('src',item.path);
+		 modal.find('.jde-price span').text(item.price);
+		 modal.find('.jde-btn-confirm').data('item-code',itemCode);
+	}
 	$('#JDEWarnModal .modal-body span').text(MAX_ATTCH);
 	$('#jde-build .jde-ui-item').click(function(){
 		if(!orderPlaced){
@@ -119,15 +171,12 @@ $(document).ready(function(){
 			$(this).toggleClass('active');
 		}
 	});
-	$('#JDEItemModal').on('show.bs.modal', function (event) {
-		 var button = $(event.relatedTarget)
+	$('#JDEItemModal').on('show.bs.modal', function (event,arguments) {
+		 var button = $(event.relatedTarget);
 		 var itemCode =  button.data('item-code');
 		 var item = PENDANTS[itemCode];
 		 var modal = $(this);
-		 modal.find('.jde-name').text(item.name);
-		 modal.find('.jde-image').attr('src',item.path);
-		 modal.find('.jde-price span').text(item.price);
-		 modal.find('.jde-btn-confirm').data('item-code',itemCode);
+		 populateModal(modal,item,itemCode);
 	});
 	$('#JDEWarnModal').on('show.bs.modal', function (event) {
 		if(orderPlaced){
