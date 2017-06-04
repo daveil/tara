@@ -2,20 +2,23 @@ $(document).ready(function(){
 	const THRESHOLD2FADE =  $(window).height() * 0.35;
 	const SCROLL_SPEED = 800;
 	const BG_SQ = 1650;
+	const JEWEL_DIR ='img/jewel/';
+	const JEWEL_PREFIX = '00-';
+	const JEWEL_SUFFIX = '.png';
 	const JEWEL_SCALE = 0.3;
-	const BASE_SCALE = 0.65;
+	const BASE_SCALE = 0.3;
 	const VIEW_HEIGHT = 1;
 	const WIDTH  = 1082;
 	const HEIGHT = 702;
 	const MAX_THUMBS = 12;
 	const PENDANTS = {
-		1:{name:'Celine', slug:'celine', path:'img/jewel/celine.png',price:25,width:200,height:220,type:'A'},
-		2:{name:'Ciara', slug:'ciara',  path:'img/jewel/ciara.png', price:20,width:200,height:220,type:'A'},
-		3:{name:'Rachel', slug:'rachel',  path:'img/jewel/rachel.png', price:15,width:200,height:220,type:'A'}
+		1:{name:'Celine', slug:'celine', price:25,width:487,height:647,type:'A'},
+		2:{name:'Ciara', slug:'ciara',  price:20,width:112,height:702,type:'A'},
+		3:{name:'Rachel', slug:'rachel',  price:15,width:179,height:702,type:'A'}
 	};
 	const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	const MAX_ATTCH = 3;
-	const BASE_Y = 55;
+	const BASE_Y = -190;
 	var pendantSprites = [];
 	var lastPosition=BASE_Y;
 	var orderPlaced = false;
@@ -24,8 +27,10 @@ $(document).ready(function(){
 	function buildBase(x,y){
 		APP.renderer.plugins.interaction.destroy();
 		$('#jde-canvas').prepend(APP.view);
-		addSprite('img/bg-base-earring-web.jpg',0,0,WIDTH,HEIGHT,1,1);
-		//addSprite('img/Base-A.png',x,y,2700,1018,BASE_SCALE);
+		addSprite('img/model/blank-side-view.jpg',0,0,WIDTH,HEIGHT,1,1);
+		addSprite('img/jewel/base-kimberly.png',x,y,177,200,BASE_SCALE);
+		addPendant(2);
+		addPendant(3);
 		computeTotal();
 		
 	}
@@ -94,8 +99,12 @@ $(document).ready(function(){
 		}
 		if(lastPosition<BASE_Y) lastPosition = BASE_Y;
 		var pendant = PENDANTS[itemCode];
-		var scale = JEWEL_SCALE;
-		var sprite = addSprite(pendant.path,0,lastPosition,pendant.width,pendant.height,scale);
+		var scale = pendant.scale||JEWEL_SCALE;
+		var path  = JEWEL_DIR;		
+		if(!pendantSprites.length)
+			path +=JEWEL_PREFIX;
+		path += pendant.slug+JEWEL_SUFFIX;
+		var sprite = addSprite(path,0,lastPosition,pendant.width,pendant.height,scale);
 		var pendant_height = (pendant.height*scale);
 		pendantSprites.push({height:pendant_height,sprite:sprite,price:pendant.price});
 		if(pendant.type=='A')
@@ -120,7 +129,7 @@ $(document).ready(function(){
 		$('#jde-place-order-link').hide();
 		if(pendantSprites.length==0){
 			$('#jde-place-order').attr('data-target','#JDEWarnModal');
-			$('#jde-build .jde-btn').attr('data-target','#JDEItemModal');
+			$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEItemModal');
 			if(!orderPlaced)
 				$('#JDEWarnModal .modal-body p').text('Add item first!');
 			
@@ -129,10 +138,10 @@ $(document).ready(function(){
 			$('#jde-place-order').hide();
 			$('#jde-place-order-link').show();
 			if(pendantSprites.length>=MAX_ATTCH&&!orderPlaced){
-				$('#jde-build .jde-btn').attr('data-target','#JDEWarnModal');
+				$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEWarnModal');
 				$('#JDEWarnModal .modal-body p').text('Oops! You can only add up to '+MAX_ATTCH+' item(s).');
 			}else{
-				$('#jde-build .jde-btn').attr('data-target','#JDEItemModal');
+				$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEItemModal');
 				$('#JDEWarnModal .modal-body p').text('Order placement successful. Thank you!');
 			}
 		}
@@ -158,8 +167,9 @@ $(document).ready(function(){
 	    });
 	}
 	function populateModal(modal,item,itemCode){
+		var path = JEWEL_DIR+item.slug+JEWEL_SUFFIX;
 		 modal.find('.jde-name').text(item.name);
-		 modal.find('.jde-image').attr('src',item.path);
+		 modal.find('.jde-image').attr('src',path);
 		 modal.find('.jde-price span').text(item.price);
 		 modal.find('.jde-btn-confirm').data('item-code',itemCode);
 	}
