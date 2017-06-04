@@ -6,14 +6,14 @@ $(document).ready(function(){
 	const JEWEL_PREFIX = '00-';
 	const JEWEL_SUFFIX = '.png';
 	const JEWEL_SCALE = 0.3;
-	const BASE_SCALE = 0.3;
+	const BASE_SCALE = 0.2;
 	const VIEW_HEIGHT = 1;
 	const WIDTH  = 1082;
 	const HEIGHT = 702;
 	const MAX_THUMBS = 12;
 	const PENDANTS = {
 		1:{name:'Celine', slug:'celine', price:25,width:487,height:647,type:'A'},
-		2:{name:'Ciara', slug:'ciara',  price:20,width:112,height:702,type:'A'},
+		2:{name:'Ciara', slug:'ciara', price:20,width:112,height:702,type:'A'},
 		3:{name:'Rachel', slug:'rachel',  price:15,width:179,height:702,type:'A'}
 	};
 	const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
@@ -29,8 +29,6 @@ $(document).ready(function(){
 		$('#jde-canvas').prepend(APP.view);
 		addSprite('img/model/blank-side-view.jpg',0,0,WIDTH,HEIGHT,1,1);
 		addSprite('img/jewel/base-kimberly.png',x,y,177,200,BASE_SCALE);
-		addPendant(2);
-		addPendant(3);
 		computeTotal();
 		
 	}
