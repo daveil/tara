@@ -1,10 +1,14 @@
  <div class="grid-canvas vertical hidden-sm hidden-xs">
         <div class="grid-container">
             <div class="grid-item">
-              <a href="#jde-build" class="item">1</a>
+              <a href="#jde-build" class="item">
+				1
+			  </a>
             </div>
-            <div class="grid-item tall wide">
-              <a href="#jde-build" class="item">2</a>
+            <div class="grid-item tall wide white">
+              <a href="#jde-build" class="item">
+				<img src="img/jewel/base-kimberly.png" alt="" />
+			  </a>
             </div>
             <div class="grid-item">
              <a href="#jde-build" class="item">3</a>

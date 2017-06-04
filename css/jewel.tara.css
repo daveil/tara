@@ -1,0 +1,17 @@
+.white .item{
+	background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+.celine{
+	background-image:url('../img/jewel/celine.png');
+	background-size: 127px !important;
+}
+.ciara{
+	background-image:url('../img/jewel/ciara.png');
+	background-size: 29px !important;
+}
+.rachel{
+	background-image:url('../img/jewel/rachel.png');
+	background-size: 43px !important;
+}

@@ -46,6 +46,11 @@
 .grid-item.wide{
 	width:370px;	
 }
+.grid-item.white{
+	background:#fff;
+	border: 1px solid #b8b8b8;
+	padding:5px;
+}
 .item{
 	color:white;
 	display: table-cell;
