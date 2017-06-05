@@ -43,6 +43,13 @@
 .grid-item.tall{
 	height:560px;
 }
+.grid-item img{
+	max-height: 170px;
+}
+.grid-item.tall img{
+	max-width: 360px;
+	max-height: 550px;
+}
 .grid-item.wide{
 	width:370px;	
 }

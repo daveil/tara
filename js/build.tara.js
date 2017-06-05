@@ -5,22 +5,26 @@ $(document).ready(function(){
 	const JEWEL_DIR ='img/jewel/';
 	const JEWEL_PREFIX = '00-';
 	const JEWEL_SUFFIX = '.png';
-	const JEWEL_SCALE = 0.3;
+	const JEWEL_SCALE = 0.2;
 	const BASE_SCALE = 0.2;
 	const VIEW_HEIGHT = 1;
 	const WIDTH  = 1082;
 	const HEIGHT = 702;
 	const MAX_THUMBS = 12;
+	const REGULAR  = 'R';
+	const ENDING =  'E';
 	const PENDANTS = {
-		1:{name:'Celine', slug:'celine', price:25,width:487,height:647,type:'A'},
-		2:{name:'Ciara', slug:'ciara', price:20,width:112,height:702,type:'A'},
-		3:{name:'Rachel', slug:'rachel',  price:15,width:179,height:702,type:'A'}
+		1:{name:'Celine', slug:'celine', price:25,width:487,height:647,altHeight:530,type:'R'},
+		2:{name:'Ciara', slug:'ciara', price:20,width:327,height:1386,altHeight:1221,type:'E'},
+		3:{name:'Rachel', slug:'rachel',  price:15,width:660,height:1823,altHeight:1694,type:'E'}
 	};
 	const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	const MAX_ATTCH = 3;
-	const BASE_Y = -190;
+	const BASE_Y = -220;
+	const ATTA_Y = -280;
+	const LOCK_OFFSET = 65;
 	var pendantSprites = [];
-	var lastPosition=BASE_Y;
+	var lastPosition=ATTA_Y;
 	var orderPlaced = false;
 	initAttachmentGrid();
 	buildBase(0,-300);
@@ -28,7 +32,7 @@ $(document).ready(function(){
 		APP.renderer.plugins.interaction.destroy();
 		$('#jde-canvas').prepend(APP.view);
 		addSprite('img/model/blank-side-view.jpg',0,0,WIDTH,HEIGHT,1,1);
-		addSprite('img/jewel/base-kimberly.png',x,y,177,200,BASE_SCALE);
+		addSprite('img/jewel/sprite/base/blake.png',x,y,459,550,0.12,1,{x:0.5,y:0});
 		computeTotal();
 		
 	}
@@ -75,12 +79,14 @@ $(document).ready(function(){
 			}
 	
 	}
-	function addSprite(img,x,y,width,height,scale,opacity){
+	function addSprite(img,x,y,width,height,scale,opacity,anchor){
 		var path = img;
 		var scale =  scale||1;
 		var opacity =  opacity || 1;
+		var anchor = anchor || {x:0.5,y:0.5};
+		console.log(anchor);
 		var sprite =  PIXI.Sprite.fromImage(path);
-			sprite.anchor.set(0.5);
+			sprite.anchor.set(anchor.x,anchor.y);
 			sprite.x=x+(WIDTH/2);
 			sprite.y=y+(HEIGHT/2);
 			sprite.width=width*scale||WIDTH;
@@ -95,18 +101,24 @@ $(document).ready(function(){
 			var max = PENDANTS.length-1;
 			itemCode = Math.round(Math.random()* (max - min) + min)+1;
 		}
-		if(lastPosition<BASE_Y) lastPosition = BASE_Y;
+		if(lastPosition<ATTA_Y) lastPosition = ATTA_Y;
 		var pendant = PENDANTS[itemCode];
-		var scale = pendant.scale||JEWEL_SCALE;
-		var path  = JEWEL_DIR;		
-		if(!pendantSprites.length)
+		var scale = JEWEL_SCALE;
+		var anchor = {x:0.5,y:0};
+		var path  = JEWEL_DIR+'sprite/atta/';		
+		var pendant_height = pendant.height;
+		if(!pendantSprites.length){
 			path +=JEWEL_PREFIX;
+			pendant_height = pendant.altHeight;
+		}
+		
+			
 		path += pendant.slug+JEWEL_SUFFIX;
-		var sprite = addSprite(path,0,lastPosition,pendant.width,pendant.height,scale);
-		var pendant_height = (pendant.height*scale);
-		pendantSprites.push({height:pendant_height,sprite:sprite,price:pendant.price,name:pendant.name,itemCode:itemCode});
-		if(pendant.type=='A')
-			lastPosition = lastPosition+pendant_height;
+		var sprite = addSprite(path,0,lastPosition,pendant.width,pendant_height,scale,1,anchor);
+		var pHeight =  Math.round((pendant_height-LOCK_OFFSET)*scale,2);
+		pendantSprites.push({height:pHeight,sprite:sprite,price:pendant.price,name:pendant.name,itemCode:itemCode});
+		if(pendant.type==REGULAR)
+			lastPosition = lastPosition+pHeight;
 		computeTotal();
 	}
 	function removePendant(index){
@@ -165,7 +177,7 @@ $(document).ready(function(){
 	    });
 	}
 	function populateModal(modal,item,itemCode){
-		var path = JEWEL_DIR+item.slug+JEWEL_SUFFIX;
+		var path = JEWEL_DIR+'preview/atta/'+item.slug+JEWEL_SUFFIX;
 		 modal.find('.jde-name').text(item.name);
 		 modal.find('.jde-image').attr('src',path);
 		 modal.find('.jde-price span').text(item.price);
