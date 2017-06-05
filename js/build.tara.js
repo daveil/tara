@@ -27,12 +27,12 @@ $(document).ready(function(){
 	var lastPosition=ATTA_Y;
 	var orderPlaced = false;
 	initAttachmentGrid();
-	buildBase(0,-300);
+	buildBase(0,-350);
 	function buildBase(x,y){
 		APP.renderer.plugins.interaction.destroy();
 		$('#jde-canvas').prepend(APP.view);
 		addSprite('img/model/blank-side-view.jpg',0,0,WIDTH,HEIGHT,1,1);
-		addSprite('img/jewel/sprite/base/blake.png',x,y,459,550,0.12,1,{x:0.5,y:0});
+		addSprite('img/jewel/sprite/base/base1.png',x,y,800,783,JEWEL_SCALE,1,{x:0.5,y:0});
 		computeTotal();
 		
 	}
