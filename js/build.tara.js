@@ -132,7 +132,10 @@ $(document).ready(function(){
 			var id =  $(this).data('item-code');
 			var base = BASES[id];
 			var path = JEWEL_DIR+'/sprite/base/'+base.slug+'.png';
+			if(baseSprite)
+				APP.stage.removeChild(baseSprite);
 			baseSprite = addSprite(path,BASE_X,BASE_Y,base.width,base.height,BASE_SCALE,1,{x:0.5,y:0});
+			
 			$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEItemModal');
 		}
 	}
