@@ -7,12 +7,21 @@ $(document).ready(function(){
 	const JEWEL_SUFFIX = '.png';
 	const JEWEL_SCALE = 0.2;
 	const BASE_SCALE = 0.2;
+	const BASE_X = 0;
+	const BASE_Y = -350;
 	const VIEW_HEIGHT = 1;
 	const WIDTH  = 1082;
 	const HEIGHT = 702;
+	const MAX_BASES = 10;
 	const MAX_THUMBS = 12;
 	const REGULAR  = 'R';
 	const ENDING =  'E';
+	const TALL =  'T';
+	const BASES = {
+		1:{name:'Base', slug:'base1', price:25,width:800,height:782, type:'R'},
+		3:{name:'Kimberly', slug:'kimberly', price:25,width:800,height:782,type:'R'},
+		2:{name:'Blake', slug:'blake', price:25,width:800,height:782, type:'T'},
+	};
 	const PENDANTS = {
 		1:{name:'Celine', slug:'celine', price:25,width:487,height:647,altHeight:530,type:'E'},
 		2:{name:'Ciara', slug:'ciara', price:20,width:327,height:1386,altHeight:1221,type:'E'},
@@ -24,19 +33,21 @@ $(document).ready(function(){
 	};
 	const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	const MAX_ATTCH = 3;
-	const BASE_Y = -220;
 	const ATTA_Y = -280;
 	const LOCK_OFFSET = 65;
+	var baseSprite;
 	var pendantSprites = [];
 	var lastPosition=ATTA_Y;
+	var lastPendantType;
 	var orderPlaced = false;
+	
+	initBaseGrid();
 	initAttachmentGrid();
-	buildBase(0,-350);
-	function buildBase(x,y){
+	buildBase();
+	function buildBase(){
 		APP.renderer.plugins.interaction.destroy();
 		$('#jde-canvas').prepend(APP.view);
 		addSprite('img/model/blank-side-view.jpg',0,0,WIDTH,HEIGHT,1,1);
-		addSprite('img/jewel/sprite/base/base1.png',x,y,800,783,JEWEL_SCALE,1,{x:0.5,y:0});
 		computeTotal();
 		
 	}
@@ -83,6 +94,47 @@ $(document).ready(function(){
 			}
 	
 	}
+	
+	function initBaseGrid(){
+		var $grid = $('.vertical>.grid-container').masonry({
+				itemSelector:'.grid-item',
+				gutter:10,
+				fitWidth: true
+		});		
+		var $item = $("<div class='grid-item'><a href='#jde-build' class='item'/></a>");         
+		var $c = null;
+		var ctr = 0;
+		for(var id in BASES){
+			var b_obj = BASES[id];
+			var $img = $('<img src="'+JEWEL_DIR+'/preview/base/'+b_obj.slug+'.png" alt="'+b_obj.name+'" />');
+			var $i = $item.clone();
+				$i.attr('id','base-'+id);
+				$i.attr('data-item-code',id);
+				$i.addClass('white');
+				$i.find('.item').append($img);	
+				if(b_obj.type==TALL)
+					$i.addClass('tall');
+			$grid.append($i).masonry('appended', $i );
+			ctr++;
+		}
+		//Fill buffer with MAX_BASES
+		if(ctr<MAX_BASES)
+			for(var i = ctr;i<MAX_BASES;i){
+				i++;
+				var $i = $item.clone();
+					$i.find('.item').text(i);
+				$grid.append($i).masonry('appended', $i );
+			}
+		$grid.masonry('layout');
+		setTimeout(function(){  $grid.masonry('layout'); }, 500);
+		$('.vertical>.grid-container .grid-item').on('click',onBaseSelect);
+		function onBaseSelect(){
+			var id =  $(this).data('item-code');
+			var base = BASES[id];
+			var path = JEWEL_DIR+'/sprite/base/'+base.slug+'.png';
+			baseSprite = addSprite(path,BASE_X,BASE_Y,base.width,base.height,BASE_SCALE,1,{x:0.5,y:0});
+		}
+	}
 	function addSprite(img,x,y,width,height,scale,opacity,anchor){
 		var path = img;
 		var scale =  scale||1;
@@ -123,6 +175,7 @@ $(document).ready(function(){
 		pendantSprites.push({height:pHeight,sprite:sprite,price:pendant.price,name:pendant.name,itemCode:itemCode});
 		if(pendant.type==REGULAR)
 			lastPosition = lastPosition+pHeight;
+		lastPendantType = pendant.type;
 		computeTotal();
 	}
 	function removePendant(index){
@@ -161,16 +214,20 @@ $(document).ready(function(){
 		}
 	}
 	function resetBuilder(href){
+		if(baseSprite)
+			APP.stage.removeChild(baseSprite);
 		if(pendantSprites.length)
 			for(var i in pendantSprites){
 				APP.stage.removeChild(pendantSprites[i].sprite);
 			}
+		baseSprite = null;
 		pendantSprites=[];
-		lastPosition = BASE_Y;
+		lastPosition = ATTA_Y;
 		orderPlaced=false;
 		computeTotal();
 		href=href||'#jde-select';
 		scrollTo(href);
+		
 	}
 	function scrollTo(target){
 		var $target = $(target);		
@@ -272,7 +329,7 @@ $(document).ready(function(){
 		if(i>=0)
 			removePendant(i);
 		else
-			lastPosition = BASE_Y;
+			lastPosition = ATTA_Y;
 	});
 	$('#jde-reset').click(function(){
 		resetBuilder();
