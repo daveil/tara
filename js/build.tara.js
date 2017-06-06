@@ -31,7 +31,7 @@ $(document).ready(function(){
 		6:{name:'Emma', slug:'emma',  price:15,width:1127,height:1639,altHeight:1506,type:'E'},
 		7:{name:'Kelly', slug:'kelly',  price:15,width:675,height:1762,altHeight:1628,type:'E'},
 		8:{name:'Sam', slug:'sam',  price:15,width:477,height:1394,altHeight:1257,type:'E'},
-		9:{name:'Attachment', slug:'attachment9',  price:15,width:954,height:1826,altHeight:1707,type:'E'},
+		9:{name:'Attachment', slug:'attachment9',  price:15,width:954,height:1826,altHeight:1707,type:'E'}
 	};
 	const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	const MAX_ATTCH = 3;
@@ -200,6 +200,13 @@ $(document).ready(function(){
 			lastPendantType = null;
 		}
 		pendantSprites.pop();
+		if(index>0) {
+			var itemCode = pendantSprites[index-1]['itemCode'];
+			var type = PENDANTS[itemCode].type;
+			lastPendantType =  type;
+		}else{
+			lastPendantType = null;
+		}
 		computeTotal();
 	}
 	function computeTotal(){
