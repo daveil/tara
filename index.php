@@ -129,6 +129,7 @@
 		  </div>
 		  <div class="modal-footer">
 				<button type="button" class="btn btn-default jde-btn-main" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-default jde-btn-main jde-btn-undo" data-dismiss="modal">Undo Last</button>
 		  </div>
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->

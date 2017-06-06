@@ -133,6 +133,7 @@ $(document).ready(function(){
 			var base = BASES[id];
 			var path = JEWEL_DIR+'/sprite/base/'+base.slug+'.png';
 			baseSprite = addSprite(path,BASE_X,BASE_Y,base.width,base.height,BASE_SCALE,1,{x:0.5,y:0});
+			$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEItemModal');
 		}
 	}
 	function addSprite(img,x,y,width,height,scale,opacity,anchor){
@@ -193,8 +194,11 @@ $(document).ready(function(){
 		}
 		$('#jde-total span').text(total);
 		$('#jde-undo,#jde-reset,#jde-place-order').show();
-		$('#jde-place-order-link').hide();
-		if(pendantSprites.length==0){
+		$('#jde-place-order-link,.jde-btn-undo').hide();
+		if(!baseSprite){
+				$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEWarnModal');
+				$('#JDEWarnModal .modal-body p').text('Select base jewelry first.');
+		}else if(pendantSprites.length==0){
 			$('#jde-place-order').attr('data-target','#JDEWarnModal');
 			$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEItemModal');
 			if(!orderPlaced)
@@ -207,6 +211,10 @@ $(document).ready(function(){
 			if(pendantSprites.length>=MAX_ATTCH&&!orderPlaced){
 				$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEWarnModal');
 				$('#JDEWarnModal .modal-body p').text('Oops! You can only add up to '+MAX_ATTCH+' item(s).');
+			}else if(lastPendantType==ENDING){
+				$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEWarnModal');
+				$('#JDEWarnModal .modal-body p').text('Oops! Last item added can not accept an attachment. Undo last action to change.');
+				$('.jde-btn-undo').show();
 			}else{
 				$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEItemModal');
 				$('#JDEWarnModal .modal-body p').text('Order placement successful. Thank you!');
@@ -324,7 +332,7 @@ $(document).ready(function(){
 		addPendant(itemCode);
 		$('#JDEItemModal').modal('hide');
 	});
-	$('#jde-undo').click(function(){
+	$('#jde-undo,.jde-btn-undo').click(function(){
 		var i = pendantSprites.length-1;
 		if(i>=0)
 			removePendant(i);
