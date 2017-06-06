@@ -29,7 +29,8 @@ $(document).ready(function(){
 		4:{name:'Attachment', slug:'attachment8', price:15,width:730,height:1135,altHeight:1012,type:'R'},
 		5:{name:'Diana', slug:'diana',  price:15,width:622,height:1666,altHeight:1545,type:'R'},
 		6:{name:'Emma', slug:'emma',  price:15,width:1127,height:1639,altHeight:1506,type:'E'},
-		7:{name:'Kelly', slug:'kelly',  price:15,width:675,height:1762,altHeight:1628,type:'E'}
+		7:{name:'Kelly', slug:'kelly',  price:15,width:675,height:1762,altHeight:1628,type:'E'},
+		8:{name:'Sam', slug:'sam',  price:15,width:622,height:1666,altHeight:1545,type:'R'},
 	};
 	const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	const MAX_ATTCH = 3;
@@ -187,6 +188,13 @@ $(document).ready(function(){
 		APP.stage.removeChild(pendant.sprite);
 		lastPosition = lastPosition-pendant.height;
 		pendantSprites.pop();
+		if(index>0) {
+			var itemCode = pendantSprites[index-1]['itemCode'];
+			var type = PENDANTS[itemCode].type;
+			lastPendantType =  type;
+		}else{
+			lastPendantType = null;
+		}
 		computeTotal();
 	}
 	function computeTotal(){
