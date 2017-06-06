@@ -18,7 +18,7 @@ $(document).ready(function(){
 	const ENDING =  'E';
 	const TALL =  'T';
 	const BASES = {
-		1:{name:'Base', slug:'base1', price:25,width:800,height:782, type:'R'},
+		1:{name:'Mari', slug:'mari', price:25,width:800,height:782, type:'R'},
 		3:{name:'Kimberly', slug:'kimberly', price:25,width:800,height:782,type:'R'},
 		2:{name:'Blake', slug:'blake', price:25,width:800,height:782, type:'T'},
 	};
