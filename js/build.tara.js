@@ -14,9 +14,13 @@ $(document).ready(function(){
 	const REGULAR  = 'R';
 	const ENDING =  'E';
 	const PENDANTS = {
-		1:{name:'Celine', slug:'celine', price:25,width:487,height:647,altHeight:530,type:'R'},
+		1:{name:'Celine', slug:'celine', price:25,width:487,height:647,altHeight:530,type:'E'},
 		2:{name:'Ciara', slug:'ciara', price:20,width:327,height:1386,altHeight:1221,type:'E'},
-		3:{name:'Rachel', slug:'rachel',  price:15,width:660,height:1823,altHeight:1694,type:'E'}
+		3:{name:'Rachel', slug:'rachel',  price:15,width:660,height:1823,altHeight:1694,type:'E'},
+		4:{name:'Attachment', slug:'attachment8', price:15,width:730,height:1135,altHeight:1012,type:'R'},
+		5:{name:'Diana', slug:'diana',  price:15,width:622,height:1666,altHeight:1545,type:'R'},
+		6:{name:'Emma', slug:'emma',  price:15,width:1127,height:1639,altHeight:1506,type:'E'},
+		7:{name:'Kelly', slug:'kelly',  price:15,width:675,height:1762,altHeight:1628,type:'E'}
 	};
 	const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	const MAX_ATTCH = 3;
