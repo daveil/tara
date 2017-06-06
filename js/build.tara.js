@@ -5,7 +5,7 @@ $(document).ready(function(){
 	const JEWEL_DIR ='img/jewel/';
 	const JEWEL_PREFIX = '00-';
 	const JEWEL_SUFFIX = '.png';
-	const JEWEL_SCALE = 0.2;
+	const JEWEL_SCALE = 0.13;
 	const BASE_SCALE = 0.2;
 	const BASE_X = 0;
 	const BASE_Y = -350;
@@ -30,8 +30,8 @@ $(document).ready(function(){
 		5:{name:'Diana', slug:'diana',  price:15,width:622,height:1666,altHeight:1545,type:'R'},
 		6:{name:'Emma', slug:'emma',  price:15,width:1127,height:1639,altHeight:1506,type:'E'},
 		7:{name:'Kelly', slug:'kelly',  price:15,width:675,height:1762,altHeight:1628,type:'E'},
-		8:{name:'Sam', slug:'sam',  price:15,width:477,height:1394,altHeight:1257,type:'R'},
-		9:{name:'Attachment', slug:'attachment',  price:15,width:954,height:1826,altHeight:1707,type:'E'},
+		8:{name:'Sam', slug:'sam',  price:15,width:477,height:1394,altHeight:1257,type:'E'},
+		9:{name:'Attachment', slug:'attachment9',  price:15,width:954,height:1826,altHeight:1707,type:'E'},
 	};
 	const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	const MAX_ATTCH = 3;
@@ -146,7 +146,6 @@ $(document).ready(function(){
 		var scale =  scale||1;
 		var opacity =  opacity || 1;
 		var anchor = anchor || {x:0.5,y:0.5};
-		console.log(anchor);
 		var sprite =  PIXI.Sprite.fromImage(path);
 			sprite.anchor.set(anchor.x,anchor.y);
 			sprite.x=x+(WIDTH/2);
@@ -179,16 +178,20 @@ $(document).ready(function(){
 		var sprite = addSprite(path,0,lastPosition,pendant.width,pendant_height,scale,1,anchor);
 		var pHeight =  Math.round((pendant_height-LOCK_OFFSET)*scale,2);
 		pendantSprites.push({height:pHeight,sprite:sprite,price:pendant.price,name:pendant.name,itemCode:itemCode});
-		if(pendant.type==REGULAR)
-			lastPosition = lastPosition+pHeight;
+		console.log('Before',lastPosition,pHeight);
+		lastPosition = lastPosition+pHeight;
+		console.log('After',lastPosition);
 		lastPendantType = pendant.type;
 		computeTotal();
 	}
 	function removePendant(index){
 		var pendant = pendantSprites[index];
 		APP.stage.removeChild(pendant.sprite);
+		console.log('Before undo',lastPosition,pendant.height);
+		
 		lastPosition = lastPosition-pendant.height;
 		
+		console.log('After undo',lastPosition);
 		if(index>0) {
 			var itemCode = pendantSprites[index-1]['itemCode'];
 			var type = PENDANTS[itemCode].type;
