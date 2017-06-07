@@ -66,6 +66,8 @@ $(document).ready(function(){
 			var $i = $item.clone();
 				$i.attr('id',id);
 				$i.attr('data-toggle','modal');
+				$i.attr('data-backdrop','static');
+				$i.attr('data-keyboard','false');
 				$i.attr('data-target','#JDEItemModal');
 				$i.attr('data-item-code',id);
 				$i.addClass('white');
