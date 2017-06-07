@@ -101,10 +101,27 @@ canvas{
 #begin-now{
 	background: none !important;
 	border: 1px solid #fff !important;
+	padding: 5px;
+}
+#begin-now:active,#begin-now:focus{
+	color:#fff;
+}
+#return-to-main{
+	position: absolute;
+    bottom: 0;
+    margin-bottom: 50px;
+    right: 0;
+    font-size: 12pt;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 2px;
+    width: 40%;
+    text-align: center;
 }
 .jde-header,.jde-footer{
 	text-align: center;
 	margin-top:20px;
+	margin-bottom: 40px;
 }
 .jde-header h2,.jde-footer h2{
 	padding: 5px 45px;
@@ -369,7 +386,7 @@ canvas{
 	display:table-row;
 }
 #JDEItemModal .modal-lg .modal-body .jde-image{
-	width:80%;
+	width:53%;
 	margin: 0 auto;
 	
 }
@@ -435,7 +452,8 @@ canvas{
 
 .parallax {
     /* The background used */
-    background-image: url('../img/hero-bg.jpg');
+   
+    background-image: url('../img/hero-bg-web-3.jpg');
 
     /* Set a specific height */
     min-height:  100vh;
@@ -444,11 +462,32 @@ canvas{
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
     margin-top: 0px;
 }
 
+
+
+@media (max-width: 992px){
+	.parallax{
+		background-attachment: initial;
+	}
+	#jde-intro img{
+		margin:0 auto;
+		margin-bottom:10px;
+	}
+	#return-to-main{
+		width:100%;
+	}
+}
 @media (max-width:768px){
+	.parallax {
+	    background-position: bottom;
+	    background-size: 100%;
+	    background-color: #0b1230;
+	    background-attachment: initial;
+	    padding-top:15px;
+	}
 	#jde-intro img{
 		margin: 30px auto;
     	width: 80px;
@@ -458,16 +497,21 @@ canvas{
     	font-size: 30pt;
 	}
 	#jde-intro h2 span{
-		font-size: 12pt;
-    	line-height: 18pt;
+		font-size: 10pt;
+    	line-height: 10pt;
 	}
 	#jde-intro .jde-btn-main{
-		margin-top:15vh;
+		margin-top:2vh;
+	}
+	#return-to-main{
+		width:100%;
+		text-indent: 12px;
+		font-size:10pt;
 	}
 	.jde-header h2, .jde-footer h2{
 		padding: 5px 10px;
 		letter-spacing: 1px;
-    	font-size: 10pt;
+    	font-size: 14pt;
 	}
 	.jde-header p, .jde-footer p{
 		font-size: 8pt;
@@ -499,16 +543,28 @@ canvas{
 		margin: 10px auto;
 	}
 	.jde-header{
-		margin-top:80px;
+		margin-top:40px;
+		margin-bottom:25px;
+	}
+	#jde-undo, #jde-reset, #jde-place-order, #jde-place-order-link{
+		padding:15px;
 	}
 }
 @media (min-width:536px)  and (max-width:750px){
 	
+	.jde-header{
+		margin-top:60px;
+		margin-bottom:25px;
+	}
 	#jde-canvas{
 		width:100%;
 	}
 }
 @media (min-width:250px) and (max-width:535px){
+	.jde-header{
+		margin-top:60px;
+		margin-bottom:25px;
+	}
 	#top-nav .container-fluid{
 		padding:5px 20px;
 	}

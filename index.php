@@ -4,18 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tara Jewelry Builder</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>TARA  Jewelry Builder | The Artisan Row Accessories</title>
 	<link href="libs/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="libs/bower_components/flickity/dist/flickity.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/tara.css<?php echo '?a='.rand();?>" />
 	<link rel="stylesheet" href="css/grid.tara.css<?php echo '?a='.rand();?>" />
+	<link rel="stylesheet" href="css/jewel.tara.css<?php echo '?a='.rand();?>" />
 	<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
   <body>
-	
 	<div class="jde-ui-panel jde-ui-table jde-full-h parallax" id="jde-intro">
     	<div class="container ">
     		<div class="row">
@@ -24,9 +25,10 @@
     			</div>
     			<div class="col-md-6  text-center">
 			    	<h2>Assemble<br/><span>Your own fine jewelry</span></h2>
-			    	<a id="begin-now" href="#jde-select" class="btn btn-default jde-btn jde-btn-main">Begin now</a>	
+			    	<a id="begin-now" href="#jde-select" class="btn btn-xs btn-default jde-btn jde-btn-main">Begin now</a>	
     			</div>
     		</div>
+    		<a href="http://ishoptara.com/" id="return-to-main">Return to main store</a>
     	</div>
     </div>
     <?php include('top-nav.php');?>
@@ -64,20 +66,20 @@
 				<div class="row">
 					<div class="col-md-10 col-md-offset-1">
 						<div class="row">
-							<div class="col-md-4">
+							<div class="col-md-4 col-sm-4">
 								<button class="btn btn-default btn-block jde-btn-main" id="jde-undo">
 								UNDO LAST
 								</button>
 							</div>
-							<div class="col-md-4">
-								<button class="btn btn-primary btn-block jde-btn-main" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal">
+							<div class="col-md-4 col-sm-4">
+								<button class="btn btn-primary btn-block jde-btn-main" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal" data-backdrop="static" data-keyboard="false">
 								PLACE  ORDER
 								</button>
-								<a class="btn btn-primary btn-block jde-btn-main" id="jde-place-order-link" data-toggle="modal" data-target="#JDEOrderSummary">
+								<a class="btn btn-primary btn-block jde-btn-main" id="jde-place-order-link" data-toggle="modal" data-target="#JDEOrderSummary" data-backdrop="static" data-keyboard="false">
 								PLACE  ORDER
 								</a>
 							</div>
-							<div class="col-md-4">
+							<div class="col-md-4 col-sm-4">
 								<button class="btn btn-default btn-block jde-btn-main" id="jde-reset">
 								BEGIN AGAIN
 								</button>
@@ -127,6 +129,7 @@
 		  </div>
 		  <div class="modal-footer">
 				<button type="button" class="btn btn-default jde-btn-main" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-default jde-btn-main jde-btn-undo" data-dismiss="modal">Undo Last</button>
 		  </div>
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
@@ -187,6 +190,7 @@
 							<td>-</td>
 						</tr>
 					</tbody>
+					<tfoot></tfoot>
 				</table>
 				</div>
 			</div>				
