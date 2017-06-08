@@ -37,7 +37,7 @@ $(document).ready(function(){
 	const MAX_ATTCH = 3;
 	const ATTA_Y = -280;
 	const LOCK_OFFSET = 65;
-	var baseSprite;
+	var baseSprite,baseSelected;
 	var pendantSprites = [];
 	var lastPosition=ATTA_Y;
 	var lastPendantType;
@@ -64,10 +64,13 @@ $(document).ready(function(){
 		for(var id in PENDANTS){
 			var p_obj = PENDANTS[id];
 			var $i = $item.clone();
-				$i.attr('id',id);
+				$i.attr('id','atta-'+id);
 				$i.attr('data-toggle','modal');
+				$i.attr('data-backdrop','static');
+				$i.attr('data-keyboard','false');
 				$i.attr('data-target','#JDEItemModal');
 				$i.attr('data-item-code',id);
+				$i.attr('data-item-type','atta');
 				$i.addClass('white');
 				$i.find('.item').addClass(p_obj.slug);
 				
@@ -103,16 +106,26 @@ $(document).ready(function(){
 				gutter:10,
 				fitWidth: true
 		});		
-		var $item = $("<div class='grid-item'><a href='#jde-build' class='item'/></a>");         
+		var $item = $("<div class='grid-item'><a class='item'/></a>");         
 		var $c = null;
 		var ctr = 0;
 		for(var id in BASES){
 			var b_obj = BASES[id];
 			var $img = $('<img src="'+JEWEL_DIR+'/preview/base/'+b_obj.slug+'.png" alt="'+b_obj.name+'" />');
 			var $i = $item.clone();
+			var $a = $i.find('a');
+				//Item attributes
 				$i.attr('id','base-'+id);
 				$i.attr('data-item-code',id);
 				$i.addClass('white');
+				//Modal attributes
+				$a.attr('data-item-type','base');
+				$a.attr('data-item-code',id);
+				$a.attr('data-toggle','modal');
+				$a.attr('data-backdrop','static');
+				$a.attr('data-keyboard','false');
+				$a.attr('data-target','#JDEItemModal');
+				
 				$i.find('.item').append($img);	
 				if(b_obj.type==TALL)
 					$i.addClass('tall');
@@ -129,18 +142,13 @@ $(document).ready(function(){
 			}
 		$grid.masonry('layout');
 		setTimeout(function(){  $grid.masonry('layout'); }, 500);
-		$('.vertical>.grid-container .grid-item').on('click',onBaseSelect);
+		/* $('.vertical>.grid-container .grid-item').on('click',onBaseSelect);
 		function onBaseSelect(){
 			var id =  $(this).data('item-code');
-			var base = BASES[id];
-			var path = JEWEL_DIR+'/sprite/base/'+base.slug+'.png';
-			if(baseSprite)
-				APP.stage.removeChild(baseSprite);
-			baseSprite = addSprite(path,BASE_X,BASE_Y,base.width,base.height,BASE_SCALE,1,{x:0.5,y:0});
 			
-			$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEItemModal');
-		}
+		} */
 	}
+	
 	function addSprite(img,x,y,width,height,scale,opacity,anchor){
 		var path = img;
 		var scale =  scale||1;
@@ -155,6 +163,21 @@ $(document).ready(function(){
 			sprite.alpha=opacity;
 		APP.stage.addChild(sprite);
 		return sprite;
+	}
+	function addBase(itemCode){
+		var base = BASES[itemCode];
+		var path = JEWEL_DIR+'/sprite/base/'+base.slug+'.png';
+		if(baseSprite)
+			removeBase(baseSprite);
+		baseSprite = addSprite(path,BASE_X,BASE_Y,base.width,base.height,BASE_SCALE,1,{x:0.5,y:0});
+		baseSelected = base;
+		$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEItemModal');
+		scrollTo('#jde-build');
+		computeTotal();
+	}
+	function removeBase(sprite){
+		APP.stage.removeChild(sprite);
+		
 	}
 	function addPendant(itemCode){
 		if(itemCode==undefined){
@@ -211,6 +234,8 @@ $(document).ready(function(){
 	}
 	function computeTotal(){
 		var total = 0;
+		if(baseSelected)
+			total+=baseSelected.price;
 		for(var i in pendantSprites){
 			var pendant = pendantSprites[i];
 			total += pendant.price;
@@ -252,6 +277,7 @@ $(document).ready(function(){
 				APP.stage.removeChild(pendantSprites[i].sprite);
 			}
 		baseSprite = null;
+		basePrice = 0;
 		pendantSprites=[];
 		lastPosition = ATTA_Y;
 		orderPlaced=false;
@@ -268,12 +294,13 @@ $(document).ready(function(){
 	        window.location.hash = target;
 	    });
 	}
-	function populateModal(modal,item,itemCode){
-		var path = JEWEL_DIR+'preview/atta/'+item.slug+JEWEL_SUFFIX;
+	function populateModal(modal,item,itemCode,itemType){
+		var path = JEWEL_DIR+'preview/'+itemType+'/'+item.slug+JEWEL_SUFFIX;
 		 modal.find('.jde-name').text(item.name);
 		 modal.find('.jde-image').attr('src',path);
 		 modal.find('.jde-price span').text(item.price);
 		 modal.find('.jde-btn-confirm').data('item-code',itemCode);
+		 modal.find('.jde-btn-confirm').data('item-type',itemType);
 	}
 	$('#JDEWarnModal .modal-body span').text(MAX_ATTCH);
 	$('#jde-build .jde-ui-item').click(function(){
@@ -286,9 +313,19 @@ $(document).ready(function(){
 	$('#JDEItemModal').on('show.bs.modal', function (event,arguments) {
 		 var button = $(event.relatedTarget);
 		 var itemCode =  button.data('item-code');
-		 var item = PENDANTS[itemCode];
+		 var itemType =  button.data('item-type');
+		 var item;
+		 switch(itemType){
+			case 'base':
+				item  = BASES[itemCode];
+			break;
+			case 'atta':
+				item  = PENDANTS[itemCode];
+			break;
+			
+		 }
 		 var modal = $(this);
-		 populateModal(modal,item,itemCode);
+		 populateModal(modal,item,itemCode,itemType);
 	});
 	$('#JDEWarnModal').on('show.bs.modal', function (event) {
 		if(orderPlaced){
@@ -306,6 +343,13 @@ $(document).ready(function(){
 			$table.html('');
 		//Build summary table
 		var summary = {};
+			//Base
+			summary['0']={
+				name:baseSelected.name,
+				price:baseSelected.price,
+				quantity:1,
+				amount:baseSelected.price
+			};
 		for(var i in pendantSprites){
 			var pendant =  pendantSprites[i];
 			var itemCode = pendant.itemCode;
@@ -352,7 +396,16 @@ $(document).ready(function(){
 	
 	$('.jde-btn-confirm').click(function(){
 		var itemCode =  $(this).data('item-code');
-		addPendant(itemCode);
+		var itemType =  $(this).data('item-type');
+		switch(itemType){
+			case 'base':
+				addBase(itemCode);
+			break;
+			case 'atta':
+				addPendant(itemCode);
+			break;
+		}
+		
 		$('#JDEItemModal').modal('hide');
 	});
 	$('#jde-undo,.jde-btn-undo').click(function(){

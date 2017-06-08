@@ -72,10 +72,10 @@
 								</button>
 							</div>
 							<div class="col-md-4 col-sm-4">
-								<button class="btn btn-primary btn-block jde-btn-main" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal">
+								<button class="btn btn-primary btn-block jde-btn-main" id="jde-place-order" data-toggle="modal" data-target="#JDEPlaceOrderModal" data-backdrop="static" data-keyboard="false">
 								PLACE  ORDER
 								</button>
-								<a class="btn btn-primary btn-block jde-btn-main" id="jde-place-order-link" data-toggle="modal" data-target="#JDEOrderSummary">
+								<a class="btn btn-primary btn-block jde-btn-main" id="jde-place-order-link" data-toggle="modal" data-target="#JDEOrderSummary" data-backdrop="static" data-keyboard="false">
 								PLACE  ORDER
 								</a>
 							</div>
