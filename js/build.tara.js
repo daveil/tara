@@ -430,6 +430,9 @@ $(document).ready(function(){
 	    e.preventDefault();
 	    var target = this.hash;
 		scrollTo(target);
+		if(target=='#jde-select'&&!baseSelected){
+			$('.vertical>.grid-container').masonry('layout');
+		}
 	});
 	$(window).scroll(function() {
 		var position = $(window).scrollTop();
@@ -439,5 +442,5 @@ $(document).ready(function(){
 		$('#top-nav').css({'opacity':1-opacity});
 		
 	});
-	
+	scrollTo('#jde-intro');
 });
