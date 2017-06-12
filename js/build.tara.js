@@ -5,7 +5,7 @@ $(document).ready(function(){
 	const JEWEL_DIR ='img/jewel/';
 	const JEWEL_PREFIX = '00-';
 	const JEWEL_SUFFIX = '.png';
-	const JEWEL_SCALE = 1.25;
+	const JEWEL_SCALE = 1;
 	const BASE_SCALE = 0.2;
 	const BASE_X = 0;
 	const BASE_Y = -350;
@@ -23,20 +23,20 @@ $(document).ready(function(){
 		2:{name:'Blake', slug:'blake', price:25,width:800,height:782, type:'T'},
 	};
 	const PENDANTS = {
-		1:{name:'Celine', slug:'celine', price:25,width:45,height:60,altHeight:49,type:'E'},
-		2:{name:'Ciara', slug:'ciara', price:20,width:30,height:126,altHeight:113,type:'E'},
-		3:{name:'Rachel', slug:'rachel',  price:15,width:61,height:168,altHeight:156,type:'E'},
-		4:{name:'Attachment', slug:'attachment8', price:15,width:67,height:105,altHeight:93,type:'R'},
-		5:{name:'Diana', slug:'diana',  price:15,width:37,height:154,altHeight:143,type:'R'},
-		6:{name:'Emma', slug:'emma',  price:15,width:104,height:151,altHeight:139,type:'E'},
-		7:{name:'Kelly', slug:'kelly',  price:15,width:62,height:163,altHeight:150,type:'E'},
-		8:{name:'Sam', slug:'sam',  price:15,width:44,height:129,altHeight:116,type:'E'},
-		9:{name:'Attachment', slug:'attachment9',  price:15,width:88,height:169,altHeight:158,type:'R'}
+		1:{name:'Celine', slug:'celine', price:25,width:67,height:89,altHeight:73,type:'E'},
+		2:{name:'Ciara', slug:'ciara', price:20,width:45,height:188,altHeight:168,type:'E'},
+		3:{name:'Rachel', slug:'rachel',  price:15,width:91,height:251,altHeight:233,type:'E'},
+		4:{name:'Attachment', slug:'attachment8', price:15,width:100,height:156,altHeight:139,type:'R'},
+		5:{name:'Diana', slug:'diana',  price:15,width:55,height:229,altHeight:213,type:'R'},
+		6:{name:'Emma', slug:'emma',  price:15,width:155,height:225,altHeight:207,type:'E'},
+		7:{name:'Kelly', slug:'kelly',  price:15,width:93,height:242,altHeight:224,type:'E'},
+		8:{name:'Sam', slug:'sam',  price:15,width:66,height:192,altHeight:173,type:'E'},
+		9:{name:'Attachment', slug:'attachment9',  price:15,width:131,height:251,altHeight:235,type:'R'}
 	};
 	const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	const MAX_ATTCH = 3;
 	const ATTA_Y = -280;
-	const LOCK_OFFSET = 10;
+	const LOCK_OFFSET = 15;
 	var baseSprite,baseSelected;
 	var pendantSprites = [];
 	var lastPosition=ATTA_Y;
