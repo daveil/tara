@@ -5,7 +5,7 @@ $(document).ready(function(){
 	const JEWEL_DIR ='img/jewel/';
 	const JEWEL_PREFIX = '00-';
 	const JEWEL_SUFFIX = '.png';
-	const JEWEL_SCALE = 0.13;
+	const JEWEL_SCALE = 1;
 	const BASE_SCALE = 0.2;
 	const BASE_X = 0;
 	const BASE_Y = -350;
@@ -23,15 +23,15 @@ $(document).ready(function(){
 		2:{name:'Blake', slug:'blake', price:25,width:800,height:782, type:'T'},
 	};
 	const PENDANTS = {
-		1:{name:'Celine', slug:'celine', price:25,width:487,height:647,altHeight:530,type:'E'},
-		2:{name:'Ciara', slug:'ciara', price:20,width:327,height:1386,altHeight:1221,type:'E'},
-		3:{name:'Rachel', slug:'rachel',  price:15,width:660,height:1823,altHeight:1694,type:'E'},
-		4:{name:'Attachment', slug:'attachment8', price:15,width:730,height:1135,altHeight:1012,type:'R'},
-		5:{name:'Diana', slug:'diana',  price:15,width:622,height:1666,altHeight:1545,type:'R'},
-		6:{name:'Emma', slug:'emma',  price:15,width:1127,height:1639,altHeight:1506,type:'E'},
-		7:{name:'Kelly', slug:'kelly',  price:15,width:675,height:1762,altHeight:1628,type:'E'},
-		8:{name:'Sam', slug:'sam',  price:15,width:477,height:1394,altHeight:1257,type:'E'},
-		9:{name:'Attachment', slug:'attachment9',  price:15,width:954,height:1826,altHeight:1707,type:'R'}
+		1:{name:'Celine', slug:'celine', price:25,width:45,height:60,altHeight:49,type:'E'},
+		2:{name:'Ciara', slug:'ciara', price:20,width:30,height:126,altHeight:113,type:'E'},
+		3:{name:'Rachel', slug:'rachel',  price:15,width:61,height:168,altHeight:156,type:'E'},
+		4:{name:'Attachment', slug:'attachment8', price:15,width:67,height:105,altHeight:93,type:'R'},
+		5:{name:'Diana', slug:'diana',  price:15,width:37,height:154,altHeight:143,type:'R'},
+		6:{name:'Emma', slug:'emma',  price:15,width:104,height:151,altHeight:139,type:'E'},
+		7:{name:'Kelly', slug:'kelly',  price:15,width:62,height:163,altHeight:150,type:'E'},
+		8:{name:'Sam', slug:'sam',  price:15,width:44,height:129,altHeight:116,type:'E'},
+		9:{name:'Attachment', slug:'attachment9',  price:15,width:88,height:169,altHeight:158,type:'R'}
 	};
 	const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	const MAX_ATTCH = 3;
@@ -166,7 +166,7 @@ $(document).ready(function(){
 	}
 	function addBase(itemCode){
 		var base = BASES[itemCode];
-		var path = JEWEL_DIR+'/sprite/base/'+base.slug+'.png';
+		var path = JEWEL_DIR+'/sprite/1x/base/'+base.slug+'.png';
 		if(baseSprite)
 			removeBase(baseSprite);
 		baseSprite = addSprite(path,BASE_X,BASE_Y,base.width,base.height,BASE_SCALE,1,{x:0.5,y:0});
@@ -189,7 +189,7 @@ $(document).ready(function(){
 		var pendant = PENDANTS[itemCode];
 		var scale = JEWEL_SCALE;
 		var anchor = {x:0.5,y:0};
-		var path  = JEWEL_DIR+'sprite/atta/';		
+		var path  = JEWEL_DIR+'sprite/1x/atta/';		
 		var pendant_height = pendant.height;
 		if(!pendantSprites.length){
 			path +=JEWEL_PREFIX;
