@@ -5,7 +5,7 @@ $(document).ready(function(){
 	const JEWEL_DIR ='img/jewel/';
 	const JEWEL_PREFIX = '00-';
 	const JEWEL_SUFFIX = '.png';
-	const JEWEL_SCALE = 1;
+	const JEWEL_SCALE = 1.25;
 	const BASE_SCALE = 0.2;
 	const BASE_X = 0;
 	const BASE_Y = -350;
@@ -36,7 +36,7 @@ $(document).ready(function(){
 	const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	const MAX_ATTCH = 3;
 	const ATTA_Y = -280;
-	const LOCK_OFFSET = 65;
+	const LOCK_OFFSET = 10;
 	var baseSprite,baseSelected;
 	var pendantSprites = [];
 	var lastPosition=ATTA_Y;
