@@ -42,7 +42,7 @@ $(document).ready(function(){
 	var lastPosition=ATTA_Y;
 	var lastPendantType;
 	var orderPlaced = false;
-	
+	var orderSummary = [];
 	initBaseGrid();
 	initAttachmentGrid();
 	buildBase();
@@ -281,6 +281,7 @@ $(document).ready(function(){
 		pendantSprites=[];
 		lastPosition = ATTA_Y;
 		orderPlaced=false;
+		orderSummary = [];
 		computeTotal();
 		href=href||'#jde-select';
 		scrollTo(href);
@@ -301,6 +302,34 @@ $(document).ready(function(){
 		 modal.find('.jde-price span').text(item.price);
 		 modal.find('.jde-btn-confirm').data('item-code',itemCode);
 		 modal.find('.jde-btn-confirm').data('item-type',itemType);
+	}
+	function submitOrder(){
+		var name = $('#full-name').val();
+		var email = $('#email').val();
+		var address = $('#address-1').val();
+			address += ';'+$('#address-2').val();
+			address += ';'+$('#address-3').val();
+		var data = {
+				name:name,
+				email:email,
+				address:address,
+				orderSummary:orderSummary
+		};
+		var endpoint = window.location.origin+window.location.pathname;
+			endpoint += 'scripts/email.php';
+		var config = {};
+			config.url = endpoint;
+			config.type ='POST';
+			config.dateType ='json';
+			config.cache = false;
+			config.data = data;
+			config.success = function (response){
+				console.log(response);
+			};
+			config.error = function (response){
+				console.log(response);
+			};
+		$.ajax(config);
 	}
 	$('#JDEWarnModal .modal-body span').text(MAX_ATTCH);
 	$('#jde-build .jde-ui-item').click(function(){
@@ -370,6 +399,7 @@ $(document).ready(function(){
 			}
 			summary[itemCode] = item;
 		}
+		orderSummary = [];
 		for(var code in summary){
 			var item =  summary[code];
 			var row  = '<tr>';
@@ -379,6 +409,15 @@ $(document).ready(function(){
 				row += '<td>'+item.amount+'</td>';
 				row += '</tr>';
 			$table.append(row);
+			var order = {
+				itemCode:code,
+				name:item.name,
+				price:item.price,
+				quantity:item.quantity,
+				amount:item.amount,
+				
+			}
+			orderSummary.push(order);
 		}
 		var computedTotal = $('#jde-total span').text();
 		var total  ='<tr>';
@@ -386,6 +425,7 @@ $(document).ready(function(){
 			total +='<td>'+computedTotal+'</td>';
 			total +='</tr>';
 		$footer.html(total);
+		orderSummary.push({total:computedTotal});
 	}).on('hidden.bs.modal', function (event) {
 		var $table = $('#JDEOrderSummary table tbody');
 		var $footer = $('#JDEOrderSummary table tfoot');
@@ -420,7 +460,9 @@ $(document).ready(function(){
 	});
 	$('#jde-submit-order').click(function(){
 		orderPlaced = true;
+		submitOrder();
 		resetBuilder('#jde-intro');
+		
 	});
 	$('#jde-place-order-link').click(function(){
 		orderPlaced = true;

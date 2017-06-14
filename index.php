@@ -144,17 +144,17 @@
 				<form id="JDEOrderRequest">
 					<div class="form-group">
 						<label >Full name</label>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" id="full-name">
 					</div>
 					<div class="form-group">
 						<label >Email</label>
-						<input type="text" class="form-control">
+						<input type="email" class="form-control" id="email">
 					</div>
 					<div class="form-group">
 						<label >Shipping Address</label>
-						<input type="text" class="form-control">
-						<input type="text" class="form-control">
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" id="address-1">
+						<input type="text" class="form-control" id="address-2">
+						<input type="text" class="form-control" id="address-3">
 					</div>
 				</form>
 		  </div>
