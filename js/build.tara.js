@@ -12,14 +12,14 @@ $(document).ready(function(){
 	const VIEW_HEIGHT = 1;
 	const WIDTH  = 1082;
 	const HEIGHT = 702;
-	const MAX_BASES = 10;
+	const MAX_BASES = 3;
 	const MAX_THUMBS = 12;
 	const REGULAR  = 'R';
 	const ENDING =  'E';
 	const TALL =  'T';
 	const BASES = {
-		1:{name:'Mari', slug:'mari', price:25,width:800,height:782, type:'R'},
-		3:{name:'Kimberly', slug:'kimberly', price:25,width:800,height:782,type:'R'},
+		1:{name:'Mari', slug:'mari', price:25,width:800,height:782, type:'T'},
+		3:{name:'Kimberly', slug:'kimberly', price:25,width:800,height:782,type:'T'},
 		2:{name:'Blake', slug:'blake', price:25,width:800,height:782, type:'T'},
 	};
 	const PENDANTS = {
@@ -101,11 +101,9 @@ $(document).ready(function(){
 	}
 	
 	function initBaseGrid(){
-		var $grid = $('.vertical>.grid-container').masonry({
-				itemSelector:'.grid-item',
-				gutter:10,
-				fitWidth: true
-		});		
+		var $grid = $('.vertical>.grid-container').flickity(
+				{ "cellAlign": "center", "contain": true , "pageDots": false }
+		);		
 		var $item = $("<div class='grid-item'><a class='item'/></a>");         
 		var $c = null;
 		var ctr = 0;
@@ -129,7 +127,8 @@ $(document).ready(function(){
 				$i.find('.item').append($img);	
 				if(b_obj.type==TALL)
 					$i.addClass('tall');
-			$grid.append($i).masonry('appended', $i );
+			$grid.flickity( 'append', $i );
+			//$grid.append($i).masonry('appended', $i );
 			ctr++;
 		}
 		//Fill buffer with MAX_BASES
@@ -140,8 +139,8 @@ $(document).ready(function(){
 					$i.find('.item').text(i);
 				$grid.append($i).masonry('appended', $i );
 			}
-		$grid.masonry('layout');
-		setTimeout(function(){  $grid.masonry('layout'); }, 500);
+		//$grid.masonry('layout');
+		//setTimeout(function(){  $grid.masonry('layout'); }, 500);
 		/* $('.vertical>.grid-container .grid-item').on('click',onBaseSelect);
 		function onBaseSelect(){
 			var id =  $(this).data('item-code');
@@ -276,6 +275,7 @@ $(document).ready(function(){
 			for(var i in pendantSprites){
 				APP.stage.removeChild(pendantSprites[i].sprite);
 			}
+		baseSelected = null;
 		baseSprite = null;
 		basePrice = 0;
 		pendantSprites=[];
@@ -285,6 +285,7 @@ $(document).ready(function(){
 		computeTotal();
 		href=href||'#jde-select';
 		scrollTo(href);
+		
 		
 	}
 	function scrollTo(target){
@@ -323,10 +324,19 @@ $(document).ready(function(){
 			config.dateType ='json';
 			config.cache = false;
 			config.data = data;
+			config.beforeSend = function(){
+				$('#jde-submit-order-now').text('SENDING...').attr('disabled','');
+			};
 			config.success = function (response){
-				resetBuilder('#jde-intro');
+				$('#jde-submit-order-now').text('SENT!').removeAttr('disabled');
+				setTimeout(function(){
+					$('#JDEOrderSummary').modal('hide');
+					resetBuilder('#jde-intro');	
+				},1500);
+				
 			};
 			config.error = function (response){
+				$('#jde-submit-order-now').text('TRY AGAIN.').removeAttr('disabled');
 				alert('Could not proceed. Please contact TARA for support.');
 			};
 		$.ajax(config);
@@ -367,6 +377,7 @@ $(document).ready(function(){
 		}
 	});
 	$('#JDEOrderSummary').on('show.bs.modal', function (event,arguments) {
+		$('#jde-submit-order').text('ORDER NOW');
 		var $table = $('#JDEOrderSummary table tbody');
 		var $footer = $('#JDEOrderSummary table tfoot');
 			$table.html('');
@@ -458,7 +469,7 @@ $(document).ready(function(){
 	$('#jde-reset').click(function(){
 		resetBuilder();
 	});
-	$('#jde-submit-order').click(function(){
+	$('#jde-submit-order-now').click(function(){
 		orderPlaced = true;
 		submitOrder();
 		
@@ -473,7 +484,7 @@ $(document).ready(function(){
 	    var target = this.hash;
 		scrollTo(target);
 		if(target=='#jde-select'&&!baseSelected){
-			$('.vertical>.grid-container').masonry('layout');
+			//$('.vertical>.grid-container').masonry('layout');
 		}
 	});
 	$(window).scroll(function() {
