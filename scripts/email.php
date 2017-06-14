@@ -79,7 +79,7 @@ $mgParams['to']=$clientEmail;
 $mgParams['subject']='Order Confirmation';
 $mgParams['text'] =  $clientPre['plain'];
 $mgParams['html'] =  $clientPre['html'];
-//$mg->messages()->send($mgDomain,$mgParams);
+$mg->messages()->send($mgDomain,$mgParams);
 
 
 //Send Order Confirmation to Admin

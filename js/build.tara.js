@@ -324,10 +324,10 @@ $(document).ready(function(){
 			config.cache = false;
 			config.data = data;
 			config.success = function (response){
-				console.log(response);
+				resetBuilder('#jde-intro');
 			};
 			config.error = function (response){
-				console.log(response);
+				alert('Could not proceed. Please contact TARA for support.');
 			};
 		$.ajax(config);
 	}
@@ -461,7 +461,7 @@ $(document).ready(function(){
 	$('#jde-submit-order').click(function(){
 		orderPlaced = true;
 		submitOrder();
-		resetBuilder('#jde-intro');
+		
 		
 	});
 	$('#jde-place-order-link').click(function(){
