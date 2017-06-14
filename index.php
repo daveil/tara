@@ -144,17 +144,17 @@
 				<form id="JDEOrderRequest">
 					<div class="form-group">
 						<label >Full name</label>
-						<input type="text" class="form-control" id="full-name">
+						<input type="text" class="form-control" id="full-name-1">
 					</div>
 					<div class="form-group">
 						<label >Email</label>
-						<input type="email" class="form-control" id="email">
+						<input type="email" class="form-control" id="email-1">
 					</div>
 					<div class="form-group">
 						<label >Shipping Address</label>
-						<input type="text" class="form-control" id="address-1">
-						<input type="text" class="form-control" id="address-2">
-						<input type="text" class="form-control" id="address-3">
+						<input type="text" class="form-control" id="address-1-1">
+						<input type="text" class="form-control" id="address-2-1">
+						<input type="text" class="form-control" id="address-3-1">
 					</div>
 				</form>
 		  </div>
@@ -172,7 +172,7 @@
 		  <div class="modal-body" id="jde-summary">
 		  	<div class="row">
 				<div class="col-md-12">
-				<h2 class="text-center">Summary of your custom jewelry</h2>
+				<h2 class="text-left">Summary of your custom jewelry</h2>
 				<table class="table">
 					<thead>
 						<tr>
@@ -193,9 +193,40 @@
 					<tfoot></tfoot>
 				</table>
 				</div>
-			</div>				
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-6">
+					<h3>Order Request</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="spacer"></div>
+					<p>Got it! Please review your order above and fulfill the order request form.</p>
+					<p>We'll email your billing invoice within 24-28 hours after confrimation and provide further instructions.</p>
+				</div>
+				<div class="col-md-6">
+				<form id="JDEOrderRequest">
+					<div class="form-group">
+						<label >Full name</label>
+						<input type="text" class="form-control" id="full-name">
+					</div>
+					<div class="form-group">
+						<label >Email</label>
+						<input type="email" class="form-control" id="email">
+					</div>
+					<div class="form-group">
+						<label >Shipping Address</label>
+						<input type="text" class="form-control" id="address-1">
+						<input type="text" class="form-control" id="address-2">
+						<input type="text" class="form-control" id="address-3">
+					</div>
+				</form>
+				<button class="btn btn-default  jde-btn-main"  id="jde-submit-order-now">ORDER NOW</button>
+				</div>
+			</div>
 		  </div>
-		  <div class="modal-footer">
+		  <div class="modal-footer hide">
 			
 				<button type="button" class="btn btn-default jde-btn-main" data-dismiss="modal" data-toggle="modal" data-target="#JDEPlaceOrderModal">PROCEED</button>
 			</div>
