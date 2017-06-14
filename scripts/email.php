@@ -1,8 +1,15 @@
 <?php
-//header('Content-type:application/json');
+header('Content-type:application/json');
 require '../vendor/autoload.php';
 use Mailgun\Mailgun;
-$mg = Mailgun::create('key-b6ac1021af9712bed066c06fd8f1c7ca');
+use Pbc\Premailer;
+
+$MG_KEY = 'key-b6ac1021af9712bed066c06fd8f1c7ca';
+$MG_DOMAIN = 'appd964bcc2465a4236b7ceb35b59daaf44.mailgun.org';
+$MG_EMAIL = 'postmaster@appd964bcc2465a4236b7ceb35b59daaf44.mailgun.org';
+$adminEmail = 'daveadev@gmail.com';
+
+$mg = Mailgun::create($MG_KEY);
 function template($file, $vars=array()) {
     if(file_exists($file)){
         // Make variables from the array easily accessible in the view
@@ -19,7 +26,7 @@ function template($file, $vars=array()) {
 }
 //Client Order Details
 $client = $_POST['name'];
-$email = $_POST['email'];
+$clientEmail = $_POST['email'];
 $po_no = "13245";
 $date =  date("F d, Y",time());
 $address = explode(';',$_POST['address']);
@@ -61,16 +68,26 @@ $vars = array(
 );
 $clientBody = template('template/client-order-placement.php', $vars);
 $adminBody = template('template/admin-order-placement.php',$vars);
-echo $clientBody;
-?>
+$clientPre = Premailer::html($clientBody);
+$adminPre = Premailer::html($adminBody);
+$mgDomain = $MG_DOMAIN;
+$mgParams = [
+			'from'    => $MG_EMAIL, 
+			];
+//Send Order Confirmation to Client
+$mgParams['to']=$clientEmail;
+$mgParams['subject']='Order Confirmation';
+$mgParams['text'] =  $clientPre['plain'];
+$mgParams['html'] =  $clientPre['html'];
+//$mg->messages()->send($mgDomain,$mgParams);
 
 
-<?php
+//Send Order Confirmation to Admin
+$mgParams['to']=$adminEmail;
+$mgParams['subject']='Order Admin Copy';
+$mgParams['text'] =  $adminPre['plain'];
+$mgParams['html'] =  $adminPre['html'];
+$mg->messages()->send($mgDomain,$mgParams);
+
+echo json_encode(['OK']);
 return;
-# Now, compose and send your message.
-$mg->messages()->send('appd964bcc2465a4236b7ceb35b59daaf44.mailgun.org', [
-  'from'    => 'postmaster@appd964bcc2465a4236b7ceb35b59daaf44.mailgun.org', 
-  'to'      => 'daveadev@gmail.com', 
-  'subject' => 'The PHP SDK is awesome!', 
-  'text'    => 'It is so simple to send a message.'
-]);
