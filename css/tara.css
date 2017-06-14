@@ -135,7 +135,7 @@ canvas{
 }
 .jde-footer h2{
 	letter-spacing: 0px;
-	font-size:15pt;
+	font-size: 10pt;
 	padding-bottom: 5px;
 }
 .jde-header p,.jde-footer p{
@@ -144,7 +144,7 @@ canvas{
 	margin-bottom: 20px;
 }
 .jde-footer p{
-	font-size:15pt;
+	font-size: 10pt;
 }
 #jde-select .jde-ui-item{
 	background-color: #15294f;
@@ -409,17 +409,25 @@ canvas{
 }
 
 #jde-summary h2{
-	margin-bottom: 50px;
-    margin-top: 20px;
+	margin-bottom: 20px;
+	margin-top: 20px;
 }
 #jde-summary h2,#jde-summary  th{
 	font-size: 14px;
 	text-transform: uppercase;
 	color: #15294f;
 }
+#jde-summary h3{
+	font-size: 18px;
+    border-bottom: 1px solid #15294f;
+    padding-bottom: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
 #jde-summary table{
 	border-top:1px solid #15294f;
 	border-bottom:1px solid #15294f;
+	margin-bottom: 5px;
 }
 #jde-summary  th,#jde-summary  td{
 	border: none !important;
@@ -447,8 +455,13 @@ canvas{
 	font-size:12px;
 	padding: 15px 20px;
 	letter-spacing:2px;
+	margin-bottom: 10px;
 }
-
+#JDEOrderSummary button.disabled,#JDEOrderSummary button[disabled]{
+	background-color: #fff;
+    border-color: #ccc;
+	color:#000;
+}
 
 .parallax {
     /* The background used */

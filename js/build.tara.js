@@ -12,14 +12,14 @@ $(document).ready(function(){
 	const VIEW_HEIGHT = 1;
 	const WIDTH  = 1082;
 	const HEIGHT = 702;
-	const MAX_BASES = 10;
+	const MAX_BASES = 3;
 	const MAX_THUMBS = 12;
 	const REGULAR  = 'R';
 	const ENDING =  'E';
 	const TALL =  'T';
 	const BASES = {
-		1:{name:'Mari', slug:'mari', price:25,width:800,height:782, type:'R'},
-		3:{name:'Kimberly', slug:'kimberly', price:25,width:800,height:782,type:'R'},
+		1:{name:'Mari', slug:'mari', price:25,width:800,height:782, type:'T'},
+		3:{name:'Kimberly', slug:'kimberly', price:25,width:800,height:782,type:'T'},
 		2:{name:'Blake', slug:'blake', price:25,width:800,height:782, type:'T'},
 	};
 	const PENDANTS = {
@@ -42,7 +42,7 @@ $(document).ready(function(){
 	var lastPosition=ATTA_Y;
 	var lastPendantType;
 	var orderPlaced = false;
-	
+	var orderSummary = [];
 	initBaseGrid();
 	initAttachmentGrid();
 	buildBase();
@@ -101,11 +101,9 @@ $(document).ready(function(){
 	}
 	
 	function initBaseGrid(){
-		var $grid = $('.vertical>.grid-container').masonry({
-				itemSelector:'.grid-item',
-				gutter:10,
-				fitWidth: true
-		});		
+		var $grid = $('.vertical>.grid-container').flickity(
+				{ "cellAlign": "center", "contain": true , "pageDots": false }
+		);		
 		var $item = $("<div class='grid-item'><a class='item'/></a>");         
 		var $c = null;
 		var ctr = 0;
@@ -129,7 +127,8 @@ $(document).ready(function(){
 				$i.find('.item').append($img);	
 				if(b_obj.type==TALL)
 					$i.addClass('tall');
-			$grid.append($i).masonry('appended', $i );
+			$grid.flickity( 'append', $i );
+			//$grid.append($i).masonry('appended', $i );
 			ctr++;
 		}
 		//Fill buffer with MAX_BASES
@@ -140,8 +139,8 @@ $(document).ready(function(){
 					$i.find('.item').text(i);
 				$grid.append($i).masonry('appended', $i );
 			}
-		$grid.masonry('layout');
-		setTimeout(function(){  $grid.masonry('layout'); }, 500);
+		//$grid.masonry('layout');
+		//setTimeout(function(){  $grid.masonry('layout'); }, 500);
 		/* $('.vertical>.grid-container .grid-item').on('click',onBaseSelect);
 		function onBaseSelect(){
 			var id =  $(this).data('item-code');
@@ -276,14 +275,17 @@ $(document).ready(function(){
 			for(var i in pendantSprites){
 				APP.stage.removeChild(pendantSprites[i].sprite);
 			}
+		baseSelected = null;
 		baseSprite = null;
 		basePrice = 0;
 		pendantSprites=[];
 		lastPosition = ATTA_Y;
 		orderPlaced=false;
+		orderSummary = [];
 		computeTotal();
 		href=href||'#jde-select';
 		scrollTo(href);
+		
 		
 	}
 	function scrollTo(target){
@@ -301,6 +303,43 @@ $(document).ready(function(){
 		 modal.find('.jde-price span').text(item.price);
 		 modal.find('.jde-btn-confirm').data('item-code',itemCode);
 		 modal.find('.jde-btn-confirm').data('item-type',itemType);
+	}
+	function submitOrder(){
+		var name = $('#full-name').val();
+		var email = $('#email').val();
+		var address = $('#address-1').val();
+			address += ';'+$('#address-2').val();
+			address += ';'+$('#address-3').val();
+		var data = {
+				name:name,
+				email:email,
+				address:address,
+				orderSummary:orderSummary
+		};
+		var endpoint = window.location.origin+window.location.pathname;
+			endpoint += 'scripts/email.php';
+		var config = {};
+			config.url = endpoint;
+			config.type ='POST';
+			config.dateType ='json';
+			config.cache = false;
+			config.data = data;
+			config.beforeSend = function(){
+				$('#jde-submit-order-now').text('SENDING...').attr('disabled','');
+			};
+			config.success = function (response){
+				$('#jde-submit-order-now').text('SENT!').removeAttr('disabled');
+				setTimeout(function(){
+					$('#JDEOrderSummary').modal('hide');
+					resetBuilder('#jde-intro');	
+				},1500);
+				
+			};
+			config.error = function (response){
+				$('#jde-submit-order-now').text('TRY AGAIN.').removeAttr('disabled');
+				alert('Could not proceed. Please contact TARA for support.');
+			};
+		$.ajax(config);
 	}
 	$('#JDEWarnModal .modal-body span').text(MAX_ATTCH);
 	$('#jde-build .jde-ui-item').click(function(){
@@ -338,6 +377,7 @@ $(document).ready(function(){
 		}
 	});
 	$('#JDEOrderSummary').on('show.bs.modal', function (event,arguments) {
+		$('#jde-submit-order').text('ORDER NOW');
 		var $table = $('#JDEOrderSummary table tbody');
 		var $footer = $('#JDEOrderSummary table tfoot');
 			$table.html('');
@@ -370,6 +410,7 @@ $(document).ready(function(){
 			}
 			summary[itemCode] = item;
 		}
+		orderSummary = [];
 		for(var code in summary){
 			var item =  summary[code];
 			var row  = '<tr>';
@@ -379,6 +420,15 @@ $(document).ready(function(){
 				row += '<td>'+item.amount+'</td>';
 				row += '</tr>';
 			$table.append(row);
+			var order = {
+				itemCode:code,
+				name:item.name,
+				price:item.price,
+				quantity:item.quantity,
+				amount:item.amount,
+				
+			}
+			orderSummary.push(order);
 		}
 		var computedTotal = $('#jde-total span').text();
 		var total  ='<tr>';
@@ -386,6 +436,7 @@ $(document).ready(function(){
 			total +='<td>'+computedTotal+'</td>';
 			total +='</tr>';
 		$footer.html(total);
+		orderSummary.push({total:computedTotal});
 	}).on('hidden.bs.modal', function (event) {
 		var $table = $('#JDEOrderSummary table tbody');
 		var $footer = $('#JDEOrderSummary table tfoot');
@@ -418,9 +469,11 @@ $(document).ready(function(){
 	$('#jde-reset').click(function(){
 		resetBuilder();
 	});
-	$('#jde-submit-order').click(function(){
+	$('#jde-submit-order-now').click(function(){
 		orderPlaced = true;
-		resetBuilder('#jde-intro');
+		submitOrder();
+		
+		
 	});
 	$('#jde-place-order-link').click(function(){
 		orderPlaced = true;
@@ -431,7 +484,7 @@ $(document).ready(function(){
 	    var target = this.hash;
 		scrollTo(target);
 		if(target=='#jde-select'&&!baseSelected){
-			$('.vertical>.grid-container').masonry('layout');
+			//$('.vertical>.grid-container').masonry('layout');
 		}
 	});
 	$(window).scroll(function() {
