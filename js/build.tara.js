@@ -31,7 +31,8 @@ $(document).ready(function(){
 		6:{name:'Emma', slug:'emma',  price:15,width:155,height:225,altHeight:207,type:'E'},
 		7:{name:'Kelly', slug:'kelly',  price:15,width:93,height:242,altHeight:224,type:'E'},
 		8:{name:'Sam', slug:'sam',  price:15,width:66,height:192,altHeight:173,type:'E'},
-		9:{name:'Attachment', slug:'attachment9',  price:15,width:131,height:251,altHeight:235,type:'R'}
+		9:{name:'Attachment', slug:'attachment9',  price:15,width:131,height:251,altHeight:235,type:'R'},
+		10:{name:'Mari', slug:'mari',  price:15,width:54,height:68,altHeight:68,type:'R'}
 	};
 	const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 	const MAX_ATTCH = 3;
