@@ -32,8 +32,8 @@
     	</div>
     </div>
     <?php include('top-nav.php');?>
-    <div class="jde-ui-panel jde-full-h" id="jde-select">
-    	<div class="container">
+    <div class="jde-ui-panel jde-full-h jde-ui-table" id="jde-select">
+    	<div class="container jde-va-middle jde-table-cell">
 		    	<div class="jde-header">
 			    	<h2>Base jewelry</h2>
 			    	<p>Select your base jewelry</p>
@@ -43,8 +43,8 @@
 		    	
     	</div>
     </div>
-    <div class="jde-ui-panel" id="jde-build">
-	    <div class="container">
+    <div class="jde-ui-panel jde-ui-table" id="jde-build">
+	    <div class="container jde-va-middle jde-table-row">
 	    	<div class="jde-header">
 		    	<h2>Attachment jewelry</h2>
 			    <p>Select up to two layer to your base jewelry</p>
