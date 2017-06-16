@@ -23,13 +23,13 @@ $(document).ready(function(){
 		2:{name:'Blake', slug:'blake', price:25,width:800,height:782, type:'T'},
 	};
 	const PENDANTS = {
-		1:{name:'Celine', slug:'celine', price:25,width:67,height:89,altHeight:73,type:'E'},
+		1:{name:'Celine', slug:'celine', price:25,width:67,height:89,altHeight:73,type:'R'},
 		2:{name:'Ciara', slug:'ciara', price:20,width:45,height:188,altHeight:168,type:'E'},
 		3:{name:'Rachel', slug:'rachel',  price:15,width:91,height:251,altHeight:233,type:'E'},
 		4:{name:'Attachment', slug:'attachment8', price:15,width:100,height:156,altHeight:139,type:'R'},
 		5:{name:'Diana', slug:'diana',  price:15,width:55,height:229,altHeight:213,type:'R'},
-		6:{name:'Emma', slug:'emma',  price:15,width:155,height:225,altHeight:207,type:'E'},
-		7:{name:'Kelly', slug:'kelly',  price:15,width:93,height:242,altHeight:224,type:'E'},
+		6:{name:'Emma', slug:'emma',  price:15,width:155,height:225,altHeight:207,type:'R'},
+		7:{name:'Kelly', slug:'kelly',  price:15,width:93,height:242,altHeight:224,type:'R'},
 		8:{name:'Sam', slug:'sam',  price:15,width:66,height:192,altHeight:173,type:'E'},
 		9:{name:'Martine', slug:'martine',  price:15,width:119,height:229,altHeight:214,type:'R'},
 		10:{name:'Mari', slug:'mari',  price:15,width:54,height:68,altHeight:68,type:'R'}
