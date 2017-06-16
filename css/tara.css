@@ -165,11 +165,19 @@ canvas{
 	border-top: 1px solid #f00;
 	border-bottom: 1px solid #0f0;
 }
+/*
 .jde-ui-table>.container{
 	display:table-cell;
 	min-height: 150px;
 	height:150px;
 
+}
+*/
+.jde-table-row{
+	display:table-row;
+}
+.jde-table-cell{
+	display:table-cell;
 }
 .jde-va-middle{
 	vertical-align: middle !important;
