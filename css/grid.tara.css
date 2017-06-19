@@ -112,3 +112,14 @@
 		width:850px;
 	}
 }
+
+@media (max-width:768px){
+	.grid-canvas{
+		width:90%;
+	}
+	.grid-item.tall{
+		width: 30%;
+		height: 200px;
+	}
+	
+}
