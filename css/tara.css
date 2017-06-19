@@ -399,6 +399,9 @@ canvas{
     max-height: 30%;
 	
 }
+#JDEItemModal .modal-lg .modal-body .jde-image[src*="celine.png"]{
+	max-width: 450px;
+}
 #JDEItemModal .modal-lg .modal-body .jde-preview,#JDEItemModal .modal-lg .modal-body .jde-ui-product{
 	height:60vh;
 }
