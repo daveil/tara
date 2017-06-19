@@ -30,8 +30,8 @@
 	position: relative;
 	float:left;
 	background: #15294f;
-	width:180px;
-	height:180px;
+	width:150px;
+	height:150px;
 	display:table;
 	margin-bottom: 10px;
 }
@@ -68,13 +68,13 @@
 	text-align: center;
 }
 .main-carousel{
-	width:940px;
+	width:800px;
 	margin:0 auto;
 }
 
 .main-carousel .carousel-cell{
 	height:370px;
-	width:180px;
+	width:150px;
 	margin-right:10px;
 }
 .flickity-prev-next-button.next{
