@@ -39,7 +39,7 @@
 			    	<p>Select your base jewelry</p>
 		    	</div>
 		    	<?php include('grid-vertical.php');?>
-		    	<?php include('tray-vertical.php');?>
+		    	<?php //include('tray-vertical.php');?>
 		    	
     	</div>
     </div>

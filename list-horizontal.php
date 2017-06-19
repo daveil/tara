@@ -1,4 +1,4 @@
- <div class="mini-carousel " >
+ <div class="mini-carousel visible-sm visible-xs" >
   </div>
  <?php if(false):?>
 <div class="jde-horizontal-wrapper visible-sm visible-xs">
