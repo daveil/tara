@@ -257,11 +257,11 @@ $(document).ready(function(){
 		$('#jde-undo,#jde-reset,#jde-place-order').show();
 		$('#jde-place-order-link,.jde-btn-undo').hide();
 		if(!baseSprite){
-				$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEWarnModal');
+				$('#jde-build .jde-btn,.main-carousel .grid-item.white,.mini-carousel .grid-item.white').attr('data-target','#JDEWarnModal');
 				$('#JDEWarnModal .modal-body p').text('Select base jewelry first.');
 		}else if(pendantSprites.length==0){
 			$('#jde-place-order').attr('data-target','#JDEWarnModal');
-			$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEItemModal');
+			$('#jde-build .jde-btn,.main-carousel .grid-item.white,.mini-carousel .grid-item.white').attr('data-target','#JDEItemModal');
 			if(!orderPlaced)
 				$('#JDEWarnModal .modal-body p').text('Add item first!');
 			
@@ -270,14 +270,14 @@ $(document).ready(function(){
 			$('#jde-place-order').hide();
 			$('#jde-place-order-link').show();
 			if(pendantSprites.length>=MAX_ATTCH&&!orderPlaced){
-				$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEWarnModal');
+				$('#jde-build .jde-btn,.main-carousel .grid-item.white,.mini-carousel .grid-item.white').attr('data-target','#JDEWarnModal');
 				$('#JDEWarnModal .modal-body p').text('Oops! You can only add up to '+MAX_ATTCH+' item(s).');
 			}else if(lastPendantType==ENDING){
-				$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEWarnModal');
+				$('#jde-build .jde-btn,.main-carousel .grid-item.white,.mini-carousel .grid-item.white').attr('data-target','#JDEWarnModal');
 				$('#JDEWarnModal .modal-body p').text('Oops! Last item added can not accept an attachment. Undo last action to change.');
 				$('.jde-btn-undo').show();
 			}else{
-				$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEItemModal');
+				$('#jde-build .jde-btn,.main-carousel .grid-item.white,.mini-carousel .grid-item.white').attr('data-target','#JDEItemModal');
 				$('#JDEWarnModal .modal-body p').text('Order placement successful. Thank you!');
 			}
 		}
