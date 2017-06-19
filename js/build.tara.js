@@ -58,9 +58,12 @@ $(document).ready(function(){
 		var $carousel = $('.main-carousel').flickity(
 							{ "cellAlign": "left", "contain": true , "pageDots": false }
 						);
+		var $carousel_mini = $('.mini-carousel').flickity(
+							{ "cellAlign": "left", "contain": true , "pageDots": false }
+						);
 		var $cell = $("<div class='carousel-cell'/>");
 		var $item = $("<div class='grid-item'  ><div class='item'/></div>");         
-		var $c = null;
+		var $c;
 		var ctr = 0;
 		for(var id in PENDANTS){
 			var p_obj = PENDANTS[id];
@@ -75,9 +78,13 @@ $(document).ready(function(){
 				$i.addClass('white');
 				$i.find('.item').addClass(p_obj.slug);
 				
-			if(!$c) $c =  $cell.clone();
+			if(!$c) $c =   $cell.clone();
 			
 			$c.append($i);
+			var $cm = $cell.clone();
+				$cm.append($i.clone());
+			$carousel_mini.flickity( 'append', $cm );
+
 			if(id%2==0){
 				$carousel.flickity( 'append', $c );
 				$c = null;
@@ -93,10 +100,16 @@ $(document).ready(function(){
 					$i.find('.item').text(i);
 				if(!$c) $c =  $cell.clone();
 				$c.append($i);
+				if(i<=MAX_THUMBS){
+					var $cm = $cell.clone();
+						$cm.append($i.clone());
+					$carousel_mini.flickity( 'append', $cm );
+				}
 				if(i%2==0){
 					$carousel.flickity( 'append', $c );
 					$c = null;
 				}
+
 			}
 	
 	}
