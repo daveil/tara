@@ -13,7 +13,7 @@ $(document).ready(function(){
 	const WIDTH  = 1082;
 	const HEIGHT = 702;
 	const MAX_BASES = 3;
-	const MAX_THUMBS = 12;
+	const MAX_THUMBS = 10;
 	const REGULAR  = 'R';
 	const ENDING =  'E';
 	const TALL =  'T';
