@@ -6,7 +6,7 @@ $(document).ready(function(){
 	const JEWEL_PREFIX = '00-';
 	const JEWEL_SUFFIX = '.png';
 	const JEWEL_SCALE = 1;
-	const BASE_SCALE = 0.2;
+	const BASE_SCALE = 1;
 	const BASE_X = 0;
 	const BASE_Y = -350;
 	const VIEW_HEIGHT = 1;
@@ -18,9 +18,9 @@ $(document).ready(function(){
 	const ENDING =  'E';
 	const TALL =  'T';
 	const BASES = {
-		1:{name:'Mari', slug:'mari', price:2088,width:800,height:782, type:'T'},
-		3:{name:'Kimberly', slug:'kimberly', price:288,width:800,height:782,type:'T'},
-		2:{name:'Blake', slug:'blake', price:758,width:800,height:782, type:'T'},
+		1:{name:'Mari', slug:'mari', price:2088,width:160,height:156, type:'T'},
+		3:{name:'Kimberly', slug:'kimberly', price:288,width:160,height:156,type:'T'},
+		2:{name:'Blake', slug:'blake', price:758,width:160,height:156, type:'T'},
 	};
 	const PENDANTS = {
 		1:{name:'Celine', slug:'celine', price:898,width:67,height:89,altHeight:73,type:'R'},
