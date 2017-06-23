@@ -18,7 +18,7 @@
   </head>
   <body>
 	<div class="jde-ui-panel jde-ui-table jde-full-h parallax" id="jde-intro">
-    	<div class="container ">
+    	<div class="container-fluid">
     		<div class="row">
     			<div class="col-md-6">
     				<img class="img-responsive" src="img/logo white.png" alt="TARA" />

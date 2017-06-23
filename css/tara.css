@@ -533,10 +533,11 @@ canvas{
 		text-indent: 12px;
 		font-size:10pt;
 	}
-	.jde-table-cell{
+	,.jde-table-cell{
 		display:block;
 		margin-top:33%;
 	}
+	
 	.jde-header h2, .jde-footer h2{
 		padding: 5px 10px;
 		letter-spacing: 1px;
@@ -580,6 +581,9 @@ canvas{
 	}
 	#jde-undo, #jde-reset, #jde-place-order, #jde-place-order-link{
 		padding:15px;
+	}
+	#jde-summary h2, #jde-summary h3{
+		text-align: center;
 	}
 }
 @media (min-width:536px)  and (max-width:750px){
