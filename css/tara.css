@@ -533,10 +533,17 @@ canvas{
 		text-indent: 12px;
 		font-size:10pt;
 	}
-	.jde-table-cell{
-		display:block;
-		margin-top:15%;
+	.jde-ui-table,.jde-table-row{
+		display: block;
+		width:100%;
+		overflow-x:hidden;
 	}
+	.jde-table-cell{
+		display: inline-block;
+		margin-top:15%;
+		width: 100%;
+	}
+	
 	
 	.jde-header h2, .jde-footer h2{
 		padding: 5px 10px;

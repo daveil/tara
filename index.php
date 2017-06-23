@@ -17,8 +17,9 @@
     <![endif]-->
   </head>
   <body>
+  	<?php include('top-nav.php');?>
 	<div class="jde-ui-panel jde-ui-table jde-full-h parallax" id="jde-intro">
-    	<div class="container-fluid">
+    	<div class="container">
     		<div class="row">
     			<div class="col-md-6">
     				<img class="img-responsive" src="img/logo white.png" alt="TARA" />
@@ -31,9 +32,8 @@
     		<a href="http://ishoptara.com/" id="return-to-main">Return to main store</a>
     	</div>
     </div>
-    <?php include('top-nav.php');?>
     <div class="jde-ui-panel jde-full-h jde-ui-table" id="jde-select">
-    	<div class="container jde-va-middle jde-table-cell">
+    	<div class="container ">
 		    	<div class="jde-header">
 			    	<h2>Base jewelry</h2>
 			    	<p>Select your base jewelry</p>
