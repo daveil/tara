@@ -399,6 +399,9 @@ canvas{
     max-height: 30%;
 	
 }
+#JDEItemModal .modal-lg .modal-body .jde-image[src*="celine.png"]{
+	max-width: 450px;
+}
 #JDEItemModal .modal-lg .modal-body .jde-preview,#JDEItemModal .modal-lg .modal-body .jde-ui-product{
 	height:60vh;
 }
@@ -533,10 +536,13 @@ canvas{
 	.jde-header h2, .jde-footer h2{
 		padding: 5px 10px;
 		letter-spacing: 1px;
-    	font-size: 14pt;
+    	font-size: 9pt;
 	}
 	.jde-header p, .jde-footer p{
 		font-size: 8pt;
+	}
+	#jde-total span{
+		font-size: 14pt;
 	}
 	#top-nav a.navbar-brand img{
 		height: 35px;
