@@ -538,12 +538,9 @@ canvas{
 		width:100%;
 		overflow-x:hidden;
 	}
-	.jde-table-cell{
-		display: inline-block;
-		margin-top:25%;
-		width: 100%;
+	#jde-select{
+		padding-top: 33% !important;
 	}
-	
 	
 	.jde-header h2, .jde-footer h2{
 		padding: 5px 10px;
@@ -591,6 +588,9 @@ canvas{
 	}
 	#jde-summary h2, #jde-summary h3{
 		text-align: center;
+	}
+	#JDEItemModal .modal-lg .modal-body .jde-image{
+		max-height: 20%;
 	}
 }
 @media (min-width:536px)  and (max-width:750px){
