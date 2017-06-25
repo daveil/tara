@@ -178,7 +178,7 @@
 						<tr>
 							<th>Item</th>
 							<th>Price</th>
-							<th>Quantity</th>
+							<th><span class="hidden-sm hidden-xs">Quantity</span><span class="visible-sm visible-xs">Qty</span></th>
 							<th>Amount</th>
 						</tr>
 					</thead>
