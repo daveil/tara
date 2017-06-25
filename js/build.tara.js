@@ -10,17 +10,17 @@ $(document).ready(function(){
 	const BASE_X = 0;
 	const BASE_Y = -350;
 	const VIEW_HEIGHT = 1;
-	const WIDTH  = 1082;
+	const WIDTH  = 1082
 	const HEIGHT = 702;
 	const MAX_BASES = 3;
-	const MAX_THUMBS = 11;
+	const MAX_THUMBS = 10;
 	const REGULAR  = 'R';
 	const ENDING =  'E';
 	const TALL =  'T';
 	const BASES = {
 		1:{name:'Mari', slug:'mari', price:2088,width:160,height:156, type:'T'},
 		3:{name:'Kimberly', slug:'kimberly', price:288,width:160,height:156,type:'T'},
-		2:{name:'Blake', slug:'blake', price:758,width:160,height:156, type:'T'},
+		2:{name:'Blake', slug:'blake', price:758,width:160,height:156, type:'T'}
 	};
 	const PENDANTS = {
 		1:{name:'Celine', slug:'celine', price:898,width:67,height:89,altHeight:73,type:'R'},
