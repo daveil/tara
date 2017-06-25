@@ -513,6 +513,7 @@ canvas{
 	    background-attachment: initial;
 	    padding-top:15px;
 	}
+
 	#jde-intro img{
 		margin: 30px auto;
     	width: 80px;
@@ -595,6 +596,10 @@ canvas{
 	#JDEItemModal .modal-lg .modal-body .jde-image{
 		max-height: 20%;
 	}
+	.close{
+		padding: 0 !important;
+	    margin-top: -20px;
+	}
 }
 @media (min-width:536px)  and (max-width:750px){
 	
@@ -604,6 +609,10 @@ canvas{
 	}
 	#jde-canvas{
 		width:100%;
+	}
+	.close{
+		padding: 0 !important;
+	    margin-top: -20px;
 	}
 }
 @media (min-width:250px) and (max-width:535px){
@@ -650,6 +659,10 @@ canvas{
 	}
 	#jde-undo, #jde-reset, #jde-place-order, #jde-place-order-link{
 		padding:20px;
+	}
+	.close{
+		padding: 0 !important;
+	    margin-top: -20px;
 	}
 }
 @media (min-width:750px){
