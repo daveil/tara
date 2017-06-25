@@ -586,7 +586,7 @@ canvas{
 	#jde-undo, #jde-reset, #jde-place-order, #jde-place-order-link{
 		padding:15px;
 	}
-	#jde-summary h2, #jde-summary{
+	#jde-summary h2, #jde-summary table{
 		font-size:12px;
 	}
 	#jde-summary h2, #jde-summary h3{
