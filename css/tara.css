@@ -380,17 +380,17 @@ canvas{
 	
 }
 
-.modal-lg .modal-content{
+#JDEItemModal .modal-lg .modal-content{
 	height: 80vh;
     display: table;
     width: 100%;
 }
 
-.modal-lg .modal-body{
+#JDEItemModal .modal-lg .modal-body{
 	display: table-cell;
     vertical-align: middle;
 }
-.modal-lg .modal-footer{
+#JDEItemModal .modal-lg .modal-footer{
 	display:table-row;
 }
 #JDEItemModal .modal-lg .modal-body .jde-image{
