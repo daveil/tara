@@ -172,7 +172,9 @@
 		  <div class="modal-body" id="jde-summary">
 		  	<div class="row">
 				<div class="col-md-12">
-				<h2 class="text-left">Summary of your custom jewelry</h2>
+				<h2 class="text-left pull-left">Summary of your custom jewelry</h2>
+				 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<div class="clearfix"></div>
 				<table class="table">
 					<thead>
 						<tr>

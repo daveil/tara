@@ -491,7 +491,7 @@ $(document).ready(function(){
 	});
 	$('#jde-place-order-link').click(function(){
 		orderPlaced = true;
-		$('#jde-undo,#jde-place-order,#jde-place-order-link,#jde-reset').hide();
+		//$('#jde-undo,#jde-place-order,#jde-place-order-link,#jde-reset').hide();
 	});
 	$('a[href^="#"]').on('click',function (e) {
 	    e.preventDefault();
