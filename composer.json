@@ -5,6 +5,7 @@
         "php-http/curl-client": "^1.7",
         "guzzlehttp/psr7": "^1.4",
         "paulbunyannet/premailer": "^1.0",
-        "phpmailer/phpmailer": "~5.2"
+        "phpmailer/phpmailer": "~5.2",
+        "google/apiclient": "1.*"
     }
 }

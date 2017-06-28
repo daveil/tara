@@ -3,13 +3,57 @@ header('Content-type:application/json');
 require '../vendor/autoload.php';
 use Mailgun\Mailgun;
 use Pbc\Premailer;
+use phpmailer\PHPMailerAutoload;
 
-$MG_KEY = 'key-b6ac1021af9712bed066c06fd8f1c7ca';
-$MG_DOMAIN = 'appd964bcc2465a4236b7ceb35b59daaf44.mailgun.org';
-$MG_EMAIL = 'postmaster@appd964bcc2465a4236b7ceb35b59daaf44.mailgun.org';
+$redirectUri = 'http://localhost/tara/scripts/oauth.php';
+$clientId = '387048371816-4up3mmigkh18g2hut3bpu3ouhdc0kh6l.apps.googleusercontent.com';
+$clientSecret = 'mklHhrns6eF-qjwuiLpSB4DL';
+$phpmailer = new PHPMailerOAuth();
+$phpmailer->IsSMTP();
+$phpmailer->SMTPDebug  = 2;
+$phpmailer->Host       = "ssl://smtp.gmail.com";
+$phpmailer->SMTPAuth   = true;
+$phpmailer->SMTPSecure = 'ssl';
+$mail->AuthType = 'XOAUTH2';
+$phpmailer->Port       = 465;
+
+$phpmailer->oauthClientId = clientId;
+$phpmailer->oauthClientSecret = "***";
+$phpmailer->oauthRefreshToken = "***";
+$phpmailer->oauthUserEmail="***";
+exit;
+
+$mail = new PHPMailer;
+$mail->IsSMTP(); // enable SMTP
+$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+$mail->SMTPAuth = true; // authentication enabled
+$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
+$mail->Host = "smtp.gmail.com";
+$mail->Port = 465; // or 587
+$mail->IsHTML(true);
+$mail->Username = "no-reply@ishoptara.com";
+$mail->Password = "CreateYourTara";
+$mail->SetFrom("no-reply@ishoptara.com");
+$mail->Subject = "Test";
+$mail->Body = "hello";
+$mail->AddAddress("daveadev@gmail.com");
+
+ if(!$mail->Send()) {
+    echo "Mailer Error: " . $mail->ErrorInfo;
+ } else {
+    echo "Message has been sent";
+ }
+exit;
+
+define('USE_MG',false);
+if(USE_MG):
+	$MG_KEY = 'key-b6ac1021af9712bed066c06fd8f1c7ca';
+	$MG_DOMAIN = 'appd964bcc2465a4236b7ceb35b59daaf44.mailgun.org';
+	$MG_EMAIL = 'postmaster@appd964bcc2465a4236b7ceb35b59daaf44.mailgun.org';
+	$mg = Mailgun::create($MG_KEY);
+endif;
+
 $adminEmail = 'daveadev@gmail.com';
-
-$mg = Mailgun::create($MG_KEY);
 function template($file, $vars=array()) {
     if(file_exists($file)){
         // Make variables from the array easily accessible in the view
@@ -79,7 +123,7 @@ $mgParams['to']=$clientEmail;
 $mgParams['subject']='Order Confirmation';
 $mgParams['text'] =  $clientPre['plain'];
 $mgParams['html'] =  $clientPre['html'];
-$mg->messages()->send($mgDomain,$mgParams);
+if(USE_MG) $mg->messages()->send($mgDomain,$mgParams);
 
 
 //Send Order Confirmation to Admin
@@ -87,7 +131,7 @@ $mgParams['to']=$adminEmail;
 $mgParams['subject']='Order Admin Copy';
 $mgParams['text'] =  $adminPre['plain'];
 $mgParams['html'] =  $adminPre['html'];
-$mg->messages()->send($mgDomain,$mgParams);
+if(USE_MG)  $mg->messages()->send($mgDomain,$mgParams);
 
 echo json_encode(['OK']);
 return;
