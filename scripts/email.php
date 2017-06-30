@@ -5,11 +5,11 @@ use Pbc\Premailer;
 use phpmailer\PHPMailerAutoload;
 if(!defined('IS_LOCAL'))   define('IS_LOCAL',$_SERVER['HTTP_HOST']=='localhost');
 if(IS_LOCAL)
-	$_ENV = json_decode(file_get_contents('env.json'),true);
+	$_ENV = json_decode(file_get_contents('../env.json'),true);
 
 $adminEmail = $_ENV['ADMIN_EMAIL'];
 $adminName = $_ENV['ADMIN_NAME'];
-$clientId = $_ENV['CLIENT_ID']
+$clientId = $_ENV['CLIENT_ID'];
 $clientSecret = $_ENV['CLIENT_SECRET'];
 $refreshToken = $_ENV['CLIENT_TOKEN'];
 
