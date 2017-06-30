@@ -32,7 +32,7 @@
 	t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 	document,'script','https://connect.facebook.net/en_US/fbevents.js');
 	fbq('init', '425915167808933', {
-	em: 'insert_email_variable'
+	em: 'no-reply@ishoptara.com'
 	});
 	fbq('track', 'PageView');
 	</script>
