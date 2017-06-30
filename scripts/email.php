@@ -13,6 +13,11 @@ $adminReply = $_ENV['ADMIN_REPLY'];
 $clientId = $_ENV['CLIENT_ID'];
 $clientSecret = $_ENV['CLIENT_SECRET'];
 $refreshToken = $_ENV['CLIENT_TOKEN'];
+$db_host =  $_ENV['JAWDB_HOST'];
+$db_name =  $_ENV['JAWDB_DBSE'];
+$username =  $_ENV['JAWDB_USER'];
+$password =  $_ENV['JAWDB_PASS'];
+$dsn = "mysql:host=$db_host;dbname=$db_name";
 
 $mail = new PHPMailerOAuth;
 $mail->IsSMTP(); // enable SMTP
@@ -75,6 +80,10 @@ foreach($order as $O){
 		$total = $O['total'];
 	}
 }
+$pdo = new PDO($dsn, $username, $password);
+$db = new SimpleCrud($pdo);
+$sysORN =   $db->systemConfig->select()->one()->by('key', 'ORDER_REF_NO')->run();
+$ref_no = $sysORN->value;
 
 //Email template
 $vars = array(
@@ -90,7 +99,7 @@ $clientBody = template('template/client-order-placement.php', $vars);
 $adminBody = template('template/admin-order-placement.php',$vars);
 $clientPre = Premailer::html($clientBody);
 $adminPre = Premailer::html($adminBody);
-$log = array();
+$log = array('time'=>new Datetime('now'));
 $mail->AddEmbeddedImage('template/img/logo.png', 'logo');
 $mail->AddAddress($clientEmail,$clientName);
 $mail->AddReplyTo($adminReply,$adminName);
@@ -115,5 +124,10 @@ if (!$mail->send()) {
 } else {
    $log['admin']=  "Admin Message sent!";
 }
+
+$id = $sysORN->id;
+$value = (int)$sysORN->value;
+$db->systemConfig[$id]=['modified'=>new Datetime('now'),'value'=>$value+1];
+
 echo json_encode($log);
 return;
