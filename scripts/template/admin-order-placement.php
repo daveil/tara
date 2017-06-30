@@ -8,7 +8,7 @@
 	body{font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;;color:#0e2248;-webkit-font-smoothing: antialiased;-webkit-text-size-adjust: none;width: 100%!important;height: 100%;}
 	div.email-container{width:100%; margin:0 auto;}
 	h1,p{font-size:13pt;text-align:center;}
-	img{width: auto;margin: 0 auto;display: block;}
+	img{width: auto;margin: 0 auto;display: block;padding-bottom:5pt;}
 	h2,hr{width:75%;margin:0 auto;}
 	table{width:65%;margin:0 auto;padding-left:7%;font-size:11pt;}
 	h2{font-size:13pt;text-align:center;text-transform:uppercase;padding:8pt 0pt;border-top:1pt solid #0e2248;border-bottom:1pt solid #0e2248;}

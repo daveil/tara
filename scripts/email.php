@@ -82,11 +82,11 @@ $vars = array(
 	'email'=>$clientEmail,
 	'ref_no'=>$ref_no,
 	'date'=>$date,
-	'address'=>implode(', ',array($address_1,$address_2,$address_3))
+	'address'=>implode(', ',array($address_1,$address_2,$address_3)),
 	'total'=>$total,
 	'order_summary'=>$order_summary
 );
-$clientBody = template('template/email.php', $vars);
+$clientBody = template('template/client-order-placement.php', $vars);
 $adminBody = template('template/admin-order-placement.php',$vars);
 $clientPre = Premailer::html($clientBody);
 $adminPre = Premailer::html($adminBody);
