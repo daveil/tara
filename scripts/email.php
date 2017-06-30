@@ -59,12 +59,13 @@ $address_3 = $address[2];
 $order = $_POST['orderSummary'];
 $order_summary  = "";
 $total = "";
+setlocale(LC_MONETARY, 'en_US');
 foreach($order as $O){
 	if(isset($O['itemCode'])){
 		$Name = $O['name'];
 		$Price = $O['price'];
 		$Qty = $O['quantity'];
-		$Amt = $O['amount'];
+		$Amt = money_format('%0.2n', $O['amount']);
 		$order_summary.="<tr>";
 		$order_summary.="<td>$Name</td>";
 		$order_summary.="<td>$Price</td>";
@@ -83,7 +84,7 @@ $vars = array(
 	'ref_no'=>$ref_no,
 	'date'=>$date,
 	'address'=>implode(', ',array($address_1,$address_2,$address_3)),
-	'total'=>$total,
+	'total'=>money_format('%0.2n',$total),
 	'order_summary'=>$order_summary
 );
 $clientBody = template('template/client-order-placement.php', $vars);
