@@ -116,6 +116,7 @@ if (!$mail->send()) {
 
 $mail->ClearAllRecipients();
 $mail->AddAddress($adminEmail,$adminName);
+$mail->AddBCC($adminReply,$adminName);
 $mail->Subject = "Order  from $clientName ($clientEmail) - Ref No. $ref_no";
 $mail->Body = $adminPre['html'];
 $mail->AltBody = $adminPre['plain'];
