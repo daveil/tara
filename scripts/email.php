@@ -48,7 +48,7 @@ function template($file, $vars=array()) {
 //Client Order Details
 $clientName = $_POST['name'];
 $clientEmail = $_POST['email'];
-$po_no = "13245";
+$ref_no = "13245";
 $date =  date("F d, Y",time());
 $address = explode(';',$_POST['address']);
 $address_1 = $address[0];
@@ -79,19 +79,19 @@ foreach($order as $O){
 //Email template
 $vars = array(
 	'client'=>$clientName,
-	'po_no'=>$po_no,
+	'email'=>$clientEmail,
+	'ref_no'=>$ref_no,
 	'date'=>$date,
-	'address_1'=>$address_1,
-	'address_2'=>$address_2,
-	'address_3'=>$address_3,
+	'address'=>implode(', ',array($address_1,$address_2,$address_3))
 	'total'=>$total,
 	'order_summary'=>$order_summary
 );
-$clientBody = template('template/client-order-placement.php', $vars);
+$clientBody = template('template/email.php', $vars);
 $adminBody = template('template/admin-order-placement.php',$vars);
 $clientPre = Premailer::html($clientBody);
 $adminPre = Premailer::html($adminBody);
 $log = array();
+$mail->AddEmbeddedImage('template/img/logo.png', 'logo');
 $mail->AddAddress($clientEmail,$clientName);
 $mail->AddReplyTo($adminReply,$adminName);
 $mail->Subject = "Order confirmation";
