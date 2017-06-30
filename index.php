@@ -232,7 +232,7 @@
 				<div class="col-md-6">
 					<div class="spacer"></div>
 					<p>Got it! Please review your order above and fulfill the order request form.</p>
-					<p>We'll email your billing invoice within 24-28 hours after confrimation and provide further instructions.</p>
+					<p>We'll email your billing invoice within 24-48 hours after confirmation and provide further instructions.</p>
 				</div>
 				<div class="col-md-6">
 				<form id="JDEOrderRequest">

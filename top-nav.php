@@ -21,6 +21,7 @@
 		<li><a href="https://www.ishoptara.com/shop/stud.html">SHOP</a></li>
 		<li><a href="https://www.ishoptara.com/about">ABOUT</a></li>
 		<li><a href="https://www.ishoptara.com/contact">CONTACT</a></li>
+		<li><a href="https://www.ishoptara.com">RETURN TO STORE</a></li>
 	  </ul>
 	</div><!--/.nav-collapse -->
   </div>
