@@ -9,6 +9,7 @@ if(IS_LOCAL)
 
 $adminEmail = $_ENV['ADMIN_EMAIL'];
 $adminName = $_ENV['ADMIN_NAME'];
+$adminReply = $_ENV['ADMIN_REPLY'];
 $clientId = $_ENV['CLIENT_ID'];
 $clientSecret = $_ENV['CLIENT_SECRET'];
 $refreshToken = $_ENV['CLIENT_TOKEN'];
@@ -91,9 +92,10 @@ $adminBody = template('template/admin-order-placement.php',$vars);
 $clientPre = Premailer::html($clientBody);
 $adminPre = Premailer::html($adminBody);
 $log = array();
-$mail->addAddress($clientEmail,$clientName);
+$mail->AddAddress($clientEmail,$clientName);
+$mail->AddReplyTo($adminReply,$adminName);
 $mail->Subject = "Order confirmation";
-$mail->msgHTML($clientPre['html'], dirname(__FILE__));
+$mail->Body = $clientPre['html'];
 $mail->AltBody = $clientPre['plain'];
 
 if (!$mail->send()) {
@@ -101,9 +103,11 @@ if (!$mail->send()) {
 } else {
    $log['client']=  "Client Message sent!";
 }
-$mail->addAddress($adminEmail,$adminName);
+
+$mail->ClearAllRecipients();
+$mail->AddAddress($adminEmail,$adminName);
 $mail->Subject = "Order from $clientName ($clientEmail)";
-$mail->msgHTML($adminPre['html'], dirname(__FILE__));
+$mail->Body = $adminPre['html'];
 $mail->AltBody = $adminPre['plain'];
 
 if (!$mail->send()) {
