@@ -18,9 +18,9 @@
 	<div id="navbar" class="navbar-collapse collapse">
 	  
 	  <ul class="nav navbar-nav navbar-right">
-		<li><a href="#">SHOP</a></li>
-		<li><a href="#">ABOUT</a></li>
-		<li><a href="#">CONTACT</a></li>
+		<li><a href="https://www.ishoptara.com/shop/stud.html">SHOP</a></li>
+		<li><a href="https://www.ishoptara.com/about">ABOUT</a></li>
+		<li><a href="https://www.ishoptara.com/contact">CONTACT</a></li>
 	  </ul>
 	</div><!--/.nav-collapse -->
   </div>
