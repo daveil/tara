@@ -1,12 +1,11 @@
 {
     
     "require": {
-        "mailgun/mailgun-php": "^2.3",
         "php-http/curl-client": "^1.7",
         "guzzlehttp/psr7": "^1.4",
         "paulbunyannet/premailer": "^1.0",
         "phpmailer/phpmailer": "~5.2",
-        "google/apiclient": "1.*",
-        "league/oauth2-google": "^2.0"
+        "league/oauth2-google": "^2.0",
+        "simple-crud/simple-crud": "^6.11"
     }
 }
