@@ -1,59 +1,35 @@
 <?php
 header('Content-type:application/json');
 require '../vendor/autoload.php';
-use Mailgun\Mailgun;
 use Pbc\Premailer;
 use phpmailer\PHPMailerAutoload;
+if(!defined('IS_LOCAL'))   define('IS_LOCAL',$_SERVER['HTTP_HOST']=='localhost');
+if(IS_LOCAL)
+	$_ENV = json_decode(file_get_contents('env.json'),true);
 
-$redirectUri = 'http://localhost/tara/scripts/oauth.php';
-$clientId = '387048371816-4up3mmigkh18g2hut3bpu3ouhdc0kh6l.apps.googleusercontent.com';
-$clientSecret = 'mklHhrns6eF-qjwuiLpSB4DL';
-$phpmailer = new PHPMailerOAuth();
-$phpmailer->IsSMTP();
-$phpmailer->SMTPDebug  = 2;
-$phpmailer->Host       = "ssl://smtp.gmail.com";
-$phpmailer->SMTPAuth   = true;
-$phpmailer->SMTPSecure = 'ssl';
-$mail->AuthType = 'XOAUTH2';
-$phpmailer->Port       = 465;
+$adminEmail = $_ENV['ADMIN_EMAIL'];
+$adminName = $_ENV['ADMIN_NAME'];
+$clientId = $_ENV['CLIENT_ID']
+$clientSecret = $_ENV['CLIENT_SECRET'];
+$refreshToken = $_ENV['CLIENT_TOKEN'];
 
-$phpmailer->oauthClientId = clientId;
-$phpmailer->oauthClientSecret = "***";
-$phpmailer->oauthRefreshToken = "***";
-$phpmailer->oauthUserEmail="***";
-exit;
-
-$mail = new PHPMailer;
+$mail = new PHPMailerOAuth;
 $mail->IsSMTP(); // enable SMTP
-$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
-$mail->SMTPAuth = true; // authentication enabled
-$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
 $mail->Host = "smtp.gmail.com";
-$mail->Port = 465; // or 587
+$mail->Port = 587; // or 465
+$mail->SMTPDebug = 0; // debugging: 1 = errors and messages, 2 = messages only
+$mail->SMTPAuth = true; // authentication enabled
+$mail->SMTPSecure = 'tls'; // Set the encryption system to use - ssl (deprecated) or tls
+$mail->AuthType = 'XOAUTH2';
+$mail->oauthUserEmail = $adminEmail;
+$mail->oauthClientId = $clientId;
+$mail->oauthClientSecret = $clientSecret;
+$mail->oauthRefreshToken = $refreshToken;
+
 $mail->IsHTML(true);
-$mail->Username = "no-reply@ishoptara.com";
-$mail->Password = "CreateYourTara";
-$mail->SetFrom("no-reply@ishoptara.com");
-$mail->Subject = "Test";
-$mail->Body = "hello";
-$mail->AddAddress("daveadev@gmail.com");
+$mail->setFrom($adminEmail, $adminName);
 
- if(!$mail->Send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
- } else {
-    echo "Message has been sent";
- }
-exit;
 
-define('USE_MG',false);
-if(USE_MG):
-	$MG_KEY = 'key-b6ac1021af9712bed066c06fd8f1c7ca';
-	$MG_DOMAIN = 'appd964bcc2465a4236b7ceb35b59daaf44.mailgun.org';
-	$MG_EMAIL = 'postmaster@appd964bcc2465a4236b7ceb35b59daaf44.mailgun.org';
-	$mg = Mailgun::create($MG_KEY);
-endif;
-
-$adminEmail = 'daveadev@gmail.com';
 function template($file, $vars=array()) {
     if(file_exists($file)){
         // Make variables from the array easily accessible in the view
@@ -69,7 +45,7 @@ function template($file, $vars=array()) {
     }
 }
 //Client Order Details
-$client = $_POST['name'];
+$clientName = $_POST['name'];
 $clientEmail = $_POST['email'];
 $po_no = "13245";
 $date =  date("F d, Y",time());
@@ -101,7 +77,7 @@ foreach($order as $O){
 
 //Email template
 $vars = array(
-	'client'=>$client,
+	'client'=>$clientName,
 	'po_no'=>$po_no,
 	'date'=>$date,
 	'address_1'=>$address_1,
@@ -114,24 +90,26 @@ $clientBody = template('template/client-order-placement.php', $vars);
 $adminBody = template('template/admin-order-placement.php',$vars);
 $clientPre = Premailer::html($clientBody);
 $adminPre = Premailer::html($adminBody);
-$mgDomain = $MG_DOMAIN;
-$mgParams = [
-			'from'    => $MG_EMAIL, 
-			];
-//Send Order Confirmation to Client
-$mgParams['to']=$clientEmail;
-$mgParams['subject']='Order Confirmation';
-$mgParams['text'] =  $clientPre['plain'];
-$mgParams['html'] =  $clientPre['html'];
-if(USE_MG) $mg->messages()->send($mgDomain,$mgParams);
+$log = array();
+$mail->addAddress($clientEmail,$clientName);
+$mail->Subject = "Order confirmation";
+$mail->msgHTML($clientPre['html'], dirname(__FILE__));
+$mail->AltBody = $clientPre['plain'];
 
+if (!$mail->send()) {
+	$log['client']=$mail->ErrorInfo;
+} else {
+   $log['client']=  "Client Message sent!";
+}
+$mail->addAddress($adminEmail,$adminName);
+$mail->Subject = "Order from $clientName ($clientEmail)";
+$mail->msgHTML($adminPre['html'], dirname(__FILE__));
+$mail->AltBody = $adminPre['plain'];
 
-//Send Order Confirmation to Admin
-$mgParams['to']=$adminEmail;
-$mgParams['subject']='Order Admin Copy';
-$mgParams['text'] =  $adminPre['plain'];
-$mgParams['html'] =  $adminPre['html'];
-if(USE_MG)  $mg->messages()->send($mgDomain,$mgParams);
-
-echo json_encode(['OK']);
+if (!$mail->send()) {
+	$log['admin']=$mail->ErrorInfo;
+} else {
+   $log['admin']=  "Admin Message sent!";
+}
+echo json_encode($log);
 return;
