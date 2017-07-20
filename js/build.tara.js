@@ -44,6 +44,8 @@ $(document).ready(function(){
 	var lastPendantType;
 	var orderPlaced = false;
 	var orderSummary = [];
+	var orderItems = [];
+	var orderTotal = 0;
 	initBaseGrid();
 	initAttachmentGrid();
 	buildBase();
@@ -182,14 +184,30 @@ $(document).ready(function(){
 		var path = JEWEL_DIR+'/sprite/1x/base/'+base.slug+'.png';
 		if(baseSprite)
 			removeBase(baseSprite);
+		base.itemCode = itemCode;
 		baseSprite = addSprite(path,BASE_X,BASE_Y,base.width,base.height,BASE_SCALE,1,{x:0.5,y:0});
 		baseSelected = base;
 		$('#jde-build .jde-btn,.main-carousel .grid-item.white').attr('data-target','#JDEItemModal');
 		scrollTo('#jde-build');
+		
+		fbq('track', 'AddToCart', {
+			content_ids: ['base-'+itemCode],
+			content_type: 'product',
+			value: base.price,
+			currency: 'USD'
+		});
 		computeTotal();
 	}
 	function removeBase(sprite){
 		APP.stage.removeChild(sprite);
+		var itemCode =  baseSelected.itemCode;
+		var basePrice =  baseSelected.price;
+		fbq('track', 'RemoveToCart', {
+			content_ids: ['base-'+itemCode],
+			content_type: 'product',
+			value: basePrice,
+			currency: 'USD'
+		});
 		
 	}
 	function addPendant(itemCode){
@@ -214,20 +232,27 @@ $(document).ready(function(){
 		var sprite = addSprite(path,0,lastPosition,pendant.width,pendant_height,scale,1,anchor);
 		var pHeight =  Math.round((pendant_height-LOCK_OFFSET)*scale,2);
 		pendantSprites.push({height:pHeight,sprite:sprite,price:pendant.price,name:pendant.name,itemCode:itemCode});
-		console.log('Before',lastPosition,pHeight);
+		//console.log('Before',lastPosition,pHeight);
 		lastPosition = lastPosition+pHeight;
-		console.log('After',lastPosition);
+		//console.log('After',lastPosition);
 		lastPendantType = pendant.type;
+		
+		fbq('track', 'AddToCart', {
+			content_ids: ['atta-'+itemCode],
+			content_type: 'product',
+			value: pendant.price,
+			currency: 'USD'
+		});
 		computeTotal();
 	}
 	function removePendant(index){
 		var pendant = pendantSprites[index];
 		APP.stage.removeChild(pendant.sprite);
-		console.log('Before undo',lastPosition,pendant.height);
+		//console.log('Before undo',lastPosition,pendant.height);
 		
 		lastPosition = lastPosition-pendant.height;
 		
-		console.log('After undo',lastPosition);
+		//console.log('After undo',lastPosition);
 		if(index>0) {
 			var itemCode = pendantSprites[index-1]['itemCode'];
 			var type = PENDANTS[itemCode].type;
@@ -243,6 +268,13 @@ $(document).ready(function(){
 		}else{
 			lastPendantType = null;
 		}
+		
+		fbq('track', 'RemoveToCart', {
+			content_ids: ['atta-'+itemCode],
+			content_type: 'product',
+			value: PENDANTS[itemCode].price,
+			currency: 'USD'
+		});
 		computeTotal();
 	}
 	function computeTotal(){
@@ -296,6 +328,8 @@ $(document).ready(function(){
 		lastPosition = ATTA_Y;
 		orderPlaced=false;
 		orderSummary = [];
+		orderItems = [];
+		orderTotal = 0;
 		computeTotal();
 		href=href||'#jde-select';
 		scrollTo(href);
@@ -343,6 +377,7 @@ $(document).ready(function(){
 			};
 			config.success = function (response){
 				$('#jde-submit-order-now').text('SENT!').removeAttr('disabled');
+				fbq('track', 'CheckoutSuccess',{response:response});
 				setTimeout(function(){
 					$('#JDEOrderSummary').modal('hide');
 					resetBuilder('#jde-intro');	
@@ -351,9 +386,17 @@ $(document).ready(function(){
 			};
 			config.error = function (response){
 				$('#jde-submit-order-now').text('TRY AGAIN.').removeAttr('disabled');
+				fbq('track', 'CheckoutError',{response:response});
 				alert('Could not proceed. Please contact TARA for support.');
 			};
+		
 		$.ajax(config);
+		fbq('track', 'Purchase', {
+			content_ids: orderItems,
+			content_type: 'product',
+			value: orderTotal,
+			currency: 'USD'
+		});
 	}
 	$('#JDEWarnModal .modal-body span').text(MAX_ATTCH);
 	$('#jde-build .jde-ui-item').click(function(){
@@ -377,6 +420,16 @@ $(document).ready(function(){
 			break;
 			
 		 }
+	
+		fbq('track', 'ViewContent', {
+			content_ids: [itemType+'-'+itemCode],
+			content_type: 'product',
+			value: item.price,
+			currency: 'USD'
+		});
+
+
+
 		 var modal = $(this);
 		 populateModal(modal,item,itemCode,itemType);
 	});
@@ -391,6 +444,9 @@ $(document).ready(function(){
 		}
 	});
 	$('#JDEOrderSummary').on('show.bs.modal', function (event,arguments) {
+		
+		fbq('track', 'InitiateCheckout');
+		
 		$('#jde-submit-order').text('ORDER NOW');
 		var $table = $('#JDEOrderSummary table tbody');
 		var $footer = $('#JDEOrderSummary table tfoot');
@@ -404,6 +460,7 @@ $(document).ready(function(){
 				quantity:1,
 				amount:baseSelected.price
 			};
+		orderItems.push('base-'+itemCode);
 		for(var i in pendantSprites){
 			var pendant =  pendantSprites[i];
 			var itemCode = pendant.itemCode;
@@ -422,6 +479,7 @@ $(document).ready(function(){
 				item.quantity=qty;
 				item.amount=qty*price;
 			}
+			orderItems.push('atta-'+itemCode);
 			summary[itemCode] = item;
 		}
 		orderSummary = [];
@@ -451,6 +509,7 @@ $(document).ready(function(){
 			total +='</tr>';
 		$footer.html(total);
 		orderSummary.push({total:computedTotal});
+		orderTotal = computedTotal;
 	}).on('hidden.bs.modal', function (event) {
 		var $table = $('#JDEOrderSummary table tbody');
 		var $footer = $('#JDEOrderSummary table tfoot');

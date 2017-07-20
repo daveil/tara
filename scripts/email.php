@@ -2,6 +2,7 @@
 header('Content-type:application/json');
 require '../vendor/autoload.php';
 use Pbc\Premailer;
+use SimpleCrud\SimpleCrud;
 use phpmailer\PHPMailerAutoload;
 if(!defined('IS_LOCAL'))   define('IS_LOCAL',$_SERVER['HTTP_HOST']=='localhost');
 if(IS_LOCAL)
@@ -92,7 +93,7 @@ $vars = array(
 	'ref_no'=>$ref_no,
 	'date'=>$date,
 	'address'=>implode(', ',array($address_1,$address_2,$address_3)),
-	'total'=>'$'.number_format($number, 2, '.', ','),
+	'total'=>'$'.number_format($total, 2, '.', ','),
 	'order_summary'=>$order_summary
 );
 $clientBody = template('template/client-order-placement.php', $vars);
@@ -103,7 +104,7 @@ $log = array('time'=>new Datetime('now'));
 $mail->AddEmbeddedImage('template/img/logo.png', 'logo');
 $mail->AddAddress($clientEmail,$clientName);
 $mail->AddReplyTo($adminReply,$adminName);
-$mail->Subject = "Order confirmation";
+$mail->Subject = "Order Confirmation -  Ref No. $ref_no";
 $mail->Body = $clientPre['html'];
 $mail->AltBody = $clientPre['plain'];
 
@@ -115,7 +116,8 @@ if (!$mail->send()) {
 
 $mail->ClearAllRecipients();
 $mail->AddAddress($adminEmail,$adminName);
-$mail->Subject = "Order from $clientName ($clientEmail)";
+$mail->AddBCC($adminReply,$adminName);
+$mail->Subject = "Order  from $clientName ($clientEmail) - Ref No. $ref_no";
 $mail->Body = $adminPre['html'];
 $mail->AltBody = $adminPre['plain'];
 
