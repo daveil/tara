@@ -17,6 +17,8 @@ $(document).ready(function(){
 	const REGULAR  = 'R';
 	const ENDING =  'E';
 	const TALL =  'T';
+	const PROMO_CODE = 'CYT2017';
+	const PROMO_LESS = 0.4;
 	const BASES = {
 		1:{name:'Mari', slug:'mari', price:2088,width:160,height:156, type:'T'},
 		3:{name:'Kimberly', slug:'kimberly', price:288,width:160,height:156,type:'T'},
@@ -357,11 +359,17 @@ $(document).ready(function(){
 		var email = $('#email').val();
 		var address = $('#address-1').val();
 			address += ';'+$('#address-2').val();
-			address += ';'+$('#address-3').val();
+		var promoCode = $('#promo-code').val();
+		var grossTotal = parseFloat($('#gross-total .amount').text());
+		var netTotal = parseFloat($('#net-total .amount').text());
+			if(!netTotal) netTotal =  grossTotal;
 		var data = {
 				name:name,
 				email:email,
 				address:address,
+				promoCode:promoCode,
+				grossTotal:grossTotal,
+				netTotal:netTotal,
 				orderSummary:orderSummary
 		};
 		var endpoint = window.location.origin+window.location.pathname;
@@ -389,7 +397,6 @@ $(document).ready(function(){
 				fbq('track', 'CheckoutError',{response:response});
 				alert('Could not proceed. Please contact TARA for support.');
 			};
-		
 		$.ajax(config);
 		fbq('track', 'Purchase', {
 			content_ids: orderItems,
@@ -444,7 +451,7 @@ $(document).ready(function(){
 		}
 	});
 	$('#JDEOrderSummary').on('show.bs.modal', function (event,arguments) {
-		
+		$('#promo-less').remove();
 		fbq('track', 'InitiateCheckout');
 		
 		$('#jde-submit-order').text('ORDER NOW');
@@ -503,9 +510,9 @@ $(document).ready(function(){
 			orderSummary.push(order);
 		}
 		var computedTotal = $('#jde-total span').text();
-		var total  ='<tr>';
-			total +='<td class="text-right" colspan="3">Total</td>';
-			total +='<td>'+computedTotal+'</td>';
+		var total  ='<tr id="gross-total">';
+			total +='<td class="text-right" colspan="3"> Total</td>';
+			total +='<td class="amount">'+computedTotal+'</td>';
 			total +='</tr>';
 		$footer.html(total);
 		orderSummary.push({total:computedTotal});
@@ -517,7 +524,20 @@ $(document).ready(function(){
 		$table.html(empty);
 		$footer.html('');
 	});
-	
+	$('#promo-code').blur(function(){
+		var code =  $(this).val();
+		$('#net-total').remove();
+		if(code==PROMO_CODE){
+			var $footer = $('#JDEOrderSummary table tfoot');
+			var grossTotal = parseFloat($('#jde-total span').text());
+			var netTotal = grossTotal*(1-PROMO_LESS);
+			var total  ='<tr id="net-total">';
+				total +='<td class="text-right" colspan="3">Net Total <i>(Less '+(PROMO_LESS*100)+'%)</i></td>';
+				total +='<td class="amount">'+netTotal+'</td>';
+				total +='</tr>';
+			$footer.append(total);
+		}
+	});
 	$('.jde-btn-confirm').click(function(){
 		var itemCode =  $(this).data('item-code');
 		var itemType =  $(this).data('item-type');
@@ -568,5 +588,5 @@ $(document).ready(function(){
 		$('#top-nav').css({'opacity':1-opacity});
 		
 	});
-	scrollTo('#jde-intro');
+	setTimeout(function(){scrollTo('#jde-intro');},SCROLL_SPEED/2);
 });
