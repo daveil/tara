@@ -182,6 +182,7 @@
 						<input type="text" class="form-control" id="address-2-1">
 						<input type="text" class="form-control" id="address-3-1">
 					</div>
+					
 				</form>
 		  </div>
 		  <div class="modal-footer">
@@ -248,7 +249,10 @@
 						<label >Shipping Address</label>
 						<input type="text" class="form-control" id="address-1">
 						<input type="text" class="form-control" id="address-2">
-						<input type="text" class="form-control" id="address-3">
+					</div>
+					<div class="form-group">
+						<label >Promo Code</label>
+						<input type="text" class="form-control" id="promo-code">
 					</div>
 				</form>
 				<button class="btn btn-default  jde-btn-main"  id="jde-submit-order-now">ORDER NOW</button>
