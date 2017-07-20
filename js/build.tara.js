@@ -453,8 +453,8 @@ $(document).ready(function(){
 	$('#JDEOrderSummary').on('show.bs.modal', function (event,arguments) {
 		$('#promo-less').remove();
 		fbq('track', 'InitiateCheckout');
-		
-		$('#jde-submit-order').text('ORDER NOW');
+		$('#JDEOrderRequest input').val('');
+		$('#jde-submit-order-now').text('ORDER NOW');
 		var $table = $('#JDEOrderSummary table tbody');
 		var $footer = $('#JDEOrderSummary table tfoot');
 			$table.html('');
