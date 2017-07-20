@@ -59,7 +59,7 @@ $date =  date("F d, Y",time());
 $address = explode(';',$_POST['address']);
 $address_1 = $address[0];
 $address_2 = $address[1];
-$address_3 = $address[2];
+//$address_3 = $address[2];
 
 // Build Order Summary Table
 $order = $_POST['orderSummary'];
@@ -77,10 +77,12 @@ foreach($order as $O){
 		$order_summary.="<td>$Qty</td>";
 		$order_summary.="<td>$Amt</td>";
 		$order_summary.="</tr>";
-	}else{
-		$total = $O['total'];
 	}
 }
+$promoCode = $_POST['promoCode'];
+$grossTotal = $_POST['grossTotal'];
+$netTotal = $_POST['netTotal'];
+
 $pdo = new PDO($dsn, $username, $password);
 $db = new SimpleCrud($pdo);
 $sysORN =   $db->systemConfig->select()->one()->by('key', 'ORDER_REF_NO')->run();
@@ -92,8 +94,10 @@ $vars = array(
 	'email'=>$clientEmail,
 	'ref_no'=>$ref_no,
 	'date'=>$date,
-	'address'=>implode(', ',array($address_1,$address_2,$address_3)),
-	'total'=>'$'.number_format($total, 2, '.', ','),
+	'address'=>implode(', ',array($address_1,$address_2)),
+	'promoCode'=>$promoCode,
+	'grossTotal'=>'$'.number_format($grossTotal, 2, '.', ','),
+	'netTotal'=>'$'.number_format($netTotal, 2, '.', ','),
 	'order_summary'=>$order_summary
 );
 $clientBody = template('template/client-order-placement.php', $vars);

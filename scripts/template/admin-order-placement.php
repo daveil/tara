@@ -78,6 +78,18 @@
 					<td colspan="3"><b>Total</b></td>
 					<td><b><?php echo $total;?></b></td>
 				</tr>
+				<?php if($grossTotal!=$netTotal):?>
+				<tr>
+					<td colspan="3"><b>Net Total <i>(Less 40%)</i></b></td>
+					<td><b><?php echo $netTotal;?></b></td>
+				</tr>
+				<?php endif;?>
+				<?php if($promoCode):?>
+				<tr>
+					<td colspan="3"><b>Promo Code</b></td>
+					<td><b><?php echo $promoCode;?></b></td>
+				</tr>
+				<?php endif;?>
 			</tfoot>
 		</table>
 	</div>
