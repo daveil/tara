@@ -13,6 +13,7 @@ define(['app'],function(app){
 	};
 	const ROW_COUNT = 2;
 	const OPTIONS = { "cellAlign": "left", "contain": true , "pageDots": false };
+	const MAX_ATTCH = 3;
 	
 	app.controller('JewelAttachmentController', function ($scope,$timeout) {
 		

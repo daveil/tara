@@ -1,4 +1,4 @@
-define(['jquery-bridget','flickity','bootstrap','angular'],function (jqueryBridget,flickity) {
+define(['jquery-bridget','flickity','bootstrap','angular','pixi'],function (jqueryBridget,flickity) {
 	var app = angular.module("JDe",[]); 
 	
 	app.init = function (modules) {

@@ -10,13 +10,14 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 	const EAR_DEFAULT = 'earRight';
 	const NECKLACE =  'NCK';
 	
-	app.controller('JewelDesignerController', function ($scope,$timeout) {
-		$scope.JewelConfig = {
+	app.controller('JewelDesignerController', function ($rootScope,$scope,$timeout) {
+		$rootScope.JewelConfig = {
 				type:EAR_PIECE,
 				hasBase:false,
 				earRight:[],
 				earLeft:[],
 				neck:[],
+				total:0,
 		};
 		
 		$scope.$on('ViewItem',function(evt,item){
@@ -35,13 +36,15 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 				$scope.JewelConfig.hasBase = true;
 			switch($scope.JewelConfig.type){
 				case EAR_PIECE:
-				if($item.itemType==JEWEL_BASE){
-					$scope.JewelConfig.hasBase = true;
-					$scope.JewelConfig[EAR_DEFAULT][0]=item;
-				}else{
-					$scope.JewelConfig[EAR_DEFAULT].push($item);
-				}
-					
+					var earDef = $scope.JewelConfig[EAR_DEFAULT];
+					if($item.itemType==JEWEL_BASE){
+						$scope.JewelConfig.hasBase = true;
+						$item.index=0;
+						earDef[0]=$item;
+					}else{
+						$item.index=earDef.length;
+						earDef.push($item);
+					}
 				break;
 				case EAR_PAIR:
 				

@@ -26,7 +26,7 @@
 		<div class="container" ng-controller="JewelTransactionController">
 			<div class="jde-footer">
 				<h2>Your current total</h2>
-				<p id="jde-total">$ <span></span></p>
+				<p id="jde-total">{{JewelConfig.total | currency:'$ ':0}} <span></span></p>
 			</div>
 			<div id="jde-actions">
 				<div class="row">

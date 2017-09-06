@@ -17,7 +17,7 @@
 							<div class="jde-product">
 								<h4 class="jde-name">{{Item.name}}</h4>
 								<div class="jde-price">
-									<i><span>{{Item.price | currency:'$':0}}</span></i>
+									<i><span>{{Item.price | currency:'$ ':0}}</span></i>
 								</div>	
 							</div>
 							<div class="jde-btn-group">

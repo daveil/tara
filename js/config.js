@@ -9,6 +9,7 @@ requirejs.config({
 		'bootstrap': 'bootstrap/dist/js/bootstrap.min',
 		'jquery-bridget': 'jquery-bridget/jquery-bridget',
 		'flickity':'flickity/dist/flickity.pkgd.min',
+		'pixi':'pixi.js/dist/pixi.min',
 		'app': '../../js/app/main',
 		'fb': '../../js/vendors/fb-pixel',
 		'ga': '../../js/vendors/ga',
