@@ -1,0 +1,57 @@
+{
+  "name": "angular-flickity",
+  "description": "Angular integration for Flickity",
+  "homepage": "https://github.com/benjamincharity/angular-flickity",
+  "authors": [
+    "Benjamin Charity <ben@benjamincharity.com>"
+  ],
+  "license": "MIT",
+  "main": "dist/angular-flickity.js",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "angular",
+    "angular-flickity",
+    "flickity",
+    "flickity.js",
+    "angular.js",
+    "swipe",
+    "slideshow",
+    "slider",
+    "carousel",
+    "touch"
+  ],
+  "dependencies": {
+    "angular": ">= 1.4.0",
+    "flickity": "^2.0.5"
+  },
+  "ignore": [
+    "**/.*",
+    "src",
+    "node_modules",
+    "bower_components",
+    "package.json",
+    "webpack.config.js"
+  ],
+  "overrides": {
+    "flickity": {
+      "main": [
+        "dist/flickity.pkgd.js",
+        "dist/flickity.min.css"
+      ]
+    }
+  },
+  "version": "3.1.4",
+  "_release": "3.1.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.1.4",
+    "commit": "06c3cb700d59c53ff649755a99963e1cd08c31af"
+  },
+  "_source": "https://github.com/benjamincharity/angular-flickity.git",
+  "_target": "^3.1.4",
+  "_originalSource": "angular-flickity",
+  "_direct": true
+}
