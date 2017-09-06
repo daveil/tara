@@ -11,14 +11,21 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 	const NECKLACE =  'NCK';
 	
 	app.controller('JewelDesignerController', function ($rootScope,$scope,$timeout) {
-		$rootScope.JewelConfig = {
+		function initConfig(){
+			$rootScope.JewelConfig = {
 				type:EAR_PIECE,
-				hasBase:false,
+				slugs:{},
 				earRight:[],
 				earLeft:[],
 				neck:[],
 				total:0,
-		};
+			};
+		}
+		initConfig();
+		
+		$scope.$on('AttachError',function(evt,code){
+			$scope.$broadcast('PreviewError',code);
+		});
 		
 		$scope.$on('ViewItem',function(evt,item){
 			//console.log('Recieved in JDsgr',item);
@@ -32,13 +39,11 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		});
 		$scope.$on('AppendItem',function(evt,item){
 			var $item =  angular.copy(item);
-			if($item.itemType==JEWEL_BASE)
-				$scope.JewelConfig.hasBase = true;
+			
 			switch($scope.JewelConfig.type){
 				case EAR_PIECE:
 					var earDef = $scope.JewelConfig[EAR_DEFAULT];
 					if($item.itemType==JEWEL_BASE){
-						$scope.JewelConfig.hasBase = true;
 						$item.index=0;
 						earDef[0]=$item;
 					}else{
@@ -55,8 +60,51 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			}
 			
 		});
+	
+		$scope.$on('UndoLast',function(evt){
+			var jwlSlug = $rootScope.JewelConfig.slugs[EAR_DEFAULT];
+			if(jwlSlug){
+				
+				switch($scope.JewelConfig.type){
+					case EAR_PIECE:
+						var earDef = $scope.JewelConfig[EAR_DEFAULT];
+						var index = earDef.length-1;
+						var item = earDef[index];
+						earDef.pop();
+						$scope.$broadcast('PurgeItem',item);
+					break;
+					case EAR_PAIR:
+					
+					break;
+					case NECKLACE:
+					
+					break;
+				}
+				
+			}else{
+				$scope.$broadcast('PreviewError','NOUNDO');
+			}
+		});
+		$scope.$on('BeginAgain',function(evt){
+			initConfig();
+			$scope.$broadcast('ResetBuilder');
+		});
 	});
 	app.controller('JewelModalController', function ($scope,$timeout) {
+		const ERRORS = {
+			NOUNDO : 'Nothing to Undo',
+			NOITEM : 'Add item first',
+			NOBASE : 'Select base jewelry first.',
+			MAXATTA : 'Oops! You can only add up to 3 item(s).',
+			INVATTA : 'Oops! Last item added can not accept an attachment. Undo last action to change.',
+			
+		}
+		$scope.$on('PreviewError',function(evt,code){
+			$scope.Code =  code;
+			$scope.Message =  ERRORS[code];
+			$('#JDEWarnModal').modal('show');
+		});
+		
 		$scope.$on('PreviewItem',function(evt, item){
 			//console.log('Recieved in JModal',item);
 			item.image = JEWEL_DIR+'preview/'+item.itemType+'/'+item.slug+JEWEL_SUFFIX;
@@ -69,6 +117,9 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		$scope.addItem =  function(item){
 			$scope.$emit('AddItem',item);
 			$('#JDEItemModal').modal('hide');
+		}
+		$scope.undoLast = function(){
+			$scope.$emit('UndoLast');
 		}
 	});
 });

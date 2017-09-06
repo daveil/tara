@@ -32,5 +32,18 @@
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
 	
+	<div class="modal fade" tabindex="-1" role="dialog" id="JDEWarnModal">
+	  <div class="modal-dialog " role="document">
+		<div class="modal-content">
+		  <div class="modal-body text-center">				
+				<p>{{Message}}</p>
+		  </div>
+		  <div class="modal-footer">
+				<button type="button" class="btn btn-default jde-btn-main" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-default jde-btn-main jde-btn-undo" data-dismiss="modal" ng-show="Code=='INVATTA'" ng-click="undoLast()">Undo Last</button>
+		  </div>
+		</div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 </div>
 	

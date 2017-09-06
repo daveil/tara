@@ -14,8 +14,9 @@ define(['app'],function(app){
 	const ROW_COUNT = 2;
 	const OPTIONS = { "cellAlign": "left", "contain": true , "pageDots": false };
 	const MAX_ATTCH = 3;
+	const EAR_DEFAULT = 'earRight';
 	
-	app.controller('JewelAttachmentController', function ($scope,$timeout) {
+	app.controller('JewelAttachmentController', function ($rootScope, $scope,$timeout) {
 		
 		var UIPendants  =[];
 		var UIMobilePendants  =[];
@@ -40,7 +41,16 @@ define(['app'],function(app){
 		
 		$scope.viewItem = function(item){
 			item.itemType = 'atta';
-			$scope.$emit('ViewItem',item);
+			var jwlSlug = $rootScope.JewelConfig.slugs[EAR_DEFAULT];
+			
+			if(!jwlSlug)
+				$scope.$emit('AttachError','NOBASE');
+			else if(jwlSlug.length==MAX_ATTCH+1)
+				$scope.$emit('AttachError','MAXATTA');
+			else if(jwlSlug.endsWith('E'))
+				$scope.$emit('AttachError','INVATTA');
+			else
+				$scope.$emit('ViewItem',item);
 		};
 		
 	});

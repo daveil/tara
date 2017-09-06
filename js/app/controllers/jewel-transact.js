@@ -12,20 +12,31 @@ define(['app'],function(app){
 			console.log('Compute Total',item);
 			computeTotal();
 		});
+		
+		$scope.undoLast = function(){
+			$scope.$emit('UndoLast');
+		}
+		$scope.beginAgain = function(){
+			$scope.$emit('BeginAgain');
+		}
 		function computeTotal(){
-			var jwlConf = $rootScope.JewelConfig;
+			var jwlConf  = $rootScope.JewelConfig;
+			var jwlSlug = jwlConf.slugs;
 			var jwlPart = ['earRight'];
 			var jwlTotal = 0;
 			for(var i  in jwlPart){
 				var part = jwlPart[i];
+				jwlSlug[part]='';
 				for(var j in jwlConf[part]){
 					var item =  jwlConf[part][j];
 					jwlTotal+=item.price;
+					jwlSlug[part]+=item.type;
 				}
 			}
 			
 			$rootScope.JewelConfig.total =  jwlTotal;
 		}
 	});
+	
 	
 });
