@@ -11,6 +11,9 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 	const NECKLACE =  'NCK';
 	
 	app.controller('JewelDesignerController', function ($rootScope,$scope,$timeout) {
+		require(['jquery-bridget','flickity'],function(jqueryBridget,flickity){
+			jqueryBridget('flickity',flickity);
+		});
 		function initConfig(){
 			$rootScope.JewelConfig = {
 				type:EAR_PIECE,
@@ -22,7 +25,6 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			};
 		}
 		initConfig();
-		
 		$scope.$on('AttachError',function(evt,code){
 			$scope.$broadcast('PreviewError',code);
 		});
@@ -99,6 +101,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			INVATTA : 'Oops! Last item added can not accept an attachment. Undo last action to change.',
 			
 		}
+		require(['bootstrap']);
 		$scope.$on('PreviewError',function(evt,code){
 			$scope.Code =  code;
 			$scope.Message =  ERRORS[code];

@@ -24,7 +24,6 @@ define(['app'],function(app){
 		
 	app.controller('JewelCanvasController', function ($rootScope,$scope,$timeout) {
 		require(['pixi'],function(pixi){
-			console.log(pixi);
 			APP =new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 			APP.renderer.plugins.interaction.destroy();
 			$.get('css/jewel.tara.css',function(data){

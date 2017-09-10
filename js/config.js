@@ -30,8 +30,7 @@ requirejs.config({
 		'angular':{exports:'angular',deps:['jquery']},
 		'bootstrap':{deps:['jquery']}
 	},
-	
-	
+	deps:['angular']
 });
 
 
