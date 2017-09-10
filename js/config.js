@@ -18,6 +18,7 @@ requirejs.config({
 		'pixi':'pixi.js/dist/pixi.min',
 		'app': '../../js/app/main',
 		'fb': '../../js/vendors/fb-pixel',
+		'ga': '../../js/vendors/ga',
 		'f-ldr': '../../js/file-loader',
 		'jdeDsgn': '../../js/app/controllers/jewel-design',
 		'jdeBase': '../../js/app/controllers/jewel-base',
