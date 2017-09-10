@@ -1,10 +1,10 @@
 //Set up config
 var modules = [];
-var progress=0;
+var progress=0.20;
 var loadedModules = 0;
 var totalModules = 0;
 var bar = document.getElementById('bar');
-	bar.style.width ='5%';
+	bar.style.width ='15%';
 requirejs.config({
     baseUrl: 'libs/bower_components/',
 	urlArgs: (function(){ return 'v='+(new Date()).getTime()})(), // Dev purposes.
@@ -56,7 +56,9 @@ require.onResourceLoad= function (context, map, depMaps) {
 		
 		if(modules.indexOf(map.url)>-1 ){
 			loadedModules++;
-			progress = loadedModules / totalModules;
+			var p = loadedModules / totalModules;
+			if(p>progress) progress =p;
+			else progress+=0.1; 
 		}
 		bar.style.width = progress*100+'%';
 	}

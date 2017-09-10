@@ -1,0 +1,20 @@
+#main,#preloader{
+	-webkit-transition: opacity 0.5s ease-in-out;
+	-moz-transition: opacity 0.5s ease-in-out;
+	-ms-transition: opacity 0.5s ease-in-out;
+	-o-transition: opacity 0.5s ease-in-out;
+}
+#bar{
+	-webkit-transition: width 0.25s ease-in-out;
+	-moz-transition: width 0.25s ease-in-out;
+	-ms-transition: width 0.25s ease-in-out;
+	-o-transition: width 0.25s ease-in-out;
+	width:9%;
+}
+#preloader{
+	background-image:url('../img/tara-loading.gif');
+	background-size: 500px auto;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	opacity:1;
+}
