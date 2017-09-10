@@ -15,7 +15,7 @@ define(['app'],function(app){
 	const HEIGHT = 702;
 	const ATTA_Y = -280;
 	const LOCK_OFFSET = 15;
-	const APP = new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});;
+	var  APP;
 	
 	var baseSprite,baseSelected;
 	var pendantSprites = [];
@@ -23,9 +23,21 @@ define(['app'],function(app){
 	var lastPendantType;
 		
 	app.controller('JewelCanvasController', function ($rootScope,$scope,$timeout) {
-				
-		APP.renderer.plugins.interaction.destroy();
-		$timeout(function(){buildBase();});
+		require(['pixi'],function(pixi){
+			console.log(pixi);
+			APP =new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
+			APP.renderer.plugins.interaction.destroy();
+			$.get('css/jewel.tara.css',function(data){
+				var style =  data.replace(/\.\.\//g,"");
+				$("body").append("<style id='jewels'>"+style+"</style>");
+			});
+
+			$timeout(function(){buildBase();});
+			
+		});
+		
+		
+		
 		
 		$scope.$on('AppendItem',function(evt,item){
 			console.log('Draw Sprite',item);

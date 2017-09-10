@@ -1,4 +1,4 @@
-define(['app'],function(app){
+define(['app','f-ldr'],function(app,fldr){
 	const BASES = {
 		1:{id: 1, name:'Mari', slug:'mari', price:2088,width:160,height:156, type:'B'},
 		3:{id:3, name:'Kimberly', slug:'kimberly', price:288,width:160,height:156,type:'B'},

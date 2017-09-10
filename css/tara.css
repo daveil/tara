@@ -10,7 +10,7 @@
   font-style: normal;
 }
 body{
-	font-family: "Futura";
+	font-family:   "Futura";
 }
 body>div.container{
 	margin-top:10px;
@@ -489,6 +489,8 @@ canvas{
     background-repeat: no-repeat;
     background-size: 100%;
     margin-top: 0px;
+	
+	background-color: #050c28;
 }
 .close{
 	font-size:20px !important;

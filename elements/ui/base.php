@@ -7,7 +7,7 @@
 				<div class="grid-canvas vertical" >
 					<div class="grid-container" >
 						<div class='grid-item white tall' ng-repeat="item in UIBases  track by $index">
-							<a class='item' ng-click="viewItem(item)"><img ng-src="img/jewel/preview/base/{{item.slug}}.png" alt="" /></a>
+							<a class='item' ng-click="viewItem(item)"><img async  ng-src="img/jewel/preview/base/{{item.slug}}.png" alt="" /></a>
 						</div>
 					</div>
 				</div>

@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<img class="img-responsive" src="img/logo white.png" alt="TARA" />
+				<img async class="img-responsive" src="img/logo white.png" alt="TARA" />
 			</div>
 			<div class="col-md-6  text-center">
 				<h2>Assemble<br/><span>Your own fine jewelry</span></h2>
