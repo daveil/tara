@@ -21,6 +21,10 @@ define(['app'],function(app){
 			},250);
 		});
 		
+		$scope.$on('ProcessOrder',function(evt,data){
+			submitOrder(data);
+			
+		});
 		$scope.undoLast = function(){
 			$scope.$emit('UndoLast');
 		}
@@ -98,6 +102,42 @@ define(['app'],function(app){
 					$rootScope.JewelConfig.discount = PROMO_LESS*100;
 					
 			}
+		}
+	
+		function submitOrder(data){
+		var loc =  window.location;
+		var endpoint = loc.origin;
+			if(loc.host=='localhost')
+				endpoint +='/tara';
+			endpoint += '/scripts/email-fake.php';
+		var config = {};
+			config.url = endpoint;
+			config.type ='POST';
+			config.dateType ='json';
+			config.cache = false;
+			config.data = data;
+			config.beforeSend = function(){
+				$rootScope.JewelConfig.orderSending=true;
+				$rootScope.JewelConfig.orderStatus='SENDING...';
+				$scope.$emit('OrderStarted');
+			};
+			config.success = function (response){
+				$rootScope.JewelConfig.orderStatus='SENT!';
+				$timeout(function(){
+					$scope.$emit('OrderProcessed');
+				},2000);
+				
+				
+			};
+			config.error = function (response){
+				$rootScope.JewelConfig.orderSending=false;
+				$rootScope.JewelConfig.orderStatus='TRY AGAIN';
+				$scope.$emit('OrderFailed');
+				//fbq('track', 'CheckoutError',{response:response});
+				//alert('Could not proceed. Please contact TARA for support.');
+			};
+		$.ajax(config);
+		
 		}
 	});
 	

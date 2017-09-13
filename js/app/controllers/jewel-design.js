@@ -152,6 +152,26 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		$scope.$on('ApplyPromoCode',function(evt,promoCode){
 			$scope.$broadcast('ComputeOrder',promoCode);
 		});
+		$scope.$on('SubmitOrder',function(evt,order){
+			$scope.$broadcast('ProcessOrder',order);
+		});
+		
+		$scope.$on('OrderStarted',function(){
+			
+		});
+		
+		$scope.$on('OrderProcessed',function(){
+			$timeout(function(){
+				$rootScope.JewelConfig.orderStatus='ORDER NOW';
+				$rootScope.JewelConfig.orderSending=false;
+				$scope.$emit('ScrollTo','#jde-intro');
+				$scope.$broadcast('OrderAccepted');
+			},3000);
+
+		});
+		
+		$scope.$on('OrderFailed',function(){});
+		
 	});
 	app.controller('JewelModalController', function ($rootScope,$scope,$timeout) {
 		const ERRORS = {
@@ -204,8 +224,31 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		}
 		$rootScope.$watch('JewelConfig.discount',function(discount){
 			$scope.ShowNetTotal = discount>0;
-			console.log(discount);
 		});
-		
+		$scope.submitOrder = function(){
+			var name =$scope.Name;
+			var email = $scope.Email;
+			var address = $scope.Address1
+				address += ';'+$scope.Address2;
+			var promoCode = $scope.PromoCode;
+			var grossTotal = $rootScope.JewelConfig.grossTotal;
+			var netTotal = $rootScope.JewelConfig.netTotal;
+			var orderSummary = $rootScope.JewelConfig.orderSummary;
+				
+			var data = {
+					name:name,
+					email:email,
+					address:address,
+					promoCode:promoCode,
+					grossTotal:grossTotal,
+					netTotal:netTotal,
+					orderSummary:orderSummary
+			};
+			$scope.$emit('SubmitOrder',data);
+		}
+		$scope.$on('OrderAccepted',function(){
+			$('#JDEOrderSummary').modal('hide');
+
+		});
 	});
 });

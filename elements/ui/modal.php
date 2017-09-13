@@ -106,23 +106,23 @@
 				<form id="JDEOrderRequest">
 					<div class="form-group">
 						<label >Full name</label>
-						<input type="text" class="form-control" id="full-name">
+						<input type="text" class="form-control" id="full-name" ng-model="Name">
 					</div>
 					<div class="form-group">
 						<label >Email</label>
-						<input type="email" class="form-control" id="email">
+						<input type="email" class="form-control" id="email" ng-model="Email">
 					</div>
 					<div class="form-group">
 						<label >Shipping Address</label>
-						<input type="text" class="form-control" id="address-1">
-						<input type="text" class="form-control" id="address-2">
+						<input type="text" class="form-control" id="address-1" ng-model="Address1">
+						<input type="text" class="form-control" id="address-2" ng-model="Address2">
 					</div>
 					<div class="form-group">
 						<label >Promo Code</label>
 						<input type="text" class="form-control" id="promo-code" ng-model="PromoCode" ng-change="applyPromoCode()">
 					</div>
 				</form>
-				<button class="btn btn-default  jde-btn-main"  id="jde-submit-order-now">ORDER NOW</button>
+				<button class="btn btn-default  jde-btn-main"  id="jde-submit-order-now" ng-click="submitOrder()" ng-disabled="JewelConfig.orderSending" >{{JewelConfig.orderStatus?JewelConfig.orderStatus:'ORDER NOW'}}</button>
 				</div>
 			</div>
 		  </div>
