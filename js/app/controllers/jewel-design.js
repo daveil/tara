@@ -127,6 +127,16 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 				$scope.$broadcast('PreviewError','NOUNDO');
 			}
 		});
+		
+		$scope.$on('PlaceOrder',function(evt){
+			
+			$scope.$broadcast('PreviewOrder');
+		});
+		$scope.$on('ErrorOrder',function(evt,code){
+			
+			$scope.$broadcast('PreviewError',code);
+		});
+		
 		$scope.$on('BeginAgain',function(evt){
 			initConfig();
 			$scope.$broadcast('ScrollTo',UI_PANEL.Intro);
@@ -149,9 +159,15 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		$scope.$on('PreviewError',function(evt,code){
 			$scope.Code =  code;
 			$scope.Message =  ERRORS[code];
-			if(code=='NOBASE') 
-				$scope.$emit('ScrollTo',UI_PANEL.Base);
 			$('#JDEWarnModal').modal('show');
+			switch(code){
+				case 'NOBASE':
+					$scope.$emit('ScrollTo',UI_PANEL.Base);
+				break;
+				case 'NOITEM':
+					$scope.$emit('ScrollTo',UI_PANEL.Attach);
+				break;
+			}
 		});
 		
 		$scope.$on('PreviewItem',function(evt, item){
@@ -170,5 +186,6 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		$scope.undoLast = function(){
 			$scope.$emit('UndoLast');
 		}
+		
 	});
 });

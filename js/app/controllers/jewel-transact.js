@@ -16,6 +16,21 @@ define(['app'],function(app){
 		$scope.undoLast = function(){
 			$scope.$emit('UndoLast');
 		}
+		$scope.placeOrder =  function(){
+			console.log('Place Order');
+			var jwlConf  = $rootScope.JewelConfig;
+			var jwlSlug = jwlConf.slugs;
+			var jwlPart = ['earRight'];
+			for(var i  in jwlPart){
+				var part = jwlPart[i];
+				console.log(part, jwlSlug);
+				if(!jwlSlug[part]){
+					$scope.$emit('ErrorOrder','NOITEM');
+					break;
+				}
+			}
+			$scope.$emit('PlaceOrder');
+		}
 		$scope.beginAgain = function(){
 			$scope.$emit('BeginAgain');
 		}
