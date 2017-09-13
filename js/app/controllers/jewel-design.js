@@ -9,10 +9,13 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 	const EAR_PAIR =  'EPR';
 	const EAR_DEFAULT = 'earRight';
 	const NECKLACE =  'NCK';
+	const SCROLL_SPEED = 800;
+	const THRESHOLD2FADE =  $(window).height() * 0.35;
 	
 	app.controller('JewelDesignerController', function ($rootScope,$scope,$timeout) {
 		require(['jquery-bridget','flickity'],function(jqueryBridget,flickity){
 			jqueryBridget('flickity',flickity);
+			
 		});
 		function initConfig(){
 			$rootScope.JewelConfig = {
@@ -24,7 +27,41 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 				total:0,
 			};
 		}
+		function initScrollManager(){
+			$(window).scroll(function() {
+				var position = $(window).scrollTop();
+				var opacity = 1 - position/THRESHOLD2FADE;
+				
+				$('#jde-intro .container').css({'opacity':opacity});
+				$('#top-nav').css({'opacity':1-opacity});
+				
+			});
+			$('a[href^="#"]').on('click',function (e) {
+				e.preventDefault();
+				var target = this.hash;
+				scrollTo(target);
+				
+			});
+			setTimeout(function(){scrollTo('#jde-intro');},SCROLL_SPEED/2);
+		}
+		
+		function scrollTo(target){
+			var $target = $(target);		
+			$('html, body').stop().animate({
+				'scrollTop': $target.offset().top
+			}, SCROLL_SPEED, 'swing', function () {
+				window.location.hash = target;
+			});
+		}
+		
+		
 		initConfig();
+		initScrollManager();
+		
+		$scope.$on('ScrollTo',function(evt,target){
+			scrollTo(target);
+		});
+		
 		$scope.$on('AttachError',function(evt,code){
 			$scope.$broadcast('PreviewError',code);
 		});
@@ -48,6 +85,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 					if($item.itemType==JEWEL_BASE){
 						$item.index=0;
 						earDef[0]=$item;
+						$scope.$broadcast('BaseAdded');
 					}else{
 						$item.index=earDef.length;
 						earDef.push($item);
@@ -72,8 +110,8 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 						var earDef = $scope.JewelConfig[EAR_DEFAULT];
 						var index = earDef.length-1;
 						var item = earDef[index];
-						earDef.pop();
 						$scope.$broadcast('PurgeItem',item);
+						earDef.pop();
 					break;
 					case EAR_PAIR:
 					
@@ -89,7 +127,11 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		});
 		$scope.$on('BeginAgain',function(evt){
 			initConfig();
+			$scope.$broadcast('ScrollTo','#jde-intro');
 			$scope.$broadcast('ResetBuilder');
+		});
+		$scope.$on('BaseAdded',function(evt){
+			$scope.$broadcast('ScrollTo','#jde-build');
 		});
 	});
 	app.controller('JewelModalController', function ($scope,$timeout) {
