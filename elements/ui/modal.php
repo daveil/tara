@@ -1,7 +1,7 @@
 <div ng-controller="JewelModalController">
 	
 	<div class="modal fade" tabindex="-1" role="dialog" id="JDEItemModal">
-	  <div class="modal-dialog modal-lg" role="document">
+	  <div class="modal-dialog modal-lg {{Item.type=='B'?'Base':'Atta'}}" role="document">
 		<div class="modal-content">
 		  <div class="modal-body">
 		  		<div class="row">
