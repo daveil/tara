@@ -16,15 +16,18 @@
 						<div class="jde-ui-product">
 							<div class="jde-product">
 								<h4 class="jde-name">{{Item.name}}</h4>
+								
 								<div class="jde-price">
 									<i><span>{{Item.price | currency:'$ ':0}}</span></i>
+									<span class="help-text" ng-if="Item.soldAsPair">Sold as Pair</span>
+									<span class="help-text" ng-if="!Item.soldAsPair && UIToggle.JewelType=='EPR'">X 2</span>
 								</div>	
 								<div class="base-options" ng-if="Item.type=='B'">
 									<div>
-										<input type="radio" name="baseOption" value="EPC" ng-model="UIToggle.JewelType"   /> Piece
+										<input type="radio" name="baseOption" value="EPC" ng-model="UIToggle.JewelType"   ng-disabled="Item.soldAsPair"  /> Piece
 									</div>
 									<div>
-										<input type="radio" name="baseOption" value="EPR" ng-model="UIToggle.JewelType"  /> Pair
+										<input type="radio" name="baseOption" value="EPR" ng-model="UIToggle.JewelType"  ng-disabled="Item.soldAsPair" /> Pair
 									</div>
 								</div>
 								<div class="base-positions" ng-if="Item.type=='B'">

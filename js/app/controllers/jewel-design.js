@@ -136,6 +136,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 						var index = earDef.length-1;
 						var item = earDef[index];
 						earDef.pop();
+						$rootScope.JewelConfig.slugs[activePart]='';
 						$scope.$broadcast('PurgeItem',item);
 						
 					break;
@@ -248,6 +249,11 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 						JewelType:JEWEL_DEFAULT,
 						JewelPosition:jwConf.activePart || POS_DEFAULT
 					};
+					if(item.soldAsPair){
+						uiDef.JewelType = EAR_PAIR;
+						uiDef.EarRight = true;
+						uiDef.EarLeft = true;
+					}
 					$scope.UIToggle = uiDef
 					$scope.UIToggle.EarRight= uiDef.JewelPosition=='earRight';
 					$scope.UIToggle.EarLeft = uiDef.JewelPosition=='earLeft';

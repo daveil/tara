@@ -112,6 +112,7 @@ define(['app'],function(app){
 				 if(jwlConf[part].length)
 					 jwlPart.push(part);
 			}
+			$rootScope.JewelConfig.type = jwlPart.length>1?'EPR':'EPC';
 			return jwlPart;
 		}
 		function submitOrder(data){

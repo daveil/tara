@@ -1,7 +1,7 @@
 define(['app','f-ldr'],function(app,fldr){
 	const BASES = {
 		1:{id: 1, name:'Mari', slug:'mari', price:2088,width:160,height:156, type:'B'},
-		3:{id:3, name:'Kimberly', slug:'kimberly', price:288,width:160,height:156,type:'B'},
+		3:{id:3, name:'Kimberly (with Diamond)', slug:'kimberly', price:588,width:160,height:156,type:'B', soldAsPair:true},
 		2:{id: 2, name:'Blake', slug:'blake', price:758,width:160,height:156, type:'B'}
 	};
 	const OPTIONS = { "cellAlign": "center", "contain": true , "pageDots": false };
