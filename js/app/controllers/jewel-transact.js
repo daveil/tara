@@ -29,12 +29,15 @@ define(['app'],function(app){
 			$scope.$emit('UndoLast');
 		}
 		$scope.placeOrder =  function(){
-			console.log('Place Order');
+			//console.log('Place Order');
 			var jwlConf  = $rootScope.JewelConfig;
 			var jwlSlug = jwlConf.slugs;
 			var jwlPart = getParts(jwlConf);
 			var summaryObj = {};
 			var orderSummary = [];
+			if(jwlConf.grossTotal==0){
+				return $scope.$emit('ErrorOrder','EMPTY');
+			}
 			for(var i  in jwlPart){
 				var part = jwlPart[i];
 				if(!jwlSlug[part]){

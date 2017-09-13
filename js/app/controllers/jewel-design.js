@@ -211,6 +211,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 	app.controller('JewelModalController', function ($rootScope,$scope,$timeout) {
 		const ERRORS = {
 			NOUNDO : 'Nothing to Undo',
+			EMPTY : 'Order Empty!',
 			NOITEM : 'Add item first',
 			NOBASE : 'Select base jewelry first.',
 			MAXATTA : 'Oops! You can only add up to 3 item(s).',
@@ -225,7 +226,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			$scope.Message =  ERRORS[code];
 			$('#JDEWarnModal').modal('show');
 			switch(code){
-				case 'NOBASE':
+				case 'NOBASE': case 'EMPTY':
 					$scope.$emit('ScrollTo',UI_PANEL.Base);
 				break;
 				case 'NOITEM':
