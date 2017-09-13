@@ -30,9 +30,11 @@ define(['app'],function(app){
 				var style =  data.replace(/\.\.\//g,"");
 				$("body").append("<style id='jewels'>"+style+"</style>");
 			});
-
-			$timeout(function(){buildBase();});
 			
+		});
+		
+		$scope.$on('ActivePartSelected',function(){
+			buildBase();
 		});
 		
 		
@@ -51,7 +53,7 @@ define(['app'],function(app){
 			
 		});
 		$scope.$on('PurgeItem',function(evt,item){
-			console.log('Remove Sprite',item);
+			//console.log('Remove Sprite',item);
 			switch(item.itemType){
 				case JEWEL_BASE:
 					removeBase(baseSprite);

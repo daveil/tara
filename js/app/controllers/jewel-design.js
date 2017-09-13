@@ -80,6 +80,8 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		});
 		
 		$scope.$on('AddItem',function(evt,item){
+			if(item.itemType==JEWEL_BASE)
+				$scope.$broadcast('ActivePartSelected');
 			$scope.$broadcast('AppendItem',item);
 			
 		});
@@ -87,6 +89,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			var $item =  angular.copy(item);
 				$item.itemCode =  $item.id;
 			var activePart = $rootScope.JewelConfig.activePart;
+			
 			switch($scope.JewelConfig.type){
 				case EAR_PIECE:
 					var earDef = $rootScope.JewelConfig[activePart];
