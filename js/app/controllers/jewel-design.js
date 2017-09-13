@@ -18,7 +18,8 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			jqueryBridget('flickity',flickity);
 			
 		});
-		function initConfig(){
+		function initConfig(activePart){
+			activePart =  activePart || EAR_DEFAULT;
 			$rootScope.JewelConfig = {
 				type:EAR_PIECE,
 				slugs:{},
@@ -30,6 +31,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 				netTotal:0,
 				discount:0,
 				promoCode:null,
+				activePart:activePart
 			};
 		}
 		function initScrollManager(){
@@ -84,9 +86,10 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		$scope.$on('AppendItem',function(evt,item){
 			var $item =  angular.copy(item);
 				$item.itemCode =  $item.id;
+			var activePart = $rootScope.JewelConfig.activePart;
 			switch($scope.JewelConfig.type){
 				case EAR_PIECE:
-					var earDef = $scope.JewelConfig[EAR_DEFAULT];
+					var earDef = $rootScope.JewelConfig[activePart];
 					if($item.itemType==JEWEL_BASE){
 						$item.index=0;
 						earDef[0]=$item;
@@ -97,6 +100,19 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 					}
 				break;
 				case EAR_PAIR:
+
+					if($item.itemType==JEWEL_BASE){
+						$item.index=0;
+						var earL = $rootScope.JewelConfig.earLeft;
+						var earR = $rootScope.JewelConfig.earRight;
+						earL[0]=$item;
+						earR[0]=$item;
+						$scope.$broadcast('BaseAdded');
+					}else{
+						var earDef = $rootScope.JewelConfig[activePart];
+						$item.index=earDef.length;
+						earDef.push($item);
+					}
 				
 				break;
 				case NECKLACE:
@@ -107,12 +123,13 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		});
 	
 		$scope.$on('UndoLast',function(evt){
-			var jwlSlug = $rootScope.JewelConfig.slugs[EAR_DEFAULT];
+			var activePart = $rootScope.JewelConfig.activePart;
+			var jwlSlug = $rootScope.JewelConfig.slugs[activePart];
 			if(jwlSlug){
 				
 				switch($scope.JewelConfig.type){
 					case EAR_PIECE:
-						var earDef = $scope.JewelConfig[EAR_DEFAULT];
+						var earDef = $scope.JewelConfig[activePart];
 						var index = earDef.length-1;
 						var item = earDef[index];
 						earDef.pop();
@@ -171,7 +188,10 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		});
 		
 		$scope.$on('OrderFailed',function(){});
-		
+
+		$rootScope.setJWLCONF = function(field,value){
+			$rootScope.JewelConfig[field]=value;
+		}
 	});
 	app.controller('JewelModalController', function ($rootScope,$scope,$timeout) {
 		const ERRORS = {
@@ -183,6 +203,8 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			
 		}
 		require(['bootstrap']);
+
+		
 		$scope.$on('PreviewError',function(evt,code){
 			$scope.Code =  code;
 			$scope.Message =  ERRORS[code];
@@ -202,6 +224,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			item.image = JEWEL_DIR+'preview/'+item.itemType+'/'+item.slug+JEWEL_SUFFIX;
 			
 			$scope.Item = item;
+			$scope.UIToggle = {};
 			$('#JDEItemModal').modal('show');
 			
 		});
@@ -212,6 +235,22 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			
 		});
 		$scope.addItem =  function(item){
+			if(item.itemType =='base'){
+				var activePart;
+				switch($scope.UIToggle.JewelType){
+					case 'PR':
+						activePart='earRight';
+					break;
+					case 'PC':
+						if($scope.UIToggle.EarRight)
+							activePart = 'earRight';
+						else if($scope.UIToggle.EarLeft)
+							activePart = 'earLeft';
+					break;
+				}
+				$rootScope.JewelConfig.activePart = activePart;
+				
+			}
 			$scope.$emit('AddItem',item);
 			$('#JDEItemModal').modal('hide');
 		}

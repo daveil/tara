@@ -83,7 +83,7 @@ define(['app'],function(app){
 		function computeTotal(){
 			var jwlConf  = $rootScope.JewelConfig;
 			var jwlSlug = jwlConf.slugs;
-			var jwlPart = ['earRight'];
+			var jwlPart = [jwlConf.activePart];
 			var jwlTotal = 0;
 			for(var i  in jwlPart){
 				var part = jwlPart[i];

@@ -41,7 +41,8 @@ define(['app'],function(app){
 		
 		$scope.viewItem = function(item){
 			item.itemType = 'atta';
-			var jwlSlug = $rootScope.JewelConfig.slugs[EAR_DEFAULT];
+			var activePart = $rootScope.JewelConfig.activePart;
+			var jwlSlug = $rootScope.JewelConfig.slugs[activePart];
 			
 			if(!jwlSlug)
 				$scope.$emit('AttachError','NOBASE');

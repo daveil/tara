@@ -19,6 +19,23 @@
 								<div class="jde-price">
 									<i><span>{{Item.price | currency:'$ ':0}}</span></i>
 								</div>	
+								{{UIToggle}}
+								<div class="base-options" ng-if="Item.type=='B'">
+									<div>
+										<input type="radio" name="baseOption" value="PC" ng-model="UIToggle.JewelType"   /> Piece
+									</div>
+									<div>
+										<input type="radio" name="baseOption" value="PR" ng-model="UIToggle.JewelType"  /> Pair
+									</div>
+								</div>
+								<div class="base-positions">
+									<div>
+										<input type="checkbox" name="basePosition" value="L"  ng-model="UIToggle.EarLeft" ng-disabled="UIToggle.JewelType==='PR'" /> Left	
+									</div>
+									<div>
+										<input type="checkbox" name="basePosition" value="R" ng-model="UIToggle.EarRight" ng-disabled="UIToggle.JewelType==='PR'"/> Right
+									</div>
+								</div>
 							</div>
 							<div class="jde-btn-group">
 								<button type="button" class="btn btn-primary jde-btn-confirm jde-btn-main" ng-click="addItem(Item)">ADD</button>
