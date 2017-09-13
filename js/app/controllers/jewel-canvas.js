@@ -68,7 +68,7 @@ define(['app'],function(app){
 		});
 		
 		function buildBase(){
-			$('#jde-canvas').prepend(APP.view);
+			$('#jde-canvas .canvas-wrapper').prepend(APP.view);
 			addSprite('img/model/blank-side-view.jpg',0,0,WIDTH,HEIGHT,1,1);
 		}
 		

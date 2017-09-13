@@ -192,6 +192,16 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		$rootScope.setJWLCONF = function(field,value){
 			$rootScope.JewelConfig[field]=value;
 		}
+		$rootScope.displaySide = function(side){
+			switch(side){
+				case 'R':
+					$rootScope.JewelConfig.activePart = 'earRight';
+				break;
+				case 'L':
+					$rootScope.JewelConfig.activePart = 'earLeft';
+				break;
+			}
+		}
 	});
 	app.controller('JewelModalController', function ($rootScope,$scope,$timeout) {
 		const ERRORS = {
@@ -229,9 +239,10 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			
 			switch(item.itemType){
 				case JEWEL_BASE:
+					var jwConf =  $rootScope.JewelConfig;
 					var uiDef = {
 						JewelType:JEWEL_DEFAULT,
-						JewelPosition:POS_DEFAULT
+						JewelPosition:jwConf.activePart || POS_DEFAULT
 					};
 					$scope.UIToggle = uiDef
 					$scope.UIToggle.EarRight= uiDef.JewelPosition=='earRight';

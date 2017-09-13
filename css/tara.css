@@ -327,6 +327,18 @@ canvas{
 .dev #jde-canvas{
 	border:1px solid #e0e;
 }
+#jde-canvas .canvas-wrapper{
+	position:relative;
+}
+#jde-side-switcher {
+	position: absolute;
+    top: 1rem;
+    right: 0;
+}
+#jde-side-switcher  button{
+	border-radius:0;
+	border: 1px solid #15294f;
+}
 .jde-triangle{
 	background-image: url("../img/triangle.png");
 }

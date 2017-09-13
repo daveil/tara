@@ -19,8 +19,16 @@
 				</div>
 			</div>
 		</div>
-
-		<div id="jde-canvas" ng-controller="JewelCanvasController" >
+		
+		<div id="jde-canvas" ng-controller="JewelCanvasController" >			
+			<div class="canvas-wrapper">
+				<div id="jde-side-switcher">
+					<div class="btn-group" ng-if="JewelConfig.type!='NCK'">
+						<button class="btn btn-default"  ng-class="{'jde-btn-main':JewelConfig.activePart=='earLeft'}" ng-click="displaySide('L')">L</button>
+						<button class="btn btn-default"  ng-class="{'jde-btn-main':JewelConfig.activePart=='earRight'}" ng-click="displaySide('R')">R</button>
+					</div>
+				</div>
+			</div>
 			<pre>{{JewelConfig|json}}</pre>
 		</div>
 		<div class="container" ng-controller="JewelTransactionController">
