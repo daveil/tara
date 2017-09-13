@@ -5,12 +5,20 @@ define(['app'],function(app){
 	
 	app.controller('JewelTransactionController', function ($rootScope, $scope,$timeout) {
 		$scope.$on('AppendItem',function(evt,item){
-			console.log('Compute Total',item);
+			//console.log('Compute Total',item);
 			computeTotal();
 		});
 		$scope.$on('PurgeItem',function(evt,item){
-			console.log('Compute Total',item);
+			//console.log('Compute Total',item);
 			computeTotal();
+		});
+		$scope.$on('ComputeOrder',function(evt,promoCode){
+			
+			$timeout(function(){
+				console.log(promoCode,PROMO_CODE);
+				$rootScope.JewelConfig.promoCode = promoCode;
+				$scope.$apply(computeTotal);
+			},250);
 		});
 		
 		$scope.undoLast = function(){
@@ -63,9 +71,11 @@ define(['app'],function(app){
 			computeTotal();
 			$scope.$emit('PlaceOrder',orderSummary);
 		}
+		
 		$scope.beginAgain = function(){
 			$scope.$emit('BeginAgain');
 		}
+		
 		function computeTotal(){
 			var jwlConf  = $rootScope.JewelConfig;
 			var jwlSlug = jwlConf.slugs;
@@ -81,7 +91,13 @@ define(['app'],function(app){
 				}
 			}
 			
-			$rootScope.JewelConfig.total =  jwlTotal;
+			$rootScope.JewelConfig.grossTotal =  jwlTotal;
+			$rootScope.JewelConfig.netTotal =  jwlTotal;
+			if($rootScope.JewelConfig.promoCode==PROMO_CODE){
+					$rootScope.JewelConfig.netTotal = jwlTotal *(1-PROMO_LESS);
+					$rootScope.JewelConfig.discount = PROMO_LESS*100;
+					
+			}
 		}
 	});
 	

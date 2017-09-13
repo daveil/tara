@@ -26,7 +26,10 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 				earLeft:[],
 				neck:[],
 				orderSummary:[],
-				total:0,
+				grossTotal:0,
+				netTotal:0,
+				discount:0,
+				promoCode:null,
 			};
 		}
 		function initScrollManager(){
@@ -146,8 +149,11 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		$scope.$on('BaseAdded',function(evt){
 			$scope.$broadcast('ScrollTo',UI_PANEL.Attach);
 		});
+		$scope.$on('ApplyPromoCode',function(evt,promoCode){
+			$scope.$broadcast('ComputeOrder',promoCode);
+		});
 	});
-	app.controller('JewelModalController', function ($scope,$timeout) {
+	app.controller('JewelModalController', function ($rootScope,$scope,$timeout) {
 		const ERRORS = {
 			NOUNDO : 'Nothing to Undo',
 			NOITEM : 'Add item first',
@@ -181,6 +187,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		});
 		
 		$scope.$on('PreviewOrder',function(evt){
+			$scope.ShowNetTotal =  $rootScope.JewelConfig.discount!=0;
 			$('#JDEOrderSummary').modal('show');
 			
 		});
@@ -191,6 +198,14 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		$scope.undoLast = function(){
 			$scope.$emit('UndoLast');
 		}
+		$scope.applyPromoCode = function(){
+			$rootScope.JewelConfig.discount = 0;
+			$scope.$emit('ApplyPromoCode',$scope.PromoCode);
+		}
+		$rootScope.$watch('JewelConfig.discount',function(discount){
+			$scope.ShowNetTotal = discount>0;
+			console.log(discount);
+		});
 		
 	});
 });

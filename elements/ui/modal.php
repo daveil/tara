@@ -79,9 +79,13 @@
 						</tr>
 					</tbody>
 					<tfoot>
-						<tr id="gross-total">
+						<tr id="gross-total" >
 							<td class="text-right" colspan="3"> Total</td>
-							<td class="amount"><div class="currency">{{JewelConfig.total | currency:'$ ':0}}</div></td>
+							<td class="amount"><div class="currency">{{JewelConfig.grossTotal | currency:'$ ':0}}</div></td>
+						</tr>
+						<tr id="net-total" ng-show="ShowNetTotal">
+							<td class="text-right" colspan="3">Net Total <i>(Less {{JewelConfig.discount}}%)</i></td>
+							<td class="amount"><div class="currency">{{JewelConfig.netTotal | currency:'$ ':0}}  </div></td>
 						</tr>
 					</tfoot>
 				</table>
@@ -115,7 +119,7 @@
 					</div>
 					<div class="form-group">
 						<label >Promo Code</label>
-						<input type="text" class="form-control" id="promo-code">
+						<input type="text" class="form-control" id="promo-code" ng-model="PromoCode" ng-change="applyPromoCode()">
 					</div>
 				</form>
 				<button class="btn btn-default  jde-btn-main"  id="jde-submit-order-now">ORDER NOW</button>

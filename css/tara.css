@@ -130,12 +130,12 @@ canvas{
 	color: #15294f;
 	text-transform: uppercase;
 	letter-spacing: 3px;
-	font-size: 26pt;
+	font-size: 18pt;
 	display: inline-block;
 }
 .jde-footer h2{
 	letter-spacing: 0px;
-	font-size: 8pt;
+	font-size: 10pt;
 	padding-bottom: 5px;
 }
 .jde-header p,.jde-footer p{
