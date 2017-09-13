@@ -108,8 +108,12 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 						$item.index=0;
 						var earL = $rootScope.JewelConfig.earLeft;
 						var earR = $rootScope.JewelConfig.earRight;
+						var $itemCopy =  angular.copy($item);
 						earL[0]=$item;
-						earR[0]=$item;
+						if($item.soldAsPair) 
+							$itemCopy.price = 0;
+						
+						earR[0]=$itemCopy;
 						$scope.$broadcast('BaseAdded');
 					}else{
 						var earDef = $rootScope.JewelConfig[activePart];
@@ -135,11 +139,17 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 						var earDef = $scope.JewelConfig[activePart];
 						var index = earDef.length-1;
 						var item = earDef[index];
-						earDef.pop();
-						$rootScope.JewelConfig.slugs[activePart]='';
-						$scope.$broadcast('PurgeItem',item);
 						
-					break;
+						if(item.soldAsPair&&item.itemType==JEWEL_BASE){
+								$scope.$broadcast('PreviewError','UNPAIR');
+						}else{
+							earDef.pop();
+							$rootScope.JewelConfig.slugs[activePart]='';
+							$scope.$broadcast('PurgeItem',item);
+						}
+						
+						
+						
 					break;
 					case NECKLACE:
 					
@@ -214,6 +224,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			EMPTY : 'Order Empty!',
 			NOITEM : 'Add item first',
 			NOBASE : 'Select base jewelry first.',
+			UNPAIR : 'Oops! You are trying to remove an item sold as pair. Begin again instead.',
 			MAXATTA : 'Oops! You can only add up to 3 item(s).',
 			INVATTA : 'Oops! Last item added can not accept an attachment. Undo last action to change.',
 			
@@ -279,6 +290,10 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			
 		});
 		
+		$scope.emulateInput =function(field,val,disabled){
+			if(!disabled)
+			$scope.UIToggle[field]=val;
+		}
 		$scope.$watchGroup(['UIToggle.EarRight','UIToggle.EarLeft'],function(){
 			var uiT = $scope.UIToggle;
 			var eR = uiT.EarRight;
@@ -333,6 +348,9 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		}
 		$scope.undoLast = function(){
 			$scope.$emit('UndoLast');
+		}
+		$scope.beginAgain = function(){
+			$scope.$emit('BeginAgain');
 		}
 		$scope.applyPromoCode = function(){
 			$rootScope.JewelConfig.discount = 0;

@@ -20,21 +20,25 @@
 								<div class="jde-price">
 									<i><span>{{Item.price | currency:'$ ':0}}</span></i>
 									<span class="help-text" ng-if="Item.soldAsPair">Sold as Pair</span>
-									<span class="help-text" ng-if="!Item.soldAsPair && UIToggle.JewelType=='EPR'">X 2</span>
+									<span class="help-text" ng-if="!Item.soldAsPair && UIToggle.JewelType=='EPR' && Item.type=='B'">X 2</span>
 								</div>	
 								<div class="base-options" ng-if="Item.type=='B'">
 									<div>
+										<div class="jde-radio" ng-class="{active:UIToggle.JewelType=='EPC', disabled:Item.soldAsPair}"  ng-click="emulateInput('JewelType','EPC',Item.soldAsPair)"></div>
 										<input type="radio" name="baseOption" value="EPC" ng-model="UIToggle.JewelType"   ng-disabled="Item.soldAsPair"  /> Piece
 									</div>
 									<div>
+										<div class="jde-radio" ng-class="{active:UIToggle.JewelType=='EPR'}"  ng-click="emulateInput('JewelType','EPR',Item.soldAsPair)"></div>
 										<input type="radio" name="baseOption" value="EPR" ng-model="UIToggle.JewelType"  ng-disabled="Item.soldAsPair" /> Pair
 									</div>
 								</div>
 								<div class="base-positions" ng-if="Item.type=='B'">
 									<div>
+										<div class="jde-checkbox" ng-class="{active:UIToggle.EarLeft,disabled:UIToggle.JewelType==='EPR'}"  ng-click="emulateInput('EarLeft',!UIToggle.Left,UIToggle.JewelType==='EPR')"></div>
 										<input type="checkbox" name="basePosition" value="L"   ng-model="UIToggle.EarLeft" ng-disabled="UIToggle.JewelType==='EPR'" /> Left	
 									</div>
 									<div>
+										<div class="jde-checkbox" ng-class="{active:UIToggle.EarRight,disabled:UIToggle.JewelType==='EPR'}" ng-click="emulateInput('EarRight',!UIToggle.EarRight,UIToggle.JewelType==='EPR')"></div>
 										<input type="checkbox" name="basePosition" value="R" ng-model="UIToggle.EarRight" ng-disabled="UIToggle.JewelType==='EPR'"/> Right
 									</div>
 								</div>
@@ -60,6 +64,7 @@
 		  <div class="modal-footer">
 				<button type="button" class="btn btn-default jde-btn-main" data-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-default jde-btn-main jde-btn-undo" data-dismiss="modal" ng-show="Code=='INVATTA'" ng-click="undoLast()">Undo Last</button>
+				<button type="button" class="btn btn-default jde-btn-main jde-btn-undo" data-dismiss="modal" ng-show="Code=='UNPAIR'" ng-click="beginAgain()">Begin Again</button>
 		  </div>
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->

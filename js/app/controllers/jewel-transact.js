@@ -57,7 +57,12 @@ define(['app'],function(app){
 							};
 						}else{
 							var so = summaryObj[key];
-								so.quantity++;
+								if(item.soldAsPair){
+									so.quantity = 1;
+									so.price = item.price;
+								}else{
+									so.quantity++;
+								}
 								so.amount=so.quantity * so.price;
 								summaryObj[key] = so;
 						}

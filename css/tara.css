@@ -358,14 +358,53 @@ canvas{
 	box-shadow: none;
 	border-radius: 0px;
 }
+.modal input[type="radio"],.modal input[type="checkbox"]{
+	display:none;
+}
+.base-positions, .base-options{
+	margin-top:10px;
+}
+.base-positions>div,.base-options>div{
+	width: 90px;
+    text-align: left;
+   
+}
+
+.jde-radio, .jde-checkbox {
+    width: 17px;
+    height: 17px;
+    border: 1px solid #15294f;
+    display: inline-block;
+	text-align:center;
+	position:relative;
+ 
+}
+.jde-radio{
+	border-radius: 50%;
+}
+.jde-radio.active,.jde-checkbox.active{
+	background-color:#15294f;
+	color:white;
+}
+.jde-radio.disabled,.jde-checkbox.disabled{
+	opacity:0.5;
+	cursor: not-allowed;
+}
+.jde-checkbox.active:before{
+	content: "\2713";
+    position: absolute;
+    top: -2px;
+    right: 2px;
+}
 .modal .modal-footer{
 	border:none;
 	text-align:center;
 }
 .help-text{
-	font-size: 1rem;
+	font-size: 1.25rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    color: #b8b8b8;
 }
 #JDEItemModal .jde-btn-main {
     padding: 10px;
@@ -537,12 +576,18 @@ canvas{
 	#jde-side-switcher{
 		width:50px;
 	}
+	.base-positions>div,.base-options>div{
+		margin: 0 auto;
+	}
 	.jde-name, .jde-price , .base-options , .base-positions {
 		text-align: center;
 		font-size:1.6rem  !important;
 	}
+	.help-text{
+		font-size:1rem;
+	}
 	.base-options , .base-positions{
-		width:45%;
+		width:49%;
 		font-size:1.5rem !important;
 		display:inline-block;
 		margin-top: 20px;
