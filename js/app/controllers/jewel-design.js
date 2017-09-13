@@ -249,14 +249,17 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 						JewelType:JEWEL_DEFAULT,
 						JewelPosition:jwConf.activePart || POS_DEFAULT
 					};
+					
+					
+					uiDef.EarRight= uiDef.JewelPosition=='earRight';
+					uiDef.EarLeft = uiDef.JewelPosition=='earLeft';
+					
 					if(item.soldAsPair){
 						uiDef.JewelType = EAR_PAIR;
 						uiDef.EarRight = true;
 						uiDef.EarLeft = true;
 					}
-					$scope.UIToggle = uiDef
-					$scope.UIToggle.EarRight= uiDef.JewelPosition=='earRight';
-					$scope.UIToggle.EarLeft = uiDef.JewelPosition=='earLeft';
+					$scope.UIToggle = uiDef;
 				break;
 				case JEWEL_ATTACHMENT:
 					var jwConf =  $rootScope.JewelConfig;
