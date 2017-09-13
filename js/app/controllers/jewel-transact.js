@@ -32,7 +32,7 @@ define(['app'],function(app){
 			console.log('Place Order');
 			var jwlConf  = $rootScope.JewelConfig;
 			var jwlSlug = jwlConf.slugs;
-			var jwlPart = ['earRight'];
+			var jwlPart = getParts(jwlConf);
 			var summaryObj = {};
 			var orderSummary = [];
 			for(var i  in jwlPart){
@@ -43,7 +43,8 @@ define(['app'],function(app){
 				}else{
 					for(var i in jwlConf[part]){
 						var item = jwlConf[part][i];
-						var key =  item.type+'-'+item.itemCode;
+						//Change to be SKU
+						var key =  item.type+'-'+item.itemCode; 
 						if(!summaryObj[key]){
 							summaryObj[key] = {
 								name:item.name,
@@ -83,7 +84,7 @@ define(['app'],function(app){
 		function computeTotal(){
 			var jwlConf  = $rootScope.JewelConfig;
 			var jwlSlug = jwlConf.slugs;
-			var jwlPart = [jwlConf.activePart];
+			var jwlPart = getParts(jwlConf);
 			var jwlTotal = 0;
 			for(var i  in jwlPart){
 				var part = jwlPart[i];
@@ -103,7 +104,16 @@ define(['app'],function(app){
 					
 			}
 		}
-	
+		function getParts(jwlConf){
+			var parts = ['earRight','earLeft','neck'];
+			var jwlPart = [];
+			for(var i in parts){
+				 var part = parts[i];
+				 if(jwlConf[part].length)
+					 jwlPart.push(part);
+			}
+			return jwlPart;
+		}
 		function submitOrder(data){
 		var loc =  window.location;
 		var endpoint = loc.origin;

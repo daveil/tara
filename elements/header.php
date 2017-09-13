@@ -31,7 +31,7 @@
 	<noscript><img height="1" width="1" style="display:none"
 	src="https://www.facebook.com/tr?id=425915167808933&ev=PageView&noscript=1"
 	/></noscript>
-	<link rel="stylesheet" href="css/preload.tara.css" media="none" onload="if(media!='all')media='all'" />
+	<link rel="stylesheet" href="css/preload.tara.css?a" media="none" onload="if(media!='all')media='all'" />
 	<link href="libs/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"  media="none" onload="if(media!='all')media='all'"/>
 	<link href="libs/bower_components/flickity/dist/flickity.min.css" rel="stylesheet"  media="none" onload="if(media!='all')media='all'"/>
 	<link rel="stylesheet" href="css/tara.css<?php echo '?a='.rand();?>"  media="none" onload="if(media!='all')media='all'"/>

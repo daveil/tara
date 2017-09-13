@@ -204,6 +204,9 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 					$rootScope.JewelConfig.activePart = 'earLeft';
 				break;
 			}
+			
+			
+			$scope.$broadcast('ReDrawJewelry');
 		}
 	});
 	app.controller('JewelModalController', function ($rootScope,$scope,$timeout) {

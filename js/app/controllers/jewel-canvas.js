@@ -23,6 +23,7 @@ define(['app'],function(app){
 	var lastPendantType;
 		
 	app.controller('JewelCanvasController', function ($rootScope,$scope,$timeout) {
+		var currSide , prevSide;
 		require(['pixi'],function(pixi){
 			APP =new PIXI.Application(WIDTH, HEIGHT, {backgroundColor : 0xffffff});
 			APP.renderer.plugins.interaction.destroy();
@@ -34,22 +35,54 @@ define(['app'],function(app){
 		});
 		
 		$scope.$on('ActivePartSelected',function(){
-			buildBase();
+			var jwConf = $rootScope.JewelConfig;
+			var path;
+			switch(jwConf.activePart){
+				case 'earLeft':
+					path  ='img/model/blank-L-side-view.jpg';
+				break;
+				case 'earRight':
+					path  ='img/model/blank-R-side-view.jpg';
+				break;
+				case 'neck':
+					path  ='img/model/blank-R-side-view.jpg';
+				break;
+			}
+			currSide = jwConf.activePart;
+			initCanvas(path);
+			revealCanvas(1,700);
+			
+		});
+		
+		$scope.$on('ReDrawJewelry',function(evt){
+			$scope.$broadcast('ActivePartSelected');
+			$timeout(function(){
+				var jwConf = $rootScope.JewelConfig;
+				var aPrt = jwConf.activePart;
+				if(jwConf[aPrt].length){
+					var items = jwConf[aPrt];
+					for(var i in items){
+						var item =  items[i];
+						drawItem(item);
+					}
+				}
+				
+			},800);
+				
+			revealCanvas(1,800);
+			
 		});
 		
 		
 		
-		
 		$scope.$on('AppendItem',function(evt,item){
-			console.log('Draw Sprite',item);
-			switch(item.itemType){
-				case JEWEL_BASE:
-					addBase(item);
-				break;
-				case JEWEL_ATTACHMENT:
-					addPendant(item);
-				break;
-			}
+			//console.log('Draw Sprite',item);
+			var delay =  item.itemType==JEWEL_BASE&&currSide!=prevSide?800:0;
+			
+			$timeout(function(){
+				drawItem(item);
+			},delay)
+			
 			
 		});
 		$scope.$on('PurgeItem',function(evt,item){
@@ -68,17 +101,45 @@ define(['app'],function(app){
 		$scope.$on('ResetBuilder',function(evt){
 			resetBuilder();
 		});
-		
-		function buildBase(){
+		function initCanvas(path){
+			if(prevSide!=currSide){
+				buildBase(path);
+			}
+			
+		}
+		function buildBase(path){
 			$('#jde-canvas .canvas-wrapper').prepend(APP.view);
-			addSprite('img/model/blank-side-view.jpg',0,0,WIDTH,HEIGHT,1,1);
+			revealCanvas(0,0);
+			$timeout(function(){
+				resetBuilder();
+				addSprite(path,0,0,WIDTH,HEIGHT,1,1);
+			},600);
+			
 		}
 		
+		function revealCanvas(show,delay){
+			$timeout(function(){
+					$('#jde-canvas .canvas-wrapper canvas').css('opacity',show);
+					prevSide = currSide;
+				},delay);
+		}
+		function drawItem(item){
+			switch(item.itemType){
+				case JEWEL_BASE:
+					addBase(item);
+					
+				break;
+				case JEWEL_ATTACHMENT:
+					addPendant(item);
+				break;
+			}
+		}
 		function addSprite(img,x,y,width,height,scale,opacity,anchor){
 			var path = img;
 			var scale =  scale||1;
 			var opacity =  opacity || 1;
 			var anchor = anchor || {x:0.5,y:0.5};
+			var drawDelay = drawDelay || 0;
 			var sprite =  PIXI.Sprite.fromImage(path);
 				sprite.anchor.set(anchor.x,anchor.y);
 				sprite.x=x+(WIDTH/2);
@@ -138,7 +199,7 @@ define(['app'],function(app){
 			pendantSprites.pop();
 		}
 		
-		function resetBuilder(href){
+		function resetBuilder(){
 			if(baseSprite)
 				APP.stage.removeChild(baseSprite);
 			if(pendantSprites.length)
