@@ -29,7 +29,7 @@
 					</div>
 				</div>
 			</div>
-			<pre>{{JewelConfig|json}}</pre>
+			<pre  ng-show="Debugger" >{{JewelConfig|json}}</pre>
 		</div>
 		<div class="container" ng-controller="JewelTransactionController">
 			<div class="jde-footer">

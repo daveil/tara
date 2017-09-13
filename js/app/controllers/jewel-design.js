@@ -131,7 +131,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			if(jwlSlug){
 				
 				switch($scope.JewelConfig.type){
-					case EAR_PIECE:
+					case EAR_PIECE: case EAR_PAIR:
 						var earDef = $scope.JewelConfig[activePart];
 						var index = earDef.length-1;
 						var item = earDef[index];
@@ -139,8 +139,6 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 						$scope.$broadcast('PurgeItem',item);
 						
 					break;
-					case EAR_PAIR:
-					
 					break;
 					case NECKLACE:
 					
