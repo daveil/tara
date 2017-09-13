@@ -107,7 +107,7 @@
 	left:-45px;
 }
 
-@media (max-width: 992px){
+@media (max-width: 991px){
 	.main-carousel{
 		width:850px;
 	}
@@ -122,4 +122,9 @@
 		height: 200px;
 	}
 	
+}
+@media (min-height:991px){
+	.grid-item.tall{
+		height: 450px;
+	}
 }

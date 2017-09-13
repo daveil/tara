@@ -21,15 +21,47 @@ define(['app'],function(app){
 			var jwlConf  = $rootScope.JewelConfig;
 			var jwlSlug = jwlConf.slugs;
 			var jwlPart = ['earRight'];
+			var summaryObj = {};
+			var orderSummary = [];
 			for(var i  in jwlPart){
 				var part = jwlPart[i];
-				console.log(part, jwlSlug);
 				if(!jwlSlug[part]){
 					$scope.$emit('ErrorOrder','NOITEM');
 					break;
+				}else{
+					for(var i in jwlConf[part]){
+						var item = jwlConf[part][i];
+						var key =  item.type+'-'+item.itemCode;
+						if(!summaryObj[key]){
+							summaryObj[key] = {
+								name:item.name,
+								price:item.price,
+								quantity:1,
+								amount:item.price
+							};
+						}else{
+							var so = summaryObj[key];
+								so.quantity++;
+								so.amount=so.quantity * so.price;
+								summaryObj[key] = so;
+						}
+					}
 				}
 			}
-			$scope.$emit('PlaceOrder');
+			for(var o in summaryObj){
+				var item  =summaryObj[o];
+				var order = {
+					itemCode:item.itemCode,
+					name:item.name,
+					price:item.price,
+					quantity:item.quantity,
+					amount:item.amount,
+				}
+				orderSummary.push(order);
+				
+			}
+			computeTotal();
+			$scope.$emit('PlaceOrder',orderSummary);
 		}
 		$scope.beginAgain = function(){
 			$scope.$emit('BeginAgain');

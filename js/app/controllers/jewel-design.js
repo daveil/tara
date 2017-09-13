@@ -25,6 +25,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 				earRight:[],
 				earLeft:[],
 				neck:[],
+				orderSummary:[],
 				total:0,
 			};
 		}
@@ -79,7 +80,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		});
 		$scope.$on('AppendItem',function(evt,item){
 			var $item =  angular.copy(item);
-			
+				$item.itemCode =  $item.id;
 			switch($scope.JewelConfig.type){
 				case EAR_PIECE:
 					var earDef = $scope.JewelConfig[EAR_DEFAULT];
@@ -128,8 +129,8 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			}
 		});
 		
-		$scope.$on('PlaceOrder',function(evt){
-			
+		$scope.$on('PlaceOrder',function(evt,orderSummary){
+			$rootScope.JewelConfig.orderSummary = orderSummary;
 			$scope.$broadcast('PreviewOrder');
 		});
 		$scope.$on('ErrorOrder',function(evt,code){
@@ -179,6 +180,10 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			
 		});
 		
+		$scope.$on('PreviewOrder',function(evt){
+			$('#JDEOrderSummary').modal('show');
+			
+		});
 		$scope.addItem =  function(item){
 			$scope.$emit('AddItem',item);
 			$('#JDEItemModal').modal('hide');

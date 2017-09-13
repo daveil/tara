@@ -135,7 +135,7 @@ canvas{
 }
 .jde-footer h2{
 	letter-spacing: 0px;
-	font-size: 10pt;
+	font-size: 8pt;
 	padding-bottom: 5px;
 }
 .jde-header p,.jde-footer p{
@@ -144,7 +144,7 @@ canvas{
 	margin-bottom: 20px;
 }
 .jde-footer p{
-	font-size: 10pt;
+	font-size: 14pt;
 }
 #jde-select .jde-ui-item{
 	background-color: #15294f;
@@ -443,6 +443,7 @@ canvas{
 }
 #jde-summary  th,#jde-summary  td{
 	border: none !important;
+	text-align:center;
 }
 #JDEPlaceOrderModal p{
 	color: #15294f;
@@ -474,7 +475,17 @@ canvas{
     border-color: #ccc;
 	color:#000;
 }
-
+#JDEOrderSummary .currency{
+	display:inline-block;
+	width:80px;
+	text-align:right;
+}
+#jde-summary table tfoot td{
+	font-size:1.5rem;
+}
+#jde-summary table tfoot td:first-child{
+	text-align:right;
+}
 .parallax {
     /* The background used */
    
@@ -495,7 +506,7 @@ canvas{
 .close{
 	font-size:20px !important;
 }
-@media (max-width: 992px){
+@media (max-width: 991px){
 	.parallax{
 		background-attachment: initial;
 	}
@@ -505,6 +516,11 @@ canvas{
 	}
 	#return-to-main{
 		width:100%;
+	}
+	#jde-submit-order-now{
+	    margin: 0 auto;
+		width: 140px;
+		display: block;
 	}
 }
 @media (max-width:768px){
@@ -545,13 +561,19 @@ canvas{
 		padding-top: 15% !important;
 	}
 	
-	.jde-header h2, .jde-footer h2{
+	.jde-header h2{
 		padding: 5px 10px;
 		letter-spacing: 1px;
-    	font-size: 9pt;
+    	font-size: 25pt;
 	}
-	.jde-header p, .jde-footer p{
-		font-size: 8pt;
+	.jde-footer h2{
+		font-size:10pt;
+	}
+	.jde-header p{
+		font-size: 18pt;
+	}
+	.jde-footer p{
+		font-size:12pt;
 	}
 	#jde-total span{
 		font-size: 14pt;
@@ -563,6 +585,7 @@ canvas{
 	#top-nav ul.nav li a{
 		text-align: center;
 		margin:0px;
+		font-size:12pt;
 	}
 	#top-nav .navbar-brand-wrapper{
 		position: relative;
@@ -594,6 +617,7 @@ canvas{
 	}
 	#jde-summary h2, #jde-summary h3{
 		text-align: center;
+		font-size:12pt;
 	}
 	#JDEItemModal .modal-lg .modal-body .jde-image{
 		max-height: 20%;
@@ -602,6 +626,10 @@ canvas{
 		padding: 0 !important;
 	    margin-top: -20px;
 	}
+}
+@media (max-width:750px){
+	.jde-header h2{font-size:14pt;}
+	.jde-header p{font-size:10pt;}
 }
 @media (min-width:536px)  and (max-width:750px){
 	
@@ -657,7 +685,11 @@ canvas{
 	#jde-total{
 		padding-top: 10px;
 		margin-top: 0;
-		padding-bottom: 10px;
+		padding-bottom: 5px;
+		font-size:12pt;
+	}
+	.jde-footer h2{
+		font-size:10pt;
 	}
 	#jde-undo, #jde-reset, #jde-place-order, #jde-place-order-link{
 		padding:20px;
@@ -665,6 +697,9 @@ canvas{
 	.close{
 		padding: 0 !important;
 	    margin-top: -20px;
+	}
+	#JDEOrderSummary .currency{
+		width:60px;
 	}
 }
 @media (min-width:750px){
