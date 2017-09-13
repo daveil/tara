@@ -57,7 +57,7 @@ define(['app'],function(app){
 					removeBase(baseSprite);
 				break;
 				case JEWEL_ATTACHMENT:
-					removePendant(item.index);
+					removePendant(item.index-1);
 				break;
 			}
 			

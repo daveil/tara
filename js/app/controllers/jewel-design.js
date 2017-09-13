@@ -11,6 +11,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 	const NECKLACE =  'NCK';
 	const SCROLL_SPEED = 800;
 	const THRESHOLD2FADE =  $(window).height() * 0.35;
+	const UI_PANEL = {Intro:'#jde-intro',Base:'#jde-select',Attach:'#jde-build'};
 	
 	app.controller('JewelDesignerController', function ($rootScope,$scope,$timeout) {
 		require(['jquery-bridget','flickity'],function(jqueryBridget,flickity){
@@ -42,7 +43,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 				scrollTo(target);
 				
 			});
-			setTimeout(function(){scrollTo('#jde-intro');},SCROLL_SPEED/2);
+			setTimeout(function(){scrollTo(UI_PANEL.Intro);},SCROLL_SPEED/2);
 		}
 		
 		function scrollTo(target){
@@ -110,8 +111,9 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 						var earDef = $scope.JewelConfig[EAR_DEFAULT];
 						var index = earDef.length-1;
 						var item = earDef[index];
-						$scope.$broadcast('PurgeItem',item);
 						earDef.pop();
+						$scope.$broadcast('PurgeItem',item);
+						
 					break;
 					case EAR_PAIR:
 					
@@ -127,11 +129,11 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		});
 		$scope.$on('BeginAgain',function(evt){
 			initConfig();
-			$scope.$broadcast('ScrollTo','#jde-intro');
+			$scope.$broadcast('ScrollTo',UI_PANEL.Intro);
 			$scope.$broadcast('ResetBuilder');
 		});
 		$scope.$on('BaseAdded',function(evt){
-			$scope.$broadcast('ScrollTo','#jde-build');
+			$scope.$broadcast('ScrollTo',UI_PANEL.Attach);
 		});
 	});
 	app.controller('JewelModalController', function ($scope,$timeout) {
@@ -147,6 +149,8 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		$scope.$on('PreviewError',function(evt,code){
 			$scope.Code =  code;
 			$scope.Message =  ERRORS[code];
+			if(code=='NOBASE') 
+				$scope.$emit('ScrollTo',UI_PANEL.Base);
 			$('#JDEWarnModal').modal('show');
 		});
 		
