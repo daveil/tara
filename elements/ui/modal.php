@@ -19,7 +19,6 @@
 								<div class="jde-price">
 									<i><span>{{Item.price | currency:'$ ':0}}</span></i>
 								</div>	
-								{{UIToggle}}
 								<div class="base-options" ng-if="Item.type=='B'">
 									<div>
 										<input type="radio" name="baseOption" value="EPC" ng-model="UIToggle.JewelType"   /> Piece
