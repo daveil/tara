@@ -22,23 +22,23 @@
 								{{UIToggle}}
 								<div class="base-options" ng-if="Item.type=='B'">
 									<div>
-										<input type="radio" name="baseOption" value="PC" ng-model="UIToggle.JewelType"   /> Piece
+										<input type="radio" name="baseOption" value="EPC" ng-model="UIToggle.JewelType"   /> Piece
 									</div>
 									<div>
-										<input type="radio" name="baseOption" value="PR" ng-model="UIToggle.JewelType"  /> Pair
+										<input type="radio" name="baseOption" value="EPR" ng-model="UIToggle.JewelType"  /> Pair
 									</div>
 								</div>
-								<div class="base-positions">
+								<div class="base-positions" ng-if="Item.type=='B'">
 									<div>
-										<input type="checkbox" name="basePosition" value="L"  ng-model="UIToggle.EarLeft" ng-disabled="UIToggle.JewelType==='PR'" /> Left	
+										<input type="checkbox" name="basePosition" value="L"   ng-model="UIToggle.EarLeft" ng-disabled="UIToggle.JewelType==='EPR'" /> Left	
 									</div>
 									<div>
-										<input type="checkbox" name="basePosition" value="R" ng-model="UIToggle.EarRight" ng-disabled="UIToggle.JewelType==='PR'"/> Right
+										<input type="checkbox" name="basePosition" value="R" ng-model="UIToggle.EarRight" ng-disabled="UIToggle.JewelType==='EPR'"/> Right
 									</div>
 								</div>
 							</div>
 							<div class="jde-btn-group">
-								<button type="button" class="btn btn-primary jde-btn-confirm jde-btn-main" ng-click="addItem(Item)">ADD</button>
+								<button type="button" class="btn btn-primary jde-btn-confirm jde-btn-main" ng-click="addItem(Item)" ng-disabled="!UIToggle.JewelType||!UIToggle.JewelPosition">ADD</button>
 								<button type="button" class="btn btn-default jde-btn-main" data-dismiss="modal">CANCEL</button>
 							</div>
 						</div>

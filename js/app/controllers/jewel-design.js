@@ -7,7 +7,8 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 	const JEWEL_SUFFIX = '.png';
 	const EAR_PIECE =  'EPC';
 	const EAR_PAIR =  'EPR';
-	const EAR_DEFAULT = 'earRight';
+	const POS_DEFAULT = 'earRight';
+	const JEWEL_DEFAULT = EAR_PIECE;
 	const NECKLACE =  'NCK';
 	const SCROLL_SPEED = 800;
 	const THRESHOLD2FADE =  $(window).height() * 0.35;
@@ -18,10 +19,9 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			jqueryBridget('flickity',flickity);
 			
 		});
-		function initConfig(activePart){
-			activePart =  activePart || EAR_DEFAULT;
+		function initConfig(){
 			$rootScope.JewelConfig = {
-				type:EAR_PIECE,
+				type:null,
 				slugs:{},
 				earRight:[],
 				earLeft:[],
@@ -31,7 +31,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 				netTotal:0,
 				discount:0,
 				promoCode:null,
-				activePart:activePart
+				activePart:null
 			};
 		}
 		function initScrollManager(){
@@ -224,7 +224,26 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			item.image = JEWEL_DIR+'preview/'+item.itemType+'/'+item.slug+JEWEL_SUFFIX;
 			
 			$scope.Item = item;
-			$scope.UIToggle = {};
+			
+			$scope.UIToggle = {}
+			
+			switch(item.itemType){
+				case JEWEL_BASE:
+					var uiDef = {
+						JewelType:JEWEL_DEFAULT,
+						JewelPosition:POS_DEFAULT
+					};
+					$scope.UIToggle = uiDef
+					$scope.UIToggle.EarRight= uiDef.JewelPosition=='earRight';
+					$scope.UIToggle.EarLeft = uiDef.JewelPosition=='earLeft';
+				break;
+				case JEWEL_ATTACHMENT:
+					var jwConf =  $rootScope.JewelConfig;
+					$scope.UIToggle.JewelType = jwConf.type;
+					$scope.UIToggle.JewelPosition =jwConf.activePart;
+				break;
+				
+			}
 			$('#JDEItemModal').modal('show');
 			
 		});
@@ -234,21 +253,54 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			$('#JDEOrderSummary').modal('show');
 			
 		});
+		
+		$scope.$watchGroup(['UIToggle.EarRight','UIToggle.EarLeft'],function(){
+			var uiT = $scope.UIToggle;
+			var eR = uiT.EarRight;
+			var eL = uiT.EarLeft;
+			var jT = uiT.JewelType;
+			var jP;
+			var jConf =  $rootScope.JewelConfig;
+			if(eR!=undefined && eL!=undefined)
+				$scope.UIToggle.JewelType = eR&&eL?EAR_PAIR:EAR_PIECE;
+			
+			
+			
+			if(eR) jP = 'earRight';
+			else if(eL) jP = 'earLeft';
+			if( jT==EAR_PAIR) jP = POS_DEFAULT;
+			
+			
+			if(jP || !jConf.type)
+				$scope.UIToggle.JewelPosition = jP;
+			
+		});
+		$scope.$watch('UIToggle.JewelType',function(){
+			
+			$scope.UIToggle = $scope.UIToggle||{};
+			var uiT = $scope.UIToggle;
+			var eR = uiT.EarRight;
+			var eL = uiT.EarLeft;
+			var jT = uiT.JewelType;
+			switch(uiT.JewelType){
+				case EAR_PAIR:
+					$scope.UIToggle.EarRight = true;
+					$scope.UIToggle.EarLeft = true;
+				break;
+				case EAR_PIECE:
+					if(eR&&eL)
+						$scope.UIToggle.EarRight = false;
+						$scope.UIToggle.EarLeft = false;
+				break;
+			}
+			
+		});
+		
 		$scope.addItem =  function(item){
-			if(item.itemType =='base'){
-				var activePart;
-				switch($scope.UIToggle.JewelType){
-					case 'PR':
-						activePart='earRight';
-					break;
-					case 'PC':
-						if($scope.UIToggle.EarRight)
-							activePart = 'earRight';
-						else if($scope.UIToggle.EarLeft)
-							activePart = 'earLeft';
-					break;
-				}
-				$rootScope.JewelConfig.activePart = activePart;
+			if(item.itemType ==JEWEL_BASE){
+				var uiT =  $scope.UIToggle;
+				$rootScope.JewelConfig.activePart = uiT.JewelPosition;
+				$rootScope.JewelConfig.type = uiT.JewelType;
 				
 			}
 			$scope.$emit('AddItem',item);
