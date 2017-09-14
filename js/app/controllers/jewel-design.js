@@ -198,7 +198,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			$timeout(function(){
 				$rootScope.JewelConfig.orderStatus='ORDER NOW';
 				$rootScope.JewelConfig.orderSending=false;
-				$scope.$emit('ScrollTo','#jde-intro');
+				$scope.$emit('BeginAgain');
 				$scope.$broadcast('OrderAccepted');
 			},3000);
 
