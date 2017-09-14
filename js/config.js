@@ -35,7 +35,7 @@ requirejs.config({
 
 
 //Load trackers
-if(window.location.host!='localhost')
+if(!window.location.host.match(/localhost/g))
 	requirejs(['fb','ga']);
 //Initialize app
 requirejs(['app','jdeDsgn'],function(app){

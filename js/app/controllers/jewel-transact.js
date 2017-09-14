@@ -126,7 +126,7 @@ define(['app'],function(app){
 		function submitOrder(data){
 		var loc =  window.location;
 		var endpoint = loc.origin;
-			if(loc.host=='localhost')
+			if(loc.host.match(/localhost/g))
 				endpoint +='/tara';
 			endpoint += '/scripts/email-fake.php';
 		var config = {};
