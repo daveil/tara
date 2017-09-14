@@ -80,6 +80,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		});
 		
 		$scope.$on('AddItem',function(evt,item){
+			
 			if(item.itemType==JEWEL_BASE)
 				$scope.$broadcast('ActivePartSelected');
 			$scope.$broadcast('AppendItem',item);
@@ -115,6 +116,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 						
 						earR[0]=$itemCopy;
 						$scope.$broadcast('BaseAdded');
+
 					}else{
 						var earDef = $rootScope.JewelConfig[activePart];
 						$item.index=earDef.length;
@@ -139,7 +141,6 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 						var earDef = $scope.JewelConfig[activePart];
 						var index = earDef.length-1;
 						var item = earDef[index];
-						
 						if(item.soldAsPair&&item.itemType==JEWEL_BASE){
 								$scope.$broadcast('PreviewError','UNPAIR');
 						}else{
@@ -177,6 +178,10 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		});
 		$scope.$on('BaseAdded',function(evt){
 			$scope.$broadcast('ScrollTo',UI_PANEL.Attach);
+			var jwConf =  $rootScope.JewelConfig;
+			var aPrt=  jwConf.activePart;
+			if(jwConf[aPrt].length)
+				$scope.$broadcast('ReDrawJewelry');
 		});
 		$scope.$on('ApplyPromoCode',function(evt,promoCode){
 			$scope.$broadcast('ComputeOrder',promoCode);
@@ -337,10 +342,26 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		});
 		
 		$scope.addItem =  function(item){
+			
 			if(item.itemType ==JEWEL_BASE){
-				var uiT =  $scope.UIToggle;
-				$rootScope.JewelConfig.activePart = uiT.JewelPosition;
-				$rootScope.JewelConfig.type = uiT.JewelType;
+				var jwl =  $rootScope.JewelConfig;
+				var aPrt = jwl.activePart;
+				
+				var curBase={};
+				if(aPrt)
+					if(jwl[aPrt].length)
+						curBase = jwl[aPrt][0];
+					
+				if(curBase.soldAsPair){
+					$scope.$emit('PreviewError','UNPAIR');
+					$('#JDEItemModal').modal('hide');
+					return;
+				}else{
+					var uiT =  $scope.UIToggle;
+					$rootScope.JewelConfig.activePart = uiT.JewelPosition;
+					$rootScope.JewelConfig.type = uiT.JewelType;
+					console.log(item);
+				}
 				
 			}
 			$scope.$emit('AddItem',item);

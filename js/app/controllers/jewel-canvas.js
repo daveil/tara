@@ -102,9 +102,9 @@ define(['app'],function(app){
 			resetBuilder();
 		});
 		function initCanvas(path){
-			if(prevSide!=currSide){
+			//if(currSide!=prevSide)
 				buildBase(path);
-			}
+			
 			
 		}
 		function buildBase(path){
