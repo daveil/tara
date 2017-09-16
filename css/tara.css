@@ -15,6 +15,13 @@ body{
 body>div.container{
 	margin-top:10px;
 }
+#jde-debugger{
+	position: fixed;
+    width: 210px;
+    left: 10px;
+    top: 10px;
+    z-index: 9999;
+}
 #top-nav{
 	opacity:0;
 	background-color:#fff;

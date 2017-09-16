@@ -1,4 +1,4 @@
-define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
+define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 	
 	const JEWEL_BASE = 'base';
 	const JEWEL_ATTACHMENT = 'atta';
@@ -12,7 +12,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 	const NECKLACE =  'NCK';
 	const SCROLL_SPEED = 800;
 	const THRESHOLD2FADE =  $(window).height() * 0.35;
-	const UI_PANEL = {Intro:'#jde-intro',Base:'#jde-select',Attach:'#jde-build'};
+	const UI_PANEL = {Intro:'#jde-intro',Tyep:'#jde-start',Base:'#jde-select',Attach:'#jde-build'};
 	
 	app.controller('JewelDesignerController', function ($rootScope,$scope,$timeout) {
 		require(['jquery-bridget','flickity'],function(jqueryBridget,flickity){
@@ -65,6 +65,25 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		initConfig();
 		initScrollManager();
 		
+		$scope.$on('SetJewelType',function(evt,item){
+			var jwConf =  $rootScope.JewelConfig;
+			if(jwConf.type){
+				$scope.$broadcast('PreviewError','TYPESET');
+			}else{
+				var jType;
+				switch(item.type){
+					case 'E':
+						jType = EAR_PIECE;
+					break;
+					case 'N':
+						jType = NECKLACE;
+					break;
+				}
+				$rootScope.JewelConfig.type=jType;
+				$scope.$broadcast('JewelTypeSelected');	
+			}
+			
+		});
 		$scope.$on('ScrollTo',function(evt,target){
 			scrollTo(target);
 		});
@@ -176,6 +195,10 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			$scope.$broadcast('ScrollTo',UI_PANEL.Intro);
 			$scope.$broadcast('ResetBuilder');
 		});
+
+		$scope.$on('JewelTypeSelected',function(evt){
+			$scope.$broadcast('ScrollTo',UI_PANEL.Base);
+		});
 		$scope.$on('BaseAdded',function(evt){
 			$scope.$broadcast('ScrollTo',UI_PANEL.Attach);
 			var jwConf =  $rootScope.JewelConfig;
@@ -228,6 +251,7 @@ define(['app','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			NOUNDO : 'Nothing to Undo',
 			EMPTY : 'Order Empty!',
 			NOITEM : 'Add item first',
+			TYPESET: 'Jewelry type already selected. Begin again if you want.',
 			NOBASE : 'Select base jewelry first.',
 			UNPAIR : 'Oops! You are trying to remove an item sold as pair. Begin again instead.',
 			MAXATTA : 'Oops! You can only add up to 3 item(s).',

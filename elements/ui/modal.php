@@ -22,7 +22,7 @@
 									<span class="help-text" ng-if="Item.soldAsPair">Sold as Pair</span>
 									<span class="help-text" ng-if="!Item.soldAsPair && UIToggle.JewelType=='EPR' && Item.type=='B'">X 2</span>
 								</div>	
-								<div class="base-options" ng-if="Item.type=='B'">
+								<div class="base-options" ng-if="Item.type=='B' && !Item.soldAsPiece">
 									<div>
 										<div class="jde-radio" ng-class="{active:UIToggle.JewelType=='EPC', disabled:Item.soldAsPair}"  ng-click="emulateInput('JewelType','EPC',Item.soldAsPair)"></div>
 										<input type="radio" name="baseOption" value="EPC" ng-model="UIToggle.JewelType"   ng-disabled="Item.soldAsPair"  /> Piece
@@ -32,7 +32,7 @@
 										<input type="radio" name="baseOption" value="EPR" ng-model="UIToggle.JewelType"  ng-disabled="Item.soldAsPair" /> Pair
 									</div>
 								</div>
-								<div class="base-positions" ng-if="Item.type=='B'">
+								<div class="base-positions" ng-if="Item.type=='B' && !Item.soldAsPiece">
 									<div>
 										<div class="jde-checkbox" ng-class="{active:UIToggle.EarLeft,disabled:UIToggle.JewelType==='EPR'}"  ng-click="emulateInput('EarLeft',!UIToggle.Left,UIToggle.JewelType==='EPR')"></div>
 										<input type="checkbox" name="basePosition" value="L"   ng-model="UIToggle.EarLeft" ng-disabled="UIToggle.JewelType==='EPR'" /> Left	
@@ -64,7 +64,7 @@
 		  <div class="modal-footer">
 				<button type="button" class="btn btn-default jde-btn-main" data-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-default jde-btn-main jde-btn-undo" data-dismiss="modal" ng-show="Code=='INVATTA'" ng-click="undoLast()">Undo Last</button>
-				<button type="button" class="btn btn-default jde-btn-main jde-btn-undo" data-dismiss="modal" ng-show="Code=='UNPAIR'" ng-click="beginAgain()">Begin Again</button>
+				<button type="button" class="btn btn-default jde-btn-main jde-btn-undo" data-dismiss="modal" ng-show="Code=='UNPAIR'||Code=='TYPESET'" ng-click="beginAgain()">Begin Again</button>
 		  </div>
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->

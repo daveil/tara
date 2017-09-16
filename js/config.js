@@ -21,6 +21,7 @@ requirejs.config({
 		'ga': '../../js/vendors/ga',
 		'f-ldr': '../../js/file-loader',
 		'jdeDsgn': '../../js/app/controllers/jewel-design',
+		'jdeType': '../../js/app/controllers/jewel-type',
 		'jdeBase': '../../js/app/controllers/jewel-base',
 		'jdeAtch': '../../js/app/controllers/jewel-attach',
 		'jdeCnvs': '../../js/app/controllers/jewel-canvas',
