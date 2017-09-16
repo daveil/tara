@@ -120,6 +120,7 @@ define(['app'],function(app){
 				 if(jwlConf[part].length)
 					 jwlPart.push(part);
 			}
+			if($rootScope.JewelConfig.type !='NCK')
 			$rootScope.JewelConfig.type = jwlPart.length>1?'EPR':'EPC';
 			return jwlPart;
 		}

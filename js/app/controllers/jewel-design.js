@@ -92,9 +92,13 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			scrollTo(target);
 		});
 		
+		$scope.$on('BaseError',function(evt,code){
+			$scope.$broadcast('PreviewError',code);
+		});
 		$scope.$on('AttachError',function(evt,code){
 			$scope.$broadcast('PreviewError',code);
 		});
+
 		
 		$scope.$on('ViewItem',function(evt,item){
 			//console.log('Recieved in JDsgr',item);
@@ -148,7 +152,15 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 				
 				break;
 				case NECKLACE:
-				
+					var nckDef = $rootScope.JewelConfig[activePart];
+					if($item.itemType==JEWEL_BASE){
+						$item.index=0;
+						nckDef[0]=$item;
+						$scope.$broadcast('BaseAdded');
+					}else{
+						$item.index=nckDef.length;
+						nckDef.push($item);
+					}
 				break;
 			}
 			
@@ -171,12 +183,14 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 							$rootScope.JewelConfig.slugs[activePart]='';
 							$scope.$broadcast('PurgeItem',item);
 						}
-						
-						
-						
 					break;
 					case NECKLACE:
-					
+						var ncKDef = $scope.JewelConfig[activePart];
+						var index = ncKDef.length-1;
+						var item = ncKDef[index];
+						ncKDef.pop();
+						$rootScope.JewelConfig.slugs[activePart]='';
+						$scope.$broadcast('PurgeItem',item);
 					break;
 				}
 				
@@ -256,6 +270,7 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			EMPTY : 'Order Empty!',
 			NOITEM : 'Add item first',
 			TYPESET: 'Jewelry type already selected. Begin again if you want.',
+			INVABASE: 'Base selected is invalid. Begin again if you want.',
 			NOBASE : 'Select base jewelry first.',
 			UNPAIR : 'Oops! You are trying to remove an item sold as pair. Begin again instead.',
 			MAXATTA : 'Oops! You can only add up to 3 item(s).',
@@ -295,7 +310,6 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 						JewelPosition:jwConf.activePart || POS_DEFAULT
 					};
 					
-					
 					uiDef.EarRight= uiDef.JewelPosition=='earRight';
 					uiDef.EarLeft = uiDef.JewelPosition=='earLeft';
 					
@@ -328,16 +342,18 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			$scope.UIToggle[field]=val;
 		}
 		$scope.$watchGroup(['UIToggle.EarRight','UIToggle.EarLeft'],function(){
+			var jConf =  $rootScope.JewelConfig;
+			if(jwConf.type==NECKLACE) 
+				return $scope.UIToggle.JewelType = NECKLACE;
+
 			var uiT = $scope.UIToggle;
 			var eR = uiT.EarRight;
 			var eL = uiT.EarLeft;
 			var jT = uiT.JewelType;
 			var jP;
-			var jConf =  $rootScope.JewelConfig;
+
 			if(eR!=undefined && eL!=undefined)
 				$scope.UIToggle.JewelType = eR&&eL?EAR_PAIR:EAR_PIECE;
-			
-			
 			
 			if(eR) jP = 'earRight';
 			else if(eL) jP = 'earLeft';
@@ -364,6 +380,10 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 					if(eR&&eL)
 						$scope.UIToggle.EarRight = false;
 						$scope.UIToggle.EarLeft = false;
+				break;
+				case NECKLACE:
+					$scope.UIToggle.EarRight = false;
+					$scope.UIToggle.EarLeft = false;
 				break;
 			}
 			

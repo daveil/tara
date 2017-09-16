@@ -64,7 +64,7 @@
 		  <div class="modal-footer">
 				<button type="button" class="btn btn-default jde-btn-main" data-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-default jde-btn-main jde-btn-undo" data-dismiss="modal" ng-show="Code=='INVATTA'" ng-click="undoLast()">Undo Last</button>
-				<button type="button" class="btn btn-default jde-btn-main jde-btn-undo" data-dismiss="modal" ng-show="Code=='UNPAIR'||Code=='TYPESET'" ng-click="beginAgain()">Begin Again</button>
+				<button type="button" class="btn btn-default jde-btn-main jde-btn-undo" data-dismiss="modal" ng-show="Code=='UNPAIR'||Code=='TYPESET'||Code=='INVABASE'" ng-click="beginAgain()">Begin Again</button>
 		  </div>
 		</div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->

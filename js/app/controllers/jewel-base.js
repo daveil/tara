@@ -8,15 +8,22 @@ define(['app','f-ldr'],function(app,fldr){
 	const OPTIONS = { "cellAlign": "center", "contain": true , "pageDots": false };
 	
 	
-	app.controller('JewelBaseController', function ($scope,$timeout) {
+	app.controller('JewelBaseController', function ($rootScope,$scope,$timeout) {
 		$scope.UIBases =  BASES;
 		$timeout(function(){
 			$('#jde-select .vertical>.grid-container').flickity(OPTIONS);
 		},100);
 		
 		$scope.viewItem = function(item){
-			item.itemType = 'base';
-			$scope.$emit('ViewItem',item);
+			var activePart = $rootScope.JewelConfig.activePart;
+			var isN2N = activePart=='neck' && item.jewelType!='N';
+			var isE2E =  activePart!='neck' && item.jewelType=='N';
+			if(isN2N || isE2E){
+				$scope.$emit('BaseError','INVABASE');
+			}else{
+				item.itemType = 'base';
+				$scope.$emit('ViewItem',item);
+			}
 		};
 		
   });
