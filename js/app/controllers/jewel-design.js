@@ -12,7 +12,7 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 	const NECKLACE =  'NCK';
 	const SCROLL_SPEED = 800;
 	const THRESHOLD2FADE =  $(window).height() * 0.35;
-	const UI_PANEL = {Intro:'#jde-intro',Tyep:'#jde-start',Base:'#jde-select',Attach:'#jde-build'};
+	const UI_PANEL = {Intro:'#jde-intro',Type:'#jde-start',Base:'#jde-select',Attach:'#jde-build'};
 	
 	app.controller('JewelDesignerController', function ($rootScope,$scope,$timeout) {
 		require(['jquery-bridget','flickity'],function(jqueryBridget,flickity){
@@ -76,6 +76,7 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 				switch(item.type){
 					case 'E':
 						jType = EAR_PIECE;
+						aPrt = POS_DEFAULT;
 					break;
 					case 'N':
 						jType = NECKLACE;
@@ -209,9 +210,12 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		});
 		
 		$scope.$on('BeginAgain',function(evt){
-			initConfig();
-			$scope.$broadcast('ScrollTo',UI_PANEL.Intro);
-			$scope.$broadcast('ResetBuilder');
+			
+			$scope.$broadcast('ScrollTo',UI_PANEL.Type);
+			$timeout(function(){
+				initConfig();
+				$scope.$broadcast('ResetBuilder');	
+			},SCROLL_SPEED);
 		});
 
 		$scope.$on('JewelTypeSelected',function(evt){
@@ -269,6 +273,7 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			NOUNDO : 'Nothing to Undo',
 			EMPTY : 'Order Empty!',
 			NOITEM : 'Add item first',
+			NOTYPE: 'Select type first',
 			TYPESET: 'Jewelry type already selected. Begin again if you want.',
 			INVABASE: 'Base selected is invalid. Begin again if you want.',
 			NOBASE : 'Select base jewelry first.',
@@ -285,6 +290,9 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 			$scope.Message =  ERRORS[code];
 			$('#JDEWarnModal').modal('show');
 			switch(code){
+				case 'NOTYPE':
+					$scope.$emit('ScrollTo',UI_PANEL.Type);
+				break;
 				case 'NOBASE': case 'EMPTY':
 					$scope.$emit('ScrollTo',UI_PANEL.Base);
 				break;
@@ -343,7 +351,7 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		}
 		$scope.$watchGroup(['UIToggle.EarRight','UIToggle.EarLeft'],function(){
 			var jConf =  $rootScope.JewelConfig;
-			if(jwConf.type==NECKLACE) 
+			if(jConf.type==NECKLACE) 
 				return $scope.UIToggle.JewelType = NECKLACE;
 
 			var uiT = $scope.UIToggle;

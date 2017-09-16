@@ -125,6 +125,19 @@ canvas{
     width: 40%;
     text-align: center;
 }
+.jde-caution{
+	padding-top: 15vh;
+	margin-top:10px;
+	text-align: center;
+	font-size:14px;
+}
+.jde-nav{
+	margin-top:10px;
+	border-radius: 0;
+    border: 1px solid #15294f;
+    color:#15294f;
+    outline: none;
+}
 .jde-header,.jde-footer{
 	text-align: center;
 	margin-top:20px;

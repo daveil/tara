@@ -1,5 +1,5 @@
- <div class="jde-ui-panel jde-ui-table" id="jde-build">
-	    <div class="container jde-va-middle jde-table-row" ng-controller="JewelAttachmentController" >
+ <div class="jde-ui-panel jde-ui-table" ng-show="JewelConfig.activePart && JewelConfig.type"  ng-controller="JewelAttachmentController"  id="jde-build">
+	    <div class="container jde-va-middle jde-table-row" >
 	    	<div class="jde-header">
 		    	<h2>Attachment jewelry</h2>
 			    <p>Select up to two layer to your base jewelry</p>
