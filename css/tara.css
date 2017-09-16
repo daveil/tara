@@ -21,6 +21,7 @@ body>div.container{
     left: 10px;
     top: 10px;
     z-index: 9999;
+    display:none;
 }
 #top-nav{
 	opacity:0;
