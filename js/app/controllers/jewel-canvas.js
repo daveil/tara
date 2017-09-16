@@ -6,6 +6,9 @@ define(['app'],function(app){
 	const JEWEL_SUFFIX = '.png';
 	const JEWEL_BASE = 'base';
 	const JEWEL_ATTACHMENT = 'atta';
+	const EAR_PIECE =  'EPC';
+	const EAR_PAIR =  'EPR';
+	const NECKLACE =  'NCK';
 	const JEWEL_SCALE = 1;
 	const BASE_SCALE = 1;
 	const BASE_X = 0;
@@ -13,13 +16,14 @@ define(['app'],function(app){
 	const VIEW_HEIGHT = 1;
 	const WIDTH  = 1082
 	const HEIGHT = 702;
-	const ATTA_Y = -280;
 	const LOCK_OFFSET = 15;
+	const EAR_START_Y = -280;
+	const NECK_START_Y = -100;
 	var  APP;
-	
+	var ATTA_Y;
 	var baseSprite,baseSelected;
 	var pendantSprites = [];
-	var lastPosition=ATTA_Y;
+	var lastPosition;
 	var lastPendantType;
 		
 	app.controller('JewelCanvasController', function ($rootScope,$scope,$timeout) {
@@ -33,7 +37,18 @@ define(['app'],function(app){
 			});
 			
 		});
-		
+		$scope.$on('JewelTypeSelected',function(){
+			var jwConf =  $rootScope.JewelConfig;
+			switch(jwConf.type){
+				case EAR_PIECE: case EAR_PAIR:
+					ATTA_Y =  EAR_START_Y;
+				break;
+				case NECKLACE:
+					ATTA_Y = NECK_START_Y;
+				break;
+
+			}
+		});
 		$scope.$on('ActivePartSelected',function(){
 			var jwConf = $rootScope.JewelConfig;
 			var path;
@@ -45,7 +60,7 @@ define(['app'],function(app){
 					path  ='img/model/blank-R-side-view.jpg';
 				break;
 				case 'neck':
-					path  ='img/model/blank-R-side-view.jpg';
+					path  ='img/model/blank-front-view.jpg';
 				break;
 			}
 			currSide = jwConf.activePart;

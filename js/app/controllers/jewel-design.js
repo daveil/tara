@@ -22,6 +22,7 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 		function initConfig(){
 			$rootScope.JewelConfig = {
 				type:null,
+				activePart:null,
 				slugs:{},
 				earRight:[],
 				earLeft:[],
@@ -31,7 +32,7 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 				netTotal:0,
 				discount:0,
 				promoCode:null,
-				activePart:null
+				
 			};
 		}
 		function initScrollManager(){
@@ -71,15 +72,18 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 				$scope.$broadcast('PreviewError','TYPESET');
 			}else{
 				var jType;
+				var aPrt;
 				switch(item.type){
 					case 'E':
 						jType = EAR_PIECE;
 					break;
 					case 'N':
 						jType = NECKLACE;
+						aPrt = 'neck';
 					break;
 				}
 				$rootScope.JewelConfig.type=jType;
+				$rootScope.JewelConfig.activePart=aPrt;
 				$scope.$broadcast('JewelTypeSelected');	
 			}
 			
@@ -287,7 +291,7 @@ define(['app','jdeType','jdeBase','jdeAtch','jdeCnvs','jdeTran'],function(app){
 				case JEWEL_BASE:
 					var jwConf =  $rootScope.JewelConfig;
 					var uiDef = {
-						JewelType:JEWEL_DEFAULT,
+						JewelType:jwConf.type || JEWEL_DEFAULT,
 						JewelPosition:jwConf.activePart || POS_DEFAULT
 					};
 					
