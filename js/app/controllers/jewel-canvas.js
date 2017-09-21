@@ -60,7 +60,7 @@ define(['app'],function(app){
 					path  ='img/model/blank-R-side-view.jpg';
 				break;
 				case 'neck':
-					path  ='img/model/blank-front-view.jpg';
+					path  ='img/model/blank-front-view.png';
 				break;
 			}
 			currSide = jwConf.activePart;

@@ -3,7 +3,7 @@ define(['app','f-ldr'],function(app,fldr){
 		1:{id: 1, name:'Mari', slug:'mari', price:2088,width:160,height:156, type:'B', group:'E'},
 		3:{id:3, name:'Kimberly (with Diamond)', slug:'kimberly', price:588,width:160,height:156,type:'B', soldAsPair:true, group:'E'},
 		2:{id: 2, name:'Blake', slug:'blake', price:758,width:160,height:156, type:'B', group:'E'},
-		4:{id: 4, name:'Choker', slug:'chocker', price:758,width:1051,height:253, type:'B', soldAsPiece:true,group:'N'}
+		4:{id: 4, name:'Choker', slug:'chocker', price:758,width:1051,height:257, type:'B', soldAsPiece:true,group:'N'}
 	};
 	const OPTIONS = { "cellAlign": "center", "contain": true , "pageDots": false };
 	
