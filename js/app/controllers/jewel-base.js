@@ -6,6 +6,10 @@ define(['app','f-ldr'],function(app,fldr){
 		4:{id: 4, name:'Choker', slug:'chocker', price:2288,width:1051,height:257, type:'B', soldAsPiece:true,group:'N'},
 		5:{id: 5, name:'Heart 3', slug:'heart3', price:2288,width:160,height:156, type:'B',group:'E'},
 		6:{id: 6, name:'6', slug:'6', price:2288,width:160,height:156, type:'B',group:'E'},
+		7:{id: 7, name:'Astrid', slug:'astrid', price:2288,width:160,height:156, type:'B',group:'E'},
+		8:{id: 8, name:'7', slug:'7', price:2288,width:160,height:156, type:'B',group:'E'},
+		9:{id: 9, name:'9', slug:'9', price:2288,width:160,height:156, type:'B',group:'E'},
+		10:{id: 10, name:'Heart V', slug:'heartv', price:2288,width:160,height:156, type:'B',group:'E'},
 	};
 	const OPTIONS = { "cellAlign": "center", "contain": true , "pageDots": false };
 	

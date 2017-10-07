@@ -9,7 +9,16 @@ define(['app'],function(app){
 		7:{name:'Kelly', slug:'kelly',  price:1158,width:93,height:242,altHeight:224,type:'R'},
 		8:{name:'Sam', slug:'sam',  price:1293,width:66,height:192,altHeight:173,type:'E'},
 		9:{name:'Martine', slug:'martine',  price:988,width:119,height:229,altHeight:214,type:'R'},
-		10:{name:'Mari', slug:'mari',  price:2088,width:54,height:68,altHeight:68,type:'R'}
+		10:{name:'Mari', slug:'mari',  price:2088,width:54,height:68,altHeight:68,type:'R'},
+		11:{name:'1', slug:'a1',  price:2088,width:119,height:128,altHeight:116,type:'R'},
+		12:{name:'2', slug:'a2',  price:2088,width:119,height:143,altHeight:132,type:'R'},
+		13:{name:'3', slug:'a3',  price:2088,width:119,height:221,altHeight:210,type:'R'},
+		14:{name:'4', slug:'a4',  price:2088,width:119,height:126,altHeight:114,type:'R'},
+		15:{name:'10', slug:'a10',  price:2088,width:119,height:157,altHeight:145,type:'R'},
+		16:{name:'11', slug:'a11',  price:2088,width:119,height:392,altHeight:380,type:'R'},
+		17:{name:'Stella', slug:'stella',  price:2088,width:119,height:221,altHeight:208,type:'R'},
+		18:{name:'Vivian Rose Gold', slug:'vivianrg',  price:2088,width:127,height:214,altHeight:189,type:'R'},
+		19:{name:'Vivian White Gold', slug:'vivianwg',  price:2088,width:119,height:201,altHeight:189,type:'R'},
 	};
 	const ROW_COUNT = 2;
 	const OPTIONS = { "cellAlign": "left", "contain": true , "pageDots": false };
