@@ -4,7 +4,7 @@ define(['app','f-ldr'],function(app,fldr){
 		3:{id:3, name:'Kimberly (with Diamond)', slug:'kimberly', price:588,width:160,height:156,type:'B', soldAsPair:true, group:'E'},
 		2:{id: 2, name:'Blake', slug:'blake', price:758,width:160,height:156, type:'B', group:'E'},
 		4:{id: 4, name:'Choker', slug:'chocker', price:2288,width:1051,height:257, type:'B', soldAsPiece:true,group:'N'},
-		5:{id: 5, name:'3', slug:'3', price:2288,width:800,height:782, type:'B',group:'E'},
+		5:{id: 5, name:'3', slug:'3', price:2288,width:160,height:156, type:'B',group:'E'},
 	};
 	const OPTIONS = { "cellAlign": "center", "contain": true , "pageDots": false };
 	

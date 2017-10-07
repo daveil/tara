@@ -1,7 +1,7 @@
 define(['app','f-ldr'],function(app,fldr){
 	const TYPES = {
-		1:{id: 1, name:'Earring', slug:'jewelry-earring', type:'E'},
-		2:{id: 2, name:'Necklace', slug:'jewelry-necklace', type:'N'},
+		1:{id: 1, name:'Earring', slug:'earringsthumb', type:'E'},
+		2:{id: 2, name:'Necklace', slug:'necklacethumb', type:'N'},
 	};
 	const OPTIONS = { "cellAlign": "center", "contain": true , "pageDots": false };
 	
