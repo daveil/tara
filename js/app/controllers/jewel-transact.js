@@ -129,7 +129,7 @@ define(['app'],function(app){
 		var endpoint = loc.origin;
 			if(loc.host.match(/localhost/g))
 				endpoint +='/tara';
-			endpoint += '/scripts/email-fake.php';
+			endpoint += '/scripts/email.php';
 		var config = {};
 			config.url = endpoint;
 			config.type ='POST';
