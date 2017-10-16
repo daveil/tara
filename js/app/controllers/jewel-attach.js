@@ -17,8 +17,9 @@ define(['app'],function(app){
 		15:{name:'Celeste', slug:'a10',  price:998,width:119,height:157,altHeight:145,type:'R'},
 		16:{name:'Jasmine', slug:'a11',  price:2008,width:119,height:392,altHeight:380,type:'R'},
 		17:{name:'Stella', slug:'stella',  price:2828,width:119,height:221,altHeight:208,type:'R'},
-		//18:{name:'Vivian Rose Gold', slug:'vivianrg',  price:2088,width:127,height:214,altHeight:189,type:'R'},
-		//19:{name:'Vivian White Gold', slug:'vivianwg',  price:2088,width:119,height:201,altHeight:189,type:'R'},
+		18:{name:'Vivian Rose Gold', slug:'vivianrg',  price:318,width:127,height:214,altHeight:189,type:'R'},
+		19:{name:'Vivian White Gold', slug:'vivianwg',  price:318,width:119,height:201,altHeight:189,type:'R'},
+		20:{name:'Alex', slug:'alex',  price:0,width:862,height:862,altHeight:189,type:'R'},
 	};
 	const ROW_COUNT = 2;
 	const OPTIONS = { "cellAlign": "left", "contain": true , "pageDots": false };
