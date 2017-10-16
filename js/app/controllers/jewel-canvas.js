@@ -19,6 +19,9 @@ define(['app'],function(app){
 	const LOCK_OFFSET = 15;
 	const EAR_START_Y = -280;
 	const NECK_START_Y = -100;
+	const TDY =  new Date();
+	const CACHE_BRKR = '?v='+TDY.getMonth()+'.'+TDY.getDate();
+
 	var  APP;
 	var ATTA_Y;
 	var baseSprite,baseSelected;
@@ -150,7 +153,7 @@ define(['app'],function(app){
 			}
 		}
 		function addSprite(img,x,y,width,height,scale,opacity,anchor){
-			var path = img;
+			var path = img+CACHE_BRKR;
 			var scale =  scale||1;
 			var opacity =  opacity || 1;
 			var anchor = anchor || {x:0.5,y:0.5};
@@ -180,7 +183,7 @@ define(['app'],function(app){
 
 			var baseX = BASE_X;
 			var baseY =  BASE_Y;
-			console.log(item.group);
+			
 			if(item.group=="N") baseY = baseY - 5;
 
 			baseSprite = addSprite(path,baseX,baseY,base.width,base.height,BASE_SCALE,1,{x:0.5,y:0});
