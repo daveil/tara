@@ -177,7 +177,13 @@ define(['app'],function(app){
 			if(baseSprite)
 				removeBase(baseSprite);
 			base.itemCode = itemCode;
-			baseSprite = addSprite(path,BASE_X,BASE_Y,base.width,base.height,BASE_SCALE,1,{x:0.5,y:0});
+
+			var baseX = BASE_X;
+			var baseY =  BASE_Y;
+			console.log(item.group);
+			if(item.group=="N") baseY = baseY - 5;
+
+			baseSprite = addSprite(path,baseX,baseY,base.width,base.height,BASE_SCALE,1,{x:0.5,y:0});
 			baseSelected = base;
 		}
 		
