@@ -19,7 +19,7 @@ define(['app'],function(app){
 		17:{name:'Stella', slug:'stella',  price:2828,width:119,height:221,altHeight:208,type:'R'},
 		18:{name:'Vivian Rose Gold', slug:'vivianrg',  price:318,width:127,height:214,altHeight:189,type:'R'},
 		19:{name:'Vivian White Gold', slug:'vivianwg',  price:318,width:119,height:201,altHeight:189,type:'R'},
-		20:{name:'Alex', slug:'alex',  price:0,width:862,height:862,altHeight:189,type:'R'},
+		//20:{name:'Alex', slug:'alex',  price:0,width:862,height:862,altHeight:189,type:'R'},
 	};
 	const ROW_COUNT = 2;
 	const OPTIONS = { "cellAlign": "left", "contain": true , "pageDots": false };

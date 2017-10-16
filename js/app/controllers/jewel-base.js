@@ -3,7 +3,7 @@ define(['app','f-ldr'],function(app,fldr){
 		1:{id: 1, name:'Mari', slug:'mari', price:812,width:160,height:156, type:'B', group:'E'},
 		3:{id:3, name:'Kimberly (with Diamond)', slug:'kimberly', price:588,width:160,height:156,type:'B', soldAsPair:true, group:'E'},
 		2:{id: 2, name:'Blake', slug:'blake', price:758,width:160,height:156, type:'B', group:'E'},
-		4:{id: 4, name:'Choker', slug:'chocker', price:2288,width:1051,height:257, type:'B', soldAsPiece:true,group:'N'},
+		4:{id: 4, name:'Choker', slug:'choker', price:2288,width:1051,height:257, type:'B', soldAsPiece:true,group:'N'},
 		//5:{id: 5, name:'Heart 3', slug:'heart3', price:2288,width:160,height:156, type:'B',group:'E'},
 		6:{id: 6, name:'Cassie', slug:'cassie', price:298,width:160,height:156, type:'B',group:'E'},
 		7:{id: 7, name:'Astrid', slug:'astrid', price:1258,width:160,height:156, type:'B',group:'E'},

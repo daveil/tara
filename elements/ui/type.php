@@ -9,7 +9,7 @@
 						<div class='grid-item white tall' ng-repeat="item in UITypes  track by $index">
 
 							<a class='item' ng-click="selectType(item)">
-								<!--<p class="help-text text-center">{{item.name}}</p>-->
+								<p class="help-text text-center">{{item.name}}</p>
 								<img async  ng-src="img/model/{{item.slug}}.jpg" alt="{{item.name}}" />
 							</a>
 
