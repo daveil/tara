@@ -183,9 +183,11 @@ define(['app'],function(app){
 
 			var baseX = BASE_X;
 			var baseY =  BASE_Y;
-			
+			console.log(item);
 			if(item.group=="N") baseY = baseY - 5;
 
+			if(item.startBase)  ATTA_Y =  item.startBase;
+			else ATTA_Y = NECK_START_Y;
 			baseSprite = addSprite(path,baseX,baseY,base.width,base.height,BASE_SCALE,1,{x:0.5,y:0});
 			baseSelected = base;
 		}
@@ -201,14 +203,16 @@ define(['app'],function(app){
 			var anchor = {x:0.5,y:0};
 			var path  = JEWEL_DIR+'sprite/1x/atta/';		
 			var pendant_height = pendant.height;
+			var jwConf =  $rootScope.JewelConfig;
 			
 			if(lastPosition<ATTA_Y) lastPosition = ATTA_Y;
-		
-			if(!pendantSprites.length){
-				path +=JEWEL_PREFIX;
-				pendant_height = pendant.altHeight;
+
+			if(jwConf.type==EAR_PIECE||jwConf.type==EAR_PAIR){
+				if(!pendantSprites.length){
+					path +=JEWEL_PREFIX;
+					pendant_height = pendant.altHeight;
+				}	
 			}	
-				
 			path += pendant.slug+JEWEL_SUFFIX;
 			var sprite = addSprite(path,0,lastPosition,pendant.width,pendant_height,scale,1,anchor);
 			var pHeight =  Math.round((pendant_height-LOCK_OFFSET)*scale,2);

@@ -1,7 +1,7 @@
 define(['app','f-ldr'],function(app,fldr){
 	const BASES = {
 		1:{id: 1, name:'Mari', slug:'mari', price:812,width:160,height:156, type:'B', group:'E'},
-		3:{id:3, name:'Kimberly (with Diamond)', slug:'kimberly', price:588,width:160,height:156,type:'B', soldAsPair:true, group:'E'},
+		3:{id:3, name:'Kimberly', slug:'kimberly', price:588,width:160,height:156,type:'B', soldAsPair:true, group:'E'},
 		2:{id: 2, name:'Blake', slug:'blake', price:758,width:160,height:156, type:'B', group:'E'},
 		4:{id: 4, name:'Choker', slug:'choker', price:2288,width:1051,height:257, type:'B', soldAsPiece:true,group:'N'},
 		//5:{id: 5, name:'Heart 3', slug:'heart3', price:2288,width:160,height:156, type:'B',group:'E'},
@@ -9,6 +9,7 @@ define(['app','f-ldr'],function(app,fldr){
 		7:{id: 7, name:'Astrid', slug:'astrid', price:1258,width:160,height:156, type:'B',group:'E'},
 		8:{id: 8, name:'Luna', slug:'7', price:1098,width:160,height:156, type:'B',group:'E'},
 		9:{id: 9, name:'Alex', slug:'alex', price:328,width:160,height:156, type:'B',group:'E'},
+		10:{id: 10, name:'Addie', slug:'addie', price:2458,width:1051,height:634, type:'B',soldAsPiece:true,group:'N', startBase:270},
 		//10:{id: 10, name:'Heart V', slug:'heartv', price:2288,width:160,height:156, type:'B',group:'E'},
 	};
 	const OPTIONS = { "cellAlign": "center", "contain": true , "pageDots": false };
