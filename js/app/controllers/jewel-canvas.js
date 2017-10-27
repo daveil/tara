@@ -183,11 +183,12 @@ define(['app'],function(app){
 
 			var baseX = BASE_X;
 			var baseY =  BASE_Y;
-			console.log(item);
-			if(item.group=="N") baseY = baseY - 5;
-
-			if(item.startBase)  ATTA_Y =  item.startBase;
-			else ATTA_Y = NECK_START_Y;
+			
+			if(item.group=="N") {
+				baseY = baseY - 5;
+				if(item.startBase)  ATTA_Y =  item.startBase;
+				else ATTA_Y = NECK_START_Y;
+			}
 			baseSprite = addSprite(path,baseX,baseY,base.width,base.height,BASE_SCALE,1,{x:0.5,y:0});
 			baseSelected = base;
 		}
