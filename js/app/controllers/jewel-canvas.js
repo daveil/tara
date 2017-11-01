@@ -18,7 +18,7 @@ define(['app'],function(app){
 	const HEIGHT = 702;
 	const LOCK_OFFSET = 15;
 	const EAR_START_Y = -280;
-	const NECK_START_Y = -100;
+	const NECK_START_Y = -107;
 	const TDY =  new Date();
 	const CACHE_BRKR = '?v='+TDY.getMonth()+'.'+TDY.getDate();
 
