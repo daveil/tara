@@ -566,7 +566,7 @@ canvas{
 .parallax {
     /* The background used */
    
-    background-image: url('../img/hero-bg-web-3.jpg');
+    background-image: url('../img/hero-bg-web-4.jpg');
 
     /* Set a specific height */
     min-height:  100vh;
@@ -578,7 +578,7 @@ canvas{
     background-size: 100%;
     margin-top: 0px;
 	
-	background-color: #050c28;
+	background-color: #ced3d9;
 }
 .close{
 	font-size:20px !important;
