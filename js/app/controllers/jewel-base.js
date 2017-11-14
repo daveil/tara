@@ -2,6 +2,7 @@ define(['app','f-ldr'],function(app,fldr){
 	const BASES = {
 		1:{id: 1, name:'Mari', slug:'mari', price:812,width:160,height:156, type:'B', group:'E'},
 		11:{id: 11, name:'Mari Plain', slug:'mari-plain', price:628,width:160,height:156, type:'B', group:'E'},
+		12:{id: 12, name:'Anya', slug:'anya', price:2778,width:160,height:156, type:'B', soldAsPair:true,group:'E'},
 		3:{id:3, name:'Kimberly', slug:'kimberly', price:588,width:160,height:156,type:'B', soldAsPair:true, group:'E'},
 		2:{id: 2, name:'Blake', slug:'blake', price:758,width:160,height:156, type:'B', group:'E'},
 		4:{id: 4, name:'Choker', slug:'choker', price:2288,width:1051,height:257, type:'B', soldAsPiece:true,group:'N'},
