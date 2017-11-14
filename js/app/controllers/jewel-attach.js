@@ -10,6 +10,7 @@ define(['app'],function(app){
 		8:{name:'Sam', slug:'sam',  price:1293,width:66,height:192,altHeight:173,type:'E'},
 		9:{name:'Martine', slug:'martine',  price:988,width:119,height:229,altHeight:214,type:'R'},
 		10:{name:'Mari', slug:'mari',  price:2088,width:54,height:68,altHeight:68,type:'R'},
+		21:{name:'Mari Plain', slug:'mari-plain',  price:628,width:62,height:68,altHeight:68,type:'R'},
 		11:{name:'Mira', slug:'a1',  price:812,width:119,height:128,altHeight:116,type:'R'},
 		12:{name:'Sienna', slug:'a2',  price:658,width:119,height:143,altHeight:132,type:'R'},
 		13:{name:'Hari', slug:'a3',  price:938,width:119,height:221,altHeight:210,type:'R'},
