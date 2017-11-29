@@ -21,6 +21,7 @@ define(['app'],function(app){
 		18:{name:'Stella', slug:'stella',  price:2828,width:119,height:221,altHeight:208,type:'R'},
 		19:{name:'Vivian Rose Gold', slug:'vivianrg',  price:318,width:127,height:214,altHeight:189,type:'R'},
 		20:{name:'Vivian White Gold', slug:'vivianwg',  price:318,width:119,height:201,altHeight:189,type:'R'},
+		22:{name:'Anya', slug:'anya', price:2778,width:41,height:43,altHeight:43, type:'R'}
 		//20:{name:'Alex', slug:'alex',  price:0,width:862,height:862,altHeight:189,type:'R'},
 	};
 	const ROW_COUNT = 2;
