@@ -50,6 +50,7 @@ define(['app'],function(app){
 						var key =  item.type+'-'+item.itemCode; 
 						if(!summaryObj[key]){
 							summaryObj[key] = {
+								itemCode:item.itemCode,
 								name:item.name,
 								price:item.price,
 								quantity:1,
