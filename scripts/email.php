@@ -65,6 +65,7 @@ $address_2 = $address[1];
 $order = $_POST['orderSummary'];
 $order_summary  = "";
 $total = "";
+
 foreach($order as $O){
 	if(isset($O['itemCode'])){
 		$Name = $O['name'];
@@ -79,7 +80,7 @@ foreach($order as $O){
 		$order_summary.="</tr>";
 	}
 }
-$promoCode = $_POST['promoCode'];
+$promoCode = isset($_POST['promoCode'])?$_POST['promoCode']:'';
 $grossTotal = $_POST['grossTotal'];
 $netTotal = $_POST['netTotal'];
 
@@ -100,6 +101,7 @@ $vars = array(
 	'netTotal'=>'$'.number_format($netTotal, 2, '.', ','),
 	'order_summary'=>$order_summary
 );
+
 $clientBody = template('template/client-order-placement.php', $vars);
 $adminBody = template('template/admin-order-placement.php',$vars);
 $clientPre = Premailer::html($clientBody);
