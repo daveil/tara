@@ -20,5 +20,5 @@
 }
 body:after {
   content: url('../img/model/blank-L-side-view.jpg') url('../img/model/blank-R-side-view.jpg') url('../img/model/blank-front-view.png');
-  display: none; 
+  visibility:hidden;
 }
