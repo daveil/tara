@@ -152,7 +152,7 @@ define(['app'],function(app){
 				break;
 			}
 		}
-		function addSprite(img,x,y,width,height,scale,opacity,anchor){
+		function addSprite(img,x,y,width,height,scale,opacity,anchor,flip){
 			var path = img+CACHE_BRKR;
 			var scale =  scale||1;
 			var opacity =  opacity || 1;
@@ -165,6 +165,8 @@ define(['app'],function(app){
 				sprite.width=width*scale||WIDTH;
 				sprite.height=height*scale||HEIGHT*VIEW_HEIGHT;
 				sprite.alpha=opacity;
+				if(flip=="earLeft")
+					sprite.scale.x=-1;
 			APP.stage.addChild(sprite);
 			return sprite;
 		}
@@ -174,6 +176,7 @@ define(['app'],function(app){
 		}
 
 		function addBase(item){
+			var jwConf = $rootScope.JewelConfig;
 			var itemCode =  item.id;
 			var base = item;
 			var path = JEWEL_DIR+'/sprite/1x/base/'+base.slug+'.png';
@@ -189,7 +192,7 @@ define(['app'],function(app){
 				if(item.startBase)  ATTA_Y =  item.startBase;
 				else ATTA_Y = NECK_START_Y;
 			}
-			baseSprite = addSprite(path,baseX,baseY,base.width,base.height,BASE_SCALE,1,{x:0.5,y:0});
+			baseSprite = addSprite(path,baseX,baseY,base.width,base.height,BASE_SCALE,1,{x:0.5,y:0},jwConf.activePart);
 			baseSelected = base;
 		}
 		
@@ -215,7 +218,7 @@ define(['app'],function(app){
 				}	
 			}	
 			path += pendant.slug+JEWEL_SUFFIX;
-			var sprite = addSprite(path,0,lastPosition,pendant.width,pendant_height,scale,1,anchor);
+			var sprite = addSprite(path,0,lastPosition,pendant.width,pendant_height,scale,1,anchor,jwConf.activePart);
 			var pHeight =  Math.round((pendant_height-LOCK_OFFSET)*scale,2);
 			pendantSprites.push({height:pHeight,sprite:sprite,price:pendant.price,name:pendant.name,itemCode:itemCode});
 			lastPosition = lastPosition+pHeight;
