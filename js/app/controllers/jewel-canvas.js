@@ -58,9 +58,11 @@ define(['app'],function(app){
 			switch(jwConf.activePart){
 				case 'earLeft':
 					path  = BG_IMG[0];
+					PIXI.loader.add(BG_IMG[1]);
 				break;
 				case 'earRight':
 					path  = BG_IMG[1];
+					PIXI.loader.add(BG_IMG[0]);
 				break;
 				case 'neck':
 					path  = BG_IMG[2];
