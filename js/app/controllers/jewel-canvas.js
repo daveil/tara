@@ -21,7 +21,7 @@ define(['app'],function(app){
 	const NECK_START_Y = -107;
 	const TDY =  new Date();
 	const CACHE_BRKR = '?v='+TDY.getMonth()+'.'+TDY.getDate();
-
+	const BG_IMG = ['img/model/blank-L-side-view.jpg','img/model/blank-R-side-view.jpg','img/model/blank-front-view.png']
 	var  APP;
 	var ATTA_Y;
 	var baseSprite,baseSelected;
@@ -57,13 +57,13 @@ define(['app'],function(app){
 			var path;
 			switch(jwConf.activePart){
 				case 'earLeft':
-					path  ='img/model/blank-L-side-view.jpg';
+					path  = BG_IMG[0];
 				break;
 				case 'earRight':
-					path  ='img/model/blank-R-side-view.jpg';
+					path  = BG_IMG[1];
 				break;
 				case 'neck':
-					path  ='img/model/blank-front-view.png';
+					path  = BG_IMG[2];
 				break;
 			}
 			currSide = jwConf.activePart;
@@ -153,7 +153,7 @@ define(['app'],function(app){
 			}
 		}
 		function addSprite(img,x,y,width,height,scale,opacity,anchor,flip){
-			var path = img+CACHE_BRKR;
+			var path = img;
 			var scale =  scale||1;
 			var opacity =  opacity || 1;
 			var anchor = anchor || {x:0.5,y:0.5};

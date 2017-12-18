@@ -10,12 +10,12 @@ requirejs.config({
 	urlArgs: (function(){ return 'v='+(new Date()).getTime()})(), // Dev purposes.
 	waitSeconds: 120,
     paths: {
-        'angular': 'angular/angular.min',
-		'jquery': 'jquery/dist/jquery.min',
-		'bootstrap': 'bootstrap/dist/js/bootstrap.min',
+        'angular': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min',
+		'jquery': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min',
+		'bootstrap': 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min',
 		'jquery-bridget': 'jquery-bridget/jquery-bridget',
 		'flickity':'flickity/dist/flickity.pkgd.min',
-		'pixi':'pixi.js/dist/pixi.min',
+		'pixi':'https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.3.5/pixi.min',
 		'app': '../../js/app/main',
 		'fb': '../../js/vendors/fb-pixel',
 		'ga': '../../js/vendors/ga',

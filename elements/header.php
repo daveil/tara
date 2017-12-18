@@ -32,7 +32,7 @@
 	src="https://www.facebook.com/tr?id=425915167808933&ev=PageView&noscript=1"
 	/></noscript>
 	<link rel="stylesheet" href="css/preload.tara.css?a" media="none" onload="if(media!='all')media='all'" />
-	<link href="libs/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"  media="none" onload="if(media!='all')media='all'"/>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"  media="none" onload="if(media!='all')media='all'"/>
 	<link href="libs/bower_components/flickity/dist/flickity.min.css" rel="stylesheet"  media="none" onload="if(media!='all')media='all'"/>
 	<link rel="stylesheet" href="css/tara.css<?php echo '?a='.rand();?>"  media="none" onload="if(media!='all')media='all'"/>
 	<link rel="stylesheet" href="css/grid.tara.css<?php echo '?a='.rand();?>" media="none" onload="if(media!='all')media='all'" />
@@ -41,6 +41,6 @@
 	<div id="preloader">
 		<div id="bar"></div>
 	</div>
-	<script data-main="js/config" src="libs/bower_components/requirejs/require.js"></script>
+	<script data-main="js/config" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
 	<style type="text/css">#bar{width:19%}</style>
 	<div id="main"ng-controller="JewelDesignerController">
