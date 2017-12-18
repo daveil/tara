@@ -6,6 +6,7 @@
         "paulbunyannet/premailer": "^1.0",
         "phpmailer/phpmailer": "~5.2",
         "league/oauth2-google": "^2.0",
-        "simple-crud/simple-crud": "^6.11"
+        "simple-crud/simple-crud": "^6.11",
+        "mobiledetect/mobiledetectlib": "^2.8"
     }
 }

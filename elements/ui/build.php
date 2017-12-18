@@ -4,6 +4,7 @@
 		    	<h2>Attachment jewelry</h2>
 			    <p>Select up to two layer to your base jewelry</p>
 		    </div>
+			<?php if ( !$detect->isMobile()  && !$detect->isTablet()  ) : ?>
 		    <div class="main-carousel hidden-sm hidden-xs" >
 					<div class="carousel-cell" ng-repeat="Pieces  in UIPieces">
 						<div class='grid-item white'  ng-repeat="item in Pieces  track by $index">
@@ -11,6 +12,8 @@
 						</div>
 					</div>
 			</div>
+			<?php endif; ?>
+			<?php if ( $detect->isMobile()  || $detect->isTablet() ) : ?>
 			<div class="mini-carousel visible-sm visible-xs" >
 			  <div class="carousel-cell" ng-repeat="item  in UIMobilePieces">
 					<div class='grid-item white' >
@@ -18,6 +21,7 @@
 					</div>
 				</div>
 			</div>
+			<?php endif; ?>
 		</div>
 		
 		<div id="jde-canvas" ng-controller="JewelCanvasController" >			
