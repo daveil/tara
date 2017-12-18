@@ -30,7 +30,7 @@ define(['app'],function(app){
 	const EAR_DEFAULT = 'earRight';
 	
 	app.controller('JewelAttachmentController', function ($rootScope, $scope,$timeout) {
-		
+		var $carousel;
 		var UIPendants  =[];
 		var UIMobilePendants  =[];
 		var uiIndex = -1;
@@ -44,14 +44,22 @@ define(['app'],function(app){
 			item.id = id;
 			UIPendants[uiIndex].push(item);
 			UIMobilePendants.push(item);
+						
 		}
 		$scope.UIPieces = UIPendants;
 		$scope.UIMobilePieces = UIMobilePendants;
 		
 		$timeout(function(){
-			$('.main-carousel,.mini-carousel').flickity(OPTIONS);
+			$carousel = $('.main-carousel,.mini-carousel').flickity(OPTIONS);
 		},100);
 		
+		$scope.$on('JewelTypeSelected',function(evt){
+			$timeout(function(){
+				$carousel.flickity('resize');
+				$carousel.flickity('reposition');
+			},250);
+			
+		});
 		$scope.viewItem = function(item){
 			item.itemType = 'atta';
 			var activePart = $rootScope.JewelConfig.activePart;
