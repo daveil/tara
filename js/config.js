@@ -7,7 +7,7 @@ var bar = document.getElementById('bar');
 	bar.style.width ='15%';
 requirejs.config({
     baseUrl: 'libs/bower_components/',
-	urlArgs: (function(){ return 'v='+(new Date()).getTime()})(), // Dev purposes.
+	//urlArgs: (function(){ return 'v='+(new Date()).getTime()})(), // Dev purposes.
 	waitSeconds: 120,
     paths: {
         'angular': 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min',
