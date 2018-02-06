@@ -2,7 +2,7 @@ define(['app'],function(app){
 	const PENDANTS = {
 		1:{name:'Celine', slug:'celine', price:898,width:67,height:89,altHeight:73,type:'R'},
 		2:{name:'Ciara', slug:'ciara', price:728,width:45,height:188,altHeight:168,type:'E'},
-		3:{name:'Rachel', slug:'rachel',  price:928,width:91,height:251,altHeight:233,type:'E'},
+		3:{name:'Rachael', slug:'rachel',  price:928,width:91,height:251,altHeight:233,type:'E'},
 		4:{name:'Grace', slug:'attachment8', price:1188,width:100,height:156,altHeight:139,type:'R'},
 		5:{name:'Diana', slug:'diana',  price:708,width:55,height:229,altHeight:213,type:'R'},
 		6:{name:'Emma', slug:'emma',  price:1198,width:155,height:225,altHeight:207,type:'R'},
